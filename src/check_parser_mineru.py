@@ -10,6 +10,10 @@ INPUT_DOCUMENTS_JSONL = PROJECT_ROOT / "data" / "parsed" / "documents.jsonl"
 SAMPLE_COUNT = 3
 PREVIEW_CHARS = 1500
 
+MINERU_BACKEND = "pipeline"
+MINERU_DEVICE = "cuda"
+
+
 
 def load_document_records() -> list[dict]:
     records = []

@@ -28,9 +28,18 @@ python src/check_parser_mineru.py
 
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
-| `MINERU_BACKEND` | `pipeline` | CPU 友好；有 GPU 可尝试 `hybrid-auto-engine` |
+| `MINERU_DEVICE` | `cuda` | 通过环境变量 `MINERU_DEVICE_MODE` 生效；`auto` 自动检测 |
+| `MINERU_BACKEND` | `auto` | 有 CUDA 时用 `hybrid-auto-engine`，否则 `pipeline` |
 | `MINERU_METHOD` | `auto` | 自动判断是否 OCR |
-| `MINERU_DEVICE` | `cpu` | 有 CUDA 可改为 `cuda` |
+
+### GPU 不生效？常见原因
+
+1. **PyTorch 是 CPU 版**（最常见）：运行 `python -c "import torch; print(torch.__version__, torch.cuda.is_available())"`，若显示 `2.x.x+cpu` 和 `False`，需要重装 CUDA 版 PyTorch：
+   ```bash
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+   ```
+2. **新版 MinerU 已无 `-d` 参数**：旧教程里的 `-d cuda` 无效，脚本已改为设置 `MINERU_DEVICE_MODE` 环境变量。
+3. **显存不足**：RTX 4060 8GB 可优先试 `pipeline`；`hybrid-auto-engine` 更吃显存。
 
 ## 输出
 

@@ -1,16 +1,22 @@
 """
 方案 B：使用 MinerU 解析 PDF，输出 Markdown + documents.jsonl。
 
-依赖安装：
-    pip install -U "mineru[core]"
+GPU 说明（重要）：
+1. 新版 MinerU CLI 已移除 `-d/--device` 参数，设备通过环境变量 `MINERU_DEVICE_MODE` 控制。
+2. 仅设置 MINERU_DEVICE=cuda 不够，还需安装带 CUDA 的 PyTorch（例如 2.12.0+cu124，而非 2.12.0+cpu）。
+3. GPU 推理建议使用 `hybrid-auto-engine` 或 `pipeline` 后端。
 
-首次运行会自动下载模型（体积较大，需预留磁盘空间）。
-无 GPU 时使用 pipeline 后端 + CPU。
+依赖安装：
+    pip install -r requirements-mineru.txt
+
+GPU 额外步骤（RTX 4060 / CUDA 12.x 示例）：
+    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 """
 
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -30,10 +36,18 @@ OUTPUT_DOCUMENTS_JSONL = PROJECT_ROOT / "data" / "parsed" / "documents.jsonl"
 OUTPUT_SUMMARY_CSV = PROJECT_ROOT / "data" / "parsed" / "parse_summary.csv"
 
 PARSE_METHOD = "mineru"
+
+# 设备：cuda / cpu / auto（auto 会检测 PyTorch 是否支持 CUDA）
+MINERU_DEVICE = "cuda"
+
+# 后端：auto / pipeline / hybrid-auto-engine
+# - auto：有 CUDA 时用 hybrid-auto-engine，否则 pipeline
+# - pipeline：兼容性好，支持 CPU；有 CUDA 时也可走 GPU
+# - hybrid-auto-engine：精度更高，需要 GPU + 足够显存（建议 8GB+）
 MINERU_BACKEND = "pipeline"
+
 MINERU_METHOD = "auto"
 MINERU_LANG = "ch"
-MINERU_DEVICE = "cpu"
 
 
 def normalize_text(text: str) -> str:
@@ -43,6 +57,60 @@ def normalize_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
+
+
+def get_torch_cuda_status() -> tuple[bool, str, str | None]:
+    try:
+        import torch
+    except ImportError:
+        return False, "not_installed", None
+
+    cuda_available = torch.cuda.is_available()
+    version = torch.__version__
+    cuda_build = torch.version.cuda
+    return cuda_available, version, cuda_build
+
+
+def resolve_runtime_config() -> tuple[str, str, dict[str, str], dict[str, str]]:
+    cuda_available, torch_version, torch_cuda_build = get_torch_cuda_status()
+
+    if MINERU_DEVICE == "auto":
+        device = "cuda" if cuda_available else "cpu"
+    else:
+        device = MINERU_DEVICE.strip().lower()
+
+    if MINERU_BACKEND == "auto":
+        backend = "hybrid-auto-engine" if device == "cuda" and cuda_available else "pipeline"
+    else:
+        backend = MINERU_BACKEND
+
+    if device.startswith("cuda") and not cuda_available:
+        print(
+            "\n[警告] 你配置了 GPU，但当前 PyTorch 不可用 CUDA。\n"
+            f"  torch 版本: {torch_version}\n"
+            f"  torch.version.cuda: {torch_cuda_build}\n"
+            "  常见原因: 安装的是 CPU 版 PyTorch（例如 2.12.0+cpu）。\n"
+            "  修复示例:\n"
+            "    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124\n"
+            "  将自动回退到 CPU + pipeline 后端。\n"
+        )
+        device = "cpu"
+        if backend.startswith("hybrid-"):
+            backend = "pipeline"
+
+    mineru_env = os.environ.copy()
+    mineru_env["MINERU_DEVICE_MODE"] = device
+
+    runtime_info = {
+        "requested_device": MINERU_DEVICE,
+        "resolved_device": device,
+        "requested_backend": MINERU_BACKEND,
+        "resolved_backend": backend,
+        "torch_version": torch_version,
+        "torch_cuda_available": str(cuda_available),
+        "torch_cuda_build": torch_cuda_build or "",
+    }
+    return device, backend, mineru_env, runtime_info
 
 
 def extract_doc_metadata(markdown_text: str) -> dict[str, str]:
@@ -77,11 +145,16 @@ def find_mineru_cli() -> str:
         return cli_path
 
     raise FileNotFoundError(
-        "未找到 mineru 命令。请先安装：pip install -U \"mineru[core]\""
+        "未找到 mineru 命令。请先安装：pip install -r requirements-mineru.txt"
     )
 
 
-def run_mineru_on_pdf(pdf_path: Path, output_dir: Path) -> Path:
+def run_mineru_on_pdf(
+    pdf_path: Path,
+    output_dir: Path,
+    backend: str,
+    mineru_env: dict[str, str],
+) -> Path:
     cli_path = find_mineru_cli()
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -92,13 +165,11 @@ def run_mineru_on_pdf(pdf_path: Path, output_dir: Path) -> Path:
         "-o",
         str(output_dir),
         "-b",
-        MINERU_BACKEND,
+        backend,
         "-m",
         MINERU_METHOD,
         "-l",
         MINERU_LANG,
-        "-d",
-        MINERU_DEVICE,
     ]
 
     completed = subprocess.run(
@@ -108,6 +179,7 @@ def run_mineru_on_pdf(pdf_path: Path, output_dir: Path) -> Path:
         encoding="utf-8",
         errors="replace",
         check=False,
+        env=mineru_env,
     )
 
     if completed.returncode != 0:
@@ -128,12 +200,17 @@ def run_mineru_on_pdf(pdf_path: Path, output_dir: Path) -> Path:
     return preferred[0] if preferred else markdown_files[0]
 
 
-def parse_single_pdf(pdf_path: Path) -> dict:
+def parse_single_pdf(
+    pdf_path: Path,
+    backend: str,
+    device: str,
+    mineru_env: dict[str, str],
+) -> dict:
     doc_output_dir = MINERU_OUTPUT_DIR / pdf_path.stem
     if doc_output_dir.exists():
         shutil.rmtree(doc_output_dir)
 
-    markdown_path = run_mineru_on_pdf(pdf_path, doc_output_dir)
+    markdown_path = run_mineru_on_pdf(pdf_path, doc_output_dir, backend, mineru_env)
     markdown_text = normalize_text(markdown_path.read_text(encoding="utf-8"))
     metadata = extract_doc_metadata(markdown_text)
 
@@ -145,12 +222,15 @@ def parse_single_pdf(pdf_path: Path) -> dict:
         "text": markdown_text,
         "text_char_count": len(markdown_text),
         "metadata": metadata,
-        "mineru_backend": MINERU_BACKEND,
+        "mineru_backend": backend,
+        "mineru_device": device,
         "mineru_method": MINERU_METHOD,
     }
 
 
 def parse_all_pdfs() -> None:
+    device, backend, mineru_env, runtime_info = resolve_runtime_config()
+
     MINERU_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_DOCUMENTS_JSONL.parent.mkdir(parents=True, exist_ok=True)
 
@@ -167,13 +247,21 @@ def parse_all_pdfs() -> None:
     print("开始解析金融研报 PDF（方案 B：MinerU）")
     print(f"输入文件夹：{INPUT_PDF_DIR}")
     print(f"发现 PDF 数量：{len(pdf_files)}")
-    print(f"MinerU 后端：{MINERU_BACKEND} / method={MINERU_METHOD} / device={MINERU_DEVICE}")
+    print(f"请求配置：device={MINERU_DEVICE}, backend={MINERU_BACKEND}")
+    print(f"实际运行：device={device}, backend={backend}")
+    print(f"MINERU_DEVICE_MODE={mineru_env.get('MINERU_DEVICE_MODE')}")
+    print(
+        "PyTorch："
+        f"version={runtime_info['torch_version']}, "
+        f"cuda_available={runtime_info['torch_cuda_available']}, "
+        f"cuda_build={runtime_info['torch_cuda_build'] or 'None'}"
+    )
     print(f"原始 MinerU 输出：{MINERU_OUTPUT_DIR}")
     print("=" * 70)
 
     for pdf_path in tqdm(pdf_files, desc="MinerU 解析 PDF"):
         try:
-            record = parse_single_pdf(pdf_path)
+            record = parse_single_pdf(pdf_path, backend, device, mineru_env)
             document_records.append(record)
 
             summary_records.append(
@@ -181,6 +269,8 @@ def parse_all_pdfs() -> None:
                     "filename": pdf_path.name,
                     "status": "success",
                     "parse_method": PARSE_METHOD,
+                    "mineru_backend": backend,
+                    "mineru_device": device,
                     "total_pages": "",
                     "total_text_chars": record["text_char_count"],
                     "markdown_path": record["markdown_path"],
@@ -194,6 +284,8 @@ def parse_all_pdfs() -> None:
                     "filename": pdf_path.name,
                     "status": "failed",
                     "parse_method": PARSE_METHOD,
+                    "mineru_backend": backend,
+                    "mineru_device": device,
                     "total_pages": "",
                     "total_text_chars": 0,
                     "markdown_path": "",
