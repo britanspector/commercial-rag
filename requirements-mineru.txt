@@ -1,0 +1,9 @@
+# 方案 B：MinerU PDF 解析依赖
+# 安装：pip install -r requirements-mineru.txt
+#
+# 首次运行会下载模型，建议预留 20GB+ 磁盘空间。
+# 无 GPU 时脚本默认使用 pipeline + cpu。
+
+mineru[core]>=2.0.0
+pandas>=2.0.0
+tqdm>=4.66.0

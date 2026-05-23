@@ -1,1 +1,3 @@
 /data/raw_pdfs
+/data/parsed/mineru/
+__pycache__/
