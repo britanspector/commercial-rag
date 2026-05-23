@@ -1,0 +1,3 @@
+# 分块阶段依赖（复用 MinerU 解析阶段已有的 pandas）
+
+pandas>=2.0.0
