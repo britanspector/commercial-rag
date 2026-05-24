@@ -29,7 +29,7 @@ python src/check_parser_mineru.py
 | 变量 | 默认值 | 说明 |
 |------|--------|------|
 | `MINERU_DEVICE` | `cuda` | 通过环境变量 `MINERU_DEVICE_MODE` 生效；`auto` 自动检测 |
-| `MINERU_BACKEND` | `auto` | 有 CUDA 时用 `hybrid-auto-engine`，否则 `pipeline` |
+| `MINERU_BACKEND` | `auto` | 有 CUDA 时可选 `hybrid-auto-engine`，默认 `pipeline` |
 | `MINERU_METHOD` | `auto` | 自动判断是否 OCR |
 
 ### GPU 不生效？常见原因
@@ -57,5 +57,5 @@ python src/check_parser_mineru.py
 
 ```bash
 git switch feature-pdf-2        # 方案 A
-git switch feature-pdf-mineru   # 方案 B
+git switch feature-pdf-mineru   # 方案 B （已合并到main）
 ```

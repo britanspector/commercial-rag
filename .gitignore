@@ -14,3 +14,7 @@ __pycache__/
 # Parsed outputs (regenerate via src/parse_pdf_pages.py or src/parse_pdf_mineru.py)
 /data/parsed/*
 !/data/parsed/.gitkeep
+
+# Vector store (regenerate via src/embed_chunks.py)
+/data/vector/*
+!/data/vector/.gitkeep

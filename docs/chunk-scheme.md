@@ -1,40 +1,40 @@
 # 分块（Chunk）说明
 
-在 `feature-chunk` 分支上运行。
-
-## 作用
-
-把 MinerU 的 `*_content_list.json` 切成适合 RAG 检索的文本块，写入 `chunks.jsonl`。
-
 ## 运行
 
 ```bash
 conda activate commercial-rag
+pip install -r requirements-chunk.txt
 python src/chunk_mineru.py
 python src/check_chunks.py
 ```
 
-## 输入 / 输出
+## 策略（mineru_paragraph_v3）
 
-| 路径 | 说明 |
+### 正文 chunk
+- 基于 MinerU v2 段落单元合并
+- 优先在句号/分号边界切分，避免句中断开
+- 单段超长时使用少量 overlap（20 tokens）
+- `embedding_text` 上限 **512 tokens**
+
+### 表格 chunk
+- 长表按行组拆分，每块 **≤440 tokens**
+- 每块重复：公司、章节、表格标题、单位、列头、页码
+- `table_raw` 保留原始表格文本
+- `embedding_text` 含自然语言描述（如「2026E 营业收入为xx百万元」）
+- 同表子块共享 `table_id`
+
+### 噪声处理
+- 免责声明、分析师联系方式、研报链接等 → `content_type=noise`, `is_retrievable=false`
+- 「风险提示」正文保留且可检索
+
+## 主要字段
+
+| 字段 | 说明 |
 |------|------|
-| `data/parsed/mineru/<doc_id>/.../*_content_list.json` | MinerU 结构化解析结果（含 page_idx） |
-| `data/parsed/chunks.jsonl` | 每个 chunk 一行 |
-| `data/parsed/chunk_summary.csv` | 每份文档的分块统计 |
-
-## 分块策略
-
-1. 按 MinerU 标题层级（`text_level` 1/2）划分章节
-2. 同一章节内合并正文与表格
-3. 超过 1200 字符的章节按段落二次切分
-4. 跳过「免责声明」「投资评级说明」等章节
-5. `page_idx + 1` 转为 PDF 页码，写入 `page_start` / `page_end`
-
-## chunk 字段示例
-
-- `chunk_id`：唯一 ID
-- `doc_id` / `filename`：来源文档
-- `section_title`：章节标题
-- `text`：chunk 正文
-- `page_start` / `page_end`：页码范围（溯源用）
-- `metadata`：公司名、股票代码、报告日期等
+| `embedding_text` | 送入 embedding 模型的文本 |
+| `table_raw` | 表格原始文本 |
+| `table_id` | 同表子块 ID |
+| `content_type` | text / table / noise |
+| `is_retrievable` | 是否进入向量库 |
+| `company_name`, `stock_code`, `broker`, `report_title`, `report_date`, `rating` | 文档元数据 |

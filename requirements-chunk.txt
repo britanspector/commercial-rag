@@ -1,3 +1,8 @@
-# 分块阶段依赖（复用 MinerU 解析阶段已有的 pandas）
+# 分块阶段依赖
+# 安装：pip install -r requirements-chunk.txt
+#
+# tokenizer 与 embedding 共用 bge-large-zh-v1.5，首次运行会自动下载模型配置
 
 pandas>=2.0.0
+tqdm>=4.66.0
+transformers>=4.40.0
