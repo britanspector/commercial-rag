@@ -26,11 +26,11 @@ from pathlib import Path
 import pandas as pd
 from tqdm import tqdm
 
+from pdf_paths import DOC_MANIFEST_JSONL, INPUT_PDF_DIR, PdfSource, discover_pdf_files, write_doc_manifest
 
 CURRENT_DIR = Path(__file__).parent
 PROJECT_ROOT = CURRENT_DIR.parent
 
-INPUT_PDF_DIR = PROJECT_ROOT / "data" / "raw_pdfs"
 MINERU_OUTPUT_DIR = PROJECT_ROOT / "data" / "parsed" / "mineru"
 OUTPUT_DOCUMENTS_JSONL = PROJECT_ROOT / "data" / "parsed" / "documents.jsonl"
 OUTPUT_SUMMARY_CSV = PROJECT_ROOT / "data" / "parsed" / "parse_summary.csv"
@@ -48,6 +48,132 @@ MINERU_BACKEND = "pipeline"
 
 MINERU_METHOD = "auto"
 MINERU_LANG = "ch"
+
+# 断点续跑：已有 content_list_v2 的 PDF 跳过；单份失败继续下一本
+RESUME_SKIP_PARSED = True
+
+
+def find_content_list_v2(doc_id: str) -> Path | None:
+    doc_dir = MINERU_OUTPUT_DIR / doc_id
+    if not doc_dir.exists():
+        return None
+    matches = sorted(doc_dir.rglob("*_content_list_v2.json"))
+    return matches[0] if matches else None
+
+
+def is_pdf_parse_complete(doc_id: str) -> bool:
+    return find_content_list_v2(doc_id) is not None
+
+
+def find_markdown_output(doc_id: str, pdf_stem: str) -> Path | None:
+    doc_dir = MINERU_OUTPUT_DIR / doc_id
+    if not doc_dir.exists():
+        return None
+    markdown_files = sorted(doc_dir.rglob("*.md"))
+    if not markdown_files:
+        return None
+    preferred = [
+        candidate
+        for candidate in markdown_files
+        if candidate.stem == pdf_stem or pdf_stem in candidate.stem
+    ]
+    return preferred[0] if preferred else markdown_files[0]
+
+
+def load_parsed_doc_ids_from_jsonl() -> set[str]:
+    if not OUTPUT_DOCUMENTS_JSONL.exists():
+        return set()
+
+    doc_ids: set[str] = set()
+    with open(OUTPUT_DOCUMENTS_JSONL, "r", encoding="utf-8") as input_file:
+        for line in input_file:
+            line = line.strip()
+            if not line:
+                continue
+            doc_ids.add(json.loads(line)["doc_id"])
+    return doc_ids
+
+
+def append_document_record(record: dict) -> None:
+    with open(OUTPUT_DOCUMENTS_JSONL, "a", encoding="utf-8") as output_file:
+        output_file.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def load_summary_by_doc_id() -> dict[str, dict]:
+    if not OUTPUT_SUMMARY_CSV.exists():
+        return {}
+
+    summary_by_doc_id: dict[str, dict] = {}
+    dataframe = pd.read_csv(OUTPUT_SUMMARY_CSV, encoding="utf-8-sig")
+    for row in dataframe.to_dict(orient="records"):
+        filename = str(row.get("filename", ""))
+        doc_id = Path(filename).stem if filename else ""
+        if doc_id:
+            summary_by_doc_id[doc_id] = row
+    return summary_by_doc_id
+
+
+def save_summary_csv(summary_by_doc_id: dict[str, dict]) -> None:
+    if not summary_by_doc_id:
+        return
+    rows = sorted(summary_by_doc_id.values(), key=lambda row: str(row.get("filename", "")))
+    pd.DataFrame(rows).to_csv(OUTPUT_SUMMARY_CSV, index=False, encoding="utf-8-sig")
+
+
+def build_summary_row(
+    pdf_source: PdfSource,
+    *,
+    status: str,
+    backend: str,
+    device: str,
+    text_char_count: int = 0,
+    markdown_path: str = "",
+    metadata: dict | None = None,
+    error: str = "",
+) -> dict:
+    return {
+        "doc_id": pdf_source.doc_id,
+        "filename": pdf_source.filename,
+        "industry": pdf_source.industry_label or pdf_source.industry,
+        "source_pdf_path": pdf_source.source_pdf_path,
+        "status": status,
+        "parse_method": PARSE_METHOD,
+        "mineru_backend": backend,
+        "mineru_device": device,
+        "total_pages": "",
+        "total_text_chars": text_char_count,
+        "markdown_path": markdown_path,
+        "metadata": json.dumps(metadata or {}, ensure_ascii=False),
+        "error": error,
+    }
+
+
+def rebuild_record_from_cache(
+    pdf_source: PdfSource,
+    backend: str,
+    device: str,
+) -> dict:
+    markdown_path = find_markdown_output(pdf_source.doc_id, pdf_source.path.stem)
+    if markdown_path is None:
+        raise FileNotFoundError(f"未找到已缓存的 Markdown：{pdf_source.doc_id}")
+
+    markdown_text = normalize_text(markdown_path.read_text(encoding="utf-8"))
+    metadata = extract_doc_metadata(markdown_text)
+    return {
+        "doc_id": pdf_source.doc_id,
+        "filename": pdf_source.filename,
+        "industry": pdf_source.industry,
+        "industry_label": pdf_source.industry_label,
+        "source_pdf_path": pdf_source.source_pdf_path,
+        "parse_method": PARSE_METHOD,
+        "markdown_path": str(markdown_path.relative_to(PROJECT_ROOT)),
+        "text": markdown_text,
+        "text_char_count": len(markdown_text),
+        "metadata": metadata,
+        "mineru_backend": backend,
+        "mineru_device": device,
+        "mineru_method": MINERU_METHOD,
+    }
 
 
 def normalize_text(text: str) -> str:
@@ -144,6 +270,16 @@ def find_mineru_cli() -> str:
     if cli_path:
         return cli_path
 
+    python_dir = Path(sys.executable).resolve().parent
+    for candidate in (
+        python_dir / "Scripts" / "mineru.exe",
+        python_dir / "Scripts" / "mineru",
+        python_dir / "mineru.exe",
+        python_dir / "mineru",
+    ):
+        if candidate.exists():
+            return str(candidate)
+
     raise FileNotFoundError(
         "未找到 mineru 命令。请先安装：pip install -r requirements-mineru.txt"
     )
@@ -201,11 +337,12 @@ def run_mineru_on_pdf(
 
 
 def parse_single_pdf(
-    pdf_path: Path,
+    pdf_source: PdfSource,
     backend: str,
     device: str,
     mineru_env: dict[str, str],
 ) -> dict:
+    pdf_path = pdf_source.path
     doc_output_dir = MINERU_OUTPUT_DIR / pdf_path.stem
     if doc_output_dir.exists():
         shutil.rmtree(doc_output_dir)
@@ -215,8 +352,11 @@ def parse_single_pdf(
     metadata = extract_doc_metadata(markdown_text)
 
     return {
-        "doc_id": pdf_path.stem,
-        "filename": pdf_path.name,
+        "doc_id": pdf_source.doc_id,
+        "filename": pdf_source.filename,
+        "industry": pdf_source.industry,
+        "industry_label": pdf_source.industry_label,
+        "source_pdf_path": pdf_source.source_pdf_path,
         "parse_method": PARSE_METHOD,
         "markdown_path": str(markdown_path.relative_to(PROJECT_ROOT)),
         "text": markdown_text,
@@ -234,19 +374,31 @@ def parse_all_pdfs() -> None:
     MINERU_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_DOCUMENTS_JSONL.parent.mkdir(parents=True, exist_ok=True)
 
-    pdf_files = sorted(INPUT_PDF_DIR.glob("*.pdf"))
-    if not pdf_files:
+    pdf_sources = discover_pdf_files(INPUT_PDF_DIR)
+    if not pdf_sources:
         raise FileNotFoundError(
-            f"没有在以下目录发现 PDF 文件：\n{INPUT_PDF_DIR}"
+            f"没有在以下目录（含子文件夹）发现 PDF 文件：\n{INPUT_PDF_DIR}"
         )
 
-    document_records = []
-    summary_records = []
+    write_doc_manifest(pdf_sources)
+
+    jsonl_doc_ids = load_parsed_doc_ids_from_jsonl()
+    summary_by_doc_id = load_summary_by_doc_id()
+
+    skipped_count = 0
+    success_count = 0
+    failed_count = 0
 
     print("=" * 70)
     print("开始解析金融研报 PDF（方案 B：MinerU）")
-    print(f"输入文件夹：{INPUT_PDF_DIR}")
-    print(f"发现 PDF 数量：{len(pdf_files)}")
+    print(f"输入根目录：{INPUT_PDF_DIR}")
+    print(f"发现 PDF 数量：{len(pdf_sources)}")
+    industries = sorted({source.industry_label or source.industry or "未分类" for source in pdf_sources})
+    print(f"行业分布：{', '.join(industries)}")
+    print(f"断点续跑：{'开启' if RESUME_SKIP_PARSED else '关闭'}")
+    if RESUME_SKIP_PARSED:
+        already_parsed = sum(1 for source in pdf_sources if is_pdf_parse_complete(source.doc_id))
+        print(f"已解析可跳过：{already_parsed} 份")
     print(f"请求配置：device={MINERU_DEVICE}, backend={MINERU_BACKEND}")
     print(f"实际运行：device={device}, backend={backend}")
     print(f"MINERU_DEVICE_MODE={mineru_env.get('MINERU_DEVICE_MODE')}")
@@ -259,58 +411,74 @@ def parse_all_pdfs() -> None:
     print(f"原始 MinerU 输出：{MINERU_OUTPUT_DIR}")
     print("=" * 70)
 
-    for pdf_path in tqdm(pdf_files, desc="MinerU 解析 PDF"):
+    for pdf_source in tqdm(pdf_sources, desc="MinerU 解析 PDF"):
+        if RESUME_SKIP_PARSED and is_pdf_parse_complete(pdf_source.doc_id):
+            skipped_count += 1
+            tqdm.write(f"[跳过] {pdf_source.filename}（已存在 content_list_v2）")
+
+            try:
+                cached = rebuild_record_from_cache(pdf_source, backend, device)
+                if pdf_source.doc_id not in jsonl_doc_ids:
+                    append_document_record(cached)
+                    jsonl_doc_ids.add(pdf_source.doc_id)
+                summary_by_doc_id[pdf_source.doc_id] = build_summary_row(
+                    pdf_source,
+                    status="skipped",
+                    backend=backend,
+                    device=device,
+                    text_char_count=cached["text_char_count"],
+                    markdown_path=cached["markdown_path"],
+                    metadata=cached["metadata"],
+                )
+            except Exception as error:
+                tqdm.write(f"[警告] 跳过 {pdf_source.filename}，读取缓存失败：{error}")
+                summary_by_doc_id[pdf_source.doc_id] = build_summary_row(
+                    pdf_source,
+                    status="skipped",
+                    backend=backend,
+                    device=device,
+                    error=str(error),
+                )
+            save_summary_csv(summary_by_doc_id)
+            continue
+
         try:
-            record = parse_single_pdf(pdf_path, backend, device, mineru_env)
-            document_records.append(record)
+            record = parse_single_pdf(pdf_source, backend, device, mineru_env)
+            append_document_record(record)
+            jsonl_doc_ids.add(pdf_source.doc_id)
+            success_count += 1
 
-            summary_records.append(
-                {
-                    "filename": pdf_path.name,
-                    "status": "success",
-                    "parse_method": PARSE_METHOD,
-                    "mineru_backend": backend,
-                    "mineru_device": device,
-                    "total_pages": "",
-                    "total_text_chars": record["text_char_count"],
-                    "markdown_path": record["markdown_path"],
-                    "metadata": json.dumps(record["metadata"], ensure_ascii=False),
-                    "error": "",
-                }
+            summary_by_doc_id[pdf_source.doc_id] = build_summary_row(
+                pdf_source,
+                status="success",
+                backend=backend,
+                device=device,
+                text_char_count=record["text_char_count"],
+                markdown_path=record["markdown_path"],
+                metadata=record["metadata"],
             )
+            save_summary_csv(summary_by_doc_id)
         except Exception as error:
-            summary_records.append(
-                {
-                    "filename": pdf_path.name,
-                    "status": "failed",
-                    "parse_method": PARSE_METHOD,
-                    "mineru_backend": backend,
-                    "mineru_device": device,
-                    "total_pages": "",
-                    "total_text_chars": 0,
-                    "markdown_path": "",
-                    "metadata": "",
-                    "error": str(error),
-                }
+            failed_count += 1
+            tqdm.write(f"[失败] {pdf_source.filename}：{error}")
+            summary_by_doc_id[pdf_source.doc_id] = build_summary_row(
+                pdf_source,
+                status="failed",
+                backend=backend,
+                device=device,
+                error=str(error),
             )
+            save_summary_csv(summary_by_doc_id)
 
-    with open(OUTPUT_DOCUMENTS_JSONL, "w", encoding="utf-8") as output_file:
-        for record in document_records:
-            output_file.write(json.dumps(record, ensure_ascii=False) + "\n")
+    print(f"文档清单：{DOC_MANIFEST_JSONL}")
 
-    summary_dataframe = pd.DataFrame(summary_records)
-    summary_dataframe.to_csv(
-        OUTPUT_SUMMARY_CSV,
-        index=False,
-        encoding="utf-8-sig",
-    )
-
-    success_count = sum(record["status"] == "success" for record in summary_records)
-    failed_count = len(summary_records) - success_count
-
+    usable_count = skipped_count + success_count
     print("\n" + "=" * 70)
     print("MinerU PDF 解析完成")
-    print(f"成功：{success_count}，失败：{failed_count}")
+    print(f"本次新解析成功：{success_count}")
+    print(f"跳过（已解析）：{skipped_count}")
+    print(f"本次失败：{failed_count}")
+    print(f"可用于分块：{usable_count} / {len(pdf_sources)}")
     print(f"文档级结果：{OUTPUT_DOCUMENTS_JSONL}")
     print(f"统计结果：{OUTPUT_SUMMARY_CSV}")
     print("=" * 70)

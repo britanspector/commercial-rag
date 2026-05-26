@@ -79,7 +79,11 @@ def main() -> None:
     for index, hit in enumerate(hits, start=1):
         print(f"\n[{index}] score={hit['score']:.4f}")
         print(f"chunk_id：{hit['chunk_id']}")
-        print(f"文档：{hit['filename']}")
+        print(f"文档：{hit.get('display_name') or hit['filename']}")
+        if hit.get("company_name"):
+            print(f"公司：{hit['company_name']} ({hit.get('stock_code', '')})")
+        if hit.get("broker"):
+            print(f"券商：{hit['broker']}")
         print(f"章节：{hit.get('section_title', '')}")
         print(f"页码：{hit.get('page_start')} - {hit.get('page_end')}")
         print(f"含表格：{hit.get('contains_table')}")

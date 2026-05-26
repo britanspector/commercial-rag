@@ -23,6 +23,8 @@ from pathlib import Path
 import pandas as pd
 from tqdm import tqdm
 
+from pdf_paths import build_doc_display_name, get_doc_manifest
+
 
 CURRENT_DIR = Path(__file__).parent
 PROJECT_ROOT = CURRENT_DIR.parent
@@ -1666,6 +1668,10 @@ def build_chunk_record(
     embedding_text: str,
     content_type: str,
     is_retrievable: bool,
+    display_name: str = "",
+    industry: str = "",
+    industry_label: str = "",
+    source_pdf_path: str = "",
     table_raw: str = "",
     table_id: str = "",
     table_part_index: int = 0,
@@ -1678,6 +1684,10 @@ def build_chunk_record(
         "chunk_id": chunk_id,
         "doc_id": doc_id,
         "filename": filename,
+        "display_name": display_name,
+        "industry": industry,
+        "industry_label": industry_label,
+        "source_pdf_path": source_pdf_path,
         "chunk_method": CHUNK_METHOD,
         "content_type": content_type,
         "is_retrievable": is_retrievable,
@@ -1707,11 +1717,34 @@ def build_chunk_record(
     }
 
 
-def chunk_single_document(content_list_path: Path) -> list[dict]:
+def chunk_single_document(
+    content_list_path: Path,
+    doc_manifest: dict[str, dict] | None = None,
+) -> list[dict]:
     pages = json.loads(content_list_path.read_text(encoding="utf-8"))
     doc_id = content_list_path.name.replace("_content_list_v2.json", "")
-    filename = f"{doc_id}.pdf"
+    meta = (doc_manifest or {}).get(doc_id, {})
+    filename = meta.get("filename", f"{doc_id}.pdf")
+    industry = meta.get("industry", "")
+    industry_label = meta.get("industry_label", "")
+    source_pdf_path = meta.get("source_pdf_path", "")
     doc_ctx = extract_doc_context(pages)
+    display_name = build_doc_display_name(
+        company_name=doc_ctx.company_name,
+        stock_code=doc_ctx.stock_code,
+        report_title=doc_ctx.report_title,
+        broker=doc_ctx.broker,
+        report_date=doc_ctx.report_date,
+        rating=doc_ctx.rating,
+        industry_label=industry_label,
+        filename=filename,
+    )
+    doc_fields = {
+        "display_name": display_name,
+        "industry": industry,
+        "industry_label": industry_label,
+        "source_pdf_path": source_pdf_path,
+    }
     units = extract_units_from_v2(pages, doc_id)
     groups = pack_units(units)
 
@@ -1734,6 +1767,7 @@ def chunk_single_document(content_list_path: Path) -> list[dict]:
                         embedding_text=part.embedding_text,
                         content_type="noise" if part.unit.is_noise else "table",
                         is_retrievable=not part.unit.is_noise,
+                        **doc_fields,
                         table_raw=part.table_raw,
                         table_id=part.unit.table_id,
                         table_part_index=part.part_index,
@@ -1766,6 +1800,7 @@ def chunk_single_document(content_list_path: Path) -> list[dict]:
                     embedding_text=embedding_text,
                     content_type=content_type,
                     is_retrievable=is_retrievable,
+                    **doc_fields,
                 )
             )
             if chunk_records[-1]["embedding_token_count"] > EMBED_ABSOLUTE_MAX_TOKENS:
@@ -1874,9 +1909,12 @@ def chunk_all_documents() -> None:
     print(f"表格 embedding 上限：{TABLE_HARD_MAX_TOKENS} tokens")
     print("=" * 70)
 
+    doc_manifest = get_doc_manifest()
+    print(f"文档清单：{len(doc_manifest)} 份")
+
     for content_list_path in tqdm(content_list_files, desc="正在分块"):
         try:
-            chunk_records = chunk_single_document(content_list_path)
+            chunk_records = chunk_single_document(content_list_path, doc_manifest)
             all_chunks.extend(chunk_records)
 
             embed_tokens = [record["embedding_token_count"] for record in chunk_records]

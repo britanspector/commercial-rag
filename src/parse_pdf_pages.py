@@ -7,6 +7,8 @@ import pandas as pd
 import pdfplumber
 from tqdm import tqdm
 
+from pdf_paths import INPUT_PDF_DIR, discover_pdf_files
+
 
 # ============================================================
 # 1. 项目路径配置
@@ -18,7 +20,6 @@ CURRENT_DIR = Path(__file__).parent
 PROJECT_ROOT = CURRENT_DIR.parent
 
 # 定义各个目录
-INPUT_PDF_DIR = PROJECT_ROOT / "data" / "raw_pdfs"
 OUTPUT_PAGE_JSONL = PROJECT_ROOT / "data" / "parsed" / "pages.jsonl"
 OUTPUT_SUMMARY_CSV = PROJECT_ROOT / "data" / "parsed" / "parse_summary.csv"
 
@@ -195,11 +196,11 @@ def parse_all_pdfs() -> None:
     OUTPUT_PAGE_JSONL.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_SUMMARY_CSV.parent.mkdir(parents=True, exist_ok=True)
 
-    pdf_files = sorted(INPUT_PDF_DIR.glob("*.pdf"))
+    pdf_sources = discover_pdf_files(INPUT_PDF_DIR)
 
-    if not pdf_files:
+    if not pdf_sources:
         raise FileNotFoundError(
-            f"没有在以下目录发现 PDF 文件：\n{INPUT_PDF_DIR}\n"
+            f"没有在以下目录（含子文件夹）发现 PDF 文件：\n{INPUT_PDF_DIR}\n"
             f"请先将 PDF 上传到该目录后再运行脚本。"
         )
 
@@ -208,12 +209,13 @@ def parse_all_pdfs() -> None:
 
     print("=" * 70)
     print("开始解析金融研报 PDF")
-    print(f"输入文件夹：{INPUT_PDF_DIR}")
-    print(f"发现 PDF 数量：{len(pdf_files)}")
+    print(f"输入根目录：{INPUT_PDF_DIR}")
+    print(f"发现 PDF 数量：{len(pdf_sources)}")
     print(f"是否提取表格：{EXTRACT_TABLES}")
     print("=" * 70)
 
-    for pdf_path in tqdm(pdf_files, desc="正在解析 PDF"):
+    for pdf_source in tqdm(pdf_sources, desc="正在解析 PDF"):
+        pdf_path = pdf_source.path
         try:
             page_records = parse_single_pdf(pdf_path)
 
