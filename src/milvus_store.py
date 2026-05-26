@@ -128,6 +128,7 @@ class MilvusChunkStore:
                     "contains_table": entity.get("contains_table"),
                     "token_count": entity.get("token_count"),
                     "stock_code": entity.get("stock_code"),
+                    "rating": entity.get("rating", ""),
                 }
             )
         return hits

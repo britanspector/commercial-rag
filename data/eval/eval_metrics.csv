@@ -1,0 +1,2 @@
+﻿question_count,recall_at_5,recall_at_10,mrr,hit_rate,top_k
+40.0,0.75,0.775,0.6816666666666666,0.775,10
