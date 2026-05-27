@@ -66,10 +66,17 @@ def load_chunk_records() -> list[dict]:
 
 
 def load_embedder(device: str) -> SentenceTransformer:
+    import os
+
     if device == "cuda":
         torch.cuda.empty_cache()
+    local_only = os.environ.get("HF_HUB_OFFLINE", "").lower() in ("1", "true", "yes")
     try:
-        return SentenceTransformer(EMBED_MODEL, device=device)
+        return SentenceTransformer(
+            EMBED_MODEL,
+            device=device,
+            local_files_only=local_only,
+        )
     except RuntimeError as error:
         if device == "cuda" and "out of memory" in str(error).lower():
             print("[警告] GPU 显存不足，Embedding 回退到 CPU")

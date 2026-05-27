@@ -177,10 +177,11 @@ GPU OOM 时可在 `embed_chunks.py` 中设 `EMBED_DEVICE = "cpu"`。详见 `docs
 ```bash
 python src/eval_retrieval.py --dry-run   # 仅校验评测题，不访问 Milvus
 python src/eval_retrieval.py             # 正式评测（默认 Top-10）
-python src/eval_retrieval.py --top-k 10
+python src/build_bm25_index.py
+python src/eval_retrieval.py --compare-routes --top-k 10
 ```
 
-详见 `docs/eval-scheme.md`。
+详见 `docs/eval-scheme.md`、`docs/milvus-index-comparison.md`（FAISS 索引 vs Milvus 方案调研）。
 
 ---
 
@@ -219,18 +220,22 @@ commercial-rag/
 
 ---
 
-## 7. 当前基线（参考）
+## 7. 检索路线对比（90 题评测集）
 
-在 24 份研报、991 可检索 chunk 上，首轮向量检索评测（28 题）约为：
+评测集 `data/eval/eval_questions.jsonl`（90 题）按 `query_type` 分为：**事实型** / **对比型** / **汇总型**。
 
-- Recall@5：**67.9%**
-- Recall@10：**71.4%**
-- MRR：**0.612**
+三路召回（`src/retrieval.py`）：
 
-未命中多集中在：复杂可比公司表、首页评级/目标价、风险提示、跨公司混淆。可对照 `data/eval/eval_misses.jsonl` 迭代 `chunk_mineru.py` 规则。
+| 路线 | 说明 |
+|------|------|
+| A `vector` | Milvus 纯向量（COSINE） |
+| B `bm25` | BM25Okapi + jieba |
+| C `hybrid` | 向量与 BM25 min-max 归一化加权融合（默认各 0.5） |
+
+对比结果输出：`data/eval/eval_route_comparison.csv`。
 
 ---
 
 ## 8. 后续扩展（见笔记）
 
-`notes/RAG项目笔记/note1.md` 中规划：BM25 混合检索、`bge-reranker-v2-m3` 重排、RAG 问答与引用展示等；当前仓库尚未实现。
+`notes/RAG项目笔记/note1.md` 中规划：`bge-reranker-v2-m3` 重排、RAG 问答与引用展示、Milvus Standalone 上 IVF/HNSW 索引对比（见 `docs/milvus-index-comparison.md`）等。

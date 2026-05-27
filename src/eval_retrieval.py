@@ -1,14 +1,15 @@
 """
-检索离线评测：对 eval_questions.jsonl 批量跑向量检索，计算 Recall@K / MRR。
+检索离线评测：向量 / BM25 / 混合三路召回，计算 Recall@K / MRR。
 
 前置条件：
     1. python src/chunk_mineru.py
     2. python src/embed_chunks.py
+    3. python src/build_bm25_index.py
 
 用法：
-    python src/eval_retrieval.py
     python src/eval_retrieval.py --dry-run
-    python src/eval_retrieval.py --top-k 10
+    python src/eval_retrieval.py --route vector
+    python src/eval_retrieval.py --compare-routes
 """
 
 from __future__ import annotations
@@ -30,6 +31,12 @@ DEFAULT_QUESTIONS = PROJECT_ROOT / "data" / "eval" / "eval_questions.jsonl"
 CHUNKS_JSONL = PROJECT_ROOT / "data" / "parsed" / "chunks.jsonl"
 OUTPUT_DIR = PROJECT_ROOT / "data" / "eval"
 
+ROUTE_LABELS = {
+    "vector": "路线A-纯向量",
+    "bm25": "路线B-纯BM25",
+    "hybrid": "路线C-混合",
+}
+
 
 @dataclass
 class EvalQuestion:
@@ -37,6 +44,7 @@ class EvalQuestion:
     query: str
     gold_answer: str = ""
     category: str = ""
+    query_type: str = "factual"
     stock_code: str = ""
     doc_id: str = ""
     industry_label: str = ""
@@ -52,6 +60,7 @@ class EvalQuestion:
             query=str(data["query"]),
             gold_answer=str(data.get("gold_answer", "")),
             category=str(data.get("category", "")),
+            query_type=str(data.get("query_type", "factual")),
             stock_code=str(data.get("stock_code", "")).strip(),
             doc_id=str(data.get("doc_id", "")).strip(),
             industry_label=str(data.get("industry_label", "")).strip(),
@@ -103,7 +112,6 @@ def encode_query(model, query: str) -> list[float]:
     return vector.tolist()
 
 
-# must_contain 字面量扩展为中文研报常用表述
 MUST_TOKEN_ALIASES: dict[str, list[str]] = {
     "EPS": ["EPS", "每股收益", "摊薄每股收益"],
     "YoY": ["YoY", "同比"],
@@ -150,11 +158,27 @@ def is_hit_relevant(hit: dict, question: EvalQuestion) -> bool:
     chunk_id = hit.get("chunk_id", "")
     stock_code = str(hit.get("stock_code", "")).strip()
     doc_id = str(hit.get("doc_id", "")).strip()
+    industry_label = str(hit.get("industry_label", "")).strip()
 
     if question.negative_stock_codes and stock_code in question.negative_stock_codes:
         return False
 
     if question.gold_chunk_ids and chunk_id in question.gold_chunk_ids:
+        return True
+
+    # 汇总型：无单一股票时，按行业标签 + 关键词约束
+    if question.query_type == "summary" and not question.stock_code and not question.doc_id:
+        if question.industry_label and industry_label != question.industry_label:
+            return False
+        if question.section_keywords and not section_keyword_matches(
+            hit, question.section_keywords
+        ):
+            return False
+        if question.must_contain_any:
+            blob = hit_blob(hit)
+            candidates = expand_must_tokens(question.must_contain_any)
+            if not any(token in blob for token in candidates):
+                return False
         return True
 
     stock_ok = not question.stock_code or stock_code == question.stock_code
@@ -186,7 +210,11 @@ def mrr(relevant_ranks: list[int]) -> float:
     return 1.0 / min(relevant_ranks)
 
 
-def evaluate_hits(question: EvalQuestion, hits: list[dict]) -> dict:
+def evaluate_hits(
+    question: EvalQuestion,
+    hits: list[dict],
+    route: str,
+) -> dict:
     relevant_ranks = [
         rank
         for rank, hit in enumerate(hits, start=1)
@@ -196,13 +224,16 @@ def evaluate_hits(question: EvalQuestion, hits: list[dict]) -> dict:
 
     return {
         "question_id": question.id,
+        "query_type": question.query_type,
         "category": question.category,
+        "route": route,
         "query": question.query,
         "gold_answer": question.gold_answer,
         "stock_code": question.stock_code,
         "doc_id": question.doc_id,
         "hit": first_rank is not None,
         "first_relevant_rank": first_rank or "",
+        "recall_at_3": recall_at_k(relevant_ranks, 3),
         "recall_at_5": recall_at_k(relevant_ranks, 5),
         "recall_at_10": recall_at_k(relevant_ranks, 10),
         "mrr": mrr(relevant_ranks),
@@ -216,6 +247,18 @@ def evaluate_hits(question: EvalQuestion, hits: list[dict]) -> dict:
     }
 
 
+def aggregate_metrics(results: list[dict]) -> dict[str, float]:
+    n = len(results)
+    return {
+        "question_count": float(n),
+        "recall_at_3": sum(row["recall_at_3"] for row in results) / n,
+        "recall_at_5": sum(row["recall_at_5"] for row in results) / n,
+        "recall_at_10": sum(row["recall_at_10"] for row in results) / n,
+        "mrr": sum(row["mrr"] for row in results) / n,
+        "hit_rate": sum(1 for row in results if row["hit"]) / n,
+    }
+
+
 def validate_questions(questions: list[EvalQuestion], chunk_ids: set[str]) -> None:
     missing_gold: list[str] = []
     for question in questions:
@@ -223,7 +266,12 @@ def validate_questions(questions: list[EvalQuestion], chunk_ids: set[str]) -> No
             if chunk_id not in chunk_ids:
                 missing_gold.append(f"{question.id}:{chunk_id}")
 
+    type_counts: dict[str, int] = {}
+    for question in questions:
+        type_counts[question.query_type] = type_counts.get(question.query_type, 0) + 1
+
     print(f"评测题数量：{len(questions)}")
+    print(f"query_type 分布：{type_counts}")
     print(f"chunks.jsonl chunk 数：{len(chunk_ids)}")
     if missing_gold:
         print(f"[警告] {len(missing_gold)} 个 gold_chunk_id 在 chunks.jsonl 中不存在：")
@@ -235,7 +283,9 @@ def validate_questions(questions: list[EvalQuestion], chunk_ids: set[str]) -> No
 
 def run_retrieval_eval(
     questions: list[EvalQuestion],
+    route: str,
     top_k: int,
+    hybrid_vector_weight: float,
 ) -> tuple[list[dict], dict[str, float]]:
     from embed_chunks import (
         EMBED_DIM,
@@ -244,7 +294,7 @@ def run_retrieval_eval(
         load_embedder,
         resolve_device,
     )
-    from milvus_store import MilvusChunkStore
+    from retrieval import HybridRetriever, RecallRoute
 
     if not OUTPUT_MILVUS_DB.exists():
         raise FileNotFoundError(
@@ -254,67 +304,54 @@ def run_retrieval_eval(
     device = resolve_device()
     print(f"Embedding 模型：{EMBED_MODEL}")
     print(f"设备：{device}")
+    print(f"召回路线：{ROUTE_LABELS.get(route, route)}")
     print(f"Top-K：{top_k}")
+    if route == "hybrid":
+        print(f"混合权重（向量）：{hybrid_vector_weight}")
 
     model = load_embedder(device)
-    store = MilvusChunkStore(OUTPUT_MILVUS_DB, vector_dim=EMBED_DIM)
-    if not store.has_collection():
-        store.close()
+    retriever = HybridRetriever.from_paths(
+        OUTPUT_MILVUS_DB,
+        vector_dim=EMBED_DIM,
+        hybrid_vector_weight=hybrid_vector_weight,
+    )
+    if not retriever.milvus_store.has_collection():
+        retriever.close()
         raise FileNotFoundError("Milvus collection 不存在，请先运行 src/embed_chunks.py")
 
-    row_count = store.count()
-    store.load()
+    row_count = retriever.milvus_store.count()
+    retriever.milvus_store.load()
     print(f"Milvus 向量数：{row_count}")
+    print(f"BM25 文档数：{len(retriever.bm25_index.chunk_ids)}")
 
-    output_fields = [
-        "chunk_id",
-        "doc_id",
-        "filename",
-        "display_name",
-        "company_name",
-        "report_title",
-        "broker",
-        "industry_label",
-        "source_pdf_path",
-        "section_title",
-        "text",
-        "page_start",
-        "page_end",
-        "contains_table",
-        "stock_code",
-        "rating",
-    ]
-
+    recall_route = RecallRoute(route)
     results: list[dict] = []
     for question in questions:
         query_vector = encode_query(model, question.query)
-        hits = store.search(query_vector, top_k=top_k, output_fields=output_fields)
-        results.append(evaluate_hits(question, hits))
+        hits = retriever.retrieve(recall_route, question.query, query_vector, top_k)
+        results.append(evaluate_hits(question, hits, route))
 
-    store.close()
+    retriever.close()
     del model
 
-    n = len(results)
-    metrics = {
-        "question_count": float(n),
-        "recall_at_5": sum(row["recall_at_5"] for row in results) / n,
-        "recall_at_10": sum(row["recall_at_10"] for row in results) / n,
-        "mrr": sum(row["mrr"] for row in results) / n,
-        "hit_rate": sum(1 for row in results if row["hit"]) / n,
-    }
+    metrics = aggregate_metrics(results)
     return results, metrics
 
 
-def save_reports(results: list[dict], metrics: dict[str, float], top_k: int) -> None:
+def save_reports(
+    results: list[dict],
+    metrics: dict[str, float],
+    route: str,
+    top_k: int,
+) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    results_path = OUTPUT_DIR / "eval_results.csv"
-    metrics_path = OUTPUT_DIR / "eval_metrics.csv"
-    misses_path = OUTPUT_DIR / "eval_misses.jsonl"
-    detail_path = OUTPUT_DIR / "eval_detail.jsonl"
+    results_path = OUTPUT_DIR / f"eval_results_{route}.csv"
+    metrics_path = OUTPUT_DIR / f"eval_metrics_{route}.csv"
+    misses_path = OUTPUT_DIR / f"eval_misses_{route}.jsonl"
 
     pd.DataFrame(results).to_csv(results_path, index=False, encoding="utf-8-sig")
-    pd.DataFrame([{**metrics, "top_k": top_k}]).to_csv(
+    pd.DataFrame([{**metrics, "route": route, "top_k": top_k}]).to_csv(
         metrics_path, index=False, encoding="utf-8-sig"
     )
 
@@ -323,38 +360,148 @@ def save_reports(results: list[dict], metrics: dict[str, float], top_k: int) -> 
         for row in misses:
             output_file.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-    with open(detail_path, "w", encoding="utf-8") as output_file:
-        for row in results:
-            output_file.write(json.dumps(row, ensure_ascii=False) + "\n")
-
     print("\n" + "=" * 70)
-    print("检索评测结果")
+    print(f"检索评测结果 — {ROUTE_LABELS.get(route, route)}")
+    print(f"Recall@3：  {metrics['recall_at_3']:.1%}")
     print(f"Recall@5：  {metrics['recall_at_5']:.1%}")
     print(f"Recall@10： {metrics['recall_at_10']:.1%}")
     print(f"MRR：       {metrics['mrr']:.3f}")
-    print(f"命中率：    {metrics['hit_rate']:.1%} ({int(metrics['hit_rate'] * metrics['question_count'])}/{int(metrics['question_count'])})")
+    print(
+        f"命中率：    {metrics['hit_rate']:.1%} "
+        f"({int(metrics['hit_rate'] * metrics['question_count'])}/"
+        f"{int(metrics['question_count'])})"
+    )
     print(f"明细 CSV：  {results_path}")
     print(f"指标 CSV：  {metrics_path}")
     print(f"未命中：    {misses_path} ({len(misses)} 题)")
     print("=" * 70)
 
-    if misses:
-        print("\n未命中样例（前 5 题）：")
-        for row in misses[:5]:
-            print(f"\n[{row['question_id']}] {row['query']}")
-            print(f"  期望：{row['gold_answer']}")
-            print(f"  Top1：{row['top1_display_name']} | {row['top1_section']} | {row['top1_chunk_id']}")
+
+def save_route_comparison(
+    comparison_rows: list[dict],
+    per_type_rows: list[dict] | None = None,
+) -> None:
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    comparison_path = OUTPUT_DIR / "eval_route_comparison.csv"
+    pd.DataFrame(comparison_rows).to_csv(
+        comparison_path, index=False, encoding="utf-8-sig"
+    )
+    print(f"\n三路对比表：{comparison_path}")
+    print(pd.DataFrame(comparison_rows).to_string(index=False))
+
+    if per_type_rows:
+        type_path = OUTPUT_DIR / "eval_route_comparison_by_query_type.csv"
+        pd.DataFrame(per_type_rows).to_csv(type_path, index=False, encoding="utf-8-sig")
+        print(f"分 query_type 对比：{type_path}")
+
+
+def run_compare_routes(
+    questions: list[EvalQuestion],
+    top_k: int,
+    hybrid_vector_weight: float,
+) -> None:
+    from embed_chunks import (
+        EMBED_DIM,
+        EMBED_MODEL,
+        OUTPUT_MILVUS_DB,
+        load_embedder,
+        resolve_device,
+    )
+    from retrieval import HybridRetriever, RecallRoute
+
+    device = resolve_device()
+    print(f"Embedding 模型：{EMBED_MODEL}")
+    print(f"设备：{device}")
+    print(f"Top-K：{top_k}")
+
+    model = load_embedder(device)
+    retriever = HybridRetriever.from_paths(
+        OUTPUT_MILVUS_DB,
+        vector_dim=EMBED_DIM,
+        hybrid_vector_weight=hybrid_vector_weight,
+    )
+    retriever.milvus_store.load()
+    print(f"Milvus 向量数：{retriever.milvus_store.count()}")
+    print(f"BM25 文档数：{len(retriever.bm25_index.chunk_ids)}")
+
+    comparison_rows: list[dict] = []
+    per_type_rows: list[dict] = []
+
+    for route in ("vector", "bm25", "hybrid"):
+        print(f"\n>>> {ROUTE_LABELS[route]}")
+        recall_route = RecallRoute(route)
+        results: list[dict] = []
+        for question in questions:
+            query_vector = encode_query(model, question.query)
+            hits = retriever.retrieve(
+                recall_route, question.query, query_vector, top_k
+            )
+            results.append(evaluate_hits(question, hits, route))
+        metrics = aggregate_metrics(results)
+        save_reports(results, metrics, route, top_k)
+        comparison_rows.append(
+            {
+                "route": route,
+                "route_label": ROUTE_LABELS[route],
+                "question_count": int(metrics["question_count"]),
+                "recall_at_3": round(metrics["recall_at_3"], 4),
+                "recall_at_5": round(metrics["recall_at_5"], 4),
+                "recall_at_10": round(metrics["recall_at_10"], 4),
+                "mrr": round(metrics["mrr"], 4),
+                "hit_rate": round(metrics["hit_rate"], 4),
+                "top_k": top_k,
+                "hybrid_vector_weight": hybrid_vector_weight if route == "hybrid" else "",
+            }
+        )
+
+        for query_type in ("factual", "comparative", "summary"):
+            subset = [row for row in results if row["query_type"] == query_type]
+            if not subset:
+                continue
+            subset_metrics = aggregate_metrics(subset)
+            per_type_rows.append(
+                {
+                    "route": route,
+                    "query_type": query_type,
+                    "question_count": len(subset),
+                    "recall_at_3": round(subset_metrics["recall_at_3"], 4),
+                    "recall_at_5": round(subset_metrics["recall_at_5"], 4),
+                    "recall_at_10": round(subset_metrics["recall_at_10"], 4),
+                    "mrr": round(subset_metrics["mrr"], 4),
+                }
+            )
+
+    retriever.close()
+    del model
+    save_route_comparison(comparison_rows, per_type_rows)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="RAG 检索离线评测")
+    parser = argparse.ArgumentParser(description="RAG 检索离线评测（向量/BM25/混合）")
     parser.add_argument(
         "--questions",
         type=Path,
         default=DEFAULT_QUESTIONS,
         help="评测题 JSONL 路径",
     )
-    parser.add_argument("--top-k", type=int, default=10, help="检索 Top-K（用于 Recall@5/10）")
+    parser.add_argument("--top-k", type=int, default=10, help="检索 Top-K")
+    parser.add_argument(
+        "--route",
+        choices=["vector", "bm25", "hybrid"],
+        default="vector",
+        help="单一路线评测",
+    )
+    parser.add_argument(
+        "--compare-routes",
+        action="store_true",
+        help="依次评测 vector / bm25 / hybrid 并输出对比表",
+    )
+    parser.add_argument(
+        "--hybrid-vector-weight",
+        type=float,
+        default=0.5,
+        help="混合检索中向量分权重（默认 0.5）",
+    )
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -367,12 +514,19 @@ def main() -> None:
     validate_questions(questions, chunk_ids)
 
     if args.dry_run:
-        print("\n[dry-run] 跳过 Milvus 检索。完成 embed 后请运行：")
-        print("  python src/eval_retrieval.py")
+        print("\n[dry-run] 跳过检索。完成 embed + BM25 后请运行：")
+        print("  python src/build_bm25_index.py")
+        print("  python src/eval_retrieval.py --compare-routes")
         return
 
-    results, metrics = run_retrieval_eval(questions, top_k=args.top_k)
-    save_reports(results, metrics, top_k=args.top_k)
+    if args.compare_routes:
+        run_compare_routes(questions, args.top_k, args.hybrid_vector_weight)
+        return
+
+    results, metrics = run_retrieval_eval(
+        questions, args.route, args.top_k, args.hybrid_vector_weight
+    )
+    save_reports(results, metrics, args.route, top_k=args.top_k)
 
 
 if __name__ == "__main__":
