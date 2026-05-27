@@ -1,8 +1,60 @@
 # commercial-rag
 
-金融研报 RAG 数据处理流水线：PDF 解析 → 分块 → 向量化 → 检索与离线评测。
+金融研报 RAG 数据处理与检索评测流水线：**PDF 解析 → 分块 → 向量 + BM25 混合召回 → Rerank → 引用生成 / 拒答**。
 
-当前数据规模：**24 份研报**（半导体 / 电力 / 互联网电商各 8 份），约 **991** 个可检索 chunk。
+**当前 POC 规模**：24 份研报（半导体 / 电力 / 互联网电商各 8 份）→ **1352** chunks，**991** 可检索。  
+**评测集**：90 题人工标注（事实型 58 / 对比型 17 / 汇总型 15）。
+
+> 中期实验结论与全部对比数据见 **[docs/midterm-summary.md](docs/midterm-summary.md)**  
+> AutoDL / Cursor SSH 新窗口 Agent 上下文见 **[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)**
+
+---
+
+## 技术路线（当前最优）
+
+```
+PDF → MinerU → chunk_mineru → bge-large-zh-v1.5 + BM25
+                              ↓
+                    混合召回 Top-20 (0.5/0.5)
+                              ↓
+                    bge-reranker-v2-m3 → Top-5
+                              ↓
+                    引用生成 + 低分拒答 (threshold=0.35)
+```
+
+| 组件 | 选型 |
+|------|------|
+| 解析 | MinerU CLI（`src/parse_pdf_mineru.py`） |
+| 分块 | `mineru_paragraph_v3`（`src/chunk_mineru.py`） |
+| Embedding | `BAAI/bge-large-zh-v1.5`（1024 维） |
+| 向量库 | Milvus Lite（COSINE） |
+| 词法 | BM25Okapi + jieba |
+| 混合召回 | 向量与 BM25 min-max 归一化加权（默认各 0.5） |
+| Rerank | `BAAI/bge-reranker-v2-m3` |
+| 生成 | 模板引用 + Top-1 rerank 低分拒答 |
+
+---
+
+## 实验结果摘要（90 题）
+
+### 三路召回对比（Top-10）
+
+| 路线 | Recall@5 | Recall@10 | MRR |
+|------|----------|-----------|-----|
+| A 纯向量 | 73.3% | 76.7% | 0.618 |
+| B 纯 BM25 | 85.6% | **88.9%** | 0.726 |
+| C 混合 0.5/0.5 | **86.7%** | 87.8% | **0.772** |
+
+### Rerank 对比（当前主线：混合召回）
+
+| 策略 | Recall@5 | Top-1 | 事实准确率 |
+|------|----------|-------|-----------|
+| 混合直接 Top5 | 84.4% | 66.7% | 80.0% |
+| 混合 Top20→Rerank Top5 | **85.6%** | **71.1%** | **88.9%** |
+
+相对纯向量 Top5 基线（73.3% / ~70%），当前最优链路提升 **Recall@5 +12.3%**、**事实准确率 +18.9%**。
+
+完整实验表、按题型拆分、已知问题见 [docs/midterm-summary.md](docs/midterm-summary.md)。
 
 ---
 
@@ -11,231 +63,149 @@
 ```bash
 conda activate commercial-rag
 
-pip install -r requirements-mineru.txt
-pip install -r requirements-chunk.txt
-pip install -r requirements-embed.txt
-pip install milvus-lite   # Windows 需单独安装
+# 先按本机 GPU/驱动/CUDA 选择 PyTorch 版本（示例为 cu124）
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# 无 GPU 或只跑 CPU 时可用：
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+pip install -r requirements.txt
 
 python src/parse_pdf_mineru.py
 python src/chunk_mineru.py
 python src/embed_chunks.py
-python src/check_milvus.py "澜起科技2026年EPS是多少"
-python src/eval_retrieval.py
-```
-
----
-
-## 1. PDF 解析（MinerU，方案 B）
-
-**功能实现代码：** `src/parse_pdf_mineru.py`  
-通过子进程调用 **MinerU CLI**（`mineru`）解析 PDF；`src/pdf_paths.py` 负责在 `data/raw_pdfs` 子目录中递归发现 PDF、写入文档清单。  
-其他能力：从 Markdown 抽取公司名/股票代码/评级等元数据；**断点续跑**（已有 `*_content_list_v2.json` 则跳过）；单份失败记日志并继续；每份成功后 **append** 写入 `documents.jsonl`（避免 24 份全文堆在内存）。
-
-**辅助脚本：**
-
-| 文件 | 作用 |
-|------|------|
-| `src/pdf_paths.py` | 路径常量、行业文件夹映射、`discover_pdf_files()`、`doc_manifest.jsonl` |
-| `src/check_parser_mineru.py` | 抽查 MinerU 解析结果 |
-| `src/parse_pdf_pages.py` | 方案 A（PyMuPDF + pdfplumber），当前主线不用 |
-
-**数据依赖：** `data/raw_pdfs/`  
-按行业分子目录，例如：
-
-```
-data/raw_pdfs/semi-conductor/*.pdf      # 半导体 8 份
-data/raw_pdfs/power-electronics/*.pdf   # 电力 8 份
-data/raw_pdfs/e-commercial/*.pdf        # 互联网电商 8 份
-```
-
-**输出结果：**
-
-| 路径 | 内容 |
-|------|------|
-| `data/parsed/mineru/<doc_id>/.../auto/*_content_list_v2.json` | MinerU v2 结构化版面（分块主输入） |
-| `data/parsed/mineru/<doc_id>/.../*.md` | 同文档 Markdown |
-| `data/parsed/documents.jsonl` | 每行一份文档：`doc_id`、`text`（全文 MD）、`metadata`、`industry` 等 |
-| `data/parsed/doc_manifest.jsonl` | 文档清单：`doc_id`、行业、`source_pdf_path`（供分块溯源） |
-| `data/parsed/parse_summary.csv` | 每份 PDF 解析成功/失败统计 |
-
-`content_list_v2.json` 为按页的段落/表格/标题列表（JSON 数组的数组），供 `chunk_mineru.py` 读取。
-
-**运行方法：**
-
-```bash
-python src/parse_pdf_mineru.py
-```
-
-配置见 `src/parse_pdf_mineru.py` 顶部：`MINERU_DEVICE`、`MINERU_BACKEND`、`RESUME_SKIP_PARSED`。详见 `docs/parse-scheme-b.md`。
-
----
-
-## 2. 分块（Chunk）
-
-**功能实现代码：** `src/chunk_mineru.py`（策略名 `mineru_paragraph_v3`）  
-读取 MinerU 的 `*_content_list_v2.json`，按段落合并正文、按表拆分表格；生成 `embedding_text`（含公司/章节/单位等上下文 + 表格自然语言转写）；过滤免责声明、分析师邮箱等噪声；从正文前几页抽取 `company_name`、`broker`、`report_title` 等；结合 `doc_manifest.jsonl` 生成 **`display_name`**（用户可见的研报标题，而非编号文件名）。
-
-**辅助脚本：** `src/check_chunks.py` — 随机抽样查看 chunk 内容与 token 数。
-
-**数据依赖：**
-
-- `data/parsed/mineru/**/**_content_list_v2.json`
-- `data/parsed/doc_manifest.jsonl`（可选，用于行业与 `source_pdf_path`）
-
-**输出结果：**
-
-| 路径 | 内容 |
-|------|------|
-| `data/parsed/chunks.jsonl` | 每行一个 chunk（JSON），核心字段见下 |
-| `data/parsed/chunk_summary.csv` | 每份文档的 chunk 数量、可检索数、最大 token |
-
-**单条 chunk 结构（摘要）：**
-
-```json
-{
-  "chunk_id": "H3_AP202605201822487813_1_0001",
-  "doc_id": "H3_AP202605201822487813_1",
-  "display_name": "澜起科技（688008） — … [半导体, 东海证券, 2026-05-19, 增持]",
-  "company_name": "澜起科技",
-  "stock_code": "688008",
-  "section_title": "盈利预测与估值简表",
-  "page_start": 2,
-  "page_end": 2,
-  "content_type": "text | table | noise",
-  "is_retrievable": true,
-  "embedding_text": "送入向量模型的文本（含元数据块 + 正文/表格转写）",
-  "table_raw": "表格原始 pipe 文本（仅 table）",
-  "table_id": "同表子块共享 ID",
-  "industry_label": "半导体"
-}
-```
-
-**运行方法：**
-
-```bash
-python src/chunk_mineru.py
-python src/check_chunks.py
-```
-
-详见 `docs/chunk-scheme.md`。
-
----
-
-## 3. 向量化与向量库（Milvus Lite）
-
-**功能实现代码：**
-
-| 文件 | 作用 |
-|------|------|
-| `src/embed_chunks.py` | 用 **bge-large-zh-v1.5** 对可检索 chunk 的 `embedding_text` 编码，写入 Milvus |
-| `src/milvus_store.py` | Milvus Lite 封装：建表、批量插入、COSINE 检索；`reset_local_db()` 避免 Windows 锁文件问题 |
-
-仅 **`is_retrievable=true`** 的 chunk 入库。查询侧检索时需加 `query: ` 前缀（`check_milvus.py` / `eval_retrieval.py` 已处理）。
-
-**数据依赖：** `data/parsed/chunks.jsonl`
-
-**输出结果：**
-
-| 路径 | 内容 |
-|------|------|
-| `data/vector/milvus.db` | Milvus Lite 本地库，collection `rag_chunks`，约 991 条向量 |
-| `data/parsed/embed_summary.csv` | 模型名、设备、写入条数等 |
-
-**运行方法：**
-
-```bash
-python src/embed_chunks.py
-python src/check_milvus.py
-python src/check_milvus.py "你的自然语言问题"
-```
-
-GPU OOM 时可在 `embed_chunks.py` 中设 `EMBED_DEVICE = "cpu"`。详见 `docs/embed-scheme.md`。
-
----
-
-## 4. 检索离线评测
-
-**功能实现代码：** `src/eval_retrieval.py`  
-对评测集批量向量检索（Top-K），按 `stock_code` / `doc_id` / 关键词 / `gold_chunk_ids` 判定是否命中，计算 **Recall@5、Recall@10、MRR**，并导出未命中 case。
-
-**数据依赖：**
-
-- `data/eval/eval_questions.jsonl` — **28 题**人工标注（含 `query`、`gold_answer`、`gold_chunk_ids` 等）
-- `data/vector/milvus.db` — 需先执行 `embed_chunks.py`
-
-**输出结果：**
-
-| 路径 | 内容 |
-|------|------|
-| `data/eval/eval_metrics.csv` | 汇总指标 |
-| `data/eval/eval_results.csv` | 每题命中 rank、Top1 chunk 等 |
-| `data/eval/eval_misses.jsonl` | 未命中题目（用于改 chunk 规则） |
-| `data/eval/eval_detail.jsonl` | 全量评测 JSON |
-
-**运行方法：**
-
-```bash
-python src/eval_retrieval.py --dry-run   # 仅校验评测题，不访问 Milvus
-python src/eval_retrieval.py             # 正式评测（默认 Top-10）
 python src/build_bm25_index.py
+
 python src/eval_retrieval.py --compare-routes --top-k 10
+python src/eval_rerank.py
+
+python src/rag_chat.py "京仪装备2026E毛利率预测是多少？"
 ```
 
-详见 `docs/eval-scheme.md`、`docs/milvus-index-comparison.md`（FAISS 索引 vs Milvus 方案调研）。
+GPU（AutoDL / 本地 CUDA）：
+
+```bash
+# PyTorch CUDA 版本需与本机显卡驱动、CUDA 运行时匹配
+# 下例仅为 cu124 示例，请按本机环境替换 cu124 / cu121 / cpu 等
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# MinerU: 在 src/parse_pdf_mineru.py 设 MINERU_DEVICE = "cuda"
+```
 
 ---
 
-## 5. 目录结构一览
+## 模块说明
+
+### 1. PDF 解析（MinerU）
+
+- **代码**：`src/parse_pdf_mineru.py`、`src/pdf_paths.py`
+- **输入**：`data/raw_pdfs/<industry>/*.pdf`
+- **输出**：`data/parsed/mineru/`、`documents.jsonl`、`doc_manifest.jsonl`
+- **文档**：[docs/parse-scheme-b.md](docs/parse-scheme-b.md)
+
+### 2. 分块
+
+- **代码**：`src/chunk_mineru.py`（策略 `mineru_paragraph_v3`）
+- **输出**：`data/parsed/chunks.jsonl`
+- **文档**：[docs/chunk-scheme.md](docs/chunk-scheme.md)
+
+### 3. 向量化与 BM25
+
+| 文件 | 作用 |
+|------|------|
+| `src/embed_chunks.py` | bge-large-zh → `data/vector/milvus.db` |
+| `src/build_bm25_index.py` | BM25 → `data/vector/bm25_index.pkl` |
+| `src/milvus_store.py` | Milvus Lite 封装 |
+
+- **文档**：[docs/embed-scheme.md](docs/embed-scheme.md)
+
+### 4. 检索评测（三路召回）
+
+- **代码**：`src/retrieval.py`、`src/eval_retrieval.py`
+- **路线**：`vector` / `bm25` / `hybrid`
+- **输出**：`data/eval/eval_route_comparison.csv`
+- **文档**：[docs/eval-scheme.md](docs/eval-scheme.md)
+
+### 5. Rerank 与 RAG
+
+| 文件 | 作用 |
+|------|------|
+| `src/reranker.py` | bge-reranker-v2-m3（CrossEncoder 回退） |
+| `src/eval_rerank.py` | 混合 Top20→Rerank vs 混合 Top5 对比 |
+| `src/rag_pipeline.py` | RAG 流水线（⚠ 当前仍为纯向量召回，待接 hybrid） |
+| `src/rag_chat.py` | CLI 问答 |
+
+- **文档**：[docs/rerank-scheme.md](docs/rerank-scheme.md)
+
+---
+
+## 目录结构
 
 ```
 commercial-rag/
 ├── data/
-│   ├── raw_pdfs/              # 原始 PDF（按行业子目录）
+│   ├── raw_pdfs/              # 原始 PDF（按行业子目录，.gitignore）
 │   ├── parsed/
-│   │   ├── mineru/            # MinerU 原始输出
+│   │   ├── mineru/            # MinerU 输出（体积大）
 │   │   ├── chunks.jsonl       # 分块结果
 │   │   ├── documents.jsonl
-│   │   ├── doc_manifest.jsonl
-│   │   └── *.csv              # 各阶段统计
+│   │   └── doc_manifest.jsonl
 │   ├── vector/
-│   │   └── milvus.db          # 向量库
-│   └── eval/                  # 评测集与评测结果
-├── src/                       # 见上文各模块
-├── docs/                      # 分块 / 解析 / 向量 / 评测说明
-├── requirements-*.txt
-└── notes/                     # 项目笔记（技术选型等）
+│   │   ├── milvus.db          # 向量库
+│   │   └── bm25_index.pkl     # BM25 索引
+│   └── eval/                  # 评测集与实验 CSV
+├── src/
+├── scripts/
+│   ├── build_eval_questions_90.py
+│   ├── pack_for_autodl.ps1    # Windows 打包（未执行）
+│   └── pack_for_autodl.sh     # Linux 打包（未执行）
+├── docs/
+│   ├── midterm-summary.md     # 中期实验总结
+│   ├── CURSOR_AGENT_CONTEXT.md
+│   └── …
+├── requirements.txt
+└── notes/                     # 个人笔记（可选）
 ```
 
 ---
 
-## 6. 依赖与环境
+## 迁移 AutoDL：文件分级与打包
+
+| 级别 | 内容 | 适用场景 |
+|------|------|----------|
+| **minimal** | 代码 + docs + 评测集 | 200 份全量重跑 |
+| **essential** | + chunks / milvus / bm25 | POC 迁移，跳过 embed |
+| **recommended** | + mineru/ | 跳过 PDF 解析 |
+| **full** | + raw_pdfs/ | 完整 24 份 POC 镜像 |
+
+**不必打包**：`__pycache__/`、`notes/.obsidian/`、临时 pool 缓存。  
+**可选单独拷贝**：HuggingFace 模型缓存（`HF_HOME`），服务器可联网重下。
+
+```powershell
+# Windows（生成 zip，不自动上传）
+.\scripts\pack_for_autodl.ps1 -Tier essential
+.\scripts\pack_for_autodl.ps1 -Tier full
+```
+
+```bash
+# Linux / AutoDL
+bash scripts/pack_for_autodl.sh --tier essential
+bash scripts/pack_for_autodl.sh --tier full
+```
+
+解压后在新 Cursor 窗口让 Agent 先读：`docs/CURSOR_AGENT_CONTEXT.md`
+
+---
+
+## 依赖
 
 | 文件 | 阶段 |
 |------|------|
-| `requirements-mineru.txt` | MinerU 解析 |
-| `requirements-chunk.txt` | 分块（transformers tokenizer） |
-| `requirements-embed.txt` | sentence-transformers + pymilvus + torch |
-
-建议使用 Conda 环境 `commercial-rag`。MinerU 使用 GPU 需安装 **CUDA 版 PyTorch**（见 `requirements-mineru.txt` 注释）。
+| `requirements.txt` | 全流程统一依赖（MinerU / Chunk / Embedding / BM25 / Rerank） |
 
 ---
 
-## 7. 检索路线对比（90 题评测集）
+## 后续规划
 
-评测集 `data/eval/eval_questions.jsonl`（90 题）按 `query_type` 分为：**事实型** / **对比型** / **汇总型**。
-
-三路召回（`src/retrieval.py`）：
-
-| 路线 | 说明 |
-|------|------|
-| A `vector` | Milvus 纯向量（COSINE） |
-| B `bm25` | BM25Okapi + jieba |
-| C `hybrid` | 向量与 BM25 min-max 归一化加权融合（默认各 0.5） |
-
-对比结果输出：`data/eval/eval_route_comparison.csv`。
-
----
-
-## 8. 后续扩展（见笔记）
-
-`notes/RAG项目笔记/note1.md` 中规划：`bge-reranker-v2-m3` 重排、RAG 问答与引用展示、Milvus Standalone 上 IVF/HNSW 索引对比（见 `docs/milvus-index-comparison.md`）等。
+- **4 行业 × 200 份研报**扩展与评测集扩容
+- `rag_pipeline.py` 统一为混合 + Rerank 生产链路
+- 800 份量级评估 Milvus Standalone + IVF/HNSW（见 [docs/milvus-index-comparison.md](docs/milvus-index-comparison.md)）
+- RAGAS 自动化评测（后置）

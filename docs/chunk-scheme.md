@@ -4,7 +4,7 @@
 
 ```bash
 conda activate commercial-rag
-pip install -r requirements-chunk.txt
+pip install -r requirements.txt
 python src/chunk_mineru.py
 python src/check_chunks.py
 ```

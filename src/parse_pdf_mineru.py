@@ -7,9 +7,9 @@ GPU 说明（重要）：
 3. GPU 推理建议使用 `hybrid-auto-engine` 或 `pipeline` 后端。
 
 依赖安装：
-    pip install -r requirements-mineru.txt
+    pip install -r requirements.txt
 
-GPU 额外步骤（RTX 4060 / CUDA 12.x 示例）：
+GPU 额外步骤（仅示例，需按本机 GPU/驱动/CUDA 匹配版本）：
     pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 """
 
@@ -281,7 +281,7 @@ def find_mineru_cli() -> str:
             return str(candidate)
 
     raise FileNotFoundError(
-        "未找到 mineru 命令。请先安装：pip install -r requirements-mineru.txt"
+        "未找到 mineru 命令。请先安装：pip install -r requirements.txt"
     )
 
 

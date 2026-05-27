@@ -6,7 +6,7 @@
 
 ```bash
 conda activate commercial-rag
-pip install -r requirements-mineru.txt
+pip install -r requirements.txt
 ```
 
 首次运行会自动下载 MinerU 模型。若 HuggingFace 访问受限，可设置：
@@ -36,7 +36,7 @@ python src/check_parser_mineru.py
 
 1. **PyTorch 是 CPU 版**（最常见）：运行 `python -c "import torch; print(torch.__version__, torch.cuda.is_available())"`，若显示 `2.x.x+cpu` 和 `False`，需要重装 CUDA 版 PyTorch：
    ```bash
-   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124  # 仅示例，请按本机 CUDA/驱动匹配版本
    ```
 2. **新版 MinerU 已无 `-d` 参数**：旧教程里的 `-d cuda` 无效，脚本已改为设置 `MINERU_DEVICE_MODE` 环境变量。
 3. **显存不足**：RTX 4060 8GB 可优先试 `pipeline`；`hybrid-auto-engine` 更吃显存。

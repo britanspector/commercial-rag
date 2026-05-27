@@ -8,7 +8,9 @@
 
 ```bash
 conda activate commercial-rag
-pip install -r requirements-embed.txt
+# 若需 GPU 加速，先按本机显卡驱动/CUDA 选择对应 PyTorch 版本（下例仅示例）
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+pip install -r requirements.txt
 ```
 
 ## 运行
