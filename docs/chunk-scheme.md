@@ -27,6 +27,18 @@ python src/check_chunks.py
 ### 噪声处理
 - 免责声明、分析师联系方式、研报链接等 → `content_type=noise`, `is_retrievable=false`
 - 「风险提示」正文保留且可检索
+- 投资评级/上次评级等封面短段：**降低噪声误杀**（P2）
+
+### P2 增强（2026-05）
+
+| 能力 | 说明 |
+|------|------|
+| `rating_headline` | 封面/摘要「买入/增持」单独成块（约 114 份文档） |
+| `comparable_table` | 可比公司表标记，检索侧可降权 |
+| 表指标语义化 | `normalize_indicator_label`：EPS、归母净利润等写入 `embedding_text` |
+| 附录合并 | `merge_appendix_chunks` + `renumber_chunk_ids` |
+
+**200 份规模**：总 chunk 10,263，可检索 **7,382**。
 
 ## 主要字段
 
@@ -35,6 +47,6 @@ python src/check_chunks.py
 | `embedding_text` | 送入 embedding 模型的文本 |
 | `table_raw` | 表格原始文本 |
 | `table_id` | 同表子块 ID |
-| `content_type` | text / table / noise |
+| `content_type` | text / table / noise / **rating_headline** / **comparable_table** |
 | `is_retrievable` | 是否进入向量库 |
 | `company_name`, `stock_code`, `broker`, `report_title`, `report_date`, `rating` | 文档元数据 |

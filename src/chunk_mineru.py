@@ -387,8 +387,11 @@ def is_noise_text(text: str, section_title: str) -> bool:
     if is_noise_section(section_title):
         return True
 
-    if section_title.strip() in {"投资评级", "上次评级", "研究所", "电子组", "分析师介绍"}:
+    if section_title.strip() in {"研究所", "电子组", "分析师介绍"}:
         return True
+
+    if section_title.strip() in {"投资评级", "上次评级"}:
+        return not has_rating_conclusion(text) and "评级" not in text
 
     if "风险提示" in text and "投资评级" not in text:
         return False
@@ -809,6 +812,10 @@ def extract_doc_context(pages: list[list[dict]]) -> DocContext:
         if not context.rating:
             context.rating = extract_rating_from_text(text)
 
+    for title in page_one_titles:
+        if not context.rating:
+            context.rating = extract_rating_from_text(title)
+
     title_candidates = merge_split_titles(page_one_titles)
     title_candidates = [
         title
@@ -939,8 +946,20 @@ def infer_indicator_unit(indicator: str, table_unit: str, value: str) -> str:
     return table_unit or ""
 
 
-def format_narrative_sentence(column_name: str, indicator: str, value: str, unit_suffix: str) -> str:
+def normalize_indicator_label(indicator: str) -> str:
+    """财务指标行名 → 检索友好的自然语言标签（P2 表行语义化）。"""
     label = indicator.strip()
+    if re.search(r"每股盈利|每股收益", label, re.I) and "EPS" not in label.upper():
+        return f"{label}(EPS)"
+    if re.search(r"归母净利润|归属于.*净利润", label):
+        return "归母净利润" if "归母" not in label else label
+    if label in {"营业总收入", "营业收入"}:
+        return "营业收入"
+    return label
+
+
+def format_narrative_sentence(column_name: str, indicator: str, value: str, unit_suffix: str) -> str:
+    label = normalize_indicator_label(indicator)
     value = clean_numeric_value(value)
     if column_name and not YEAR_COL_PATTERN.match(column_name.replace(" ", "")):
         sentence = f"{column_name} {label}为{value}"
@@ -1717,6 +1736,135 @@ def build_chunk_record(
     }
 
 
+APPENDIX_SECTION_PATTERN = re.compile(r"附录|三大报表|财务报表预测|盈利预测与估值")
+
+
+def build_rating_headline_record(
+    *,
+    doc_id: str,
+    filename: str,
+    doc_ctx: DocContext,
+    doc_fields: dict,
+) -> dict | None:
+    """P2：封面/元数据评级单独成可检索块。"""
+    if not doc_ctx.rating:
+        return None
+
+    company = doc_ctx.company_name or doc_ctx.report_title or "该公司"
+    stock = f"（{doc_ctx.stock_code}）" if doc_ctx.stock_code else ""
+    text = f"{company}{stock} 研报投资评级：{doc_ctx.rating}。"
+    if doc_ctx.broker:
+        text += f" 券商：{doc_ctx.broker}。"
+    embedding_text = sanitize_embedding_text(strip_analyst_blocks(text))
+
+    unit = ContentUnit(
+        text=text,
+        page_number=1,
+        section_title="投资评级摘要",
+        unit_type="rating_headline",
+        is_noise=False,
+    )
+    return build_chunk_record(
+        chunk_id=f"{doc_id}_rating_headline",
+        doc_id=doc_id,
+        filename=filename,
+        doc_ctx=doc_ctx,
+        group=[unit],
+        text=text,
+        embedding_text=embedding_text,
+        content_type="rating_headline",
+        is_retrievable=True,
+        **doc_fields,
+    )
+
+
+def _flush_appendix_buffer(buffer: list[dict]) -> list[dict]:
+    if not buffer:
+        return []
+    if len(buffer) == 1:
+        return buffer
+
+    first = buffer[0]
+    merged_text = join_segments([record.get("text", "") for record in buffer])
+    merged_embedding = join_segments([record.get("embedding_text", "") for record in buffer])
+    page_starts = [int(record.get("page_start") or 0) for record in buffer if record.get("page_start")]
+    page_ends = [int(record.get("page_end") or 0) for record in buffer if record.get("page_end")]
+
+    merged = dict(first)
+    merged["text"] = merged_text
+    merged["embedding_text"] = merged_embedding
+    merged["page_start"] = min(page_starts) if page_starts else first.get("page_start", 0)
+    merged["page_end"] = max(page_ends) if page_ends else first.get("page_end", 0)
+    merged["pdf_page_numbers"] = sorted(
+        {
+            page
+            for record in buffer
+            for page in (record.get("pdf_page_numbers") or [])
+        }
+    )
+    merged["unit_count"] = sum(int(record.get("unit_count") or 1) for record in buffer)
+    merged["char_count"] = len(merged_text)
+    merged["embedding_char_count"] = len(merged_embedding)
+    merged["token_count"] = count_tokens(merged_text)
+    merged["embedding_token_count"] = count_tokens(merged_embedding)
+    merged["section_title"] = first.get("section_title", "") or "附录"
+    return [merged]
+
+
+def merge_appendix_chunks(records: list[dict]) -> list[dict]:
+    """P2：同一文档内连续附录小节合并，减少碎片化。"""
+    if len(records) <= 1:
+        return records
+
+    merged: list[dict] = []
+    buffer: list[dict] = []
+    current_doc = records[0].get("doc_id", "")
+
+    def flush() -> None:
+        nonlocal buffer
+        if buffer:
+            merged.extend(_flush_appendix_buffer(buffer))
+            buffer = []
+
+    for record in records:
+        doc_id = record.get("doc_id", "")
+        section = str(record.get("section_title", ""))
+        is_appendix = bool(APPENDIX_SECTION_PATTERN.search(section))
+
+        if doc_id != current_doc:
+            flush()
+            current_doc = doc_id
+
+        if is_appendix and record.get("is_retrievable", True):
+            buffer.append(record)
+            continue
+
+        flush()
+        merged.append(record)
+
+    flush()
+    return merged
+
+
+def renumber_chunk_ids(records: list[dict], doc_id: str) -> list[dict]:
+    """评级摘要块保留固定 id，其余按序重编号。"""
+    rating = [record for record in records if record.get("chunk_id", "").endswith("_rating_headline")]
+    body = [record for record in records if not record.get("chunk_id", "").endswith("_rating_headline")]
+    ordered = rating + body
+    body_index = 0
+    for record in ordered:
+        if record.get("chunk_id", "").endswith("_rating_headline"):
+            continue
+        body_index += 1
+        record["chunk_id"] = f"{doc_id}_{body_index:04d}"
+    return ordered
+
+
+def post_process_chunk_records(records: list[dict], doc_id: str) -> list[dict]:
+    records = merge_appendix_chunks(records)
+    return renumber_chunk_ids(records, doc_id)
+
+
 def chunk_single_document(
     content_list_path: Path,
     doc_manifest: dict[str, dict] | None = None,
@@ -1751,11 +1899,30 @@ def chunk_single_document(
     chunk_records: list[dict] = []
     chunk_index = 0
 
+    rating_headline = build_rating_headline_record(
+        doc_id=doc_id,
+        filename=filename,
+        doc_ctx=doc_ctx,
+        doc_fields=doc_fields,
+    )
+    if rating_headline:
+        chunk_records.append(rating_headline)
+
     for group in groups:
         if is_table_unit(group[0]):
             table_parts = split_table_unit(group[0], doc_ctx)
+            is_comparable = is_comparable_valuation_table(
+                group[0].table_caption,
+                group[0].table_header,
+            )
             for part in table_parts:
                 chunk_index += 1
+                if part.unit.is_noise:
+                    table_content_type = "noise"
+                elif is_comparable:
+                    table_content_type = "comparable_table"
+                else:
+                    table_content_type = "table"
                 chunk_records.append(
                     build_chunk_record(
                         chunk_id=f"{doc_id}_{chunk_index:04d}",
@@ -1765,7 +1932,7 @@ def chunk_single_document(
                         group=[part.unit],
                         text=part.table_raw,
                         embedding_text=part.embedding_text,
-                        content_type="noise" if part.unit.is_noise else "table",
+                        content_type=table_content_type,
                         is_retrievable=not part.unit.is_noise,
                         **doc_fields,
                         table_raw=part.table_raw,
@@ -1809,7 +1976,7 @@ def chunk_single_document(
                 chunk_records[-1]["embedding_token_count"] = count_tokens(trimmed)
                 chunk_records[-1]["embedding_char_count"] = len(trimmed)
 
-    return chunk_records
+    return post_process_chunk_records(chunk_records, doc_id)
 
 
 def print_validation_stats(records: list[dict]) -> None:

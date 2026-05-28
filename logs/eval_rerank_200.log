@@ -1,0 +1,795 @@
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.447 seconds.
+Prefix dict has been built successfully.
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+[2/2] Rerank 与指标统计（独立进程）
+  评测题：90，skip_answer=False，阈值=0.35
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 681.67it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 169.67it/s]
+  FlagEmbedding Reranker 加载完成。
+Rerank 评测:   0%|          | 0/90 [00:00<?, ?it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 1003.18it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 145.41it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1097.99it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.52it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 601.78it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 128.88it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1058.77it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.31it/s]
+Rerank 评测:   2%|▏         | 2/90 [00:00<00:07, 11.66it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 707.83it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 150.02it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1220.52it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 129.70it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 638.05it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.94it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1093.69it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.31it/s]
+Rerank 评测:   4%|▍         | 4/90 [00:00<00:07, 11.83it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 630.55it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.73it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1063.73it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.88it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 739.89it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 129.68it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1121.62it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 123.08it/s]
+Rerank 评测:   7%|▋         | 6/90 [00:00<00:07, 11.69it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 553.94it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 115.63it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 962.88it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.14it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 818.59it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 152.66it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 2155.35it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 185.98it/s]
+Rerank 评测:   9%|▉         | 8/90 [00:00<00:06, 11.90it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 594.92it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.59it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1146.30it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 128.32it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 597.92it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 113.30it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1009.34it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 129.70it/s]
+Rerank 评测:  11%|█         | 10/90 [00:00<00:06, 11.58it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 631.50it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.30it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 994.38it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.26it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 594.06it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 129.24it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1148.81it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.79it/s]
+Rerank 评测:  13%|█▎        | 12/90 [00:01<00:06, 11.57it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 598.31it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.62it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1111.37it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 80.37it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 663.19it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.70it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1064.27it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.27it/s]
+Rerank 评测:  16%|█▌        | 14/90 [00:01<00:06, 11.23it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 691.81it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 148.82it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1464.75it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 140.31it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 612.49it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 126.99it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1215.39it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.85it/s]
+Rerank 评测:  18%|█▊        | 16/90 [00:01<00:06, 11.54it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 572.71it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.86it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1150.39it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.90it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 564.48it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 106.71it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1095.55it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 125.45it/s]
+Rerank 评测:  20%|██        | 18/90 [00:01<00:06, 11.28it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 601.52it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 116.38it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1415.32it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.69it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 604.47it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.12it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1048.05it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 115.40it/s]
+Rerank 评测:  22%|██▏       | 20/90 [00:01<00:06, 11.26it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 745.89it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 151.00it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1559.22it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 178.72it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 568.18it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 133.01it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1286.79it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 169.71it/s]
+Rerank 评测:  24%|██▍       | 22/90 [00:01<00:05, 11.77it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 560.62it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 128.65it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 846.74it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.39it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 515.59it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.33it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1020.02it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 123.15it/s]
+Rerank 评测:  27%|██▋       | 24/90 [00:02<00:05, 11.62it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 611.43it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.74it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1183.83it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 116.02it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 677.72it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 125.77it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1045.05it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.29it/s]
+Rerank 评测:  29%|██▉       | 26/90 [00:02<00:05, 11.57it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 669.82it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 129.34it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1018.41it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.04it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 589.90it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 123.19it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1065.76it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.05it/s]
+Rerank 评测:  31%|███       | 28/90 [00:02<00:05, 11.56it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 572.05it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 121.75it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 887.31it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 108.67it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 735.77it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 125.24it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1319.38it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 124.62it/s]
+Rerank 评测:  33%|███▎      | 30/90 [00:02<00:05, 11.50it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 569.00it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1037.81it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.49it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 659.92it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 116.59it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1234.34it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 129.24it/s]
+Rerank 评测:  36%|███▌      | 32/90 [00:02<00:05, 11.44it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 723.75it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 147.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1391.61it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.36it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 537.81it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1112.70it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.69it/s]
+Rerank 评测:  38%|███▊      | 34/90 [00:02<00:04, 11.60it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 587.13it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 120.56it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1104.35it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.72it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 531.80it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 110.02it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 999.60it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 119.71it/s]
+Rerank 评测:  40%|████      | 36/90 [00:03<00:04, 11.38it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 616.79it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.07it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1025.88it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.17it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 548.94it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 121.97it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1130.24it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.95it/s]
+Rerank 评测:  42%|████▏     | 38/90 [00:03<00:04, 11.32it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 528.17it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 111.92it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1100.00it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.87it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 574.78it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.51it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1136.51it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 123.55it/s]
+Rerank 评测:  44%|████▍     | 40/90 [00:03<00:04, 11.22it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 570.68it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 121.00it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1169.14it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.43it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 594.65it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 118.30it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1136.82it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.24it/s]
+Rerank 评测:  47%|████▋     | 42/90 [00:03<00:04, 11.20it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 659.59it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 118.86it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1018.28it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 116.68it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 757.89it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 120.68it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1030.16it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.55it/s]
+Rerank 评测:  49%|████▉     | 44/90 [00:03<00:04, 11.23it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 697.75it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.17it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1162.18it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 128.44it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 641.25it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 118.64it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1001.51it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 119.14it/s]
+Rerank 评测:  51%|█████     | 46/90 [00:04<00:03, 11.26it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 693.48it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.06it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1087.45it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.22it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 588.62it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 101.55it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 954.55it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 121.51it/s]
+Rerank 评测:  53%|█████▎    | 48/90 [00:04<00:03, 11.07it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 636.06it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 125.29it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1178.67it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.82it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 636.54it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.18it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1181.16it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 123.37it/s]
+Rerank 评测:  56%|█████▌    | 50/90 [00:04<00:03, 11.20it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 672.79it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 121.70it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1002.82it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.68it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 787.13it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.62it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1223.72it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.17it/s]
+Rerank 评测:  58%|█████▊    | 52/90 [00:04<00:03, 11.31it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 659.59it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 120.21it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1076.43it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.46it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 793.02it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 131.90it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1575.92it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 166.20it/s]
+Rerank 评测:  60%|██████    | 54/90 [00:04<00:03, 11.50it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 778.31it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 139.77it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1073.67it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 166.10it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 658.49it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.23it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1203.01it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.09it/s]
+Rerank 评测:  62%|██████▏   | 56/90 [00:04<00:02, 11.71it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 725.13it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 123.46it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1138.67it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 122.85it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 670.12it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 115.85it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1105.22it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.96it/s]
+Rerank 评测:  64%|██████▍   | 58/90 [00:05<00:02, 11.62it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 709.89it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.64it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1084.36it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 116.80it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 748.66it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 135.98it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1096.69it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 125.37it/s]
+Rerank 评测:  67%|██████▋   | 60/90 [00:05<00:02, 11.65it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 851.50it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.01it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1170.29it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.99it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 683.13it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.44it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1045.05it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.30it/s]
+Rerank 评测:  69%|██████▉   | 62/90 [00:05<00:02, 11.64it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 693.50it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 131.79it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1294.14it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 161.79it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 783.07it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 123.32it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 980.21it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.48it/s]
+Rerank 评测:  71%|███████   | 64/90 [00:05<00:02, 11.76it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 722.09it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 120.21it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 885.62it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 101.16it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 670.90it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 126.32it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1118.63it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 125.01it/s]
+Rerank 评测:  73%|███████▎  | 66/90 [00:05<00:02, 11.62it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 492.08it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.46it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 953.68it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 120.43it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 646.59it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 110.60it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 525.31it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.20it/s]
+Rerank 评测:  76%|███████▌  | 68/90 [00:05<00:01, 11.36it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 505.07it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 128.47it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 906.58it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 156.65it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 579.80it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.53it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 866.41it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 102.86it/s]
+Rerank 评测:  78%|███████▊  | 70/90 [00:06<00:01, 11.31it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 540.43it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.24it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 907.86it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 157.10it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 669.23it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 122.35it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1349.74it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 125.47it/s]
+Rerank 评测:  80%|████████  | 72/90 [00:06<00:01, 11.39it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 634.50it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 148.57it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1157.21it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 177.96it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 667.76it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 129.58it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 942.22it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 130.34it/s]
+Rerank 评测:  82%|████████▏ | 74/90 [00:06<00:01, 11.67it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 696.10it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 127.99it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1080.45it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.66it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 593.56it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.30it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 881.34it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.75it/s]
+Rerank 评测:  84%|████████▍ | 76/90 [00:06<00:01, 11.57it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 597.43it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 135.17it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 844.60it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 125.46it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 584.38it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 113.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1029.91it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.22it/s]
+Rerank 评测:  87%|████████▋ | 78/90 [00:06<00:01, 11.51it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 596.75it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 115.30it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 959.58it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.05it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 576.00it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.15it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1076.43it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.45it/s]
+Rerank 评测:  89%|████████▉ | 80/90 [00:06<00:00, 11.36it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 612.25it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 118.87it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 851.46it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 123.82it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 585.91it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 141.86it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1073.67it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 168.08it/s]
+Rerank 评测:  91%|█████████ | 82/90 [00:07<00:00, 11.46it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 622.63it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 134.89it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 999.00it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.87it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 601.47it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 119.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 908.64it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 117.28it/s]
+Rerank 评测:  93%|█████████▎| 84/90 [00:07<00:00, 11.49it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 534.02it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 114.83it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 873.36it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 116.37it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 618.39it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 126.76it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1030.16it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 118.44it/s]
+Rerank 评测:  96%|█████████▌| 86/90 [00:07<00:00, 11.37it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 650.28it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 127.37it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1067.66it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 155.65it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 674.26it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 140.04it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 1080.17it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 153.08it/s]
+Rerank 评测:  98%|█████████▊| 88/90 [00:07<00:00, 11.68it/s]
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 598.62it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 124.21it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 739.08it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 126.82it/s]
+
+pre tokenize:   0%|          | 0/5 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 5/5 [00:00<00:00, 675.39it/s]
+
+Compute Scores:   0%|          | 0/5 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 5/5 [00:00<00:00, 129.32it/s]
+
+pre tokenize:   0%|          | 0/2 [00:00<?, ?it/s][Apre tokenize: 100%|██████████| 2/2 [00:00<00:00, 964.54it/s]
+
+Compute Scores:   0%|          | 0/2 [00:00<?, ?it/s][ACompute Scores: 100%|██████████| 2/2 [00:00<00:00, 127.44it/s]
+Rerank 评测: 100%|██████████| 90/90 [00:07<00:00, 11.66it/s]Rerank 评测: 100%|██████████| 90/90 [00:07<00:00, 11.49it/s]
+
+======================================================================
+Rerank 检索对比
+                strategy           strategy_label  question_count  recall_at_5  top1_accuracy    mrr  retrieval_hit_rate
+      hybrid_direct_top5                混合直接 Top5              90       0.8222         0.5889 0.6772              0.8222
+hybrid_top20_rerank_top5 混合 Top20 → Rerank → Top5              90       0.8556         0.6889 0.7611              0.8556
+
+对比表：/root/commercial-rag/data/eval/eval_rerank_comparison.csv
+
+Δ Recall@5：  +3.3%
+Δ Top-1 准确率：+10.0%
+Δ MRR：       +0.084
+
+======================================================================
+生成答案对比（引用溯源 + 拒答）
+                strategy  question_count  answer_fact_accuracy  refusal_appropriate_rate  refusal_rate
+      hybrid_direct_top5              90              0.800000                  0.755556      0.044444
+hybrid_top20_rerank_top5              90              0.866667                  0.788889      0.011111
+答案对比表：/root/commercial-rag/data/eval/eval_rerank_answer_comparison.csv
+拒答文案：我不确定，当前检索到的证据不足以可靠回答该问题。
+======================================================================
+评测题数量：90
+query_type 分布：{'factual': 58, 'comparative': 17, 'summary': 15}
+chunks.jsonl chunk 数：10534
+gold_chunk_id 校验：全部存在
+Embedding 模型：BAAI/bge-large-zh-v1.5
+Reranker 模型：BAAI/bge-reranker-v2-m3
+设备：cuda
+初召回：混合（向量+BM25，权重 0.5/0.5）
+对比：混合直接 Top5 vs 混合 Top20 → Rerank → Top5
+拒答阈值（normalize rerank score）：0.35
+
+[1/2] 混合初召回 ...
+[2/2] 启动 Rerank 子进程 ...

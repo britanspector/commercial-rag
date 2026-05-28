@@ -2,22 +2,23 @@
 
 金融研报 RAG 数据处理与检索评测流水线：**PDF 解析 → 分块 → 向量 + BM25 混合召回 → Rerank → 引用生成 / 拒答**。
 
-**当前 POC 规模**：24 份研报（半导体 / 电力 / 互联网电商各 8 份）→ **1352** chunks，**991** 可检索。  
-**评测集**：90 题人工标注（事实型 58 / 对比型 17 / 汇总型 15）。
+**当前规模**：**200 份研报**（四行业 × 50）→ **7,382** 可检索 chunk。  
+**评测集**：150 题（factual 100 / comparative 26 / summary 23），`data/eval/eval_questions.jsonl`。
 
-> 中期实验结论与全部对比数据见 **[docs/midterm-summary.md](docs/midterm-summary.md)**  
-> AutoDL / Cursor SSH 新窗口 Agent 上下文见 **[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)**
+> **最新评测结果**：[docs/eval-results.md](docs/eval-results.md)  
+> 项目历程与实验对照：[docs/midterm-summary.md](docs/midterm-summary.md)  
+> AutoDL / Cursor Agent：[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)
 
 ---
 
 ## 技术路线（当前最优）
 
 ```
-PDF → MinerU → chunk_mineru → bge-large-zh-v1.5 + BM25
+PDF → MinerU → chunk_mineru (P2) → bge-large-zh-v1.5 + BM25
                               ↓
-                    混合召回 Top-20 (0.5/0.5)
+                    混合召回 pool=200 (0.35/0.65)
                               ↓
-                    bge-reranker-v2-m3 → Top-5
+                    bge-reranker-v2-m3 Top30 → Top-5
                               ↓
                     引用生成 + 低分拒答 (threshold=0.35)
 ```
@@ -25,36 +26,43 @@ PDF → MinerU → chunk_mineru → bge-large-zh-v1.5 + BM25
 | 组件 | 选型 |
 |------|------|
 | 解析 | MinerU CLI（`src/parse_pdf_mineru.py`） |
-| 分块 | `mineru_paragraph_v3`（`src/chunk_mineru.py`） |
+| 分块 | `mineru_paragraph_v3` + P2（评级块、表语义、可比表） |
 | Embedding | `BAAI/bge-large-zh-v1.5`（1024 维） |
-| 向量库 | Milvus Lite（COSINE） |
+| 向量库 | Milvus Lite（COSINE），7,382 条 |
 | 词法 | BM25Okapi + jieba |
-| 混合召回 | 向量与 BM25 min-max 归一化加权（默认各 0.5） |
-| Rerank | `BAAI/bge-reranker-v2-m3` |
+| 混合召回 | min-max 加权（**向量 0.35 / BM25 0.65**），pool **200** |
+| Rerank | `BAAI/bge-reranker-v2-m3`，Top-30 → Top-5 |
 | 生成 | 模板引用 + Top-1 rerank 低分拒答 |
 
 ---
 
-## 实验结果摘要（90 题）
+## 实验结果摘要（150 题，P2 索引，2026-05-28）
 
-### 三路召回对比（Top-10）
+| 指标 | 数值 |
+|------|------|
+| 混合 Recall@10 | **92.0%**（138/150） |
+| 混合 MRR@10 | **0.836** |
+| Rerank 答案事实准确率 | **88.0%** |
+| 检索未命中（hard miss） | 12 题 |
 
-| 路线 | Recall@5 | Recall@10 | MRR |
-|------|----------|-----------|-----|
-| A 纯向量 | 73.3% | 76.7% | 0.618 |
-| B 纯 BM25 | 85.6% | **88.9%** | 0.726 |
-| C 混合 0.5/0.5 | **86.7%** | 87.8% | **0.772** |
+### 三路召回（Top-10，混合权重 0.35）
 
-### Rerank 对比（当前主线：混合召回）
+| 路线 | Recall@10 | MRR |
+|------|-----------|-----|
+| 纯向量 | 86.0% | 0.748 |
+| 纯 BM25 | 92.0% | 0.750 |
+| **混合** | **92.0%** | **0.836** |
 
-| 策略 | Recall@5 | Top-1 | 事实准确率 |
-|------|----------|-------|-----------|
-| 混合直接 Top5 | 84.4% | 66.7% | 80.0% |
-| 混合 Top20→Rerank Top5 | **85.6%** | **71.1%** | **88.9%** |
+### Rerank（混合初召回）
 
-相对纯向量 Top5 基线（73.3% / ~70%），当前最优链路提升 **Recall@5 +12.3%**、**事实准确率 +18.9%**。
+| 策略 | Recall@5 | 事实准确率 |
+|------|----------|-----------|
+| 混合直接 Top5 | 92.7% | 84.0% |
+| **混合 + Rerank** | 90.7% | **88.0%** |
 
-完整实验表、按题型拆分、已知问题见 [docs/midterm-summary.md](docs/midterm-summary.md)。
+相对 150 题优化前基线（Recall@10 84.7% / 答案 82.7%），P0+P1+P2 累计 **+7.3pp / +5.3pp**。
+
+完整数据、权重扫描、Badcase 与复现命令见 [docs/eval-results.md](docs/eval-results.md)。
 
 ---
 
@@ -154,11 +162,14 @@ commercial-rag/
 │   └── eval/                  # 评测集与实验 CSV
 ├── src/
 ├── scripts/
-│   ├── build_eval_questions_90.py
+│   ├── build_eval_questions_150.py
+│   ├── eval_hybrid_weight_sweep.py
 │   ├── pack_for_autodl.ps1    # Windows 打包（未执行）
 │   └── pack_for_autodl.sh     # Linux 打包（未执行）
 ├── docs/
-│   ├── midterm-summary.md     # 中期实验总结
+│   ├── eval-results.md        # 当前评测结果快照（推荐）
+│   ├── midterm-summary.md     # 项目历程与 POC 对照
+│   ├── eval-badcase-analysis.md
 │   ├── CURSOR_AGENT_CONTEXT.md
 │   └── …
 ├── requirements.txt
@@ -205,7 +216,7 @@ bash scripts/pack_for_autodl.sh --tier full
 
 ## 后续规划
 
-- **4 行业 × 200 份研报**扩展与评测集扩容
+- P3：对比题 per-entity 召回、封面评级块、must 不满足拒答（见 `docs/eval-badcase-analysis.md`）
 - `rag_pipeline.py` 统一为混合 + Rerank 生产链路
 - 800 份量级评估 Milvus Standalone + IVF/HNSW（见 [docs/milvus-index-comparison.md](docs/milvus-index-comparison.md)）
 - RAGAS 自动化评测（后置）

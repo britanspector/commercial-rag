@@ -1,0 +1,2 @@
+﻿question_count,recall_at_3,recall_at_5,recall_at_10,mrr,hit_rate,route,top_k
+150.0,0.7866666666666666,0.8466666666666667,0.92,0.7497671957671957,0.92,bm25,10

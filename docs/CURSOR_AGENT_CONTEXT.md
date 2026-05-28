@@ -2,7 +2,7 @@
 
 > **用途**：通过 Cursor SSH 连接 AutoDL 时，新窗口无历史对话。请让 Agent **先读本文档**，再执行用户指令。  
 > **项目**：commercial-rag — 中文金融研报 RAG  
-> **当前阶段**：24 份研报 POC 完成 → 迁移 AutoDL → 扩展 **4 行业 × 200 份研报**
+> **当前阶段**：**200 份研报 × 4 行业** 已入库；P0/P1/P2 优化与 150 题评测完成（2026-05-28）
 
 ---
 
@@ -28,13 +28,13 @@ PDF → MinerU 解析 → chunk_mineru 分块 → bge-large-zh 向量 + BM25
 | Embedding | `BAAI/bge-large-zh-v1.5`，1024 维，查询加 `query: ` 前缀 |
 | 向量库 | Milvus Lite → `data/vector/milvus.db` |
 | 词法 | BM25 + jieba → `data/vector/bm25_index.pkl` |
-| **推荐召回** | **混合 0.5/0.5**（`src/retrieval.py` `RecallRoute.HYBRID`） |
-| Rerank | `BAAI/bge-reranker-v2-m3`，Top-20 → Top-5 |
+| **推荐召回** | **混合 0.35/0.65**（`DEFAULT_HYBRID_VECTOR_WEIGHT`），pool **200** |
+| Rerank | `BAAI/bge-reranker-v2-m3`，Top-30 → Top-5 |
 | 拒答阈值 | rerank normalize 分 < **0.35** |
 
-**90 题评测最优**：混合 Top20→Rerank Top5 — Recall@5 **85.6%**，事实准确率 **88.9%**。
+**150 题当前最优（P2 索引）**：混合 Recall@10 **92.0%**，Rerank 答案准确率 **88.0%**。
 
-详细实验数字见：`docs/midterm-summary.md`
+详细数字见：`docs/eval-results.md`、`docs/midterm-summary.md`
 
 ---
 
@@ -63,7 +63,8 @@ PDF → MinerU 解析 → chunk_mineru 分块 → bge-large-zh 向量 + BM25
 3. **transformers 5.x** 与 FlagEmbedding 不兼容（`prepare_for_model`），`reranker.py` 启动时会 smoke test，失败则回退 **CrossEncoder**。
 4. **q06 类问题**：Rerank 有时把附录 chunk 排到盈利预测正文前；混合 direct Top5 反而对。
 5. **`.gitignore` 忽略** `data/raw_pdfs/`、`data/parsed/`、`data/vector/`，迁移需手动打包或 scp。
-6. **PDF 目录结构**：`data/raw_pdfs/{semi-conductor,power-electronics,e-commercial}/` 各 8 份；扩展 4 行业时按同样模式加子目录。
+6. **PDF 目录结构**：`data/raw_pdfs/{semi-conductor,power-electronics,e-commercial,appliance}/` 各 **50** 份。
+7. **HF 镜像**（AutoDL）：`HF_ENDPOINT=https://hf-mirror.com`，缓存建议 `/root/autodl-tmp/hf_cache`。
 
 ---
 
@@ -81,11 +82,11 @@ data/
 │   ├── milvus.db
 │   └── bm25_index.pkl
 └── eval/
-    ├── eval_questions.jsonl   # 90 题评测集
+    ├── eval_questions.jsonl   # 150 题评测集（备份 eval_questions_90.jsonl）
     └── eval_*.csv             # 实验结果
 ```
 
-**当前 POC 规模**：24 PDF → 1352 chunks，991 可检索。
+**当前规模**：200 PDF → 10,263 chunks，**7,382** 可检索（含 114 `rating_headline`、46 `comparable_table`）。
 
 ---
 
@@ -129,8 +130,10 @@ python src/embed_chunks.py
 python src/build_bm25_index.py
 
 # 5. 评测
+export HF_ENDPOINT=https://hf-mirror.com HF_HOME=/root/autodl-tmp/hf_cache
 python src/eval_retrieval.py --compare-routes --top-k 10
-python src/eval_rerank.py --skip-answer   # 先跑检索；含答案更慢
+python scripts/eval_hybrid_weight_sweep.py   # 可选：权重分组
+python src/eval_rerank.py
 
 # 6. 交互
 python src/rag_chat.py "问题"
@@ -140,11 +143,11 @@ python src/rag_chat.py "问题"
 
 ## 8. 用户下一步计划（Agent 优先级）
 
-1. **4 行业 200 份研报**入库：扩展 `data/raw_pdfs/` 与 `pdf_paths.py` 行业映射。
-2. **统一生产链路为混合+Rerank**：改 `rag_pipeline.py` 使用 `HybridRetriever`（评测已验证，CLI 未改）。
-3. **扩充评测集**：按行业/题型扩展 `eval_questions.jsonl`，参考 `scripts/build_eval_questions_90.py`。
-4. **规模监控**：800 份量级时评估 Milvus Lite 延迟；见 `docs/milvus-index-comparison.md`。
-5. **可选**：pin transformers<5 或固定 CrossEncoder；附录 chunk 降权。
+1. **P3 检索**：对比题 per-entity 召回；封面评级 `rating_headline` 补全（通宝类等）。
+2. **P3 答案**：报告期过滤、EPS 定向摘录、must 不满足则拒答。
+3. **统一生产链路**：`rag_pipeline.py` 接 `HybridRetriever`（评测已 hybrid，CLI 可能未改）。
+4. **Badcase 闭环**：`docs/eval-badcase-analysis.md`（12 miss / 18 答案错）。
+5. **规模监控**：800 份时 Milvus Standalone；见 `docs/milvus-index-comparison.md`。
 
 ---
 
@@ -162,7 +165,9 @@ python src/rag_chat.py "问题"
 | 文档 | 内容 |
 |------|------|
 | `README.md` | 使用说明与目录 |
-| `docs/midterm-summary.md` | **全部对比实验与提升数据** |
+| `docs/eval-results.md` | **当前评测结果快照（首选）** |
+| `docs/midterm-summary.md` | 项目历程、P0~P2、POC 对照 |
+| `docs/eval-badcase-analysis.md` | P2 后 Badcase 与 P3 方案 |
 | `docs/eval-scheme.md` | 评测集与三路召回 |
 | `docs/rerank-scheme.md` | Rerank + 拒答 |
 | `docs/chunk-scheme.md` | 分块策略 |
@@ -176,4 +181,4 @@ python src/rag_chat.py "问题"
 - 修改前先读相关 `src/` 与 `docs/` 文件，保持与现有命名/结构一致。
 - 大规模重跑前确认 `data/` 路径与 GPU 内存；Embedding 批大小在 `embed_chunks.py`。
 - 打包/迁移用 `scripts/pack_for_autodl.sh`（Linux）或 `scripts/pack_for_autodl.ps1`（Windows），**不要打包 `__pycache__` 和 Obsidian 笔记**。
-- 实验结果写入 `data/eval/`，更新 `docs/midterm-summary.md` 中的表格。
+- 实验结果写入 `data/eval/`，同步更新 `docs/eval-results.md` 与 `docs/midterm-summary.md`。

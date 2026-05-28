@@ -7,8 +7,8 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 
-from eval_retrieval import expand_must_tokens
 from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, REFUSAL_MESSAGE
+from rag_tokens import must_tokens_match
 from reranker import hit_passage_text
 
 
@@ -64,6 +64,17 @@ def build_citations(hits: list[dict]) -> list[Citation]:
     return citations
 
 
+def _rating_line_from_hits(hits: list[dict]) -> str:
+    for hit in hits:
+        rating = str(hit.get("rating", "")).strip()
+        if not rating:
+            continue
+        if any(word in rating for word in ("买入", "增持", "推荐", "优于大市", "中性", "卖出")):
+            company = str(hit.get("company_name", "")).strip() or "该公司"
+            return f"{company}研报投资评级为{rating}。"
+    return ""
+
+
 def _extractive_snippet(text: str, max_chars: int = 320) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= max_chars:
@@ -107,6 +118,11 @@ def generate_answer_with_citations(
             snippets.append(f"{snippet} [{citation.index}]")
 
     body = " ".join(snippets) if snippets else _extractive_snippet(hit_passage_text(hits[0])) + " [1]"
+
+    if any(keyword in query for keyword in ("评级", "投资评级", "买入", "增持")):
+        rating_line = _rating_line_from_hits(hits[:3])
+        if rating_line:
+            body = f"{rating_line} {body}"
     ref_block = "\n".join(["", "【参考文献】", *[c.format_line() for c in citations]])
     answer = f"根据检索到的研报资料：{body}{ref_block}"
 
@@ -127,9 +143,8 @@ def is_answer_factually_supported(
 ) -> bool:
     if not answer or answer == REFUSAL_MESSAGE:
         return False
-    candidates = expand_must_tokens(must_contain_any)
-    if candidates:
-        return any(token in answer for token in candidates)
+    if must_contain_any:
+        return must_tokens_match(answer, must_contain_any)
     if gold_answer:
         gold_tokens = re.findall(r"[\u4e00-\u9fff]{2,}|\d+\.?\d*", gold_answer)
         if gold_tokens:

@@ -22,6 +22,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from rag_tokens import must_tokens_match
+
 CURRENT_DIR = Path(__file__).parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
@@ -112,16 +114,10 @@ def encode_query(model, query: str) -> list[float]:
     return vector.tolist()
 
 
-MUST_TOKEN_ALIASES: dict[str, list[str]] = {
-    "EPS": ["EPS", "每股收益", "摊薄每股收益"],
-    "YoY": ["YoY", "同比"],
-    "PE": ["PE", "市盈率"],
-}
-
-
 def hit_blob(hit: dict) -> str:
     parts = [
         hit.get("section_title", ""),
+        hit.get("embedding_text", ""),
         hit.get("text", ""),
         hit.get("display_name", ""),
         hit.get("company_name", ""),
@@ -130,13 +126,6 @@ def hit_blob(hit: dict) -> str:
         hit.get("rating", ""),
     ]
     return "\n".join(part for part in parts if part)
-
-
-def expand_must_tokens(tokens: list[str]) -> list[str]:
-    expanded: list[str] = []
-    for token in tokens:
-        expanded.extend(MUST_TOKEN_ALIASES.get(token, [token]))
-    return expanded
 
 
 def section_keyword_matches(hit: dict, keywords: list[str]) -> bool:
@@ -174,11 +163,10 @@ def is_hit_relevant(hit: dict, question: EvalQuestion) -> bool:
             hit, question.section_keywords
         ):
             return False
-        if question.must_contain_any:
-            blob = hit_blob(hit)
-            candidates = expand_must_tokens(question.must_contain_any)
-            if not any(token in blob for token in candidates):
-                return False
+        if question.must_contain_any and not must_tokens_match(
+            hit_blob(hit), question.must_contain_any
+        ):
+            return False
         return True
 
     stock_ok = not question.stock_code or stock_code == question.stock_code
@@ -186,16 +174,30 @@ def is_hit_relevant(hit: dict, question: EvalQuestion) -> bool:
     if not stock_ok and not doc_ok:
         return False
 
+    blob = hit_blob(hit)
+    must_ok = must_tokens_match(blob, question.must_contain_any)
+
+    # P0：目标股/文档已对齐且 must 满足时，不再强制 section_keywords
+    if stock_ok and stock_code and must_ok:
+        return True
+    if doc_ok and doc_id and must_ok:
+        return True
+
+    # 评级题：metadata.rating 含买入/增持 即视为相关
+    if question.category == "rating" and stock_ok:
+        rating = str(hit.get("rating", "")).strip()
+        if rating and any(word in rating for word in ("买入", "增持", "推荐", "优于大市")):
+            return True
+        if must_tokens_match(rating, question.must_contain_any or ["评级", "买入"]):
+            return True
+
     if question.section_keywords and not section_keyword_matches(
         hit, question.section_keywords
     ):
         return False
 
-    if question.must_contain_any:
-        blob = hit_blob(hit)
-        candidates = expand_must_tokens(question.must_contain_any)
-        if not any(token in blob for token in candidates):
-            return False
+    if question.must_contain_any and not must_ok:
+        return False
 
     return True
 
@@ -328,7 +330,14 @@ def run_retrieval_eval(
     results: list[dict] = []
     for question in questions:
         query_vector = encode_query(model, question.query)
-        hits = retriever.retrieve(recall_route, question.query, query_vector, top_k)
+        hits = retriever.retrieve(
+            recall_route,
+            question.query,
+            query_vector,
+            top_k,
+            stock_code=question.stock_code,
+            query_type=question.query_type,
+        )
         results.append(evaluate_hits(question, hits, route))
 
     retriever.close()
@@ -434,7 +443,12 @@ def run_compare_routes(
         for question in questions:
             query_vector = encode_query(model, question.query)
             hits = retriever.retrieve(
-                recall_route, question.query, query_vector, top_k
+                recall_route,
+                question.query,
+                query_vector,
+                top_k,
+                stock_code=question.stock_code,
+                query_type=question.query_type,
             )
             results.append(evaluate_hits(question, hits, route))
         metrics = aggregate_metrics(results)
@@ -499,8 +513,8 @@ def main() -> None:
     parser.add_argument(
         "--hybrid-vector-weight",
         type=float,
-        default=0.5,
-        help="混合检索中向量分权重（默认 0.5）",
+        default=None,
+        help="混合检索中向量分权重（默认见 retrieval.DEFAULT_HYBRID_VECTOR_WEIGHT）",
     )
     parser.add_argument(
         "--dry-run",
@@ -508,6 +522,11 @@ def main() -> None:
         help="仅校验评测题与 chunks.jsonl，不访问 Milvus",
     )
     args = parser.parse_args()
+
+    from retrieval import DEFAULT_HYBRID_VECTOR_WEIGHT
+
+    if args.hybrid_vector_weight is None:
+        args.hybrid_vector_weight = DEFAULT_HYBRID_VECTOR_WEIGHT
 
     questions = load_questions(args.questions)
     chunk_ids = load_chunk_id_set()

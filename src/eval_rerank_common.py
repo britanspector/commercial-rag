@@ -12,7 +12,7 @@ from rag_answer import generate_answer_with_citations, is_answer_factually_suppo
 if TYPE_CHECKING:
     from reranker import BGEReranker
 
-RECALL_POOL = 20
+RECALL_POOL = 30
 FINAL_TOP_K = 5
 
 

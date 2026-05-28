@@ -1,0 +1,45 @@
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.424 seconds.
+Prefix dict has been built successfully.
+
+>>> 混合权重 向量=0.50 / BM25=0.50
+Recall@10=91.3%  MRR=0.834  命中=137/150
+
+>>> 混合权重 向量=0.40 / BM25=0.60
+Recall@10=92.0%  MRR=0.839  命中=138/150
+
+>>> 混合权重 向量=0.35 / BM25=0.65
+Recall@10=92.0%  MRR=0.836  命中=138/150
+
+>>> 混合权重 向量=0.30 / BM25=0.70
+Recall@10=91.3%  MRR=0.833  命中=137/150
+
+>>> 混合权重 向量=0.60 / BM25=0.40
+Recall@10=90.0%  MRR=0.822  命中=135/150
+
+>>> 混合权重 向量=0.70 / BM25=0.30
+Recall@10=90.7%  MRR=0.831  命中=136/150
+
+对比表已写入：/root/commercial-rag/data/eval/eval_hybrid_weight_sweep.csv
+ hybrid_vector_weight  hybrid_bm25_weight  question_count  recall_at_3  recall_at_5  recall_at_10    mrr  hit_rate  top_k
+                 0.50                0.50             150       0.8600       0.9067        0.9133 0.8336    0.9133     10
+                 0.40                0.60             150       0.8667       0.9067        0.9200 0.8394    0.9200     10
+                 0.35                0.65             150       0.8667       0.9067        0.9200 0.8361    0.9200     10
+                 0.30                0.70             150       0.8667       0.9067        0.9133 0.8330    0.9133     10
+                 0.60                0.40             150       0.8600       0.8933        0.9000 0.8224    0.9000     10
+                 0.70                0.30             150       0.8667       0.9000        0.9067 0.8313    0.9067     10

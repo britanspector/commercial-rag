@@ -1,0 +1,10 @@
+﻿route,query_type,question_count,recall_at_3,recall_at_5,recall_at_10,mrr
+vector,factual,100,0.83,0.88,0.91,0.7721
+vector,comparative,26,0.6923,0.6923,0.6923,0.6474
+vector,summary,23,0.7826,0.7826,0.8261,0.7446
+bm25,factual,100,0.83,0.86,0.92,0.7984
+bm25,comparative,26,0.7308,0.8462,0.9231,0.6785
+bm25,summary,23,0.6957,0.8261,0.913,0.6443
+hybrid,factual,100,0.9,0.93,0.95,0.8882
+hybrid,comparative,26,0.8077,0.8077,0.8077,0.7115
+hybrid,summary,23,0.7826,0.913,0.913,0.7428

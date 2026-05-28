@@ -31,7 +31,12 @@ from bm25_store import DEFAULT_INDEX_PATH
 from eval_retrieval import DEFAULT_QUESTIONS, encode_query, load_chunk_id_set, load_questions, validate_questions
 from eval_rerank_common import FINAL_TOP_K, RECALL_POOL
 from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD
-from retrieval import HybridRetriever, RecallRoute, DEFAULT_HYBRID_VECTOR_WEIGHT
+from retrieval import (
+    DEFAULT_HYBRID_POOL_SIZE,
+    HybridRetriever,
+    RecallRoute,
+    DEFAULT_HYBRID_VECTOR_WEIGHT,
+)
 
 
 HYBRID_POOL_CACHE = Path(tempfile.gettempdir()) / "commercial_rag_hybrid_rerank_pools.pkl"
@@ -65,7 +70,7 @@ def run_eval(
         OUTPUT_MILVUS_DB,
         vector_dim=EMBED_DIM,
         hybrid_vector_weight=hybrid_vector_weight,
-        hybrid_pool_size=RECALL_POOL,
+        hybrid_pool_size=DEFAULT_HYBRID_POOL_SIZE,
     )
     retriever.milvus_store.load()
 
@@ -78,6 +83,8 @@ def run_eval(
                 question.query,
                 query_vector,
                 RECALL_POOL,
+                stock_code=question.stock_code,
+                query_type=question.query_type,
             )
         )
 

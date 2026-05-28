@@ -139,12 +139,14 @@ class BM25ChunkIndex:
                     "industry_label": record.get("industry_label", ""),
                     "source_pdf_path": record.get("source_pdf_path", ""),
                     "section_title": record.get("section_title", ""),
-                    "text": record.get("text", ""),
+                    "text": passage_text(record),
                     "page_start": record.get("page_start", 0),
                     "page_end": record.get("page_end", 0),
                     "contains_table": record.get("contains_table", False),
                     "stock_code": record.get("stock_code", ""),
                     "rating": record.get("rating", ""),
+                    "content_type": record.get("content_type", ""),
+                    "embedding_text": record.get("embedding_text") or record.get("text", ""),
                 }
             )
         return hits

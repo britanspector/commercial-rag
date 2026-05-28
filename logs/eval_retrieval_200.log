@@ -1,0 +1,76 @@
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.475 seconds.
+Prefix dict has been built successfully.
+评测题数量：90
+query_type 分布：{'factual': 58, 'comparative': 17, 'summary': 15}
+chunks.jsonl chunk 数：10534
+gold_chunk_id 校验：全部存在
+Embedding 模型：BAAI/bge-large-zh-v1.5
+设备：cuda
+Top-K：10
+Milvus 向量数：7653
+BM25 文档数：7653
+
+>>> 路线A-纯向量
+
+======================================================================
+检索评测结果 — 路线A-纯向量
+Recall@3：  65.6%
+Recall@5：  66.7%
+Recall@10： 70.0%
+MRR：       0.571
+命中率：    70.0% (62/90)
+明细 CSV：  /root/commercial-rag/data/eval/eval_results_vector.csv
+指标 CSV：  /root/commercial-rag/data/eval/eval_metrics_vector.csv
+未命中：    /root/commercial-rag/data/eval/eval_misses_vector.jsonl (27 题)
+======================================================================
+
+>>> 路线B-纯BM25
+
+======================================================================
+检索评测结果 — 路线B-纯BM25
+Recall@3：  72.2%
+Recall@5：  77.8%
+Recall@10： 83.3%
+MRR：       0.661
+命中率：    83.3% (75/90)
+明细 CSV：  /root/commercial-rag/data/eval/eval_results_bm25.csv
+指标 CSV：  /root/commercial-rag/data/eval/eval_metrics_bm25.csv
+未命中：    /root/commercial-rag/data/eval/eval_misses_bm25.jsonl (15 题)
+======================================================================
+
+>>> 路线C-混合
+
+======================================================================
+检索评测结果 — 路线C-混合
+Recall@3：  77.8%
+Recall@5：  81.1%
+Recall@10： 85.6%
+MRR：       0.725
+命中率：    85.6% (77/90)
+明细 CSV：  /root/commercial-rag/data/eval/eval_results_hybrid.csv
+指标 CSV：  /root/commercial-rag/data/eval/eval_metrics_hybrid.csv
+未命中：    /root/commercial-rag/data/eval/eval_misses_hybrid.jsonl (13 题)
+======================================================================
+
+三路对比表：/root/commercial-rag/data/eval/eval_route_comparison.csv
+ route route_label  question_count  recall_at_3  recall_at_5  recall_at_10    mrr  hit_rate  top_k hybrid_vector_weight
+vector     路线A-纯向量              90       0.6556       0.6667        0.7000 0.5712    0.7000     10                     
+  bm25   路线B-纯BM25              90       0.7222       0.7778        0.8333 0.6606    0.8333     10                     
+hybrid      路线C-混合              90       0.7778       0.8111        0.8556 0.7246    0.8556     10                  0.5
+分 query_type 对比：/root/commercial-rag/data/eval/eval_route_comparison_by_query_type.csv

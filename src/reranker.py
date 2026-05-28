@@ -21,10 +21,11 @@ PASSAGE_MAX_CHARS = 1200
 
 
 def hit_passage_text(hit: dict) -> str:
+    body = str(hit.get("embedding_text") or hit.get("text") or "")
     parts = [
         hit.get("company_name", ""),
         hit.get("section_title", ""),
-        hit.get("text", ""),
+        body,
     ]
     passage = "\n".join(part for part in parts if part).strip()
     if len(passage) > PASSAGE_MAX_CHARS:
