@@ -1,0 +1,785 @@
+[
+    {
+        "type": "text",
+        "text": "买入 |首次覆盖",
+        "bbox": [
+            131,
+            164,
+            277,
+            181
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "个股表现",
+        "text_level": 2,
+        "bbox": [
+            63,
+            204,
+            139,
+            219
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "chart",
+        "img_path": "images/d79b39f69c78d27215b4604c60fad24442d87bcac89b69d9d8b5f9c055e4fdb8.jpg",
+        "content": "",
+        "chart_caption": [],
+        "chart_footnote": [
+            "资料来源：聚源，中邮证券研究所"
+        ],
+        "bbox": [
+            68,
+            235,
+            347,
+            365
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "公司基本情况",
+        "text_level": 2,
+        "bbox": [
+            63,
+            420,
+            174,
+            437
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/5ddaa49fc26d89b41cac7d8364de9d95679ff569f957dd8dff806b88173e693d.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>最新收盘价(元)</td><td>24.90</td></tr><tr><td>总股本/流通股本（亿股）6.78/5.66</td><td></td></tr><tr><td>总市值/流通市值（亿元）169／141</td><td></td></tr><tr><td>52周内最高/最低价</td><td>29.14 / 18.74</td></tr><tr><td>资产负债率(%)</td><td>73.8%</td></tr><tr><td>市盈率</td><td>-124.50</td></tr><tr><td>第一大股东</td><td>孙迎彤</td></tr></table>",
+        "bbox": [
+            60,
+            445,
+            297,
+            574
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "研究所",
+        "text_level": 2,
+        "bbox": [
+            62,
+            600,
+            121,
+            615
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "分析师:万玮",
+        "bbox": [
+            62,
+            624,
+            163,
+            638
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SAC 登记编号:S1340525030001",
+        "bbox": [
+            62,
+            637,
+            292,
+            653
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Email:wanwei@cnpsec.com",
+        "bbox": [
+            62,
+            653,
+            267,
+            668
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "分析师:吴文吉",
+        "bbox": [
+            62,
+            667,
+            178,
+            681
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SAC 登记编号:S1340523050004",
+        "bbox": [
+            62,
+            680,
+            292,
+            696
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Email:wuwenji@cnpsec.com",
+        "bbox": [
+            62,
+            696,
+            275,
+            712
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "光模块 MCU 积极推进",
+        "text_level": 2,
+        "bbox": [
+            541,
+            164,
+            763,
+            185
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "投资要点",
+        "text_level": 2,
+        "bbox": [
+            386,
+            204,
+            510,
+            221
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "多产品线覆盖，布局新兴赛道。围绕SoC、信息安全、电源管理、射频四大方向，构建起通用MCU、高等级安全芯片、BMS 电源管理芯片、蓝牙无线射频芯片四大完整产品矩阵，业务覆盖消费电子、工业控制、数字能源、智能家居、汽车电子、医疗电子等主流领域，并前瞻布局人工智能、机器人、新能源、低空经济等新兴赛道。其中通用MCU作为智能终端核心控制器，落地于数字能源、智能家居、机器人、工控、消费及医疗电子等多场景，同时向汽车电子、低空经济等领域延伸；高等级安全芯片具备加密校验与可信计算能力，服务金融支付、物联网、车联网及工业控制的数据安全防护需求；BMS芯片可精准监测电池运行状态、保障电池安全，已在笔电、无人机等领域量产，高端工业储能级新品已进入客户送样测试阶段；蓝牙无线射频芯片主打低功耗无线互联，广泛应用于工业物联网、智能穿戴、智能家居及金融蓝牙 Key等场景。",
+        "bbox": [
+            383,
+            223,
+            921,
+            462
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "携手电源管理龙头达成深度合作，方案已落地量产。公司近期宣布与全球头部电源管理芯片厂商深化战略合作，联合方案已获得全球AI服务器龙头企业及多家云计算、新能源产业头部客户认可。双方围绕数字电源、车载电子、电动工具、智能楼宇等核心场景实现多款方案规模化量产与批量交付，将在 MCU、无线射频、电源管理及安全芯片层面持续协同创新，共同开拓AI算力基础设施、工业自动化、新能源汽车等高价值市场，目前多个项目配合开发，下半年有望起量。",
+        "bbox": [
+            383,
+            464,
+            921,
+            593
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "光模块专用 MCU 适配 800G/1.6T 高端需求，在多家光模块厂商稳步推进产品导入。当前 800G/1.6T高速光模块MCU 市场呈现“海外主导、国产突破”的竞争格局。公司在光模块专用MCU 领域实现关键技术突破，主力型号 N32H493为适配800G、1.6T高速光模块的专用主控芯片，主频高达 240MHz；集成 1024KB 双 BankFlash，支持零业务中断在线升级。目前该款光模块MCU在多家光模块厂商稳步推进产品导入，凭借高集成、高可靠、低功耗特性，有效提升高速光模块能效、运行稳定性与信息安全等级，填补国内高端光模块主控芯片国产化缺口。1.6T及更高速率，对MCU提出更高安全、更强算力、更完善生态的要求，公司已提前布局 N32H5 系列，基于 ARM Cortex-M33 内核，2MBFlash+更大SRAM，全新I3C接口面向下一代高速互联，可同时连接多个传感器（温度、电压、光功率），速率更快、引脚更少、功耗更低。",
+        "bbox": [
+            383,
+            594,
+            921,
+            833
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "l 盈利预测",
+        "text_level": 2,
+        "bbox": [
+            386,
+            835,
+            510,
+            852
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "我们预计公司 2026/2027/2028 年营收分别为 19.1/26.6/34.9 亿元，归母净利润分别为0.1/3.0/5.5亿元，首次覆盖给予“买入”评级。",
+        "bbox": [
+            384,
+            854,
+            919,
+            889
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "l 风险提示：",
+        "text_level": 2,
+        "bbox": [
+            386,
+            891,
+            519,
+            908
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "中邮证券CHINA POST SECURITIES证券研究报告 电子 公司点评报告",
+        "bbox": [
+            0,
+            0,
+            998,
+            91
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "发布时间：2026-05-19",
+        "bbox": [
+            783,
+            99,
+            956,
+            115
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "股票投资评级",
+        "bbox": [
+            62,
+            124,
+            174,
+            141
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "国民技术(300077)",
+        "bbox": [
+            386,
+            121,
+            579,
+            143
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "请务必阅读正文之后的免责条款部分",
+        "bbox": [
+            667,
+            932,
+            915,
+            947
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "市场有风险，投资需谨慎",
+        "bbox": [
+            78,
+            932,
+            248,
+            947
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "技术迭代和研发投入不及预期风险；市场竞争加剧风险；行业周期性波动风险。",
+        "bbox": [
+            384,
+            117,
+            917,
+            151
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/3ab0c3958883d148948536b67a9efb77d3c524df0457a7952523f7695c22a820.jpg",
+        "table_caption": [
+            "盈利预测和财务指标"
+        ],
+        "table_footnote": [
+            "资料来源：公司公告，中邮证券研究所"
+        ],
+        "table_body": "<table><tr><td rowspan=1 colspan=3>项目\\年度                          2025A      2026E</td><td rowspan=1 colspan=2>2027E      2028E</td></tr><tr><td rowspan=1 colspan=1>营业收入 (百万元)</td><td rowspan=1 colspan=1>1360</td><td rowspan=1 colspan=1>1908</td><td rowspan=1 colspan=1>2657</td><td rowspan=1 colspan=1>3491</td></tr><tr><td rowspan=1 colspan=1>增长率(%)</td><td rowspan=1 colspan=1>16.51</td><td rowspan=1 colspan=1>40.24</td><td rowspan=1 colspan=1>39.29</td><td rowspan=1 colspan=1>31.38</td></tr><tr><td rowspan=1 colspan=1>EBITDA（百万元）</td><td rowspan=1 colspan=1>107.04</td><td rowspan=1 colspan=1>285.35</td><td rowspan=1 colspan=1>583.57</td><td rowspan=1 colspan=1>786.12</td></tr><tr><td rowspan=1 colspan=1>归属母公司净利润 (百万元)</td><td rowspan=1 colspan=1>-115. 42</td><td rowspan=1 colspan=1>12.47</td><td rowspan=1 colspan=1>300.09</td><td rowspan=1 colspan=1>548.83</td></tr><tr><td rowspan=1 colspan=1>增长率(%)</td><td rowspan=1 colspan=1>50.96</td><td rowspan=1 colspan=1>110.80</td><td rowspan=1 colspan=1>2306.73</td><td rowspan=1 colspan=1>82.89</td></tr><tr><td rowspan=1 colspan=1>EPS(元/股)</td><td rowspan=1 colspan=1>-0.17</td><td rowspan=1 colspan=1>0.02</td><td rowspan=1 colspan=1>0.44</td><td rowspan=1 colspan=1>0.81</td></tr><tr><td rowspan=1 colspan=1>市盈率(P/E)</td><td rowspan=1 colspan=1>-146.30</td><td rowspan=1 colspan=1>1354. 20</td><td rowspan=1 colspan=1>56.27</td><td rowspan=1 colspan=1>30.77</td></tr><tr><td rowspan=1 colspan=1>市净率 (P/B)</td><td rowspan=1 colspan=1>18.35</td><td rowspan=1 colspan=1>9.54</td><td rowspan=1 colspan=1>8.29</td><td rowspan=1 colspan=1>6.68</td></tr><tr><td rowspan=1 colspan=1>EV/EBITDA</td><td rowspan=1 colspan=1>124.83</td><td rowspan=1 colspan=1>59.05</td><td rowspan=1 colspan=1>28.04</td><td rowspan=1 colspan=1>20.00</td></tr></table>",
+        "bbox": [
+            386,
+            469,
+            924,
+            661
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "中邮证券CHINA POST SECURITIES",
+        "bbox": [
+            705,
+            41,
+            922,
+            79
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "请务必阅读正文之后的免责条款部分",
+        "bbox": [
+            77,
+            933,
+            324,
+            946
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2",
+        "bbox": [
+            909,
+            934,
+            922,
+            945
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/e2bf3df5a8ebafa3a2329dc16ae5195297fbec96dec5a4cd8f011ff32e1bc510.jpg",
+        "table_caption": [
+            "[财t务ab报le表\\_和Fi主nc要hi财n务aD比et率a"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>财务报表(百万元)</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>利润表</td><td></td><td></td><td></td><td></td></tr><tr><td>营业收入</td><td>1360</td><td>1908</td><td>2657</td><td>3491</td></tr><tr><td>营业成本</td><td>1088</td><td>1493</td><td>1906</td><td>2428</td></tr><tr><td>税金及附加</td><td>9</td><td>12</td><td>16</td><td>21</td></tr><tr><td>销售费用</td><td>49</td><td>67</td><td>69</td><td>77</td></tr><tr><td>管理费用</td><td>108</td><td>151</td><td>173</td><td>209</td></tr><tr><td>研发费用</td><td>166</td><td>229</td><td>239</td><td>258</td></tr><tr><td>财务费用</td><td>81</td><td>22</td><td>12</td><td>4</td></tr><tr><td>资产减值损失</td><td>-15</td><td>0</td><td>0</td><td>0</td></tr><tr><td>营业利润</td><td>-134</td><td>14</td><td>338</td><td>614</td></tr><tr><td>营业外收入</td><td>7</td><td>0</td><td>0</td><td>0</td></tr><tr><td>营业外支出</td><td>3</td><td>0</td><td>0</td><td>0</td></tr><tr><td>利润总额</td><td>-130</td><td>14</td><td>338</td><td>614</td></tr><tr><td>所得税</td><td>-13</td><td>1</td><td>23</td><td>44</td></tr><tr><td>净利润</td><td>-118</td><td>13</td><td>315</td><td>570</td></tr><tr><td>归母净利润</td><td>-115</td><td>12</td><td>300</td><td>549</td></tr><tr><td>每股收益 (元)</td><td>-0.17</td><td>0.02</td><td>0.44</td><td>0.81</td></tr></table>",
+        "bbox": [
+            78,
+            107,
+            489,
+            411
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/b46945f5ea0fc5cccac4ef6a803d042af3fd1c8180d8b1e46ec151c4402b6601.jpg",
+        "table_caption": [],
+        "table_footnote": [
+            "资料来源：公司公告，中邮证券研究所"
+        ],
+        "table_body": "<table><tr><td colspan=\"2\">资产负债表</td><td></td><td></td><td></td></tr><tr><td>货币资金</td><td>291</td><td>1408</td><td>1492</td><td>1835</td></tr><tr><td>交易性金融资产</td><td>71</td><td>71</td><td>71</td><td>71</td></tr><tr><td>应收票据及应收账款</td><td>345</td><td>90</td><td>124</td><td>163</td></tr><tr><td>预付款项</td><td>19</td><td>28</td><td>37</td><td>46</td></tr><tr><td>存货</td><td>624</td><td>259</td><td>323</td><td>417</td></tr><tr><td>流动资产合计</td><td>1582</td><td>2008</td><td>2222</td><td>2732</td></tr><tr><td>固定资产</td><td>1131</td><td>969</td><td>806</td><td>643</td></tr><tr><td>在建工程</td><td>83</td><td>83</td><td>83</td><td>83</td></tr><tr><td>无形资产</td><td>121</td><td>61</td><td>0</td><td>0</td></tr><tr><td>非流动资产合计</td><td>1989</td><td>1760</td><td>1530</td><td>1367</td></tr><tr><td>资产总计</td><td>3571</td><td>3768</td><td>3751</td><td>4099</td></tr><tr><td>短期借款</td><td>586</td><td>386</td><td>286</td><td>86</td></tr><tr><td>应付票据及应付账款</td><td>395</td><td>207</td><td>259</td><td>333</td></tr><tr><td>其他流动负债</td><td>729</td><td>774</td><td>824</td><td>885</td></tr><tr><td>流动负债合计</td><td>1709</td><td>1367</td><td>1368</td><td>1303</td></tr><tr><td>其他</td><td>927</td><td>616</td><td>316</td><td>216</td></tr><tr><td>非流动负债合计</td><td>927</td><td>616</td><td>316</td><td>216</td></tr><tr><td>负债合计</td><td>2636</td><td>1983</td><td>1684</td><td>1520</td></tr><tr><td>股本</td><td>583</td><td>678</td><td>678</td><td>678</td></tr><tr><td>资本公积金</td><td>2493</td><td>3237</td><td>3237</td><td>3237</td></tr><tr><td>未分配利润</td><td>-2368</td><td>-2358</td><td>-2135</td><td>-1727</td></tr><tr><td>少数股东权益</td><td>15</td><td>15</td><td>30</td><td>51</td></tr><tr><td>其他</td><td>212</td><td>213</td><td>258</td><td>340</td></tr><tr><td>所有者权益合计</td><td>935</td><td>1784</td><td>2068</td><td>2579</td></tr><tr><td>负债和所有者权益总计</td><td>3571</td><td>3768</td><td>3751</td><td>4099</td></tr></table>",
+        "bbox": [
+            80,
+            411,
+            489,
+            851
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/21c369fabdce088856ce6f461a22e049d1a67e4a0f3eca4876e959e2c4831f0b.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>主要财务比率</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>成长能力</td><td></td><td></td><td></td><td></td></tr><tr><td>营业收入</td><td>16.5%</td><td>40.2%</td><td>39.3%</td><td>31.4%</td></tr><tr><td>营业利润</td><td>50.2%</td><td>110.3%</td><td>2,345.4%</td><td>82.0%</td></tr><tr><td>归属于母公司净利润</td><td>51.0%</td><td>110.8%</td><td>2,306.7%</td><td>82.9%</td></tr><tr><td>获利能力</td><td></td><td></td><td></td><td></td></tr><tr><td>毛利率</td><td>20.0%</td><td>21.7%</td><td>28.3%</td><td>30.4%</td></tr><tr><td>净利率</td><td>-8.5%</td><td>0.7%</td><td>11.3%</td><td>15.7%</td></tr><tr><td>ROE</td><td>-12.5%</td><td>0.7%</td><td>14.7%</td><td>21.7%</td></tr><tr><td>ROIC</td><td>-1.6%</td><td>1.1%</td><td>10.7%</td><td>17.7%</td></tr><tr><td>偿债能力</td><td></td><td></td><td></td><td></td></tr><tr><td>资产负债率</td><td>73.8%</td><td>52.6%</td><td>44.9%</td><td>37.1%</td></tr><tr><td>流动比率</td><td>0.93</td><td>1.47</td><td>1.62</td><td>2.10</td></tr><tr><td>营运能力</td><td></td><td></td><td></td><td></td></tr><tr><td>应收账款周转率</td><td>4.60</td><td>8.80</td><td>24.89</td><td>24.38</td></tr><tr><td>存货周转率</td><td>1.75</td><td>3.38</td><td>6.55</td><td>6.56</td></tr><tr><td>总资产周转率</td><td>0.37</td><td>0.52</td><td>0.71</td><td>0.89</td></tr><tr><td>每股指标 (元)</td><td></td><td></td><td></td><td></td></tr><tr><td>每股收益</td><td>-0.17</td><td>0.02</td><td>0.44</td><td>0.81</td></tr><tr><td>每股净资产</td><td>1.36</td><td>2.61</td><td>3.00</td><td>3.73</td></tr><tr><td>估值比率</td><td></td><td></td><td></td><td></td></tr><tr><td>PE</td><td>-146.30</td><td>1354.20</td><td>56.27</td><td>30.77</td></tr><tr><td>PB</td><td>18.35</td><td>9.54</td><td>8.29</td><td>6.68</td></tr></table>",
+        "bbox": [
+            509,
+            107,
+            924,
+            500
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "table",
+        "img_path": "images/36c605c659f5cfebee868971fcb9039d4304b113bdbfdf19f4c4a80cb42cf636.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"5\"></td></tr><tr><td>现金流量表</td><td></td><td></td><td></td><td></td></tr><tr><td>净利润</td><td>-118</td><td>13</td><td>315</td><td>570</td></tr><tr><td>折旧和摊销</td><td>156</td><td>249</td><td>234</td><td>167</td></tr><tr><td>营运资本变动</td><td>-128</td><td>538</td><td>-29</td><td>-32</td></tr><tr><td>其他</td><td>90</td><td>2</td><td>4</td><td>-15</td></tr><tr><td>经营活动现金流净额</td><td>1</td><td>802</td><td>524</td><td>691</td></tr><tr><td>资本开支</td><td>-208</td><td>-14</td><td>-3</td><td>-2</td></tr><tr><td>其他</td><td>7</td><td>14</td><td>7</td><td>17</td></tr><tr><td>投资活动现金流净额</td><td>-201</td><td>0</td><td>4</td><td>15</td></tr><tr><td>股权融资</td><td>0</td><td>839</td><td>0</td><td>0</td></tr><tr><td>债务融资</td><td>4</td><td>-500</td><td>-400</td><td>-300</td></tr><tr><td>其他</td><td>33</td><td>-26</td><td>-44</td><td>-63</td></tr><tr><td>筹资活动现金流净额</td><td>37</td><td>313</td><td>-444</td><td>-363</td></tr><tr><td>现金及现金等价物净增加额</td><td>-164</td><td>1116</td><td>84</td><td>343</td></tr></table>",
+        "bbox": [
+            512,
+            512,
+            926,
+            750
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "中邮证券CHINA POST SECURITIES",
+        "bbox": [
+            705,
+            40,
+            922,
+            79
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "请务必阅读正文之后的免责条款部分",
+        "bbox": [
+            77,
+            933,
+            324,
+            946
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3",
+        "bbox": [
+            909,
+            934,
+            922,
+            945
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "中邮证券投资评级说明",
+        "text_level": 2,
+        "bbox": [
+            78,
+            99,
+            284,
+            116
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "table",
+        "img_path": "images/efe3965e57d1551ffb62ed3d27a1f89fa852aab05ab69341e26763814bc9d9f8.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td rowspan=1 colspan=1>投资评级标准</td><td rowspan=1 colspan=1>类型</td><td rowspan=1 colspan=1>评级</td><td rowspan=1 colspan=1>说明</td></tr><tr><td rowspan=11 colspan=1>报告中投资建议的评级标准：报告发布日后的6个月内的相对市场表现，即报告发布日后的6个月内的公司股价（或行业指数、可转债价格）的涨跌幅相对同期相关证券市场基准指数的涨跌幅。市场基准指数的选取：A股市场以沪深300指数为基准；新三板市场以三板成指为基准；可转债市场以中信标普可转债指数为基准；香港市场以恒生指数为基准；美国市场以标普500或纳斯达克综合指数为基准。</td><td rowspan=4 colspan=1>股票评级</td><td rowspan=1 colspan=1>买入</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在20%以上</td></tr><tr><td rowspan=1 colspan=1>增持</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在10%与20%之间</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在-10%与10%之间</td></tr><tr><td rowspan=1 colspan=1>回避</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在-10%以下</td></tr><tr><td rowspan=3 colspan=1>行业评级</td><td rowspan=1 colspan=1>强于大市</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在10%以上</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在-10%与10%之间</td></tr><tr><td rowspan=1 colspan=1>弱于大市</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在-10%以下</td></tr><tr><td rowspan=4 colspan=1>可转债评级</td><td rowspan=1 colspan=1>推荐</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在10%以上</td></tr><tr><td rowspan=1 colspan=1>谨慎推荐</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在5%与10%之间</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在-5%与5%之间</td></tr><tr><td rowspan=1 colspan=1>回避</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在-5%以下</td></tr></table>",
+        "bbox": [
+            78,
+            129,
+            917,
+            360
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "分析师声明",
+        "text_level": 2,
+        "bbox": [
+            75,
+            374,
+            184,
+            392
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "撰写此报告的分析师（一人或多人）承诺本机构、本人以及财产利害关系人与所评价或推荐的证券无利害关系。",
+        "bbox": [
+            75,
+            407,
+            897,
+            423
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "本报告所采用的数据均来自我们认为可靠的目前已公开的信息，并通过独立判断并得出结论，力求独立、客观、公平，报告结论不受本公司其他部门和人员以及证券发行人、上市公司、基金公司、证券资产管理公司、特定客户等利益相关方的干涉和影响，特此声明。",
+        "bbox": [
+            75,
+            436,
+            922,
+            488
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "免责声明",
+        "text_level": 2,
+        "bbox": [
+            77,
+            498,
+            163,
+            516
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "中邮证券有限责任公司（以下简称“中邮证券”）具备经中国证监会批准的开展证券投资咨询业务的资格。",
+        "bbox": [
+            75,
+            531,
+            855,
+            546
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "本报告信息均来源于公开资料或者我们认为可靠的资料，我们力求但不保证这些信息的准确性和完整性。报告内容仅供参考，报告中的信息或所表达观点不构成所涉证券买卖的出价或询价，中邮证券不对因使用本报告的内容而导致的损失承担任何责任。客户不应以本报告取代其独立判断或仅根据本报告做出决策。",
+        "bbox": [
+            75,
+            556,
+            922,
+            608
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "本报告所载的意见、评估及预测仅为本报告出具日的观点和判断。该等意见、评估及预测无需通知即可随时更改。过往的表现亦不应作为日后表现的预示和担保。在不同时期，中邮证券可能会发出与本报告所载意见、评估及预测不一致的研究报告。",
+        "bbox": [
+            75,
+            617,
+            922,
+            669
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "中邮证券及其所属关联机构可能会持有报告中提到的公司所发行的证券头寸并进行交易，也可能为这些公司提供或者计划提供投资银行、财务顾问或者其他金融产品等相关服务。",
+        "bbox": [
+            75,
+            677,
+            922,
+            712
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "《证券期货投资者适当性管理办法》于2017 年7 月1 日起正式实施，本报告仅供中邮证券签约客户使用，若您非中邮证券签约客户，为控制投资风险，请取消接收、订阅或使用本报告中的任何信息。本公司不会因接收人收到、阅读或关注本报告中的内容而视其为签约客户。",
+        "bbox": [
+            75,
+            720,
+            919,
+            774
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "本报告版权归中邮证券所有，未经书面许可，任何机构或个人不得存在对本报告以任何形式进行翻版、修改、节选、复制、发布，或对本报告进行改编、汇编等侵犯知识产权的行为，亦不得存在其他有损中邮证券商业性权益的任何情形。如经中邮证券授权后引用发布，需注明出处为中邮证券研究所，且不得对本报告进行有悖原意的引用、删节或修改。",
+        "bbox": [
+            75,
+            782,
+            922,
+            853
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "中邮证券对于本申明具有最终解释权。",
+        "bbox": [
+            77,
+            863,
+            359,
+            877
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "中邮证券CHINA POST SECURITIES",
+        "bbox": [
+            705,
+            41,
+            922,
+            79
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "请务必阅读正文之后的免责条款部分",
+        "bbox": [
+            77,
+            933,
+            324,
+            946
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4",
+        "bbox": [
+            907,
+            934,
+            921,
+            945
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "公司简介",
+        "text_level": 2,
+        "bbox": [
+            75,
+            103,
+            164,
+            121
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "中邮证券有限责任公司于2002年9月经中国证券监督管理委员会批准设立，公司注册资本61.68亿元人民币，是中国邮政集团有限公司绝对控股的证券类金融子公司，公司是中邮创业基金管理股份有限公司的第二大股东。",
+        "bbox": [
+            75,
+            137,
+            912,
+            173
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "公司经营范围包括:证券经纪，证券自营，证券投资咨询，证券资产管理，融资融券，证券投资基金销售，证券承销与保荐，代理销售金融产品，与证券交易、证券投资活动有关的财务顾问，具备展业的各项资格。截至2025 年10月底，公司在全国设有 58 家分支机构(含 29 家分公司、29 家营业部)，1 家资产管理分公司和 1 家另类投资子公司。",
+        "bbox": [
+            75,
+            178,
+            922,
+            253
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "中邮证券紧密依托中国邮政集团有限公司的雄厚实力，通过强化“自营+协同”发展模式，实现快速发展，当前服务的经纪客户已超过260万人。公司始终坚持诚信经营、践行金融为民，为社会大众提供全方位专业化的证券投融资服务，努力成为员工自豪、股东放心、客户信赖、社会尊重的优秀企业，打造契合中国邮政资源禀赋和市场地位的特色精品券商。",
+        "bbox": [
+            73,
+            259,
+            924,
+            335
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "中邮证券研究所",
+        "text_level": 2,
+        "bbox": [
+            77,
+            366,
+            226,
+            385
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "北京  \n邮箱：yanjiusuo@cnpsec.com  \n地址：北京市丰台区北甲地路2号院6甲1号，玺萌大  \n厦南塔  \n邮编：100050  \n深圳  \n邮箱：yanjiusuo@cnpsec.com  \n地址：深圳市福田区滨河大道9023号国通大厦二楼  \n邮编：518048",
+        "bbox": [
+            82,
+            397,
+            492,
+            479
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            82,
+            499,
+            472,
+            565
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "邮箱：yanjiusuo@cnpsec.com 地址：上海市虹口区东大名路 1080 号邮储银行大厦 3 楼",
+        "bbox": [
+            504,
+            414,
+            726,
+            430
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            504,
+            429,
+            909,
+            461
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "邮编：200000",
+        "bbox": [
+            504,
+            461,
+            615,
+            479
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "中邮证券CHINA POST SECURITIES",
+        "bbox": [
+            705,
+            41,
+            922,
+            79
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "请务必阅读正文之后的免责条款部分",
+        "bbox": [
+            77,
+            933,
+            324,
+            947
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5",
+        "bbox": [
+            907,
+            934,
+            921,
+            946
+        ],
+        "page_idx": 4
+    }
+]

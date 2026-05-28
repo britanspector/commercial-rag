@@ -1,0 +1,4 @@
+﻿route,route_label,question_count,recall_at_3,recall_at_5,recall_at_10,mrr,hit_rate,top_k,hybrid_vector_weight
+vector,路线A-纯向量,90,0.7,0.7333,0.7667,0.624,0.7667,10,
+bm25,路线B-纯BM25,90,0.8222,0.8556,0.8889,0.726,0.8889,10,
+hybrid,路线C-混合,90,0.8444,0.8556,0.8778,0.7835,0.8778,10,0.5

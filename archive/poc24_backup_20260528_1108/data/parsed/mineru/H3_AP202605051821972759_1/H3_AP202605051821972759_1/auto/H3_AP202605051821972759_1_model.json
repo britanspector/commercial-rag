@@ -1,0 +1,2142 @@
+[
+    {
+        "layout_dets": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.9588,
+                "bbox": [
+                    130,
+                    53,
+                    879,
+                    100
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9615,
+                "bbox": [
+                    1185,
+                    57,
+                    1536,
+                    145
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.7259,
+                "bbox": [
+                    114,
+                    110,
+                    551,
+                    170
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 6,
+                "label": "doc_title",
+                "score": 0.9727,
+                "bbox": [
+                    111,
+                    178,
+                    1076,
+                    305
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9555,
+                "bbox": [
+                    114,
+                    323,
+                    372,
+                    376
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9842,
+                "bbox": [
+                    114,
+                    401,
+                    1073,
+                    716
+                ],
+                "index": 6,
+                "html": "<table><tr><td>盈利预测与估值</td><td>2024A</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>营业总收入（百万元）</td><td>1,669</td><td>1,921</td><td>2,260</td><td>2,668</td><td>3,157</td></tr><tr><td>同比（%）</td><td>9.32</td><td>15.12</td><td>17.65</td><td>18.04</td><td>18.32</td></tr><tr><td>归母净利润（百万元）</td><td>451.19</td><td>503.58</td><td>644.53</td><td>831.32</td><td>995.78</td></tr><tr><td>同比（%）</td><td>19.09</td><td>11.61</td><td>27.99</td><td>28.98</td><td>19.78</td></tr><tr><td>EPS-最新摊薄（元/股）</td><td>1.42</td><td>1.59</td><td>2.03</td><td>2.62</td><td>3.14</td></tr><tr><td>P/E（现价&amp;最新摊薄）</td><td>21.40</td><td>19.18</td><td>14.98</td><td>11.62</td><td>9.70</td></tr></table>"
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9499,
+                "bbox": [
+                    125,
+                    748,
+                    256,
+                    789
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9817,
+                "bbox": [
+                    126,
+                    805,
+                    1069,
+                    911
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9881,
+                "bbox": [
+                    126,
+                    926,
+                    1068,
+                    1200
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9876,
+                "bbox": [
+                    126,
+                    1215,
+                    1070,
+                    1422
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9877,
+                "bbox": [
+                    126,
+                    1437,
+                    1071,
+                    1644
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9867,
+                "bbox": [
+                    125,
+                    1658,
+                    1071,
+                    1833
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9751,
+                "bbox": [
+                    126,
+                    1847,
+                    1071,
+                    1921
+                ],
+                "index": 13
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9209,
+                "bbox": [
+                    1237,
+                    211,
+                    1520,
+                    253
+                ],
+                "index": 14
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9547,
+                "bbox": [
+                    1210,
+                    289,
+                    1524,
+                    332
+                ],
+                "index": 15
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9416,
+                "bbox": [
+                    1163,
+                    333,
+                    1523,
+                    371
+                ],
+                "index": 16
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9331,
+                "bbox": [
+                    1340,
+                    369,
+                    1524,
+                    406
+                ],
+                "index": 17
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.937,
+                "bbox": [
+                    1229,
+                    404,
+                    1525,
+                    441
+                ],
+                "index": 18
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9498,
+                "bbox": [
+                    1211,
+                    439,
+                    1525,
+                    481
+                ],
+                "index": 19
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9437,
+                "bbox": [
+                    1162,
+                    481,
+                    1524,
+                    520
+                ],
+                "index": 20
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9422,
+                "bbox": [
+                    1207,
+                    522,
+                    1525,
+                    560
+                ],
+                "index": 21
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9389,
+                "bbox": [
+                    1242,
+                    557,
+                    1525,
+                    599
+                ],
+                "index": 22
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9392,
+                "bbox": [
+                    1163,
+                    598,
+                    1526,
+                    638
+                ],
+                "index": 23
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9385,
+                "bbox": [
+                    1238,
+                    639,
+                    1527,
+                    678
+                ],
+                "index": 24
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9045,
+                "bbox": [
+                    1112,
+                    712,
+                    1240,
+                    751
+                ],
+                "index": 25
+            },
+            {
+                "cls_id": 3,
+                "label": "chart",
+                "score": 0.97,
+                "bbox": [
+                    1130,
+                    765,
+                    1494,
+                    1004
+                ],
+                "index": 26
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9327,
+                "bbox": [
+                    1114,
+                    1057,
+                    1237,
+                    1093
+                ],
+                "index": 27
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9784,
+                "bbox": [
+                    1110,
+                    1103,
+                    1526,
+                    1314
+                ],
+                "index": 28,
+                "html": "<table><tr><td>收盘价(元)</td><td>30.44</td></tr><tr><td>一年最低/最高价</td><td>29.80/63.47</td></tr><tr><td>市净率(倍)</td><td>3.36</td></tr><tr><td>流通A股市值(百万元)</td><td>8,003.08</td></tr><tr><td>总市值(百万元)</td><td>12,553.66</td></tr></table>"
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9306,
+                "bbox": [
+                    1111,
+                    1355,
+                    1236,
+                    1391
+                ],
+                "index": 29
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.977,
+                "bbox": [
+                    1110,
+                    1399,
+                    1525,
+                    1549
+                ],
+                "index": 30,
+                "html": "<table><tr><td>每股净资产(元,LF)</td><td>9.07</td></tr><tr><td>资产负债率(%,LF)</td><td>38.93</td></tr><tr><td>总股本(百万股)</td><td>412.41</td></tr><tr><td>流通A股(百万股)</td><td>262.91</td></tr></table>"
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.95,
+                "bbox": [
+                    1110,
+                    1587,
+                    1239,
+                    1626
+                ],
+                "index": 31
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9797,
+                "bbox": [
+                    1109,
+                    1635,
+                    1525,
+                    1758
+                ],
+                "index": 32
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9316,
+                "bbox": [
+                    1394,
+                    1765,
+                    1526,
+                    1802
+                ],
+                "index": 33
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9246,
+                "bbox": [
+                    1110,
+                    1808,
+                    1527,
+                    1932
+                ],
+                "index": 34
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9389,
+                "bbox": [
+                    1395,
+                    1940,
+                    1527,
+                    1976
+                ],
+                "index": 35
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.9336,
+                "bbox": [
+                    1480,
+                    2168,
+                    1540,
+                    2202
+                ],
+                "index": 36
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9581,
+                "bbox": [
+                    17,
+                    2239,
+                    494,
+                    2277
+                ],
+                "index": 37
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9591,
+                "bbox": [
+                    1279,
+                    2218,
+                    1518,
+                    2260
+                ],
+                "index": 38
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    131,
+                    49,
+                    880,
+                    102
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1289,
+                    53,
+                    1541,
+                    126
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1193,
+                    69,
+                    1277,
+                    140
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1294,
+                    116,
+                    1535,
+                    144
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1165,
+                    333,
+                    1521,
+                    370
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1164,
+                    482,
+                    1522,
+                    518
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1165,
+                    599,
+                    1524,
+                    636
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    112,
+                    102,
+                    556,
+                    175
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    110,
+                    176,
+                    1078,
+                    240
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    114,
+                    242,
+                    607,
+                    307
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    161,
+                    804,
+                    1060,
+                    843
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    840,
+                    1067,
+                    875
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    165,
+                    871,
+                    339,
+                    909
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    114,
+                    322,
+                    373,
+                    375
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1240,
+                    211,
+                    1519,
+                    252
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1246,
+                    555,
+                    1527,
+                    599
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1277,
+                    2215,
+                    1519,
+                    2262
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    128,
+                    748,
+                    255,
+                    788
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1113,
+                    711,
+                    1238,
+                    751
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1114,
+                    1056,
+                    1239,
+                    1095
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1112,
+                    1354,
+                    1238,
+                    1393
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1110,
+                    1583,
+                    1239,
+                    1628
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1399,
+                    1767,
+                    1525,
+                    1799
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1399,
+                    1942,
+                    1525,
+                    1974
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    928,
+                    1047,
+                    962
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    962,
+                    1064,
+                    996
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    995,
+                    1060,
+                    1029
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1028,
+                    1065,
+                    1061
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1060,
+                    1065,
+                    1097
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    164,
+                    1093,
+                    1067,
+                    1130
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    167,
+                    1128,
+                    1067,
+                    1162
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    163,
+                    1160,
+                    305,
+                    1199
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    164,
+                    1215,
+                    1055,
+                    1253
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    167,
+                    1249,
+                    1068,
+                    1284
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    163,
+                    1281,
+                    1062,
+                    1318
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    164,
+                    1316,
+                    1065,
+                    1351
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    167,
+                    1351,
+                    1068,
+                    1385
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    168,
+                    1383,
+                    570,
+                    1417
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    161,
+                    1436,
+                    1065,
+                    1474
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    167,
+                    1471,
+                    1067,
+                    1506
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1505,
+                    1064,
+                    1539
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1536,
+                    1068,
+                    1573
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1573,
+                    1070,
+                    1607
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    164,
+                    1601,
+                    856,
+                    1641
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    162,
+                    1660,
+                    1064,
+                    1695
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1691,
+                    1069,
+                    1728
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1727,
+                    1066,
+                    1761
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    166,
+                    1760,
+                    1068,
+                    1795
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    165,
+                    1792,
+                    884,
+                    1829
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    162,
+                    1847,
+                    1069,
+                    1885
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    167,
+                    1883,
+                    940,
+                    1917
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1212,
+                    289,
+                    1525,
+                    332
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1233,
+                    402,
+                    1525,
+                    444
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1213,
+                    437,
+                    1526,
+                    482
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1210,
+                    519,
+                    1527,
+                    562
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1242,
+                    636,
+                    1526,
+                    681
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1346,
+                    371,
+                    1524,
+                    406
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1125,
+                    1638,
+                    1521,
+                    1666
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1116,
+                    1682,
+                    1522,
+                    1710
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1116,
+                    1724,
+                    1384,
+                    1753
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1126,
+                    1811,
+                    1522,
+                    1842
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1116,
+                    1852,
+                    1523,
+                    1885
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1116,
+                    1898,
+                    1433,
+                    1926
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1476,
+                    2164,
+                    1546,
+                    2207
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    18,
+                    2237,
+                    493,
+                    2278
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 0,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.9236,
+                "bbox": [
+                    133,
+                    88,
+                    342,
+                    127
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9662,
+                "bbox": [
+                    1186,
+                    59,
+                    1529,
+                    142
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9219,
+                "bbox": [
+                    128,
+                    199,
+                    459,
+                    236
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9888,
+                "bbox": [
+                    45,
+                    240,
+                    886,
+                    1255
+                ],
+                "index": 4,
+                "html": "<table><tr><td>资产负债表(百万元)</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>流动资产</td><td>2,700</td><td>2,084</td><td>2.910</td><td>4,004</td></tr><tr><td>货币资金及交易性金融资产</td><td>2,450</td><td>1,749</td><td>2.551</td><td>3,614</td></tr><tr><td>经营性应收款项</td><td>46</td><td>60</td><td>69</td><td>82</td></tr><tr><td>存货</td><td>4</td><td>19</td><td>21</td><td>25</td></tr><tr><td>合同资产</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>其他流动资产</td><td>200</td><td>256</td><td>269</td><td>284</td></tr><tr><td>非流动资产</td><td>2,118</td><td>2,175</td><td>2,174</td><td>2,162</td></tr><tr><td>长期股权投资</td><td>59</td><td>59</td><td>64</td><td>69</td></tr><tr><td>固定资产及使用权资产</td><td>417</td><td>454</td><td>445</td><td>426</td></tr><tr><td>在建工程</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>无形资产</td><td>33</td><td>48</td><td>63</td><td>78</td></tr><tr><td>商誉</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>长期待摊费用</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><td>其他非流动资产</td><td>1,608</td><td>1,613</td><td>1,601</td><td>1,588</td></tr><tr><td>资产总计</td><td>4,818</td><td>4,260</td><td>5,084</td><td>6,167</td></tr><tr><td>流动负债</td><td>1,724</td><td>483</td><td>474</td><td>560</td></tr><tr><td>短期借款及一年内到期的非流动负债</td><td>10</td><td>10</td><td>10</td><td>10</td></tr><tr><td>经营性应付款项</td><td>77</td><td>231</td><td>239</td><td>285</td></tr><tr><td>合同负债</td><td>1,361</td><td>0</td><td>0</td><td>0</td></tr><tr><td>其他流动负债</td><td>276</td><td>242</td><td>226</td><td>265</td></tr><tr><td>非流动负债</td><td>324</td><td>364</td><td>364</td><td>364</td></tr><tr><td>长期借款</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>应付债券</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>租赁负债</td><td>5</td><td>45</td><td>45</td><td>45</td></tr><tr><td>其他非流动负债</td><td>319</td><td>319</td><td>319</td><td>319</td></tr><tr><td>负债合计</td><td>2,049</td><td>847</td><td>839</td><td>925</td></tr><tr><td>归属母公司股东权益</td><td>2,741</td><td>3,384</td><td>4,216</td><td>5,212</td></tr><tr><td>少数股东权益</td><td>28</td><td>28</td><td>30</td><td>30</td></tr><tr><td>所有者权益合计</td><td>2,769</td><td>3,413</td><td>4,245</td><td>5,242</td></tr><tr><td>负债和股东权益</td><td>4,818</td><td>4,260</td><td>5.084</td><td>6,167</td></tr></table>"
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9885,
+                "bbox": [
+                    894,
+                    240,
+                    1610,
+                    1255
+                ],
+                "index": 5,
+                "html": "<table><tr><td>利润表(百万元)</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>营业总收入</td><td>1,921</td><td>2,260</td><td>2,668</td><td>3,157</td></tr><tr><td>营业成本(含金融类)</td><td>396</td><td>438</td><td>469</td><td>554</td></tr><tr><td>税金及附加</td><td>14</td><td>16</td><td>19</td><td>22</td></tr><tr><td>销售费用</td><td>687</td><td>816</td><td>907</td><td>1,042</td></tr><tr><td>管理费用</td><td>169</td><td>212</td><td>251</td><td>297</td></tr><tr><td>研发费用</td><td>181</td><td>203</td><td>240</td><td>284</td></tr><tr><td>财务费用</td><td>(51)</td><td>(46)</td><td>(32)</td><td>(50)</td></tr><tr><td>加:其他收益</td><td>12</td><td>38</td><td>39</td><td>30</td></tr><tr><td>投资净收益</td><td>19</td><td>32</td><td>37</td><td>30</td></tr><tr><td>公允价值变动</td><td>3</td><td>0</td><td>0</td><td>0</td></tr><tr><td>减值损失</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>资产处置收益</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>营业利润</td><td>559</td><td>690</td><td>891</td><td>1,068</td></tr><tr><td>营业外净收支</td><td>(6)</td><td>11</td><td>12</td><td>12</td></tr><tr><td>利润总额</td><td>553</td><td>701</td><td>903</td><td>1,080</td></tr><tr><td>减：所得税</td><td>48</td><td>56</td><td>70</td><td>83</td></tr><tr><td>净利润</td><td>505</td><td>645</td><td>833</td><td>997</td></tr><tr><td>减:少数股东损益</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>归属母公司净利润</td><td>504</td><td>645</td><td>831</td><td>996</td></tr><tr><td>每股收益-最新股本摊薄(元)</td><td>1.59</td><td>2.03</td><td>2.62</td><td>3.14</td></tr><tr><td>EBIT</td><td>486</td><td>655</td><td>871</td><td>1,030</td></tr><tr><td>EBITDA</td><td>547</td><td>786</td><td>1,047</td><td>1,216</td></tr><tr><td>毛利率(%)</td><td>79.30</td><td>80.64</td><td>82.44</td><td>82.45</td></tr><tr><td>归母净利率(%)</td><td>26.32</td><td>28.52</td><td>31.16</td><td>31.54</td></tr><tr><td>收入增长率(%)</td><td>15.12</td><td>17.65</td><td>18.04</td><td>18.32</td></tr><tr><td></td><td>11.61</td><td>27.99</td><td></td><td></td></tr><tr><td>归母净利润增长率(%)</td><td></td><td></td><td>28.98</td><td>19.78</td></tr></table>"
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9828,
+                "bbox": [
+                    44,
+                    1311,
+                    884,
+                    1577
+                ],
+                "index": 6,
+                "html": "<table><tr><td>现金流量表(百万元）</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>经营活动现金流</td><td>888</td><td>(594)</td><td>929</td><td>1,196</td></tr><tr><td>投资活动现金流</td><td>(377)</td><td>(146)</td><td>(26)</td><td>(33)</td></tr><tr><td>筹资活动现金流</td><td>(386)</td><td>40</td><td>0</td><td>0</td></tr><tr><td>现金净增加额</td><td>124</td><td>(701)</td><td>902</td><td>1,163</td></tr><tr><td>折旧和摊销</td><td>61</td><td>131</td><td>176</td><td>186</td></tr><tr><td>资本开支</td><td>(8)</td><td>(149)</td><td>(148)</td><td>(148)</td></tr><tr><td>营运资本变动</td><td>346</td><td>(1,328)</td><td>(32)</td><td>55</td></tr></table>"
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.9269,
+                "bbox": [
+                    44,
+                    1580,
+                    1218,
+                    1612
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9813,
+                "bbox": [
+                    892,
+                    1311,
+                    1608,
+                    1577
+                ],
+                "index": 8,
+                "html": "<table><tr><td>重要财务与估值指标</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>每股净资产(元)</td><td>8.64</td><td>10.67</td><td>13.29</td><td>16.43</td></tr><tr><td>最新发行在外股份（百万股）</td><td>317</td><td>317</td><td>317</td><td>317</td></tr><tr><td>ROIC(%)</td><td>16.60</td><td>19.27</td><td>20.68</td><td>19.81</td></tr><tr><td>ROE-摊薄(%)</td><td>18.37</td><td>19.04</td><td>19.72</td><td>19.11</td></tr><tr><td>资产负债率(%)</td><td>42.52</td><td>19.88</td><td>16.50</td><td>14.99</td></tr><tr><td>P/E（现价&amp;最新股本摊薄）</td><td>19.18</td><td>14.98</td><td>11.62</td><td>9.70</td></tr><tr><td>P/B（现价）</td><td>3.52</td><td>2.85</td><td>2.29</td><td>1.85</td></tr></table>"
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.9075,
+                "bbox": [
+                    1478,
+                    2169,
+                    1541,
+                    2201
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9479,
+                "bbox": [
+                    17,
+                    2245,
+                    493,
+                    2281
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9481,
+                "bbox": [
+                    1279,
+                    2219,
+                    1518,
+                    2259
+                ],
+                "index": 11
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    17,
+                    2242,
+                    492,
+                    2283
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1278,
+                    2217,
+                    1518,
+                    2261
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1289,
+                    55,
+                    1534,
+                    124
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1186,
+                    57,
+                    1287,
+                    144
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1293,
+                    117,
+                    1528,
+                    142
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    130,
+                    197,
+                    459,
+                    237
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    135,
+                    88,
+                    341,
+                    127
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1474,
+                    2164,
+                    1546,
+                    2207
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    49,
+                    1576,
+                    1218,
+                    1614
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 1,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.951,
+                "bbox": [
+                    265,
+                    89,
+                    574,
+                    128
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9582,
+                "bbox": [
+                    1060,
+                    81,
+                    1402,
+                    166
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9435,
+                "bbox": [
+                    242,
+                    233,
+                    378,
+                    271
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9412,
+                "bbox": [
+                    300,
+                    274,
+                    1418,
+                    313
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9869,
+                "bbox": [
+                    239,
+                    365,
+                    1410,
+                    537
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.978,
+                "bbox": [
+                    240,
+                    547,
+                    1410,
+                    630
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9854,
+                "bbox": [
+                    240,
+                    638,
+                    1409,
+                    767
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9876,
+                "bbox": [
+                    239,
+                    774,
+                    1410,
+                    995
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9525,
+                "bbox": [
+                    244,
+                    1041,
+                    563,
+                    1079
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.987,
+                "bbox": [
+                    240,
+                    1089,
+                    1411,
+                    1264
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9479,
+                "bbox": [
+                    299,
+                    1272,
+                    498,
+                    1306
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9556,
+                "bbox": [
+                    300,
+                    1317,
+                    1028,
+                    1352
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9562,
+                "bbox": [
+                    299,
+                    1362,
+                    1131,
+                    1397
+                ],
+                "index": 13
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9538,
+                "bbox": [
+                    299,
+                    1407,
+                    1128,
+                    1442
+                ],
+                "index": 14
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9558,
+                "bbox": [
+                    299,
+                    1453,
+                    1142,
+                    1488
+                ],
+                "index": 15
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9561,
+                "bbox": [
+                    299,
+                    1498,
+                    1037,
+                    1533
+                ],
+                "index": 16
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9501,
+                "bbox": [
+                    299,
+                    1544,
+                    498,
+                    1577
+                ],
+                "index": 17
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9572,
+                "bbox": [
+                    298,
+                    1589,
+                    1084,
+                    1625
+                ],
+                "index": 18
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9538,
+                "bbox": [
+                    300,
+                    1634,
+                    1048,
+                    1669
+                ],
+                "index": 19
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9536,
+                "bbox": [
+                    299,
+                    1679,
+                    1084,
+                    1715
+                ],
+                "index": 20
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9863,
+                "bbox": [
+                    239,
+                    1725,
+                    1410,
+                    1901
+                ],
+                "index": 21
+            },
+            {
+                "cls_id": 14,
+                "label": "image",
+                "score": 0.8142,
+                "bbox": [
+                    2,
+                    1894,
+                    1652,
+                    2338
+                ],
+                "index": 24
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1498,
+                    1035,
+                    1534
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    303,
+                    1587,
+                    1082,
+                    1627
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1633,
+                    1044,
+                    1672
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1680,
+                    1082,
+                    1717
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    239,
+                    229,
+                    379,
+                    278
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    270,
+                    89,
+                    572,
+                    127
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1056,
+                    76,
+                    1165,
+                    172
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1162,
+                    77,
+                    1409,
+                    147
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1166,
+                    139,
+                    1403,
+                    167
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1042,
+                    558,
+                    1080
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1270,
+                    499,
+                    1308
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    304,
+                    1543,
+                    497,
+                    1578
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    309,
+                    276,
+                    1418,
+                    310
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    549,
+                    1406,
+                    583
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    250,
+                    595,
+                    1139,
+                    627
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    370,
+                    1405,
+                    397
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    245,
+                    410,
+                    1406,
+                    446
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    456,
+                    1405,
+                    493
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    244,
+                    501,
+                    329,
+                    540
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1094,
+                    1405,
+                    1121
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1137,
+                    1405,
+                    1168
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    247,
+                    1183,
+                    1406,
+                    1214
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    1229,
+                    978,
+                    1260
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    1726,
+                    1405,
+                    1757
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    245,
+                    1769,
+                    1405,
+                    1805
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    1816,
+                    1405,
+                    1850
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    245,
+                    1863,
+                    761,
+                    1896
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1038,
+                    1858,
+                    1371,
+                    1906
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    637,
+                    1406,
+                    672
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    684,
+                    1403,
+                    717
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    731,
+                    1199,
+                    764
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    306,
+                    775,
+                    1405,
+                    808
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    246,
+                    820,
+                    1405,
+                    855
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    868,
+                    1406,
+                    901
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    249,
+                    915,
+                    1402,
+                    944
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    248,
+                    957,
+                    673,
+                    991
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1316,
+                    1025,
+                    1355
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1360,
+                    1129,
+                    1399
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    307,
+                    1407,
+                    1124,
+                    1443
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    305,
+                    1453,
+                    1141,
+                    1489
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 2,
+            "width": 1654,
+            "height": 2339
+        }
+    }
+]

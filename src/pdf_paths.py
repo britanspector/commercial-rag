@@ -4,7 +4,7 @@ raw_pdfs 目录结构与 PDF 发现逻辑。
 目录约定：
     data/raw_pdfs/<industry_folder>/*.pdf
 
-industry_folder 示例：semi-conductor / power-electronics / e-commercial
+industry_folder 示例：semi-conductor / power-electronics / e-commercial / appliance
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ INDUSTRY_LABELS = {
     "semi-conductor": "半导体",
     "power-electronics": "电力",
     "e-commercial": "互联网电商",
+    "appliance": "白色家电",
 }
 
 

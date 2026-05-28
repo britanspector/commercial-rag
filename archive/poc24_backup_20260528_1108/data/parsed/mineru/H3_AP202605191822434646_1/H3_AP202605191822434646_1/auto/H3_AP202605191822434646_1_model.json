@@ -1,0 +1,2436 @@
+[
+    {
+        "layout_dets": [
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.4768,
+                "bbox": [
+                    0,
+                    0,
+                    1652,
+                    216
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.9163,
+                "bbox": [
+                    1297,
+                    236,
+                    1583,
+                    272
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.9148,
+                "bbox": [
+                    104,
+                    293,
+                    291,
+                    333
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 12,
+                "label": "header",
+                "score": 0.7824,
+                "bbox": [
+                    641,
+                    286,
+                    959,
+                    337
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9459,
+                "bbox": [
+                    219,
+                    385,
+                    461,
+                    427
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8174,
+                "bbox": [
+                    106,
+                    479,
+                    232,
+                    516
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 3,
+                "label": "chart",
+                "score": 0.9762,
+                "bbox": [
+                    114,
+                    550,
+                    575,
+                    855
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.8127,
+                "bbox": [
+                    93,
+                    888,
+                    478,
+                    924
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9262,
+                "bbox": [
+                    106,
+                    986,
+                    289,
+                    1023
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9701,
+                "bbox": [
+                    102,
+                    1044,
+                    494,
+                    1342
+                ],
+                "index": 10,
+                "html": "<table><tr><td>最新收盘价(元)</td><td>24.90</td></tr><tr><td>总股本/流通股本（亿股）6.78/5.66</td><td></td></tr><tr><td>总市值/流通市值（亿元）169／141</td><td></td></tr><tr><td>52周内最高/最低价</td><td>29.14 / 18.74</td></tr><tr><td>资产负债率(%)</td><td>73.8%</td></tr><tr><td>市盈率</td><td>-124.50</td></tr><tr><td>第一大股东</td><td>孙迎彤</td></tr></table>"
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9245,
+                "bbox": [
+                    104,
+                    1403,
+                    201,
+                    1441
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.91,
+                "bbox": [
+                    104,
+                    1459,
+                    270,
+                    1493
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9348,
+                "bbox": [
+                    103,
+                    1491,
+                    484,
+                    1529
+                ],
+                "index": 13
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9285,
+                "bbox": [
+                    103,
+                    1529,
+                    442,
+                    1562
+                ],
+                "index": 14
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9095,
+                "bbox": [
+                    105,
+                    1559,
+                    296,
+                    1593
+                ],
+                "index": 15
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9347,
+                "bbox": [
+                    103,
+                    1591,
+                    486,
+                    1628
+                ],
+                "index": 16
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9228,
+                "bbox": [
+                    103,
+                    1628,
+                    456,
+                    1665
+                ],
+                "index": 17
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.949,
+                "bbox": [
+                    897,
+                    386,
+                    1262,
+                    434
+                ],
+                "index": 18
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9446,
+                "bbox": [
+                    639,
+                    478,
+                    846,
+                    519
+                ],
+                "index": 19
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9887,
+                "bbox": [
+                    635,
+                    523,
+                    1524,
+                    1083
+                ],
+                "index": 20
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9881,
+                "bbox": [
+                    635,
+                    1087,
+                    1523,
+                    1387
+                ],
+                "index": 21
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9888,
+                "bbox": [
+                    634,
+                    1391,
+                    1524,
+                    1949
+                ],
+                "index": 22
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9481,
+                "bbox": [
+                    640,
+                    1954,
+                    846,
+                    1993
+                ],
+                "index": 23
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9712,
+                "bbox": [
+                    638,
+                    1998,
+                    1522,
+                    2080
+                ],
+                "index": 24
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9518,
+                "bbox": [
+                    1104,
+                    2180,
+                    1514,
+                    2215
+                ],
+                "index": 25
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8964,
+                "bbox": [
+                    640,
+                    2085,
+                    859,
+                    2124
+                ],
+                "index": 26
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9384,
+                "bbox": [
+                    132,
+                    2180,
+                    413,
+                    2216
+                ],
+                "index": 27
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    49,
+                    64,
+                    191,
+                    202
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    193,
+                    64,
+                    587,
+                    162
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    202,
+                    150,
+                    583,
+                    194
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1094,
+                    180,
+                    1266,
+                    212
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1296,
+                    178,
+                    1359,
+                    212
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1400,
+                    176,
+                    1583,
+                    214
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1295,
+                    234,
+                    1587,
+                    272
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    642,
+                    286,
+                    959,
+                    335
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    106,
+                    1526,
+                    436,
+                    1563
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    103,
+                    290,
+                    291,
+                    331
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    101,
+                    982,
+                    293,
+                    1025
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    108,
+                    1459,
+                    267,
+                    1494
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    108,
+                    1559,
+                    294,
+                    1594
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    699,
+                    479,
+                    845,
+                    522
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    648,
+                    1963,
+                    670,
+                    1985
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    699,
+                    1952,
+                    843,
+                    1993
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    647,
+                    2093,
+                    670,
+                    2114
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    700,
+                    2083,
+                    861,
+                    2125
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    220,
+                    385,
+                    461,
+                    427
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    2182,
+                    411,
+                    2213
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    100,
+                    472,
+                    238,
+                    521
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    98,
+                    1396,
+                    207,
+                    1447
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    96,
+                    891,
+                    474,
+                    919
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    108,
+                    1495,
+                    479,
+                    1526
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    108,
+                    1595,
+                    482,
+                    1626
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    106,
+                    1626,
+                    450,
+                    1664
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    903,
+                    388,
+                    1259,
+                    432
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1109,
+                    2183,
+                    1510,
+                    2211
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    704,
+                    529,
+                    1501,
+                    558
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    570,
+                    1515,
+                    603
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    613,
+                    1516,
+                    646
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    657,
+                    1516,
+                    690
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    699,
+                    1509,
+                    733
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    643,
+                    744,
+                    1501,
+                    777
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    787,
+                    1516,
+                    820
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    829,
+                    1516,
+                    863
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    874,
+                    1515,
+                    907
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    917,
+                    1515,
+                    950
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    647,
+                    961,
+                    1516,
+                    991
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1003,
+                    1516,
+                    1037
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    644,
+                    1046,
+                    895,
+                    1080
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    703,
+                    1393,
+                    1516,
+                    1426
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1437,
+                    1514,
+                    1467
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1479,
+                    1516,
+                    1512
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1522,
+                    1515,
+                    1557
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1567,
+                    1516,
+                    1600
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1610,
+                    1515,
+                    1643
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1654,
+                    1515,
+                    1687
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1697,
+                    1515,
+                    1730
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1741,
+                    1516,
+                    1774
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1784,
+                    1515,
+                    1817
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1827,
+                    1515,
+                    1860
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    644,
+                    1870,
+                    1516,
+                    1904
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    642,
+                    1912,
+                    755,
+                    1950
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    702,
+                    1090,
+                    1515,
+                    1122
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    645,
+                    1133,
+                    1516,
+                    1166
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1178,
+                    1516,
+                    1208
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1220,
+                    1514,
+                    1252
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    647,
+                    1265,
+                    1515,
+                    1295
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    646,
+                    1306,
+                    1502,
+                    1340
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    644,
+                    1349,
+                    1518,
+                    1384
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    702,
+                    2000,
+                    1517,
+                    2034
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    647,
+                    2044,
+                    1503,
+                    2075
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 0,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9636,
+                "bbox": [
+                    1167,
+                    98,
+                    1526,
+                    187
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9734,
+                "bbox": [
+                    638,
+                    276,
+                    1518,
+                    354
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.9359,
+                "bbox": [
+                    642,
+                    1059,
+                    972,
+                    1093
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9884,
+                "bbox": [
+                    641,
+                    1098,
+                    1529,
+                    1545
+                ],
+                "index": 4,
+                "html": "<table><tr><td rowspan=1 colspan=3>项目\\年度                          2025A      2026E</td><td rowspan=1 colspan=2>2027E      2028E</td></tr><tr><td rowspan=1 colspan=1>营业收入 (百万元)</td><td rowspan=1 colspan=1>1360</td><td rowspan=1 colspan=1>1908</td><td rowspan=1 colspan=1>2657</td><td rowspan=1 colspan=1>3491</td></tr><tr><td rowspan=1 colspan=1>增长率(%)</td><td rowspan=1 colspan=1>16.51</td><td rowspan=1 colspan=1>40.24</td><td rowspan=1 colspan=1>39.29</td><td rowspan=1 colspan=1>31.38</td></tr><tr><td rowspan=1 colspan=1>EBITDA（百万元）</td><td rowspan=1 colspan=1>107.04</td><td rowspan=1 colspan=1>285.35</td><td rowspan=1 colspan=1>583.57</td><td rowspan=1 colspan=1>786.12</td></tr><tr><td rowspan=1 colspan=1>归属母公司净利润 (百万元)</td><td rowspan=1 colspan=1>-115. 42</td><td rowspan=1 colspan=1>12.47</td><td rowspan=1 colspan=1>300.09</td><td rowspan=1 colspan=1>548.83</td></tr><tr><td rowspan=1 colspan=1>增长率(%)</td><td rowspan=1 colspan=1>50.96</td><td rowspan=1 colspan=1>110.80</td><td rowspan=1 colspan=1>2306.73</td><td rowspan=1 colspan=1>82.89</td></tr><tr><td rowspan=1 colspan=1>EPS(元/股)</td><td rowspan=1 colspan=1>-0.17</td><td rowspan=1 colspan=1>0.02</td><td rowspan=1 colspan=1>0.44</td><td rowspan=1 colspan=1>0.81</td></tr><tr><td rowspan=1 colspan=1>市盈率(P/E)</td><td rowspan=1 colspan=1>-146.30</td><td rowspan=1 colspan=1>1354. 20</td><td rowspan=1 colspan=1>56.27</td><td rowspan=1 colspan=1>30.77</td></tr><tr><td rowspan=1 colspan=1>市净率 (P/B)</td><td rowspan=1 colspan=1>18.35</td><td rowspan=1 colspan=1>9.54</td><td rowspan=1 colspan=1>8.29</td><td rowspan=1 colspan=1>6.68</td></tr><tr><td rowspan=1 colspan=1>EV/EBITDA</td><td rowspan=1 colspan=1>124.83</td><td rowspan=1 colspan=1>59.05</td><td rowspan=1 colspan=1>28.04</td><td rowspan=1 colspan=1>20.00</td></tr></table>"
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.9375,
+                "bbox": [
+                    651,
+                    1552,
+                    1037,
+                    1581
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.937,
+                "bbox": [
+                    130,
+                    2182,
+                    537,
+                    2213
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.8483,
+                "bbox": [
+                    1503,
+                    2184,
+                    1525,
+                    2211
+                ],
+                "index": 7
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    703,
+                    1060,
+                    970,
+                    1092
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1164,
+                    94,
+                    1272,
+                    196
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1265,
+                    98,
+                    1533,
+                    167
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1273,
+                    159,
+                    1524,
+                    184
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    652,
+                    1553,
+                    1032,
+                    1578
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    2183,
+                    534,
+                    2211
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    701,
+                    276,
+                    1516,
+                    309
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    643,
+                    319,
+                    840,
+                    354
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1502,
+                    2184,
+                    1524,
+                    2219
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 1,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.965,
+                "bbox": [
+                    1167,
+                    97,
+                    1526,
+                    187
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 7,
+                "label": "figure_title",
+                "score": 0.7966,
+                "bbox": [
+                    135,
+                    214,
+                    424,
+                    246
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9796,
+                "bbox": [
+                    133,
+                    251,
+                    809,
+                    962
+                ],
+                "index": 3,
+                "html": "<table><tr><td>财务报表(百万元)</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>利润表</td><td></td><td></td><td></td><td></td></tr><tr><td>营业收入</td><td>1360</td><td>1908</td><td>2657</td><td>3491</td></tr><tr><td>营业成本</td><td>1088</td><td>1493</td><td>1906</td><td>2428</td></tr><tr><td>税金及附加</td><td>9</td><td>12</td><td>16</td><td>21</td></tr><tr><td>销售费用</td><td>49</td><td>67</td><td>69</td><td>77</td></tr><tr><td>管理费用</td><td>108</td><td>151</td><td>173</td><td>209</td></tr><tr><td>研发费用</td><td>166</td><td>229</td><td>239</td><td>258</td></tr><tr><td>财务费用</td><td>81</td><td>22</td><td>12</td><td>4</td></tr><tr><td>资产减值损失</td><td>-15</td><td>0</td><td>0</td><td>0</td></tr><tr><td>营业利润</td><td>-134</td><td>14</td><td>338</td><td>614</td></tr><tr><td>营业外收入</td><td>7</td><td>0</td><td>0</td><td>0</td></tr><tr><td>营业外支出</td><td>3</td><td>0</td><td>0</td><td>0</td></tr><tr><td>利润总额</td><td>-130</td><td>14</td><td>338</td><td>614</td></tr><tr><td>所得税</td><td>-13</td><td>1</td><td>23</td><td>44</td></tr><tr><td>净利润</td><td>-118</td><td>13</td><td>315</td><td>570</td></tr><tr><td>归母净利润</td><td>-115</td><td>12</td><td>300</td><td>549</td></tr><tr><td>每股收益 (元)</td><td>-0.17</td><td>0.02</td><td>0.44</td><td>0.81</td></tr></table>"
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9795,
+                "bbox": [
+                    135,
+                    963,
+                    810,
+                    1990
+                ],
+                "index": 4,
+                "html": "<table><tr><td colspan=\"2\">资产负债表</td><td></td><td></td><td></td></tr><tr><td>货币资金</td><td>291</td><td>1408</td><td>1492</td><td>1835</td></tr><tr><td>交易性金融资产</td><td>71</td><td>71</td><td>71</td><td>71</td></tr><tr><td>应收票据及应收账款</td><td>345</td><td>90</td><td>124</td><td>163</td></tr><tr><td>预付款项</td><td>19</td><td>28</td><td>37</td><td>46</td></tr><tr><td>存货</td><td>624</td><td>259</td><td>323</td><td>417</td></tr><tr><td>流动资产合计</td><td>1582</td><td>2008</td><td>2222</td><td>2732</td></tr><tr><td>固定资产</td><td>1131</td><td>969</td><td>806</td><td>643</td></tr><tr><td>在建工程</td><td>83</td><td>83</td><td>83</td><td>83</td></tr><tr><td>无形资产</td><td>121</td><td>61</td><td>0</td><td>0</td></tr><tr><td>非流动资产合计</td><td>1989</td><td>1760</td><td>1530</td><td>1367</td></tr><tr><td>资产总计</td><td>3571</td><td>3768</td><td>3751</td><td>4099</td></tr><tr><td>短期借款</td><td>586</td><td>386</td><td>286</td><td>86</td></tr><tr><td>应付票据及应付账款</td><td>395</td><td>207</td><td>259</td><td>333</td></tr><tr><td>其他流动负债</td><td>729</td><td>774</td><td>824</td><td>885</td></tr><tr><td>流动负债合计</td><td>1709</td><td>1367</td><td>1368</td><td>1303</td></tr><tr><td>其他</td><td>927</td><td>616</td><td>316</td><td>216</td></tr><tr><td>非流动负债合计</td><td>927</td><td>616</td><td>316</td><td>216</td></tr><tr><td>负债合计</td><td>2636</td><td>1983</td><td>1684</td><td>1520</td></tr><tr><td>股本</td><td>583</td><td>678</td><td>678</td><td>678</td></tr><tr><td>资本公积金</td><td>2493</td><td>3237</td><td>3237</td><td>3237</td></tr><tr><td>未分配利润</td><td>-2368</td><td>-2358</td><td>-2135</td><td>-1727</td></tr><tr><td>少数股东权益</td><td>15</td><td>15</td><td>30</td><td>51</td></tr><tr><td>其他</td><td>212</td><td>213</td><td>258</td><td>340</td></tr><tr><td>所有者权益合计</td><td>935</td><td>1784</td><td>2068</td><td>2579</td></tr><tr><td>负债和所有者权益总计</td><td>3571</td><td>3768</td><td>3751</td><td>4099</td></tr></table>"
+            },
+            {
+                "cls_id": 24,
+                "label": "vision_footnote",
+                "score": 0.943,
+                "bbox": [
+                    139,
+                    1996,
+                    619,
+                    2031
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9792,
+                "bbox": [
+                    843,
+                    251,
+                    1530,
+                    1172
+                ],
+                "index": 6,
+                "html": "<table><tr><td>主要财务比率</td><td>2025A</td><td>2026E</td><td>2027E</td><td>2028E</td></tr><tr><td>成长能力</td><td></td><td></td><td></td><td></td></tr><tr><td>营业收入</td><td>16.5%</td><td>40.2%</td><td>39.3%</td><td>31.4%</td></tr><tr><td>营业利润</td><td>50.2%</td><td>110.3%</td><td>2,345.4%</td><td>82.0%</td></tr><tr><td>归属于母公司净利润</td><td>51.0%</td><td>110.8%</td><td>2,306.7%</td><td>82.9%</td></tr><tr><td>获利能力</td><td></td><td></td><td></td><td></td></tr><tr><td>毛利率</td><td>20.0%</td><td>21.7%</td><td>28.3%</td><td>30.4%</td></tr><tr><td>净利率</td><td>-8.5%</td><td>0.7%</td><td>11.3%</td><td>15.7%</td></tr><tr><td>ROE</td><td>-12.5%</td><td>0.7%</td><td>14.7%</td><td>21.7%</td></tr><tr><td>ROIC</td><td>-1.6%</td><td>1.1%</td><td>10.7%</td><td>17.7%</td></tr><tr><td>偿债能力</td><td></td><td></td><td></td><td></td></tr><tr><td>资产负债率</td><td>73.8%</td><td>52.6%</td><td>44.9%</td><td>37.1%</td></tr><tr><td>流动比率</td><td>0.93</td><td>1.47</td><td>1.62</td><td>2.10</td></tr><tr><td>营运能力</td><td></td><td></td><td></td><td></td></tr><tr><td>应收账款周转率</td><td>4.60</td><td>8.80</td><td>24.89</td><td>24.38</td></tr><tr><td>存货周转率</td><td>1.75</td><td>3.38</td><td>6.55</td><td>6.56</td></tr><tr><td>总资产周转率</td><td>0.37</td><td>0.52</td><td>0.71</td><td>0.89</td></tr><tr><td>每股指标 (元)</td><td></td><td></td><td></td><td></td></tr><tr><td>每股收益</td><td>-0.17</td><td>0.02</td><td>0.44</td><td>0.81</td></tr><tr><td>每股净资产</td><td>1.36</td><td>2.61</td><td>3.00</td><td>3.73</td></tr><tr><td>估值比率</td><td></td><td></td><td></td><td></td></tr><tr><td>PE</td><td>-146.30</td><td>1354.20</td><td>56.27</td><td>30.77</td></tr><tr><td>PB</td><td>18.35</td><td>9.54</td><td>8.29</td><td>6.68</td></tr></table>"
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9752,
+                "bbox": [
+                    848,
+                    1198,
+                    1531,
+                    1755
+                ],
+                "index": 7,
+                "html": "<table><tr><td colspan=\"5\"></td></tr><tr><td>现金流量表</td><td></td><td></td><td></td><td></td></tr><tr><td>净利润</td><td>-118</td><td>13</td><td>315</td><td>570</td></tr><tr><td>折旧和摊销</td><td>156</td><td>249</td><td>234</td><td>167</td></tr><tr><td>营运资本变动</td><td>-128</td><td>538</td><td>-29</td><td>-32</td></tr><tr><td>其他</td><td>90</td><td>2</td><td>4</td><td>-15</td></tr><tr><td>经营活动现金流净额</td><td>1</td><td>802</td><td>524</td><td>691</td></tr><tr><td>资本开支</td><td>-208</td><td>-14</td><td>-3</td><td>-2</td></tr><tr><td>其他</td><td>7</td><td>14</td><td>7</td><td>17</td></tr><tr><td>投资活动现金流净额</td><td>-201</td><td>0</td><td>4</td><td>15</td></tr><tr><td>股权融资</td><td>0</td><td>839</td><td>0</td><td>0</td></tr><tr><td>债务融资</td><td>4</td><td>-500</td><td>-400</td><td>-300</td></tr><tr><td>其他</td><td>33</td><td>-26</td><td>-44</td><td>-63</td></tr><tr><td>筹资活动现金流净额</td><td>37</td><td>313</td><td>-444</td><td>-363</td></tr><tr><td>现金及现金等价物净增加额</td><td>-164</td><td>1116</td><td>84</td><td>343</td></tr></table>"
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9411,
+                "bbox": [
+                    130,
+                    2182,
+                    537,
+                    2213
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.8521,
+                "bbox": [
+                    1503,
+                    2184,
+                    1525,
+                    2211
+                ],
+                "index": 9
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    142,
+                    217,
+                    420,
+                    246
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1172,
+                    96,
+                    1268,
+                    198
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1266,
+                    97,
+                    1533,
+                    168
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1273,
+                    159,
+                    1525,
+                    184
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    2183,
+                    534,
+                    2211
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1503,
+                    2183,
+                    1525,
+                    2213
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    141,
+                    1996,
+                    617,
+                    2030
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 2,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9627,
+                "bbox": [
+                    1167,
+                    98,
+                    1526,
+                    187
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.8677,
+                "bbox": [
+                    131,
+                    234,
+                    472,
+                    273
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 21,
+                "label": "table",
+                "score": 0.9878,
+                "bbox": [
+                    132,
+                    303,
+                    1517,
+                    844
+                ],
+                "index": 3,
+                "html": "<table><tr><td rowspan=1 colspan=1>投资评级标准</td><td rowspan=1 colspan=1>类型</td><td rowspan=1 colspan=1>评级</td><td rowspan=1 colspan=1>说明</td></tr><tr><td rowspan=11 colspan=1>报告中投资建议的评级标准：报告发布日后的6个月内的相对市场表现，即报告发布日后的6个月内的公司股价（或行业指数、可转债价格）的涨跌幅相对同期相关证券市场基准指数的涨跌幅。市场基准指数的选取：A股市场以沪深300指数为基准；新三板市场以三板成指为基准；可转债市场以中信标普可转债指数为基准；香港市场以恒生指数为基准；美国市场以标普500或纳斯达克综合指数为基准。</td><td rowspan=4 colspan=1>股票评级</td><td rowspan=1 colspan=1>买入</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在20%以上</td></tr><tr><td rowspan=1 colspan=1>增持</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在10%与20%之间</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在-10%与10%之间</td></tr><tr><td rowspan=1 colspan=1>回避</td><td rowspan=1 colspan=1>预期个股相对同期基准指数涨幅在-10%以下</td></tr><tr><td rowspan=3 colspan=1>行业评级</td><td rowspan=1 colspan=1>强于大市</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在10%以上</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在-10%与10%之间</td></tr><tr><td rowspan=1 colspan=1>弱于大市</td><td rowspan=1 colspan=1>预期行业相对同期基准指数涨幅在-10%以下</td></tr><tr><td rowspan=4 colspan=1>可转债评级</td><td rowspan=1 colspan=1>推荐</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在10%以上</td></tr><tr><td rowspan=1 colspan=1>谨慎推荐</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在5%与10%之间</td></tr><tr><td rowspan=1 colspan=1>中性</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在-5%与5%之间</td></tr><tr><td rowspan=1 colspan=1>回避</td><td rowspan=1 colspan=1>预期可转债相对同期基准指数涨幅在-5%以下</td></tr></table>"
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9452,
+                "bbox": [
+                    127,
+                    877,
+                    306,
+                    917
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9479,
+                "bbox": [
+                    125,
+                    955,
+                    1486,
+                    991
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9837,
+                "bbox": [
+                    126,
+                    1020,
+                    1526,
+                    1144
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9374,
+                "bbox": [
+                    128,
+                    1166,
+                    272,
+                    1206
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9469,
+                "bbox": [
+                    127,
+                    1244,
+                    1415,
+                    1280
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9836,
+                "bbox": [
+                    125,
+                    1300,
+                    1525,
+                    1424
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9834,
+                "bbox": [
+                    126,
+                    1444,
+                    1525,
+                    1566
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9783,
+                "bbox": [
+                    126,
+                    1586,
+                    1525,
+                    1666
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9837,
+                "bbox": [
+                    127,
+                    1686,
+                    1522,
+                    1809
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9858,
+                "bbox": [
+                    126,
+                    1829,
+                    1526,
+                    1995
+                ],
+                "index": 13
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9515,
+                "bbox": [
+                    129,
+                    2017,
+                    596,
+                    2051
+                ],
+                "index": 14
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9344,
+                "bbox": [
+                    129,
+                    2182,
+                    538,
+                    2213
+                ],
+                "index": 15
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.8389,
+                "bbox": [
+                    1502,
+                    2185,
+                    1524,
+                    2211
+                ],
+                "index": 16
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    135,
+                    235,
+                    469,
+                    273
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    128,
+                    874,
+                    307,
+                    920
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    128,
+                    1163,
+                    274,
+                    1209
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1164,
+                    94,
+                    1272,
+                    196
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1265,
+                    98,
+                    1533,
+                    167
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1273,
+                    159,
+                    1524,
+                    184
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    2183,
+                    534,
+                    2211
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1502,
+                    2185,
+                    1525,
+                    2214
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    954,
+                    1483,
+                    987
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    135,
+                    1023,
+                    1522,
+                    1053
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    1064,
+                    1519,
+                    1095
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    1109,
+                    594,
+                    1140
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    1301,
+                    1521,
+                    1333
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    1346,
+                    1521,
+                    1376
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    1389,
+                    1181,
+                    1420
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    137,
+                    1448,
+                    1506,
+                    1474
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    1490,
+                    1519,
+                    1516
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    1533,
+                    374,
+                    1564
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    146,
+                    1689,
+                    1522,
+                    1719
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    136,
+                    1732,
+                    1509,
+                    1762
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    1775,
+                    707,
+                    1806
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    136,
+                    1245,
+                    1415,
+                    1278
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    135,
+                    1588,
+                    1521,
+                    1617
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    1634,
+                    902,
+                    1662
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    1829,
+                    1506,
+                    1861
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    135,
+                    1874,
+                    1521,
+                    1906
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    1917,
+                    1521,
+                    1949
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    129,
+                    1957,
+                    238,
+                    1996
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    2017,
+                    593,
+                    2050
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 3,
+            "width": 1654,
+            "height": 2339
+        }
+    },
+    {
+        "layout_dets": [
+            {
+                "cls_id": 13,
+                "label": "header_image",
+                "score": 0.9486,
+                "bbox": [
+                    1167,
+                    98,
+                    1526,
+                    187
+                ],
+                "index": 1
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9323,
+                "bbox": [
+                    127,
+                    244,
+                    274,
+                    285
+                ],
+                "index": 2
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9676,
+                "bbox": [
+                    125,
+                    323,
+                    1511,
+                    406
+                ],
+                "index": 3
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9839,
+                "bbox": [
+                    125,
+                    417,
+                    1526,
+                    594
+                ],
+                "index": 4
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.9811,
+                "bbox": [
+                    124,
+                    606,
+                    1528,
+                    785
+                ],
+                "index": 5
+            },
+            {
+                "cls_id": 17,
+                "label": "paragraph_title",
+                "score": 0.9437,
+                "bbox": [
+                    128,
+                    857,
+                    375,
+                    900
+                ],
+                "index": 6
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5494,
+                "bbox": [
+                    137,
+                    928,
+                    816,
+                    1121
+                ],
+                "index": 7
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5992,
+                "bbox": [
+                    138,
+                    1167,
+                    783,
+                    1323
+                ],
+                "index": 8
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5714,
+                "bbox": [
+                    835,
+                    970,
+                    1200,
+                    1008
+                ],
+                "index": 9
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5678,
+                "bbox": [
+                    834,
+                    1005,
+                    1503,
+                    1079
+                ],
+                "index": 10
+            },
+            {
+                "cls_id": 22,
+                "label": "text",
+                "score": 0.5433,
+                "bbox": [
+                    834,
+                    1080,
+                    1019,
+                    1120
+                ],
+                "index": 11
+            },
+            {
+                "cls_id": 8,
+                "label": "footer",
+                "score": 0.9363,
+                "bbox": [
+                    129,
+                    2182,
+                    538,
+                    2214
+                ],
+                "index": 12
+            },
+            {
+                "cls_id": 16,
+                "label": "number",
+                "score": 0.8523,
+                "bbox": [
+                    1502,
+                    2184,
+                    1524,
+                    2212
+                ],
+                "index": 13
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    837,
+                    1080,
+                    1013,
+                    1118
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    858,
+                    373,
+                    899
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    127,
+                    241,
+                    274,
+                    287
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1164,
+                    94,
+                    1272,
+                    196
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1265,
+                    98,
+                    1533,
+                    167
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1273,
+                    159,
+                    1524,
+                    184
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    837,
+                    967,
+                    1194,
+                    1012
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    134,
+                    2183,
+                    534,
+                    2211
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    1503,
+                    2183,
+                    1525,
+                    2214
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    190,
+                    324,
+                    1507,
+                    357
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    372,
+                    1488,
+                    401
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    187,
+                    419,
+                    1521,
+                    450
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    464,
+                    1521,
+                    495
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    129,
+                    509,
+                    1523,
+                    547
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    131,
+                    560,
+                    209,
+                    594
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    189,
+                    608,
+                    1522,
+                    639
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    653,
+                    1522,
+                    684
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    133,
+                    703,
+                    1524,
+                    734
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    132,
+                    749,
+                    376,
+                    781
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    140,
+                    927,
+                    212,
+                    969
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    144,
+                    968,
+                    501,
+                    1010
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    145,
+                    1004,
+                    815,
+                    1040
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    145,
+                    1039,
+                    240,
+                    1079
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    145,
+                    1080,
+                    320,
+                    1118
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    143,
+                    1167,
+                    212,
+                    1205
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    145,
+                    1206,
+                    501,
+                    1248
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    146,
+                    1244,
+                    778,
+                    1278
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    146,
+                    1283,
+                    320,
+                    1318
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    837,
+                    1005,
+                    1501,
+                    1041
+                ],
+                "score": 1.0,
+                "text": ""
+            },
+            {
+                "label": "ocr_text",
+                "bbox": [
+                    836,
+                    1041,
+                    875,
+                    1079
+                ],
+                "score": 1.0,
+                "text": ""
+            }
+        ],
+        "page_info": {
+            "page_no": 4,
+            "width": 1654,
+            "height": 2339
+        }
+    }
+]
