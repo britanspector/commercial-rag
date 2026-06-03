@@ -18,3 +18,7 @@ torch>=2.0.0
 rank-bm25>=0.2.2
 jieba>=0.42.1
 FlagEmbedding>=1.2.10
+
+# API 服务
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0

@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 from eval_retrieval import EvalQuestion, is_hit_relevant, mrr, recall_at_k
 from rag_answer import generate_answer_with_citations, is_answer_factually_supported
+from rag_pipeline import RAGPipeline
 
 if TYPE_CHECKING:
     from reranker import BGEReranker
@@ -69,17 +70,20 @@ def evaluate_answer_row(
             question.query, list(hits), top_k=len(hits), normalize=True
         )
 
-    rag_answer = generate_answer_with_citations(
-        question.query, scored_hits, refusal_threshold=refusal_threshold
+    pipeline_result = RAGPipeline.generate_from_reranked_hits(
+        question.query,
+        recall_hits=scored_hits,
+        rerank_hits=scored_hits,
+        refusal_threshold=refusal_threshold,
     )
     retrieval_hit = any(is_hit_relevant(hit, question) for hit in scored_hits)
     fact_ok = is_answer_factually_supported(
-        rag_answer.answer,
+        pipeline_result.answer,
         question.must_contain_any,
         question.gold_answer,
     )
 
-    if rag_answer.refused:
+    if pipeline_result.refused:
         refusal_ok = not retrieval_hit
     else:
         refusal_ok = retrieval_hit and fact_ok
@@ -87,9 +91,9 @@ def evaluate_answer_row(
     return {
         "question_id": question.id,
         "strategy": strategy,
-        "refused": rag_answer.refused,
-        "top_rerank_score": rag_answer.top_rerank_score,
-        "answer_preview": rag_answer.answer[:200],
+        "refused": pipeline_result.refused,
+        "top_rerank_score": pipeline_result.top_rerank_score,
+        "answer_preview": pipeline_result.answer[:200],
         "answer_factually_supported": fact_ok,
         "refusal_appropriate": refusal_ok,
         "retrieval_hit_in_top5": retrieval_hit,
