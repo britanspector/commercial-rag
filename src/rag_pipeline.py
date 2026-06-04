@@ -15,6 +15,10 @@ CURRENT_DIR = Path(__file__).parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
+from hf_env import bootstrap_hf_cache
+
+bootstrap_hf_cache()
+
 from bm25_store import DEFAULT_INDEX_PATH
 from embed_chunks import EMBED_DIM, OUTPUT_MILVUS_DB, load_embedder, resolve_device
 from pipeline.answer_generate import generate_answer

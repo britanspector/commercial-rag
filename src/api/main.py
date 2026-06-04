@@ -7,16 +7,20 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool
 
 CURRENT_DIR = Path(__file__).parent.parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
-from api.deps import close_pipeline, get_pipeline, pipeline_status
-from api.schemas import ChatResponse, HealthResponse, RAGRequest, SearchResponse
-from api.serializers import chat_result_to_response, search_result_to_response
+from hf_env import bootstrap_hf_cache
+
+bootstrap_hf_cache()
+
+from api.deps import close_pipeline, get_pipeline, pipeline_status, reload_pipeline
+from api.schemas import ChatResponse, HealthResponse, RAGRequest, SearchResponse, UploadResponse
+from api.serializers import chat_result_to_response, ingest_result_to_response, search_result_to_response
 from rag_constants import (
     DEFAULT_RERANK_REFUSAL_THRESHOLD,
     DEFAULT_RERANK_TOP_K,
@@ -132,3 +136,57 @@ async def chat(body: RAGRequest, request: Request) -> ChatResponse:
         raise HTTPException(status_code=500, detail=f"问答失败：{exc}") from exc
 
     return chat_result_to_response(result)
+
+
+@app.post("/upload", response_model=UploadResponse)
+async def upload_pdf(
+    request: Request,
+    file: UploadFile = File(..., description="研报 PDF 文件"),
+    industry: str = Form(default="", description="行业子目录，如 semi-conductor；默认 uploads"),
+    industry_label: str = Form(default="", description="行业中文标签，如 半导体"),
+    replace_existing: bool = Form(default=True, description="同 doc_id 是否覆盖旧数据"),
+) -> UploadResponse:
+    """
+    上传 PDF 并自动完成：MinerU 解析 → 分块 → 向量化 → Milvus + BM25 入库。
+
+    首次调用可能耗时较长（MinerU 解析 + Embedding）。入库后会重置 Pipeline，
+    后续 /search 与 /chat 可直接检索新文档。
+    """
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="文件名不能为空")
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="仅支持 PDF 文件")
+
+    content = await file.read()
+    if not content:
+        raise HTTPException(status_code=400, detail="上传文件为空")
+    if len(content) > 100 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="文件过大（上限 100MB）")
+
+    from pipeline.ingest import ingest_pdf_bytes
+
+    try:
+        result = await run_in_threadpool(
+            ingest_pdf_bytes,
+            content,
+            file.filename,
+            industry=industry,
+            industry_label=industry_label,
+            replace_existing=replace_existing,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=f"PDF 解析失败：{exc}") from exc
+    except MemoryError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="内存不足，无法完成解析或向量化。建议扩容或改用 CPU 解析。",
+        ) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"入库失败：{exc}") from exc
+
+    reload_pipeline(request.app)
+    return ingest_result_to_response(result)

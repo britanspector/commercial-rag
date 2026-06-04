@@ -53,6 +53,16 @@ class MilvusChunkStore:
             return
         self.client.insert(collection_name=COLLECTION_NAME, data=rows)
 
+    def delete_by_doc_id(self, doc_id: str) -> None:
+        """删除指定文档的全部向量（用于重新上传覆盖）。"""
+        if not doc_id or not self.has_collection():
+            return
+        safe_doc_id = doc_id.replace('"', '\\"')
+        self.client.delete(
+            collection_name=COLLECTION_NAME,
+            filter=f'doc_id == "{safe_doc_id}"',
+        )
+
     def flush(self) -> None:
         """Milvus Lite 在 Windows 上 flush 可能报错，默认依赖 close 持久化。"""
         try:

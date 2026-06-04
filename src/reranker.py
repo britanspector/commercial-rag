@@ -6,13 +6,16 @@ from __future__ import annotations
 
 import gc
 import math
-import os
 import sys
 from pathlib import Path
 
 CURRENT_DIR = Path(__file__).parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
+
+from hf_env import bootstrap_hf_cache, resolve_local_model_path
+
+bootstrap_hf_cache()
 
 RERANK_MODEL = "BAAI/bge-reranker-v2-m3"
 RERANK_BATCH_SIZE = 4
@@ -40,43 +43,15 @@ def _sigmoid(value: float) -> float:
     return exp_value / (1.0 + exp_value)
 
 
-def _resolve_model_path(model_name: str) -> str:
-    """优先使用本地 HuggingFace 缓存 snapshot，避免联网与重复下载。"""
-    cache_root = _resolve_hf_hub_cache_root()
-    repo_dir = cache_root / f"models--{model_name.replace('/', '--')}"
-    refs_main = repo_dir / "refs" / "main"
-    if refs_main.exists():
-        snapshot_id = refs_main.read_text(encoding="utf-8").strip()
-        snapshot_dir = repo_dir / "snapshots" / snapshot_id
-        if snapshot_dir.is_dir():
-            return str(snapshot_dir)
-    return model_name
-
-
-def _resolve_hf_hub_cache_root() -> Path:
-    """从环境变量推导 HF hub 缓存根目录，兼容自定义盘符。"""
-    for key in ("HF_HUB_CACHE", "HUGGINGFACE_HUB_CACHE", "TRANSFORMERS_CACHE"):
-        value = os.environ.get(key, "").strip()
-        if value:
-            return Path(value)
-
-    hf_home = os.environ.get("HF_HOME", "").strip()
-    if hf_home:
-        return Path(hf_home) / "hub"
-
-    return Path.home() / ".cache" / "huggingface" / "hub"
-
-
 class BGEReranker:
     def __init__(self, device: str | None = None, use_fp16: bool = True) -> None:
         from embed_chunks import resolve_device
 
-        os.environ.pop("HF_HUB_OFFLINE", None)
-        os.environ.pop("TRANSFORMERS_OFFLINE", None)
+        bootstrap_hf_cache()
 
         self.device = device or resolve_device()
         self._backend = "flag"
-        model_path = _resolve_model_path(RERANK_MODEL)
+        model_path = resolve_local_model_path(RERANK_MODEL)
 
         print(f"正在加载 Reranker：{RERANK_MODEL}")
         print(f"  设备：{self.device}，本地路径：{model_path}")

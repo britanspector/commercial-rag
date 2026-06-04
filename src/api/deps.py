@@ -31,6 +31,11 @@ def close_pipeline(app: FastAPI) -> None:
             app.state.pipeline = None
 
 
+def reload_pipeline(app: FastAPI) -> None:
+    """入库后关闭 Pipeline，下次 /search /chat 将重新加载索引。"""
+    close_pipeline(app)
+
+
 def pipeline_status(app: FastAPI) -> dict[str, bool]:
     pipeline = getattr(app.state, "pipeline", None)
     if pipeline is None:

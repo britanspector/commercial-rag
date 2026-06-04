@@ -13,8 +13,38 @@ from api.schemas import (
     RerankStageResponse,
     RetrievedChunkResponse,
     SearchResponse,
+    UploadResponse,
+    UploadStageResponse,
 )
 from rag_types import Citation, QueryRewriteResult, RAGPipelineResult, RAGSearchResult, RetrievedChunk
+
+
+def ingest_result_to_response(result) -> UploadResponse:
+    from pipeline.ingest import IngestResult
+
+    if not isinstance(result, IngestResult):
+        raise TypeError("ingest_result_to_response 需要 IngestResult")
+
+    return UploadResponse(
+        doc_id=result.doc_id,
+        filename=result.filename,
+        industry=result.industry,
+        industry_label=result.industry_label,
+        source_pdf_path=result.source_pdf_path,
+        display_name=result.display_name,
+        company_name=result.company_name,
+        stock_code=result.stock_code,
+        chunk_count=result.chunk_count,
+        retrievable_chunk_count=result.retrievable_chunk_count,
+        milvus_rows_inserted=result.milvus_rows_inserted,
+        milvus_total_rows=result.milvus_total_rows,
+        bm25_total_chunks=result.bm25_total_chunks,
+        replaced_existing=result.replaced_existing,
+        stages=[
+            UploadStageResponse(name=stage.name, status=stage.status, detail=stage.detail)
+            for stage in result.stages
+        ],
+    )
 
 
 def _chunk_to_response(chunk: RetrievedChunk) -> RetrievedChunkResponse:

@@ -17,6 +17,10 @@ CURRENT_DIR = Path(__file__).parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
+from hf_env import bootstrap_hf_cache, local_files_only, resolve_local_model_path
+
+bootstrap_hf_cache()
+
 import pandas as pd
 import torch
 from sentence_transformers import SentenceTransformer
@@ -66,21 +70,21 @@ def load_chunk_records() -> list[dict]:
 
 
 def load_embedder(device: str) -> SentenceTransformer:
-    import os
-
+    bootstrap_hf_cache()
     if device == "cuda":
         torch.cuda.empty_cache()
-    local_only = os.environ.get("HF_HUB_OFFLINE", "").lower() in ("1", "true", "yes")
+    model_path = resolve_local_model_path(EMBED_MODEL)
+    offline = local_files_only() or model_path != EMBED_MODEL
     try:
         return SentenceTransformer(
-            EMBED_MODEL,
+            model_path,
             device=device,
-            local_files_only=local_only,
+            local_files_only=offline,
         )
     except RuntimeError as error:
         if device == "cuda" and "out of memory" in str(error).lower():
             print("[警告] GPU 显存不足，Embedding 回退到 CPU")
-            return SentenceTransformer(EMBED_MODEL, device="cpu")
+            return SentenceTransformer(model_path, device="cpu", local_files_only=offline)
         raise
 
 
@@ -96,7 +100,11 @@ def encode_passages(model: SentenceTransformer, texts: list[str]) -> list[list[f
     except RuntimeError as error:
         if "out of memory" in str(error).lower():
             print("[警告] GPU 显存不足，改用 CPU 重新 encode ...")
-            cpu_model = SentenceTransformer(EMBED_MODEL, device="cpu")
+            cpu_model = SentenceTransformer(
+                resolve_local_model_path(EMBED_MODEL),
+                device="cpu",
+                local_files_only=local_files_only(),
+            )
             embeddings = cpu_model.encode(
                 texts,
                 batch_size=EMBED_BATCH_SIZE,
@@ -107,6 +115,57 @@ def encode_passages(model: SentenceTransformer, texts: list[str]) -> list[list[f
         else:
             raise
     return embeddings.tolist()
+
+
+def embed_chunk_records(
+    records: list[dict],
+    *,
+    device: str | None = None,
+    embedder: SentenceTransformer | None = None,
+) -> tuple[list[dict], SentenceTransformer]:
+    """
+    将可检索 chunk 向量化并转为 Milvus 行。
+
+    返回 (milvus_rows, embedder)，便于调用方复用 embedder 实例。
+    """
+    if not records:
+        raise ValueError("没有可向量化的 chunk 记录")
+
+    resolved_device = device or resolve_device()
+    model = embedder or load_embedder(resolved_device)
+    texts = [record.get("embedding_text") or record["text"] for record in records]
+    all_rows: list[dict] = []
+
+    for start in range(0, len(records), EMBED_BATCH_SIZE):
+        batch_records = records[start : start + EMBED_BATCH_SIZE]
+        batch_texts = texts[start : start + EMBED_BATCH_SIZE]
+        batch_vectors = encode_passages(model, batch_texts)
+        all_rows.extend(
+            chunk_record_to_milvus_row(record, vector)
+            for record, vector in zip(batch_records, batch_vectors)
+        )
+
+    return all_rows, model
+
+
+def insert_vectors_for_doc(
+    rows: list[dict],
+    *,
+    doc_id: str,
+    replace_existing: bool = True,
+) -> int:
+    """增量写入 Milvus；replace_existing 时先删除同 doc_id 旧向量。"""
+    store = MilvusChunkStore(OUTPUT_MILVUS_DB, vector_dim=EMBED_DIM)
+    try:
+        if not store.has_collection():
+            store.recreate_collection()
+        elif replace_existing:
+            store.delete_by_doc_id(doc_id)
+        store.insert_batch(rows)
+        store.flush()
+        return store.count()
+    finally:
+        store.close()
 
 
 def embed_and_store(recreate: bool = True) -> None:

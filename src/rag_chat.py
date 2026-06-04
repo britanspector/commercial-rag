@@ -16,6 +16,32 @@ CURRENT_DIR = Path(__file__).parent
 if str(CURRENT_DIR) not in sys.path:
     sys.path.insert(0, str(CURRENT_DIR))
 
+from hf_env import bootstrap_hf_cache
+
+bootstrap_hf_cache()
+
+
+def _ensure_runtime_deps() -> None:
+    """检测核心依赖；本项目默认使用 conda base 环境。"""
+    missing: list[str] = []
+    for mod in ("jieba", "pandas", "torch", "sentence_transformers", "pymilvus"):
+        try:
+            __import__(mod)
+        except ModuleNotFoundError:
+            missing.append(mod)
+    if not missing:
+        return
+    print(f"缺少依赖：{', '.join(missing)}", file=sys.stderr)
+    print(f"当前 Python：{sys.executable}", file=sys.stderr)
+    if "commercial-rag" in sys.executable:
+        print("本项目依赖安装在 base 环境，请执行：conda activate base", file=sys.stderr)
+    else:
+        print("请安装依赖：pip install -r requirements.txt", file=sys.stderr)
+    raise SystemExit(1)
+
+
+_ensure_runtime_deps()
+
 from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, DEFAULT_RECALL_TOP_K, DEFAULT_RERANK_TOP_K
 from rag_pipeline import RAGPipeline
 from rag_types import RAGPipelineResult

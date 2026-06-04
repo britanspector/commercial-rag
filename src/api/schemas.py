@@ -107,3 +107,27 @@ class HealthResponse(BaseModel):
     pipeline_ready: bool
     models_loaded: bool = False
     defaults: dict[str, float | int | str]
+
+
+class UploadStageResponse(BaseModel):
+    name: str
+    status: str
+    detail: str = ""
+
+
+class UploadResponse(BaseModel):
+    doc_id: str
+    filename: str
+    industry: str
+    industry_label: str
+    source_pdf_path: str
+    display_name: str = ""
+    company_name: str = ""
+    stock_code: str = ""
+    chunk_count: int
+    retrievable_chunk_count: int
+    milvus_rows_inserted: int
+    milvus_total_rows: int
+    bm25_total_chunks: int
+    replaced_existing: bool
+    stages: list[UploadStageResponse]
