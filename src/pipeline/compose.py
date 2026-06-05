@@ -7,7 +7,7 @@ from __future__ import annotations
 from pipeline.answer_generate import generate_answer
 from pipeline.evidence_check import check_evidence
 from pipeline.rerank import rerank_from_hits
-from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, REFUSAL_MESSAGE
+from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, REFUSAL_MESSAGE, format_refusal_message
 from rag_types import RAGAnswer
 from rag_types import (
     AnswerGenerateResult,
@@ -29,13 +29,29 @@ def compose_pipeline_result(
     retrieve_result: HybridRetrieveResult | None = None,
 ) -> RAGPipelineResult:
     """将 rerank 之后的步骤组装为完整 Pipeline 结果。"""
-    evidence = check_evidence(rerank_result, refusal_threshold=refusal_threshold)
+    stock_code = query_rewrite.stock_code if query_rewrite else ""
+    query_type = query_rewrite.query_type if query_rewrite else "factual"
+    compare_entities = query_rewrite.compare_entities if query_rewrite else []
+
+    evidence = check_evidence(
+        rerank_result,
+        refusal_threshold=refusal_threshold,
+        query=query,
+        stock_code=stock_code,
+        query_type=query_type,
+        compare_entities=compare_entities,
+    )
     answer_gen: AnswerGenerateResult | None = None
 
     if not evidence.passed:
+        refusal_answer = evidence.refusal_message or format_refusal_message(
+            evidence.refusal_reason,
+            top_rerank_score=evidence.top_rerank_score,
+            refusal_threshold=refusal_threshold,
+        )
         rag_answer = RAGAnswer(
             query=query,
-            answer=REFUSAL_MESSAGE,
+            answer=refusal_answer or REFUSAL_MESSAGE,
             refused=True,
             refusal_reason=evidence.refusal_reason,
             top_rerank_score=evidence.top_rerank_score,

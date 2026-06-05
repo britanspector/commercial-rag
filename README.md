@@ -7,7 +7,8 @@
 
 > **最新评测结果**：[docs/eval-results.md](docs/eval-results.md)  
 > 项目历程与实验对照：[docs/midterm-summary.md](docs/midterm-summary.md)  
-> AutoDL / Cursor Agent：[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)
+> AutoDL / Cursor Agent：[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)  
+> 服务器迁移与 RAGAS 交接：[docs/SERVER_MIGRATION_HANDOFF.md](docs/SERVER_MIGRATION_HANDOFF.md)
 
 ---
 
@@ -85,6 +86,8 @@ python src/build_bm25_index.py
 
 python src/eval_retrieval.py --compare-routes --top-k 10
 python src/eval_rerank.py
+python src/eval_generation.py --skip-ragas --save-detail   # 阶段一：Citation/Refusal
+python src/eval_ragas.py   # 本地 RAGAS（Ollama qwen3:8b，需先 ollama pull qwen3:8b）
 
 python src/rag_chat.py "京仪装备2026E毛利率预测是多少？"
 ```
@@ -140,6 +143,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 | `src/eval_rerank.py` | 混合 Top20→Rerank vs 混合 Top5 对比 |
 | `src/rag_pipeline.py` | RAG 流水线（⚠ 当前仍为纯向量召回，待接 hybrid） |
 | `src/rag_chat.py` | CLI 问答 |
+| `src/db/` | 审计持久化（SQLite / PostgreSQL，见 [docs/audit-db.md](docs/audit-db.md)） |
 
 - **文档**：[docs/rerank-scheme.md](docs/rerank-scheme.md)
 

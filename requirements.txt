@@ -23,3 +23,19 @@ FlagEmbedding>=1.2.10
 fastapi>=0.110.0
 uvicorn[standard]>=0.27.0
 python-multipart>=0.0.9
+
+# 审计持久化（SQLite 默认；PostgreSQL 需另装 psycopg[binary]）
+sqlalchemy>=2.0.0
+
+# 生成质量评测 RAGAS（本地 Ollama + bge）
+# LangChain 须同一 0.2.x 线：community 0.2.19 + openai 0.2.x + core 0.2.43
+# 勿与 langchain-openai 1.x / langchain-community 0.4.x 混装（会 ImportError）
+ragas>=0.2.10,<0.3
+datasets>=2.14.0
+langchain==0.2.17
+langchain-core==0.2.43
+langchain-community==0.2.19
+langchain-openai==0.1.25
+langchain-text-splitters==0.2.4
+langsmith>=0.1.112,<0.2
+numpy>=1.26,<2

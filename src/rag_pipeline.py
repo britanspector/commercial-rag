@@ -208,9 +208,24 @@ class RAGPipeline:
         assert self._reranker is not None
         return rerank(query, hits, self._reranker, top_k=self.config.rerank_top_k)
 
-    def evidence_check(self, rerank_result: RerankStepResult) -> EvidenceCheckResult:
+    def evidence_check(
+        self,
+        rerank_result: RerankStepResult,
+        *,
+        query: str = "",
+        stock_code: str = "",
+        query_type: str = "factual",
+        compare_entities: list[str] | None = None,
+    ) -> EvidenceCheckResult:
         """步骤 4：证据充分性校验。"""
-        return check_evidence(rerank_result, refusal_threshold=self.config.refusal_threshold)
+        return check_evidence(
+            rerank_result,
+            refusal_threshold=self.config.refusal_threshold,
+            query=query,
+            stock_code=stock_code,
+            query_type=query_type,
+            compare_entities=compare_entities,
+        )
 
     def answer_generate(
         self,

@@ -18,3 +18,7 @@ __pycache__/
 # Vector store (regenerate via src/embed_chunks.py)
 /data/vector/*
 !/data/vector/.gitkeep
+
+# RAG 审计库（本地 SQLite，默认 data/audit/rag_audit.db）
+/data/audit/*
+!/data/audit/.gitkeep

@@ -9,7 +9,11 @@ import re
 from pipeline.answer_generate import generate_answer
 from pipeline.evidence_check import check_evidence
 from pipeline.rerank import rerank_from_hits
-from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, REFUSAL_MESSAGE
+from rag_constants import (
+    DEFAULT_RERANK_REFUSAL_THRESHOLD,
+    REFUSAL_MESSAGE,
+    format_refusal_message,
+)
 from rag_tokens import must_tokens_match
 from rag_types import Citation, RAGAnswer, build_citations
 
@@ -32,9 +36,14 @@ def generate_answer_with_citations(
     evidence = check_evidence(rerank_result, refusal_threshold=refusal_threshold)
 
     if not evidence.passed:
+        refusal_answer = evidence.refusal_message or format_refusal_message(
+            evidence.refusal_reason,
+            top_rerank_score=evidence.top_rerank_score,
+            refusal_threshold=refusal_threshold,
+        )
         return RAGAnswer(
             query=query,
-            answer=REFUSAL_MESSAGE,
+            answer=refusal_answer or REFUSAL_MESSAGE,
             refused=True,
             refusal_reason=evidence.refusal_reason,
             top_rerank_score=evidence.top_rerank_score,
@@ -57,7 +66,7 @@ def is_answer_factually_supported(
     must_contain_any: list[str],
     gold_answer: str = "",
 ) -> bool:
-    if not answer or answer == REFUSAL_MESSAGE:
+    if not answer or answer == REFUSAL_MESSAGE or answer.startswith("我不确定"):
         return False
     if must_contain_any:
         return must_tokens_match(answer, must_contain_any)

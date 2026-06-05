@@ -72,6 +72,7 @@ class IngestResult:
     bm25_total_chunks: int = 0
     replaced_existing: bool = False
     stages: list[IngestStage] = field(default_factory=list)
+    chunk_records: list[dict] = field(default_factory=list)
 
 
 def _sanitize_filename(filename: str) -> str:
@@ -285,6 +286,7 @@ def ingest_pdf_source(
         _replace_doc_chunks(source.doc_id, chunk_records)
 
         retrievable = [record for record in chunk_records if record.get("is_retrievable", True)]
+        result.chunk_records = chunk_records
         result.chunk_count = len(chunk_records)
         result.retrievable_chunk_count = len(retrievable)
         if chunk_records:

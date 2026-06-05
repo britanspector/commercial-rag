@@ -111,6 +111,14 @@ python scripts/eval_hybrid_weight_sweep.py --weights 0.5 0.4 0.35 0.3 0.6 0.7
 
 **优化历程（150 题 Recall@10 / 答案准确率）**：84.7% / 82.7%（基线）→ 87.3% / 86.7%（P0+P1）→ **92.0% / 88.0%**（P2 + 权重 0.35）。
 
+## 生成质量评测（阶段一）
+
+全链路 Pipeline + Citation/Refusal + 可选 RAGAS，见 **[eval-generation-scheme.md](eval-generation-scheme.md)**：
+
+```bash
+python src/eval_generation.py --skip-ragas
+```
+
 ## Milvus 索引类型实验
 
 FAISS Flat/IVF/HNSW 对比在 **Milvus Lite 上不可直接复现**，可行方案见 `docs/milvus-index-comparison.md`。

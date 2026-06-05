@@ -22,16 +22,31 @@ class Citation:
     page_end: int
     display_name: str
     score_rerank: float
+    doc_id: str = ""
+    source_pdf_path: str = ""
+    filename: str = ""
+
+    def source_document(self) -> str:
+        return (
+            self.display_name.strip()
+            or self.filename.strip()
+            or self.company_name.strip()
+            or self.doc_id.strip()
+        )
+
+    def page_label(self) -> str:
+        if not self.page_start:
+            return "页码未知"
+        if self.page_start == self.page_end or not self.page_end:
+            return f"第{self.page_start}页"
+        return f"第{self.page_start}-{self.page_end}页"
 
     def format_line(self) -> str:
-        page = ""
-        if self.page_start:
-            page = f", 第{self.page_start}页" if self.page_start == self.page_end else (
-                f", 第{self.page_start}-{self.page_end}页"
-            )
+        doc = self.source_document() or "未知文档"
+        page = self.page_label()
         return (
-            f"[{self.index}] {self.company_name} — {self.section_title}"
-            f"{page} (chunk: {self.chunk_id}, rerank={self.score_rerank:.3f})"
+            f"[{self.index}] {doc} — {self.section_title}，{page} "
+            f"(chunk: {self.chunk_id}, doc: {self.doc_id or '-'}, rerank={self.score_rerank:.3f})"
         )
 
 
@@ -59,6 +74,9 @@ def build_citations(hits: list[dict]) -> list[Citation]:
                 page_end=int(hit.get("page_end") or 0),
                 display_name=str(hit.get("display_name", "")),
                 score_rerank=float(hit.get("score_rerank") or hit.get("score") or 0.0),
+                doc_id=str(hit.get("doc_id", "")),
+                source_pdf_path=str(hit.get("source_pdf_path", "")),
+                filename=str(hit.get("filename", "")),
             )
         )
     return citations
@@ -204,14 +222,22 @@ class EvidenceCheckResult:
     passed: bool
     top_rerank_score: float
     refusal_reason: str = ""
+    refusal_message: str = ""
+    refusal_detail: dict[str, Any] = field(default_factory=dict)
     evidence_hits: list[dict] = field(default_factory=list)
+    citation_count: int = 0
+    checks: list[dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "passed": self.passed,
             "top_rerank_score": self.top_rerank_score,
             "refusal_reason": self.refusal_reason,
-            "evidence_hits": self.evidence_hits,
+            "refusal_message": self.refusal_message,
+            "refusal_detail": self.refusal_detail,
+            "citation_count": self.citation_count,
+            "checks": self.checks,
+            "evidence_hit_count": len(self.evidence_hits),
         }
 
 

@@ -1,3 +1,7 @@
+## 重要命令行命令：
+`python -m uvicorn api.main:app --host 0.0.0.0 --port 8001 --app-dir src`
+打开 http://127.0.0.1:8001/docs# 后端测试网页
+
 ## 技术选型：
 
 ### Embedding：`bge-large-zh-v1.5`

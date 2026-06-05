@@ -51,7 +51,13 @@ from retrieval import RecallRoute
 def print_answer(result: RAGPipelineResult) -> None:
     print("\n" + "=" * 70)
     if result.refused:
-        print(f"[拒答] {result.refusal_reason} | top_rerank={result.top_rerank_score:.3f}")
+        msg = ""
+        if result.evidence_check and result.evidence_check.refusal_message:
+            msg = result.evidence_check.refusal_message
+        print(
+            f"[拒答] {result.refusal_reason} | top_rerank={result.top_rerank_score:.3f}"
+            + (f"\n  {msg}" if msg else "")
+        )
     else:
         print(f"[回答] top_rerank={result.top_rerank_score:.3f}")
     print("-" * 70)

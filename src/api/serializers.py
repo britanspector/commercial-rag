@@ -87,16 +87,23 @@ def search_result_to_response(result: RAGSearchResult) -> SearchResponse:
 
 
 def _citation_to_response(citation: Citation) -> CitationResponse:
-    return CitationResponse(**asdict(citation))
+    payload = asdict(citation)
+    payload["page_label"] = citation.page_label()
+    payload["source_document"] = citation.source_document()
+    return CitationResponse(**payload)
 
 
 def chat_result_to_response(result: RAGPipelineResult) -> ChatResponse:
     evidence = result.evidence_check
+    refusal_message = evidence.refusal_message if evidence else ""
+    if result.refused and not refusal_message:
+        refusal_message = result.answer
     return ChatResponse(
         query=result.query,
         answer=result.answer,
         refused=result.refused,
         refusal_reason=result.refusal_reason,
+        refusal_message=refusal_message,
         top_rerank_score=result.top_rerank_score,
         citations=[_citation_to_response(c) for c in result.citations],
         rerank_hits=[_chunk_to_response(chunk) for chunk in result.rerank_hits],
@@ -104,5 +111,8 @@ def chat_result_to_response(result: RAGPipelineResult) -> ChatResponse:
             passed=evidence.passed if evidence else not result.refused,
             top_rerank_score=evidence.top_rerank_score if evidence else result.top_rerank_score,
             refusal_reason=evidence.refusal_reason if evidence else result.refusal_reason,
+            refusal_message=refusal_message,
+            citation_count=evidence.citation_count if evidence else len(result.citations),
+            checks=evidence.checks if evidence else [],
         ),
     )

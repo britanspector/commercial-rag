@@ -1,15 +1,14 @@
 """
 answer_generate：基于通过校验的证据片段生成带引用的抽取式答案。
 
-仅在 evidence_check 通过后调用；拒答文案由 Pipeline 编排层根据 evidence_check 结果填充。
+答案正文与【参考文献】均包含来源文档与页码，供 Citation Accuracy 评测。
 """
 
 from __future__ import annotations
 
 import re
 
-from rag_types import build_citations
-from rag_types import AnswerGenerateResult, EvidenceCheckResult
+from rag_types import AnswerGenerateResult, EvidenceCheckResult, build_citations
 from reranker import hit_passage_text
 
 
@@ -34,6 +33,16 @@ def _extractive_snippet(text: str, max_chars: int = 320) -> str:
     return text[:max_chars] + "…"
 
 
+def _citation_source_prefix(citation) -> str:
+    doc = citation.source_document()
+    page = citation.page_label()
+    if doc and page != "页码未知":
+        return f"据《{doc}》({page})："
+    if doc:
+        return f"据《{doc}》："
+    return ""
+
+
 def generate_answer(
     query: str,
     evidence: EvidenceCheckResult,
@@ -47,18 +56,22 @@ def generate_answer(
     调用方须保证 evidence.passed 为 True。
     """
     hits = rerank_hits if rerank_hits is not None else evidence.evidence_hits
-    citations = build_citations(hits[:3])
+    citations = build_citations(hits[: evidence.citation_count or 3])
     snippets: list[str] = []
-    for citation, hit in zip(citations, hits[:3]):
-        snippet = _extractive_snippet(hit_passage_text(hit))
-        if snippet:
-            snippets.append(f"{snippet} [{citation.index}]")
 
-    body = (
-        " ".join(snippets)
-        if snippets
-        else _extractive_snippet(hit_passage_text(hits[0])) + " [1]"
-    )
+    for citation, hit in zip(citations, hits[: len(citations)]):
+        snippet = _extractive_snippet(hit_passage_text(hit))
+        if not snippet:
+            continue
+        prefix = _citation_source_prefix(citation)
+        snippets.append(f"{prefix}{snippet} [{citation.index}]")
+
+    if snippets:
+        body = " ".join(snippets)
+    else:
+        citation = citations[0] if citations else None
+        prefix = _citation_source_prefix(citation) if citation else ""
+        body = f"{prefix}{_extractive_snippet(hit_passage_text(hits[0]))} [1]"
 
     if any(keyword in query for keyword in ("评级", "投资评级", "买入", "增持")):
         rating_line = _rating_line_from_hits(hits[:3])
@@ -72,6 +85,6 @@ def generate_answer(
         query=query,
         answer=answer,
         citations=citations,
-        evidence_hits=hits[:3],
+        evidence_hits=hits[: len(citations)],
         top_rerank_score=evidence.top_rerank_score,
     )

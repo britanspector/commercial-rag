@@ -83,12 +83,20 @@ class CitationResponse(BaseModel):
     page_end: int
     display_name: str
     score_rerank: float
+    doc_id: str = ""
+    source_pdf_path: str = ""
+    filename: str = ""
+    page_label: str = ""
+    source_document: str = ""
 
 
 class EvidenceCheckResponse(BaseModel):
     passed: bool
     top_rerank_score: float
-    refusal_reason: str
+    refusal_reason: str = ""
+    refusal_message: str = ""
+    citation_count: int = 0
+    checks: list[dict[str, str | bool]] = Field(default_factory=list)
 
 
 class ChatResponse(BaseModel):
@@ -96,6 +104,7 @@ class ChatResponse(BaseModel):
     answer: str
     refused: bool
     refusal_reason: str
+    refusal_message: str = ""
     top_rerank_score: float
     citations: list[CitationResponse]
     rerank_hits: list[RetrievedChunkResponse]
@@ -106,6 +115,10 @@ class HealthResponse(BaseModel):
     status: str
     pipeline_ready: bool
     models_loaded: bool = False
+    audit: dict[str, float | int | str | bool] = Field(
+        default_factory=dict,
+        description="审计库状态（enabled、backend、url_masked）",
+    )
     defaults: dict[str, float | int | str]
 
 
