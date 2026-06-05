@@ -11,6 +11,10 @@
     python src/eval_ragas.py
     python src/eval_ragas.py --limit 5
 
+    # 调试单题 / 单指标
+    python src/eval_ragas.py --question-id q02
+    python src/eval_ragas.py --question-id q02 --metrics faith
+
     # 仅补跑尚未有 RAGAS 分的题
     python src/eval_ragas.py --resume
 
@@ -34,6 +38,7 @@ from eval_generation_common import aggregate_by_query_type, aggregate_generation
 from eval_ragas_runner import (
     check_langchain_stack,
     ensure_stdout_unbuffered,
+    filter_rows_for_eval,
     load_rows_for_ragas,
     run_ragas_on_rows,
 )
@@ -104,6 +109,15 @@ def main() -> None:
     parser.add_argument("--resume", action="store_true", help="跳过已有 ragas_faithfulness 的题")
     parser.add_argument("--ragas-backend", type=str, default=None, help="ollama|openai|auto")
     parser.add_argument("--ragas-llm", type=str, default=None, help="如 qwen3:8b")
+    parser.add_argument("--question-id", type=str, default=None, help="仅评测指定题号，如 q04")
+    parser.add_argument("--index", type=int, default=None, help="仅评测第 N 题（1-based）")
+    parser.add_argument(
+        "--metrics",
+        type=str,
+        default="all",
+        choices=["all", "faith", "rel", "faithfulness", "answer_relevancy"],
+        help="仅跑指定指标（调试用）",
+    )
     parser.add_argument(
         "--output-detail",
         type=Path,
@@ -116,7 +130,10 @@ def main() -> None:
     check_langchain_stack()
 
     rows = load_rows_for_ragas(args.detail.resolve(), args.results.resolve())
-    if args.limit is not None:
+    if args.question_id or args.index is not None:
+        rows = filter_rows_for_eval(rows, question_id=args.question_id, index=args.index)
+        print(f"[debug] 单条评测：{rows[0].get('question_id')}")
+    elif args.limit is not None:
         rows = rows[: args.limit]
 
     if args.resume:
@@ -130,6 +147,7 @@ def main() -> None:
             rows,
             backend=args.ragas_backend,
             llm_model=args.ragas_llm,
+            metrics=args.metrics,
         )
     else:
         to_score = [r for r in rows if not r.get("refused")]
@@ -138,6 +156,7 @@ def main() -> None:
             rows,
             backend=args.ragas_backend,
             llm_model=args.ragas_llm,
+            metrics=args.metrics,
         )
 
     save_ragas_reports(rows, args.output_detail.resolve())
