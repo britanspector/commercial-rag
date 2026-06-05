@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.concurrency import run_in_threadpool
+from fastapi.middleware.cors import CORSMiddleware
 
 CURRENT_DIR = Path(__file__).parent.parent
 if str(CURRENT_DIR) not in sys.path:
@@ -91,6 +92,17 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title=API_TITLE, version=API_VERSION, lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health", response_model=HealthResponse)
