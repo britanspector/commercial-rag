@@ -5,9 +5,15 @@ import { API_BASE_URL } from '../config'
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
   timeout: 120_000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+})
+
+apiClient.interceptors.request.use((config) => {
+  if (config.data instanceof FormData) {
+    delete config.headers['Content-Type']
+  } else if (!config.headers['Content-Type']) {
+    config.headers['Content-Type'] = 'application/json'
+  }
+  return config
 })
 
 apiClient.interceptors.response.use(
