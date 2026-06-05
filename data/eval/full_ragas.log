@@ -1,0 +1,163 @@
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+[resume] 待打分 130 / 150 题
+[RAGAS] backend=ollama, llm=qwen3:8b @ http://localhost:11434, num_predict=4096, num_ctx=8192, think=off, timeout=180s, max_retries=2, max_workers=1, contexts<=3x1200chars, answer<=1200chars, embed=bge-large-zh (local)
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/commercial-rag/src/eval_ragas_runner.py:332: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the langchain-huggingface package and should be used instead. To use it run `pip install -U langchain-huggingface` and import as `from langchain_huggingface import HuggingFaceEmbeddings`.
+  HuggingFaceEmbeddings(
+[RAGAS 1/130] q01 faith=0.500 rel=0.590 (3.5s)
+[RAGAS 2/130] q02 faith=1.000 rel=0.718 (3.3s)
+[RAGAS 3/130] q03 faith=1.000 rel=0.697 (2.8s)
+[RAGAS 4/130] q04 faith=1.000 rel=0.000 (4.0s)
+[RAGAS 5/130] q05 faith=1.000 rel=0.561 (3.4s)
+[RAGAS 6/130] q06 faith=1.000 rel=0.484 (3.2s)
+[RAGAS 7/130] q07 faith=0.750 rel=0.886 (3.3s)
+[RAGAS 8/130] q08 faith=0.667 rel=0.000 (3.6s)
+[RAGAS 9/130] q09 faith=1.000 rel=0.000 (6.0s)
+[RAGAS 10/130] q10 faith=1.000 rel=0.528 (3.0s)
+[RAGAS 11/130] q11 faith=1.000 rel=0.521 (7.3s)
+[RAGAS 12/130] q12 faith=1.000 rel=0.617 (3.3s)
+[RAGAS 13/130] q13 faith=1.000 rel=0.415 (2.9s)
+[RAGAS 14/130] q14 faith=0.500 rel=0.655 (3.5s)
+[RAGAS 15/130] q15 faith=1.000 rel=0.495 (4.7s)
+[RAGAS 16/130] q16 faith=1.000 rel=0.544 (3.3s)
+[RAGAS 17/130] q17 faith=0.000 rel=0.715 (3.6s)
+[RAGAS 18/130] q18 faith=0.750 rel=0.000 (4.2s)
+[RAGAS 19/130] q19 faith=0.500 rel=0.000 (3.0s)
+[RAGAS 20/130] q20 faith=1.000 rel=0.546 (3.0s)
+[RAGAS 21/130] q21 faith=1.000 rel=0.487 (3.2s)
+[RAGAS 22/130] q22 faith=0.833 rel=0.000 (5.1s)
+[RAGAS 23/130] q24 faith=1.000 rel=0.000 (6.5s)
+[RAGAS 24/130] q25 faith=1.000 rel=0.506 (3.0s)
+[RAGAS 25/130] q26 faith=1.000 rel=0.595 (4.7s)
+[RAGAS 26/130] q27 faith=1.000 rel=0.526 (3.3s)
+[RAGAS 27/130] q28 faith=1.000 rel=0.481 (3.9s)
+[RAGAS 28/130] q29 faith=1.000 rel=0.000 (3.1s)
+[RAGAS 29/130] q30 faith=0.667 rel=0.000 (3.7s)
+[RAGAS 30/130] q31 faith=1.000 rel=0.636 (3.4s)
+[RAGAS 31/130] q32 faith=1.000 rel=0.621 (3.5s)
+[RAGAS 32/130] q33 faith=0.500 rel=0.537 (2.8s)
+[RAGAS 33/130] q34 faith=0.500 rel=0.563 (3.3s)
+[RAGAS 34/130] q35 faith=1.000 rel=0.605 (3.4s)
+[RAGAS 35/130] q36 faith=1.000 rel=0.532 (3.1s)
+[RAGAS 36/130] q37 faith=0.800 rel=0.495 (5.5s)
+[RAGAS 37/130] q38 faith=0.667 rel=0.616 (4.2s)
+[RAGAS 38/130] q39 faith=1.000 rel=0.367 (4.6s)
+[RAGAS 39/130] q40 faith=0.000 rel=0.496 (3.7s)
+[RAGAS 40/130] q41 faith=1.000 rel=0.445 (2.8s)
+[RAGAS 41/130] q42 faith=1.000 rel=0.572 (3.8s)
+[RAGAS 42/130] q43 faith=1.000 rel=0.629 (3.3s)
+[RAGAS 43/130] q44 faith=1.000 rel=0.527 (3.2s)
+[RAGAS 44/130] q46 faith=1.000 rel=0.606 (3.4s)
+[RAGAS 45/130] q47 faith=1.000 rel=0.571 (3.2s)
+[RAGAS 46/130] q48 faith=0.667 rel=0.000 (3.8s)
+[RAGAS 47/130] q49 faith=1.000 rel=0.508 (3.5s)
+[RAGAS 48/130] q50 faith=1.000 rel=0.681 (3.2s)
+[RAGAS 49/130] q51 faith=1.000 rel=0.661 (3.5s)
+[RAGAS 50/130] q52 faith=1.000 rel=0.572 (3.6s)
+[RAGAS 51/130] q53 faith=1.000 rel=0.565 (2.9s)
+[RAGAS 52/130] q54 faith=0.500 rel=0.000 (4.6s)
+[RAGAS 53/130] q55 faith=0.667 rel=0.459 (3.2s)
+[RAGAS 54/130] q56 faith=1.000 rel=0.504 (2.8s)
+[RAGAS 55/130] q57 faith=1.000 rel=0.505 (3.3s)
+[RAGAS 56/130] q58 faith=1.000 rel=0.728 (3.0s)
+[RAGAS 57/130] q59 faith=1.000 rel=0.554 (3.3s)
+[RAGAS 58/130] q60 faith=1.000 rel=0.506 (3.2s)
+[RAGAS 59/130] q63 faith=1.000 rel=0.517 (6.6s)
+[RAGAS 60/130] q64 faith=1.000 rel=0.718 (4.1s)
+[RAGAS 61/130] q65 faith=1.000 rel=0.000 (5.0s)
+[RAGAS 62/130] q67 faith=1.000 rel=0.000 (10.6s)
+[RAGAS 63/130] q70 faith=1.000 rel=0.658 (7.2s)
+[RAGAS 64/130] q71 faith=0.500 rel=0.000 (7.0s)
+[RAGAS 65/130] q73 faith=0.750 rel=0.000 (8.6s)
+[RAGAS 66/130] q76 faith=1.000 rel=0.659 (8.9s)
+[RAGAS 67/130] q77 faith=1.000 rel=0.464 (8.3s)
+[RAGAS 68/130] q78 faith=1.000 rel=0.511 (10.4s)
+[RAGAS 69/130] q79 faith=1.000 rel=0.477 (8.2s)
+[RAGAS 70/130] q82 faith=0.833 rel=0.492 (10.0s)
+[RAGAS 71/130] q84 faith=1.000 rel=0.500 (8.2s)
+[RAGAS 72/130] q85 faith=0.909 rel=0.460 (7.6s)
+[RAGAS 73/130] q86 faith=0.800 rel=0.496 (9.9s)
+[RAGAS 74/130] q87 faith=0.967 rel=0.494 (17.3s)
+[RAGAS 75/130] q88 faith=0.929 rel=0.694 (12.0s)
+[RAGAS 76/130] q90 faith=0.917 rel=0.578 (9.9s)
+[RAGAS 77/130] q91 faith=1.000 rel=0.524 (3.3s)
+[RAGAS 78/130] q92 faith=1.000 rel=0.564 (4.0s)
+[RAGAS 79/130] q93 faith=0.500 rel=0.605 (3.0s)
+[RAGAS 80/130] q94 faith=1.000 rel=0.437 (3.0s)
+[RAGAS 81/130] q95 faith=0.500 rel=0.555 (3.5s)
+[RAGAS 82/130] q96 faith=0.667 rel=0.686 (4.2s)
+[RAGAS 83/130] q97 faith=1.000 rel=0.499 (3.4s)
+[RAGAS 84/130] q98 faith=0.500 rel=0.000 (3.4s)
+[RAGAS 85/130] q99 faith=1.000 rel=0.526 (3.2s)
+[RAGAS 86/130] q100 faith=1.000 rel=0.552 (3.2s)
+[RAGAS 87/130] q101 faith=1.000 rel=0.590 (4.2s)
+[RAGAS 88/130] q102 faith=0.667 rel=0.000 (3.0s)
+[RAGAS 89/130] q103 faith=0.333 rel=0.000 (3.9s)
+[RAGAS 90/130] q104 faith=1.000 rel=0.521 (3.1s)
+[RAGAS 91/130] q105 faith=1.000 rel=0.572 (2.8s)
+[RAGAS 92/130] q106 faith=1.000 rel=0.577 (3.0s)
+[RAGAS 93/130] q107 faith=0.667 rel=0.000 (4.2s)
+[RAGAS 94/130] q108 faith=0.000 rel=0.552 (3.4s)
+[RAGAS 95/130] q109 faith=0.750 rel=0.000 (4.4s)
+[RAGAS 96/130] q110 faith=1.000 rel=0.643 (3.9s)
+[RAGAS 97/130] q111 faith=1.000 rel=0.443 (3.4s)
+[RAGAS 98/130] q112 faith=0.500 rel=0.880 (3.2s)
+[RAGAS 99/130] q113 faith=1.000 rel=0.476 (4.4s)
+[RAGAS 100/130] q114 faith=0.500 rel=0.725 (3.3s)
+[RAGAS 101/130] q115 faith=1.000 rel=0.734 (3.0s)
+[RAGAS 102/130] q116 faith=1.000 rel=0.711 (3.5s)
+[RAGAS 103/130] q117 faith=0.500 rel=0.418 (3.1s)
+[RAGAS 104/130] q118 faith=1.000 rel=0.476 (3.5s)
+[RAGAS 105/130] q119 faith=0.667 rel=0.678 (7.8s)
+[RAGAS 106/130] q120 faith=1.000 rel=0.000 (4.1s)
+[RAGAS 107/130] q121 faith=0.750 rel=0.743 (5.3s)
+[RAGAS 108/130] q122 faith=1.000 rel=0.000 (6.4s)
+[RAGAS 109/130] q124 faith=1.000 rel=0.522 (7.7s)
+[RAGAS 110/130] q127 faith=1.000 rel=0.577 (3.3s)
+[RAGAS 111/130] q128 faith=0.000 rel=0.612 (3.6s)
+[RAGAS 112/130] q129 faith=1.000 rel=0.575 (3.5s)
+[RAGAS 113/130] q130 faith=1.000 rel=0.531 (8.1s)
+[RAGAS 114/130] q131 faith=1.000 rel=0.626 (3.3s)
+[RAGAS 115/130] q132 faith=1.000 rel=0.570 (10.2s)
+[RAGAS 116/130] q133 faith=0.778 rel=0.534 (7.3s)
+[RAGAS 117/130] q134 faith=1.000 rel=0.483 (3.3s)
+[RAGAS 118/130] q135 faith=1.000 rel=0.465 (3.6s)
+[RAGAS 119/130] q136 faith=0.000 rel=0.540 (3.5s)
+[RAGAS 120/130] q137 faith=1.000 rel=0.382 (5.9s)
+[RAGAS 121/130] q138 faith=1.000 rel=0.714 (3.1s)
+[RAGAS 122/130] q139 faith=1.000 rel=0.000 (3.9s)
+[RAGAS 123/130] q141 faith=0.909 rel=0.634 (7.8s)
+[RAGAS 124/130] q142 faith=1.000 rel=0.533 (8.8s)
+[RAGAS 125/130] q143 faith=0.667 rel=0.000 (3.4s)
+[RAGAS 126/130] q144 faith=1.000 rel=0.594 (3.4s)
+[RAGAS 127/130] q145 faith=0.500 rel=0.000 (3.5s)
+[RAGAS 128/130] q146 faith=0.500 rel=0.489 (3.3s)
+[RAGAS 129/130] q147 faith=1.000 rel=0.877 (3.3s)
+[RAGAS 130/130] q150 faith=0.889 rel=0.514 (8.3s)
+[RAGAS] 完成，耗时 610.4s
+
+已写入：
+  /root/commercial-rag/data/eval/eval_generation_results.csv
+  /root/commercial-rag/data/eval/eval_generation_metrics.csv
+  /root/commercial-rag/data/eval/eval_generation_metrics_by_query_type.csv
+  /root/commercial-rag/data/eval/eval_generation_detail_ragas.jsonl
+
+=== RAGAS 整体指标 ===
+  faithfulness_ragas: 0.8524
+  answer_relevancy_ragas: 0.4600
+  ragas_scored_n: 130
+  refusal_accuracy: 0.7133
+  refusal_accuracy_evidence: 1.0000
+  citation_accuracy: 0.8648

@@ -1,5 +1,2 @@
-﻿question_count,refusal_rate,refusal_accuracy,refusal_accuracy_evidence,citation_accuracy,citation_accuracy_applicable_n,answer_factually_supported_rate,answer_supported_rule_rate,retrieval_hit_rate,faithfulness_ragas,answer_relevancy_ragas,ragas_scored_n,query_type
-26,0.38461538461538464,0.46153846153846156,,0.7857142857142857,16,0.5,0.8846153846153846,0.6923076923076923,0.809130484829498,0.5621877827327989,16,comparative
-100,0.02,0.79,,0.8731778425655976,98,0.88,0.9,0.77,0.9256902775108249,0.5472248272187783,98,factual
-23,0.30434782608695654,0.8260869565217391,,0.875,16,0.6956521739130435,1.0,0.6086956521739131,0.9809523809523809,0.49638469062577467,16,summary
-1,0.0,1.0,,0.8571428571428571,1,1.0,1.0,1.0,1.0,0.580333961763079,1,trap
+﻿question_count,refusal_rate,refusal_accuracy,refusal_accuracy_primary,refusal_accuracy_evidence,refusal_accuracy_retrieval,citation_accuracy,citation_accuracy_applicable_n,answer_factually_supported_rate,answer_supported_rule_rate,retrieval_hit_rate,faithfulness_ragas,answer_relevancy_ragas,ragas_scored_n,query_type
+10,0.0,1.0,1.0,1.0,0.9,0.9714285714285713,10,1.0,0.9,0.9,0.8916666666666666,0.4463287549912117,10,factual

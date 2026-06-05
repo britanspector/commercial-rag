@@ -20,6 +20,16 @@ if TYPE_CHECKING:
     from datasets import Dataset
 
 
+def answer_body_from_answer(answer: str) -> str:
+    """用于 RAGAS：仅评估正文，不包含【参考文献】元数据。"""
+    if not answer:
+        return ""
+    marker = "【参考文献】"
+    if marker in answer:
+        return answer.split(marker, 1)[0].strip()
+    return answer.strip()
+
+
 def _retrieved_chunk_as_hit(chunk: RetrievedChunk) -> dict:
     return chunk.to_dict()
 
@@ -152,10 +162,9 @@ def evaluate_refusal_accuracy(
     retrieval_hit: bool | None = None,
 ) -> dict[str, Any]:
     """
-    Refusal Accuracy：是否应在「检索未命中关键证据」时拒答。
-
-    should_refuse = not retrieval_hit_in_rerank
-    refusal_correct = (refused == should_refuse)
+    Refusal Accuracy（两口径）：
+    - refusal_correct_evidence：与 evidence_check 一致（产品主口径）
+    - refusal_correct / should_refuse：检索未命中 gold 时是否拒答（检索对齐口径）
     """
     if retrieval_hit is None:
         retrieval_hit = retrieval_hit_in_rerank(question, result)
@@ -237,6 +246,27 @@ def contexts_from_result(result: RAGPipelineResult, max_hits: int = 3) -> list[s
             text = hit_passage_text(hit).strip()
             if text:
                 contexts.append(text[:4000])
+    return contexts
+
+
+def contexts_for_ragas_eval(result: RAGPipelineResult, *, max_hits: int = 3, max_chars: int = 1200) -> list[str]:
+    """与生成侧对齐：优先使用 evidence_select 后的片段，控制数量与长度。"""
+    contexts: list[str] = []
+    if result.evidence_hits:
+        for hit in result.evidence_hits[:max_hits]:
+            text = hit_passage_text(hit).strip()
+            if text:
+                contexts.append(text[:max_chars])
+    if not contexts:
+        for chunk in result.rerank_hits[:max_hits]:
+            text = hit_passage_text(_retrieved_chunk_as_hit(chunk)).strip()
+            if text:
+                contexts.append(text[:max_chars])
+    if not contexts and result.evidence_check:
+        for hit in result.evidence_check.evidence_hits[:max_hits]:
+            text = hit_passage_text(hit).strip()
+            if text:
+                contexts.append(text[:max_chars])
     return contexts
 
 
@@ -413,14 +443,16 @@ def row_from_pipeline(
     question: EvalQuestion,
     result: RAGPipelineResult,
     *,
-    strategy: str = "pipeline_chat",
+    strategy: str = "pipeline_llm",
 ) -> dict[str, Any]:
     """合并单题 Pipeline 结果与各项生成指标。"""
     retrieval_hit = retrieval_hit_in_rerank(question, result)
     citation = evaluate_citation_accuracy(question, result)
     refusal = evaluate_refusal_accuracy(question, result, retrieval_hit=retrieval_hit)
     support = evaluate_answer_support(question, result)
-    contexts = contexts_from_result(result)
+    # RAGAS 仅评估正文，且 contexts 截断与生成侧一致（避免参考文献元数据与长 contexts 噪声影响分数）
+    answer_body = answer_body_from_answer(result.answer)
+    contexts = contexts_for_ragas_eval(result, max_hits=3, max_chars=1200)
 
     citations_payload = [asdict(c) for c in result.citations]
     evidence_json = (
@@ -437,6 +469,7 @@ def row_from_pipeline(
         "stock_code": question.stock_code,
         "doc_id": question.doc_id,
         "answer": result.answer,
+        "answer_body": answer_body,
         "answer_preview": result.answer[:300],
         "refused": result.refused,
         "refusal_reason": result.refusal_reason,
@@ -472,8 +505,10 @@ def aggregate_generation_metrics(rows: list[dict]) -> dict[str, float | int]:
     return {
         "question_count": n,
         "refusal_rate": sum(1 for r in rows if r.get("refused")) / n,
-        "refusal_accuracy": _mean("refusal_correct"),
+        "refusal_accuracy": _mean("refusal_correct_evidence"),
+        "refusal_accuracy_primary": _mean("refusal_correct_evidence"),
         "refusal_accuracy_evidence": _mean("refusal_correct_evidence"),
+        "refusal_accuracy_retrieval": _mean("refusal_correct"),
         "citation_accuracy": _mean("citation_accuracy", applicable) if applicable else float("nan"),
         "citation_accuracy_applicable_n": len(applicable),
         "answer_factually_supported_rate": _mean("answer_factually_supported"),

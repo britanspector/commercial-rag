@@ -58,7 +58,13 @@ def compose_pipeline_result(
             evidence_hits=evidence.evidence_hits,
         )
     else:
-        answer_gen = generate_answer(query, evidence, rerank_hits=rerank_result.hits)
+        answer_gen = generate_answer(
+            query,
+            evidence,
+            rerank_hits=rerank_result.hits,
+            query_type=query_type,
+            compare_entities=compare_entities,
+        )
         rag_answer = RAGAnswer(
             query=query,
             answer=answer_gen.answer,

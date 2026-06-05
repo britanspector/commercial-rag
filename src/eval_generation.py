@@ -50,6 +50,8 @@ from eval_generation_common import (
 )
 from eval_retrieval import DEFAULT_QUESTIONS, load_chunk_id_set, load_questions, validate_questions
 from eval_ragas_runner import ensure_stdout_unbuffered
+from generation_config import describe_generation_config, resolve_generation_config
+from pipeline.llm_client import check_ollama_reachable, ensure_ollama_model
 from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD
 from rag_pipeline import RAGPipeline, RAGPipelineConfig
 from rag_types import RAGQuery
@@ -113,6 +115,16 @@ def _format_refusal_hint(row: dict) -> str:
     return " " + " ".join(parts) if parts else ""
 
 
+def _ensure_generation_ollama() -> None:
+    cfg = resolve_generation_config()
+    print(f"[生成] {describe_generation_config(cfg)}")
+    if not check_ollama_reachable(cfg.ollama_base_url):
+        raise RuntimeError(
+            f"无法连接 Ollama：{cfg.ollama_base_url}。请先执行：ollama serve"
+        )
+    ensure_ollama_model(cfg)
+
+
 def run_generation_eval(
     questions,
     *,
@@ -126,6 +138,7 @@ def run_generation_eval(
 ) -> list[dict]:
     _check_indexes()
     _probe_milvus_available()
+    _ensure_generation_ollama()
 
     if limit is not None:
         questions = questions[:limit]
@@ -248,6 +261,11 @@ def save_reports(
         print(f"  {DETAIL_JSONL}")
 
     print("\n=== 整体指标 ===")
+    primary_note = (
+        "（refusal_accuracy = evidence 门控口径，与产品一致；"
+        "refusal_accuracy_retrieval = 检索 gold 命中口径）"
+    )
+    print(f"  {primary_note}")
     for key, value in metrics.items():
         if isinstance(value, float):
             print(f"  {key}: {value:.4f}" if value == value else f"  {key}: nan")

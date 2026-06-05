@@ -212,6 +212,14 @@ def mrr(relevant_ranks: list[int]) -> float:
     return 1.0 / min(relevant_ranks)
 
 
+def context_precision_at_k(relevant_ranks: list[int], k: int) -> float:
+    """Top-K 中相关 chunk 占比（Context Precision@K）。"""
+    if k <= 0:
+        return 0.0
+    relevant_in_top_k = sum(1 for rank in relevant_ranks if rank <= k)
+    return relevant_in_top_k / k
+
+
 def evaluate_hits(
     question: EvalQuestion,
     hits: list[dict],
@@ -238,6 +246,8 @@ def evaluate_hits(
         "recall_at_3": recall_at_k(relevant_ranks, 3),
         "recall_at_5": recall_at_k(relevant_ranks, 5),
         "recall_at_10": recall_at_k(relevant_ranks, 10),
+        "context_precision_at_5": context_precision_at_k(relevant_ranks, 5),
+        "context_precision_at_10": context_precision_at_k(relevant_ranks, 10),
         "mrr": mrr(relevant_ranks),
         "top1_chunk_id": hits[0].get("chunk_id", "") if hits else "",
         "top1_stock_code": hits[0].get("stock_code", "") if hits else "",
@@ -256,6 +266,8 @@ def aggregate_metrics(results: list[dict]) -> dict[str, float]:
         "recall_at_3": sum(row["recall_at_3"] for row in results) / n,
         "recall_at_5": sum(row["recall_at_5"] for row in results) / n,
         "recall_at_10": sum(row["recall_at_10"] for row in results) / n,
+        "context_precision_at_5": sum(row["context_precision_at_5"] for row in results) / n,
+        "context_precision_at_10": sum(row["context_precision_at_10"] for row in results) / n,
         "mrr": sum(row["mrr"] for row in results) / n,
         "hit_rate": sum(1 for row in results if row["hit"]) / n,
     }
@@ -283,12 +295,84 @@ def validate_questions(questions: list[EvalQuestion], chunk_ids: set[str]) -> No
         print("gold_chunk_id 校验：全部存在")
 
 
+def _chunks_to_hits(chunks: list) -> list[dict]:
+    from rag_types import RetrievedChunk
+
+    hits: list[dict] = []
+    for chunk in chunks:
+        if isinstance(chunk, RetrievedChunk):
+            hits.append(chunk.to_dict())
+        elif isinstance(chunk, dict):
+            hits.append(chunk)
+    return hits
+
+
+def run_pipeline_retrieval_eval(
+    questions: list[EvalQuestion],
+    *,
+    top_k: int,
+    stage: str = "rerank",
+    recall_route: str = "hybrid",
+) -> tuple[list[dict], dict[str, float]]:
+    """
+    与生产 /search 对齐：query_rewrite → hybrid_retrieve → rerank。
+    stage=recall 评初召回 Top-K；stage=rerank 评重排 Top-K（默认，与 evidence 一致）。
+    """
+    from rag_pipeline import RAGPipeline, RAGPipelineConfig
+    from rag_types import RAGQuery
+    from retrieval import RecallRoute
+
+    route_label = f"pipeline_{stage}_{recall_route}"
+    print(f"Pipeline 检索评测（与 /search 对齐）：stage={stage}, route={recall_route}, Top-K={top_k}")
+
+    config = RAGPipelineConfig(
+        recall_top_k=max(top_k, 30),
+        rerank_top_k=top_k,
+        recall_route=RecallRoute(recall_route),
+    )
+    pipeline = RAGPipeline(config)
+    results: list[dict] = []
+
+    try:
+        for question in questions:
+            search = pipeline.run_search(
+                RAGQuery(
+                    query=question.query,
+                    stock_code=question.stock_code,
+                    query_type=question.query_type,
+                ),
+                config=config,
+            )
+            if stage == "recall":
+                hits = _chunks_to_hits(search.recall_hits[:top_k])
+            else:
+                hits = _chunks_to_hits(search.rerank_hits[:top_k])
+            row = evaluate_hits(question, hits, route_label)
+            row["eval_stage"] = stage
+            row["pipeline_route"] = recall_route
+            results.append(row)
+    finally:
+        pipeline.close()
+
+    return results, aggregate_metrics(results)
+
+
 def run_retrieval_eval(
     questions: list[EvalQuestion],
     route: str,
     top_k: int,
     hybrid_vector_weight: float,
+    *,
+    use_pipeline: bool = False,
+    pipeline_stage: str = "rerank",
 ) -> tuple[list[dict], dict[str, float]]:
+    if use_pipeline and route == "hybrid":
+        return run_pipeline_retrieval_eval(
+            questions,
+            top_k=top_k,
+            stage=pipeline_stage,
+            recall_route="hybrid",
+        )
     from embed_chunks import (
         EMBED_DIM,
         EMBED_MODEL,
@@ -374,6 +458,8 @@ def save_reports(
     print(f"Recall@3：  {metrics['recall_at_3']:.1%}")
     print(f"Recall@5：  {metrics['recall_at_5']:.1%}")
     print(f"Recall@10： {metrics['recall_at_10']:.1%}")
+    print(f"CtxPrec@5： {metrics['context_precision_at_5']:.1%}")
+    print(f"CtxPrec@10：{metrics['context_precision_at_10']:.1%}")
     print(f"MRR：       {metrics['mrr']:.3f}")
     print(
         f"命中率：    {metrics['hit_rate']:.1%} "
@@ -408,6 +494,9 @@ def run_compare_routes(
     questions: list[EvalQuestion],
     top_k: int,
     hybrid_vector_weight: float,
+    *,
+    use_pipeline_hybrid: bool = True,
+    pipeline_stage: str = "rerank",
 ) -> None:
     from embed_chunks import (
         EMBED_DIM,
@@ -436,8 +525,55 @@ def run_compare_routes(
     comparison_rows: list[dict] = []
     per_type_rows: list[dict] = []
 
-    for route in ("vector", "bm25", "hybrid"):
+    routes = ("vector", "bm25", "hybrid")
+    for route in routes:
         print(f"\n>>> {ROUTE_LABELS[route]}")
+        if route == "hybrid" and use_pipeline_hybrid:
+            results, metrics = run_pipeline_retrieval_eval(
+                questions,
+                top_k=top_k,
+                stage=pipeline_stage,
+                recall_route="hybrid",
+            )
+            save_reports(results, metrics, "hybrid_pipeline", top_k)
+            comparison_rows.append(
+                {
+                    "route": "hybrid_pipeline",
+                    "route_label": "路线C-混合(Pipeline)",
+                    "question_count": int(metrics["question_count"]),
+                    "recall_at_3": round(metrics["recall_at_3"], 4),
+                    "recall_at_5": round(metrics["recall_at_5"], 4),
+                    "recall_at_10": round(metrics["recall_at_10"], 4),
+                    "context_precision_at_5": round(metrics["context_precision_at_5"], 4),
+                    "context_precision_at_10": round(metrics["context_precision_at_10"], 4),
+                    "mrr": round(metrics["mrr"], 4),
+                    "hit_rate": round(metrics["hit_rate"], 4),
+                    "top_k": top_k,
+                    "hybrid_vector_weight": hybrid_vector_weight,
+                    "eval_stage": pipeline_stage,
+                }
+            )
+            for query_type in ("factual", "comparative", "summary"):
+                subset = [row for row in results if row["query_type"] == query_type]
+                if not subset:
+                    continue
+                subset_metrics = aggregate_metrics(subset)
+                per_type_rows.append(
+                    {
+                        "route": "hybrid_pipeline",
+                        "query_type": query_type,
+                        "question_count": len(subset),
+                        "recall_at_3": round(subset_metrics["recall_at_3"], 4),
+                        "recall_at_5": round(subset_metrics["recall_at_5"], 4),
+                        "recall_at_10": round(subset_metrics["recall_at_10"], 4),
+                        "context_precision_at_5": round(
+                            subset_metrics["context_precision_at_5"], 4
+                        ),
+                        "mrr": round(subset_metrics["mrr"], 4),
+                    }
+                )
+            continue
+
         recall_route = RecallRoute(route)
         results: list[dict] = []
         for question in questions:
@@ -461,6 +597,8 @@ def run_compare_routes(
                 "recall_at_3": round(metrics["recall_at_3"], 4),
                 "recall_at_5": round(metrics["recall_at_5"], 4),
                 "recall_at_10": round(metrics["recall_at_10"], 4),
+                "context_precision_at_5": round(metrics["context_precision_at_5"], 4),
+                "context_precision_at_10": round(metrics["context_precision_at_10"], 4),
                 "mrr": round(metrics["mrr"], 4),
                 "hit_rate": round(metrics["hit_rate"], 4),
                 "top_k": top_k,
@@ -521,6 +659,17 @@ def main() -> None:
         action="store_true",
         help="仅校验评测题与 chunks.jsonl，不访问 Milvus",
     )
+    parser.add_argument(
+        "--legacy-retriever",
+        action="store_true",
+        help="hybrid 使用裸 HybridRetriever，不与 Pipeline /search 对齐",
+    )
+    parser.add_argument(
+        "--pipeline-stage",
+        choices=["recall", "rerank"],
+        default="rerank",
+        help="Pipeline 评测阶段：recall=初召回 Top-K，rerank=重排 Top-K（默认）",
+    )
     args = parser.parse_args()
 
     from retrieval import DEFAULT_HYBRID_VECTOR_WEIGHT
@@ -538,12 +687,25 @@ def main() -> None:
         print("  python src/eval_retrieval.py --compare-routes")
         return
 
+    use_pipeline = not args.legacy_retriever
+
     if args.compare_routes:
-        run_compare_routes(questions, args.top_k, args.hybrid_vector_weight)
+        run_compare_routes(
+            questions,
+            args.top_k,
+            args.hybrid_vector_weight,
+            use_pipeline_hybrid=use_pipeline,
+            pipeline_stage=args.pipeline_stage,
+        )
         return
 
     results, metrics = run_retrieval_eval(
-        questions, args.route, args.top_k, args.hybrid_vector_weight
+        questions,
+        args.route,
+        args.top_k,
+        args.hybrid_vector_weight,
+        use_pipeline=use_pipeline and args.route == "hybrid",
+        pipeline_stage=args.pipeline_stage,
     )
     save_reports(results, metrics, args.route, top_k=args.top_k)
 

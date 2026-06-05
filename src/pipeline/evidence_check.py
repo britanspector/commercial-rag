@@ -8,6 +8,7 @@ evidence_check：基于 rerank 分数与证据可引用性判断是否允许生�
 4. missing_source_page — Top-1 无文档名且无页码（无法Citation Accuracy溯源）
 5. stock_mismatch — 指定 stock_code 时 Top-3 均无匹配
 6. comparative_insufficient — 对比题 Top-5 主体公司 < 2
+7. weak_evidence_intent — 最优证据与问题意图不匹配（章节/意图规则）
 """
 
 from __future__ import annotations
@@ -23,8 +24,10 @@ from rag_constants import (
     REFUSAL_REASON_MISSING_SOURCE_PAGE,
     REFUSAL_REASON_NO_HITS,
     REFUSAL_REASON_STOCK_MISMATCH,
+    REFUSAL_REASON_WEAK_EVIDENCE_INTENT,
     format_refusal_message,
 )
+from pipeline.evidence_select import top_evidence_intent_aligned
 from rag_types import EvidenceCheckResult, RerankStepResult
 from reranker import hit_passage_text
 
@@ -236,6 +239,20 @@ def check_evidence(
         checks.append(
             _record_check("comparative_entities", True, f"found={len(companies)}")
         )
+
+    intent_ok, intent_detail = top_evidence_intent_aligned(
+        query, query_type, hits[:10]
+    )
+    detail["evidence_intent_detail"] = intent_detail
+    if not intent_ok:
+        checks.append(
+            _record_check("evidence_intent", False, intent_detail),
+        )
+        return _fail(
+            REFUSAL_REASON_WEAK_EVIDENCE_INTENT,
+            message_kwargs={"intent_detail": intent_detail},
+        )
+    checks.append(_record_check("evidence_intent", True, intent_detail))
 
     usable = hits[:3]
     return EvidenceCheckResult(

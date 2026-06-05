@@ -20,9 +20,9 @@
 | 数据入库 | ✅ 完成 | 200 份 PDF，约 7,382 可检索 chunk |
 | 检索 / Rerank 评测 | ✅ 完成 | 混合 Recall@10 **92%**，Rerank 事实准确率 **88%**（见 `eval-results.md`） |
 | Pipeline 生产链路 | ✅ 已接 hybrid | `rag_pipeline.py`：`query_rewrite → hybrid → rerank → evidence_check → answer` |
-| FastAPI + 审计库 | ✅ 已实现 | SQLite 默认 `data/audit/rag_audit.db`，见 `audit-db.md` |
+| FastAPI + 审计库 | ✅ 已实现 | `/upload` `/search` `/chat` `/eval`；见 `docs/api.md`、`audit-db.md` |
 | **生成质量 150 题（规则指标）** | ✅ 已完成 | 本地跑通 `--skip-ragas --save-detail`，约 178s |
-| **RAGAS 全量** | ⏳ 待服务器 | 笔记本试跑 **3 题** 成功；全量约 130+ 非拒答题，预估 **8h+** |
+| **RAGAS 全量** | ✅ 已完成 | faith≈0.85 / rel≈0.46（130 非拒答题）；`eval_generation_detail_ragas.jsonl` |
 | P3 Badcase / 生成优化 | 📋 计划中 | 冗长答案、comparative 拒答、refusal 指标对齐等 |
 
 ---

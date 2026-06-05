@@ -33,7 +33,7 @@ PDF → MinerU → chunk_mineru (P2) → bge-large-zh-v1.5 + BM25
 | 词法 | BM25Okapi + jieba |
 | 混合召回 | min-max 加权（**向量 0.35 / BM25 0.65**），pool **200** |
 | Rerank | `BAAI/bge-reranker-v2-m3`，Top-30 → Top-5 |
-| 生成 | 模板引用 + Top-1 rerank 低分拒答 |
+| 生成 | Ollama `qwen3:8b` + evidence_select + 引用；低分/意图不符拒答 |
 
 ---
 
@@ -90,6 +90,9 @@ python src/eval_generation.py --skip-ragas --save-detail   # 阶段一：Citatio
 python src/eval_ragas.py   # 本地 RAGAS（Ollama qwen3:8b，需先 ollama pull qwen3:8b）
 
 python src/rag_chat.py "京仪装备2026E毛利率预测是多少？"
+
+# FastAPI（另开终端）
+uvicorn rag_api:app --host 0.0.0.0 --port 8000 --app-dir src
 ```
 
 GPU（AutoDL / 本地 CUDA）：
@@ -141,7 +144,8 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 |------|------|
 | `src/reranker.py` | bge-reranker-v2-m3（CrossEncoder 回退） |
 | `src/eval_rerank.py` | 混合 Top20→Rerank vs 混合 Top5 对比 |
-| `src/rag_pipeline.py` | RAG 流水线（⚠ 当前仍为纯向量召回，待接 hybrid） |
+| `src/rag_pipeline.py` | RAG 五步流水线（hybrid + rerank + evidence + LLM） |
+| `src/rag_api.py` | FastAPI：`/upload` `/search` `/chat` `/eval`（见 [docs/api.md](docs/api.md)） |
 | `src/rag_chat.py` | CLI 问答 |
 | `src/db/` | 审计持久化（SQLite / PostgreSQL，见 [docs/audit-db.md](docs/audit-db.md)） |
 

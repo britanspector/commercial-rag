@@ -1,2 +1,2 @@
-﻿question_count,refusal_rate,refusal_accuracy,refusal_accuracy_evidence,citation_accuracy,citation_accuracy_applicable_n,answer_factually_supported_rate,answer_supported_rule_rate,retrieval_hit_rate,faithfulness_ragas,answer_relevancy_ragas,ragas_scored_n
-150,0.12666666666666668,0.74,,0.8625954198473282,131,0.7866666666666666,0.9133333333333333,0.7333333333333333,0.9187707866303122,0.5430956229232102,131
+﻿question_count,refusal_rate,refusal_accuracy,refusal_accuracy_primary,refusal_accuracy_evidence,refusal_accuracy_retrieval,citation_accuracy,citation_accuracy_applicable_n,answer_factually_supported_rate,answer_supported_rule_rate,retrieval_hit_rate,faithfulness_ragas,answer_relevancy_ragas,ragas_scored_n
+10,0.0,1.0,1.0,1.0,0.9,0.9714285714285713,10,1.0,0.9,0.9,0.8916666666666666,0.4463287549912117,10

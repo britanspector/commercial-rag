@@ -1,0 +1,502 @@
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+评测题数量：150
+query_type 分布：{'factual': 100, 'comparative': 26, 'summary': 23, 'trap': 1}
+chunks.jsonl chunk 数：10312
+gold_chunk_id 校验：全部存在
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 525.27it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 135.52it/s]
+  FlagEmbedding Reranker 加载完成。
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.558 seconds.
+Prefix dict has been built successfully.
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 631.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.04it/s]
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+[1/150] q01 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (5013ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 364.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.30it/s]
+[2/150] q02 回答 rerank=0.998 citation_acc=1.00 refusal_ok=True (1023ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 398.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.11it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.98it/s]
+[3/150] q03 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (908ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 416.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.58it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.47it/s]
+[4/150] q04 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (1258ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 431.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.44it/s]
+[5/150] q05 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (1037ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 387.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.99it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.85it/s]
+[6/150] q06 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (973ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 355.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.22it/s]
+[7/150] q07 回答 rerank=0.994 citation_acc=0.86 refusal_ok=True (998ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 466.82it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.30it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.19it/s]
+[8/150] q08 回答 rerank=0.589 citation_acc=0.86 refusal_ok=False 未命中仍作答 (1023ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 386.52it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.85it/s]
+[9/150] q09 回答 rerank=0.991 citation_acc=1.00 refusal_ok=True (1593ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 311.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.08it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.99it/s]
+[10/150] q10 回答 rerank=0.564 citation_acc=1.00 refusal_ok=True (888ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.62it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.13it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.03it/s]
+[11/150] q11 回答 rerank=0.998 citation_acc=0.71 refusal_ok=True (1622ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 380.64it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.28it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.17it/s]
+[12/150] q12 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (1003ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.55it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.45it/s]
+[13/150] q13 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (989ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 393.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.09it/s]
+[14/150] q14 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1057ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 465.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.49it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.39it/s]
+[15/150] q15 回答 rerank=0.966 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1048ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 429.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.84it/s]
+[16/150] q16 回答 rerank=1.000 citation_acc=1.00 refusal_ok=True (974ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 420.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.14it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.04it/s]
+[17/150] q17 回答 rerank=0.998 citation_acc=1.00 refusal_ok=True (968ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 400.25it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.66it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.52it/s]
+[18/150] q18 回答 rerank=0.987 citation_acc=1.00 refusal_ok=True (1125ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.95it/s]
+[19/150] q19 回答 rerank=0.992 citation_acc=0.86 refusal_ok=False 未命中仍作答 (1042ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 382.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.65it/s]
+[20/150] q20 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (967ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 443.84it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.79it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.69it/s]
+[21/150] q21 回答 rerank=0.998 citation_acc=1.00 refusal_ok=True (1013ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 397.95it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.57it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.47it/s]
+[22/150] q22 回答 rerank=0.974 citation_acc=0.86 refusal_ok=True (1216ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 364.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.22it/s]
+[23/150] q23 拒答 rerank=0.990 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (372ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.73it/s]
+[24/150] q24 回答 rerank=0.990 citation_acc=1.00 refusal_ok=True (1438ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 363.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.72it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.59it/s]
+[25/150] q25 回答 rerank=0.998 citation_acc=1.00 refusal_ok=True (1008ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 430.95it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.98it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.88it/s]
+[26/150] q26 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (1304ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 330.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.42it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.32it/s]
+[27/150] q27 回答 rerank=0.997 citation_acc=0.86 refusal_ok=True (939ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 386.92it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.68it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.57it/s]
+[28/150] q28 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (991ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.39it/s]
+[29/150] q29 回答 rerank=0.986 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1020ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 452.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.15it/s]
+[30/150] q30 回答 rerank=0.549 citation_acc=0.86 refusal_ok=False 未命中仍作答 (1133ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 381.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.75it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.64it/s]
+[31/150] q31 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (922ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 515.44it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.97it/s]
+[32/150] q32 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (900ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 581.39it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.33it/s]
+[33/150] q33 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (871ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 391.13it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.98it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.87it/s]
+[34/150] q34 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (974ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.47it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.33it/s]
+[35/150] q35 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (1101ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 354.82it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.58it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.48it/s]
+[36/150] q36 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (971ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 399.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.42it/s]
+[37/150] q37 回答 rerank=0.995 citation_acc=1.00 refusal_ok=True (1192ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 369.01it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.47it/s]
+[38/150] q38 回答 rerank=0.997 citation_acc=0.86 refusal_ok=True (1009ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 441.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.86it/s]
+[39/150] q39 回答 rerank=0.991 citation_acc=1.00 refusal_ok=True (1233ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.26it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.26it/s]
+[40/150] q40 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (961ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 387.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.08it/s]
+[41/150] q41 回答 rerank=1.000 citation_acc=0.86 refusal_ok=True (834ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.14it/s]
+[42/150] q42 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (1083ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 375.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.34it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.23it/s]
+[43/150] q43 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (937ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 434.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.58it/s]
+[44/150] q44 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (978ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 632.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.77it/s]
+[45/150] q45 拒答 rerank=1.000 citation_acc=1.00 refusal_ok=True (348ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 433.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.65it/s]
+[46/150] q46 回答 rerank=0.993 citation_acc=1.00 refusal_ok=True (942ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 404.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.13it/s]
+[47/150] q47 回答 rerank=0.993 citation_acc=1.00 refusal_ok=True (936ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 382.47it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.57it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.46it/s]
+[48/150] q48 回答 rerank=0.980 citation_acc=1.00 refusal_ok=True (1101ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 296.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.40it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.29it/s]
+[49/150] q49 回答 rerank=0.999 citation_acc=0.71 refusal_ok=True (1079ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 372.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.64it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.54it/s]
+[50/150] q50 回答 rerank=0.994 citation_acc=1.00 refusal_ok=True (1043ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 425.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.18it/s]
+[51/150] q51 回答 rerank=0.996 citation_acc=1.00 refusal_ok=True (1025ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 417.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.62it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.52it/s]
+[52/150] q52 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (984ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 373.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.58it/s]
+[53/150] q53 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (906ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 397.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.90it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.79it/s]
+[54/150] q54 回答 rerank=0.996 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1251ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 443.84it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.34it/s]
+[55/150] q55 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (800ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 370.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.49it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.37it/s]
+[56/150] q56 回答 rerank=1.000 citation_acc=0.86 refusal_ok=True (980ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 425.99it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.12it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.01it/s]
+[57/150] q57 回答 rerank=0.995 citation_acc=1.00 refusal_ok=True (1033ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 407.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.76it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.67it/s]
+[58/150] q58 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (955ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 383.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.68it/s]
+[59/150] q59 回答 rerank=0.996 citation_acc=1.00 refusal_ok=True (841ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 367.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.39it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.29it/s]
+[60/150] q60 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (888ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 460.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.76it/s]
+[61/150] q61 拒答 rerank=0.985 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (516ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 385.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.70it/s]
+[62/150] q62 拒答 rerank=0.995 citation_acc=1.00 refusal_ok=True (403ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 467.01it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.90it/s]
+[63/150] q63 回答 rerank=0.865 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1981ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 429.44it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.41it/s]
+[64/150] q64 回答 rerank=0.989 citation_acc=0.86 refusal_ok=True (1331ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 401.94it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.85it/s]
+[65/150] q65 回答 rerank=0.975 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1591ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 441.15it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.10it/s]
+[66/150] q66 拒答 rerank=0.981 citation_acc=1.00 refusal_ok=True (495ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 386.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.03it/s]
+[67/150] q67 回答 rerank=0.869 citation_acc=0.86 refusal_ok=True (2684ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 411.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.43it/s]
+[68/150] q68 拒答 rerank=0.966 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (448ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 471.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.08it/s]
+[69/150] q69 拒答 rerank=0.970 citation_acc=1.00 refusal_ok=True (409ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 481.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.27it/s]
+[70/150] q70 回答 rerank=0.873 citation_acc=0.86 refusal_ok=True (1979ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 308.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.50it/s]
+[71/150] q71 回答 rerank=0.943 citation_acc=1.00 refusal_ok=True (1765ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 354.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.33it/s]
+[72/150] q72 拒答 rerank=0.993 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (532ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 515.00it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.15it/s]
+[73/150] q73 回答 rerank=0.923 citation_acc=0.71 refusal_ok=False 未命中仍作答 (2161ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.60it/s]
+[74/150] q74 拒答 rerank=0.964 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (366ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 486.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.01it/s]
+[75/150] q75 拒答 rerank=0.998 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (409ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.06it/s]
+[76/150] q76 回答 rerank=0.983 citation_acc=1.00 refusal_ok=True (1671ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 399.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.95it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.85it/s]
+[77/150] q77 回答 rerank=0.962 citation_acc=0.86 refusal_ok=True (1805ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 357.72it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.36it/s]
+[78/150] q78 回答 rerank=0.784 citation_acc=0.86 refusal_ok=True (2013ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 385.74it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.33it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.23it/s]
+[79/150] q79 回答 rerank=0.952 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1683ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.34it/s]
+[80/150] q80 拒答 rerank=0.949 citation_acc=1.00 refusal_ok=True (363ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.18it/s]
+[81/150] q81 拒答 rerank=0.410 citation_acc=1.00 refusal_ok=True (275ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 458.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.34it/s]
+[82/150] q82 回答 rerank=0.944 citation_acc=0.86 refusal_ok=True (1791ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 336.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.03it/s]
+[83/150] q83 拒答 rerank=0.769 citation_acc=1.00 refusal_ok=True (349ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 451.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.75it/s]
+[84/150] q84 回答 rerank=0.950 citation_acc=0.86 refusal_ok=True (1508ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 384.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.64it/s]
+[85/150] q85 回答 rerank=0.837 citation_acc=0.86 refusal_ok=True (1673ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 468.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.93it/s]
+[86/150] q86 回答 rerank=0.932 citation_acc=1.00 refusal_ok=True (2027ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.05it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.46it/s]
+[87/150] q87 回答 rerank=0.941 citation_acc=1.00 refusal_ok=True (2517ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 346.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.61it/s]
+[88/150] q88 回答 rerank=0.427 citation_acc=0.86 refusal_ok=True (1641ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 347.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.43it/s]
+[89/150] q89 拒答 rerank=0.722 citation_acc=1.00 refusal_ok=True (344ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 455.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.19it/s]
+[90/150] q90 回答 rerank=0.804 citation_acc=0.86 refusal_ok=False 未命中仍作答 (1751ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 479.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.31it/s]
+[91/150] q91 回答 rerank=0.995 citation_acc=0.71 refusal_ok=False 未命中仍作答 (857ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 460.82it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.82it/s]
+[92/150] q92 回答 rerank=1.000 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1076ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 451.09it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 88.84it/s]
+[93/150] q93 回答 rerank=0.998 citation_acc=0.71 refusal_ok=True (906ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 357.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.13it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.03it/s]
+[94/150] q94 回答 rerank=0.999 citation_acc=0.71 refusal_ok=True (929ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 340.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.79it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.69it/s]
+[95/150] q95 回答 rerank=0.996 citation_acc=0.71 refusal_ok=False 未命中仍作答 (967ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 313.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.98it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.87it/s]
+[96/150] q96 回答 rerank=0.993 citation_acc=0.86 refusal_ok=True (1170ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 385.23it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.55it/s]
+[97/150] q97 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1012ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 367.11it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.46it/s]
+[98/150] q98 回答 rerank=0.998 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1119ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 343.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.81it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.68it/s]
+[99/150] q99 回答 rerank=0.998 citation_acc=0.71 refusal_ok=True (1032ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.95it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.72it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.62it/s]
+[100/150] q100 回答 rerank=0.999 citation_acc=0.71 refusal_ok=True (7548ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.34it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.35it/s]
+[101/150] q101 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (1202ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 450.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.71it/s]
+[102/150] q102 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (972ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 440.27it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.02it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.84it/s]
+[103/150] q103 回答 rerank=0.979 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1199ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 362.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.01it/s]
+[104/150] q104 回答 rerank=1.000 citation_acc=0.71 refusal_ok=False 未命中仍作答 (976ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 391.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.05it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.95it/s]
+[105/150] q105 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (1018ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 384.98it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.55it/s]
+[106/150] q106 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (7392ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.41it/s]
+[107/150] q107 回答 rerank=0.990 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1148ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 369.96it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.13it/s]
+[108/150] q108 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (780ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 413.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.12it/s]
+[109/150] q109 回答 rerank=0.997 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1039ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 396.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.89it/s]
+[110/150] q110 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (1086ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 482.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.73it/s]
+[111/150] q111 回答 rerank=1.000 citation_acc=0.86 refusal_ok=True (888ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.14it/s]
+[112/150] q112 回答 rerank=1.000 citation_acc=0.86 refusal_ok=True (948ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 421.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.28it/s]
+[113/150] q113 回答 rerank=0.990 citation_acc=1.00 refusal_ok=True (1003ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 438.51it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.91it/s]
+[114/150] q114 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (858ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 483.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.11it/s]
+[115/150] q115 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (812ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 449.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.22it/s]
+[116/150] q116 回答 rerank=0.992 citation_acc=0.86 refusal_ok=True (1000ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.08it/s]
+[117/150] q117 回答 rerank=0.999 citation_acc=1.00 refusal_ok=True (874ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 532.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 119.77it/s]
+[118/150] q118 回答 rerank=0.996 citation_acc=1.00 refusal_ok=True (863ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 439.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.98it/s]
+[119/150] q119 回答 rerank=0.975 citation_acc=0.71 refusal_ok=False 未命中仍作答 (2402ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 437.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.60it/s]
+[120/150] q120 回答 rerank=0.982 citation_acc=0.86 refusal_ok=True (1327ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 477.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 106.62it/s]
+[121/150] q121 回答 rerank=0.991 citation_acc=0.86 refusal_ok=True (1791ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 404.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.82it/s]
+[122/150] q122 回答 rerank=0.979 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1663ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 439.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.69it/s]
+[123/150] q123 拒答 rerank=0.959 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (503ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 459.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.16it/s]
+[124/150] q124 回答 rerank=0.819 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1629ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 473.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 134.78it/s]
+[125/150] q125 拒答 rerank=0.860 citation_acc=1.00 refusal_ok=True (295ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 540.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 118.24it/s]
+[126/150] q126 拒答 rerank=0.339 citation_acc=1.00 refusal_ok=True (227ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 468.99it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.03it/s]
+[127/150] q127 回答 rerank=0.998 citation_acc=0.71 refusal_ok=True (835ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.26it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.17it/s]
+[128/150] q128 回答 rerank=0.998 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1011ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 353.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.75it/s]
+[129/150] q129 回答 rerank=0.999 citation_acc=0.86 refusal_ok=True (1034ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 391.62it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.57it/s]
+[130/150] q130 回答 rerank=0.998 citation_acc=1.00 refusal_ok=True (1629ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 372.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.99it/s]
+[131/150] q131 回答 rerank=0.999 citation_acc=0.71 refusal_ok=True (1032ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 431.52it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.21it/s]
+[132/150] q132 回答 rerank=0.982 citation_acc=0.71 refusal_ok=True (2477ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 368.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.00it/s]
+[133/150] q133 回答 rerank=0.985 citation_acc=1.00 refusal_ok=True (1856ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 310.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.17it/s]
+[134/150] q134 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (973ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 372.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.28it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.18it/s]
+[135/150] q135 回答 rerank=0.996 citation_acc=0.86 refusal_ok=True (904ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 455.44it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.22it/s]
+[136/150] q136 回答 rerank=0.999 citation_acc=0.71 refusal_ok=True (949ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 454.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.08it/s]
+[137/150] q137 回答 rerank=0.985 citation_acc=0.86 refusal_ok=True (1293ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.95it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.85it/s]
+[138/150] q138 回答 rerank=0.998 citation_acc=0.71 refusal_ok=False 未命中仍作答 (916ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.23it/s]
+[139/150] q139 回答 rerank=0.969 citation_acc=0.86 refusal_ok=True (1358ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 470.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.06it/s]
+[140/150] q140 拒答 rerank=0.967 citation_acc=1.00 refusal_ok=False reason=comparative_insufficient 高rerank仍拒答(evidence) (503ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 514.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 109.83it/s]
+[141/150] q141 回答 rerank=0.984 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1630ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 455.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 69.11it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 71.23it/s]
+[142/150] q142 回答 rerank=0.452 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1509ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 381.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.27it/s]
+[143/150] q143 回答 rerank=0.998 citation_acc=0.86 refusal_ok=True (1180ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 366.09it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.98it/s]
+[144/150] q144 回答 rerank=1.000 citation_acc=1.00 refusal_ok=True (1029ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 367.71it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.02it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.92it/s]
+[145/150] q145 回答 rerank=0.967 citation_acc=1.00 refusal_ok=True (1069ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 345.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.47it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.38it/s]
+[146/150] q146 回答 rerank=0.997 citation_acc=1.00 refusal_ok=True (936ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 451.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.76it/s]
+[147/150] q147 回答 rerank=0.999 citation_acc=0.71 refusal_ok=False 未命中仍作答 (1006ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 485.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.10it/s]
+[148/150] q148 拒答 rerank=0.988 citation_acc=1.00 refusal_ok=False reason=stock_mismatch 高rerank仍拒答(evidence) (476ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 446.51it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.62it/s]
+[149/150] q149 拒答 rerank=0.988 citation_acc=1.00 refusal_ok=True (294ms)
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.12it/s]
+[150/150] q150 回答 rerank=0.641 citation_acc=1.00 refusal_ok=True (1680ms)
+
+Pipeline 评测完成：新跑 150 题，跳过 0 题，合计 150 题，耗时 183.1s
+
+已写入：
+  /root/commercial-rag/data/eval/eval_generation_results.csv
+  /root/commercial-rag/data/eval/eval_generation_metrics.csv
+  /root/commercial-rag/data/eval/eval_generation_metrics_by_query_type.csv
+  /root/commercial-rag/data/eval/eval_generation_detail.jsonl
+
+=== 整体指标 ===
+  question_count: 150
+  refusal_rate: 0.1333
+  refusal_accuracy: 0.7133
+  refusal_accuracy_evidence: 1.0000
+  citation_accuracy: 0.8648
+  citation_accuracy_applicable_n: 130
+  answer_factually_supported_rate: 0.8600
+  answer_supported_rule_rate: 0.9600
+  retrieval_hit_rate: 0.7000
+  faithfulness_ragas: nan
+  answer_relevancy_ragas: nan
+  ragas_scored_n: 0

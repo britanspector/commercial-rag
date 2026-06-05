@@ -1,15 +1,20 @@
 """
-answer_generate：基于通过校验的证据片段生成带引用的抽取式答案。
+answer_generate：基于检索证据 + Ollama LLM 生成带引用的答案。
 
-答案正文与【参考文献】均包含来源文档与页码，供 Citation Accuracy 评测。
+引用元数据由 rerank hits 确定性生成；【参考文献】由程序追加。
 """
 
 from __future__ import annotations
 
 import re
 
+from generation_config import describe_generation_config, resolve_generation_config
+from pipeline.evidence_select import select_evidence_hits
+from pipeline.llm_client import invoke_generation
+from pipeline.llm_prompts import build_generation_prompt
 from rag_types import AnswerGenerateResult, EvidenceCheckResult, build_citations
-from reranker import hit_passage_text
+
+_config_logged = False
 
 
 def _rating_line_from_hits(hits: list[dict]) -> str:
@@ -23,24 +28,14 @@ def _rating_line_from_hits(hits: list[dict]) -> str:
     return ""
 
 
-def _extractive_snippet(text: str, max_chars: int = 320) -> str:
-    text = re.sub(r"\s+", " ", text).strip()
-    if len(text) <= max_chars:
-        return text
-    break_at = text.rfind("。", 0, max_chars)
-    if break_at > 80:
-        return text[: break_at + 1]
-    return text[:max_chars] + "…"
-
-
-def _citation_source_prefix(citation) -> str:
-    doc = citation.source_document()
-    page = citation.page_label()
-    if doc and page != "页码未知":
-        return f"据《{doc}》({page})："
-    if doc:
-        return f"据《{doc}》："
-    return ""
+def _sanitize_llm_body(text: str) -> str:
+    """去掉 LLM 可能误输出的参考文献段。"""
+    cleaned = text.strip()
+    for marker in ("【参考文献】", "参考文献：", "参考文献:"):
+        if marker in cleaned:
+            cleaned = cleaned.split(marker, 1)[0].strip()
+    cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
+    return cleaned
 
 
 def generate_answer(
@@ -48,6 +43,8 @@ def generate_answer(
     evidence: EvidenceCheckResult,
     *,
     rerank_hits: list[dict] | None = None,
+    query_type: str = "factual",
+    compare_entities: list[str] | None = None,
 ) -> AnswerGenerateResult:
     """
     输入：原始问题、已通过 evidence_check 的结果、重排 hits
@@ -55,36 +52,47 @@ def generate_answer(
 
     调用方须保证 evidence.passed 为 True。
     """
+    global _config_logged
+
+    cfg = resolve_generation_config()
+    if not _config_logged:
+        print(f"[生成] {describe_generation_config(cfg)}")
+        _config_logged = True
+
     hits = rerank_hits if rerank_hits is not None else evidence.evidence_hits
-    citations = build_citations(hits[: evidence.citation_count or 3])
-    snippets: list[str] = []
+    citation_count = evidence.citation_count or 3
+    used_hits = select_evidence_hits(
+        hits,
+        query,
+        query_type=query_type,
+        compare_entities=compare_entities or [],
+        top_k=citation_count,
+    )
+    citations = build_citations(used_hits)
 
-    for citation, hit in zip(citations, hits[: len(citations)]):
-        snippet = _extractive_snippet(hit_passage_text(hit))
-        if not snippet:
-            continue
-        prefix = _citation_source_prefix(citation)
-        snippets.append(f"{prefix}{snippet} [{citation.index}]")
-
-    if snippets:
-        body = " ".join(snippets)
-    else:
-        citation = citations[0] if citations else None
-        prefix = _citation_source_prefix(citation) if citation else ""
-        body = f"{prefix}{_extractive_snippet(hit_passage_text(hits[0]))} [1]"
+    system_prompt, user_prompt = build_generation_prompt(
+        query,
+        used_hits,
+        citations,
+        query_type=query_type,
+        compare_entities=compare_entities or [],
+        cfg=cfg,
+    )
+    body = _sanitize_llm_body(invoke_generation(system_prompt, user_prompt, cfg))
 
     if any(keyword in query for keyword in ("评级", "投资评级", "买入", "增持")):
-        rating_line = _rating_line_from_hits(hits[:3])
-        if rating_line:
+        rating_line = _rating_line_from_hits(used_hits)
+        if rating_line and rating_line not in body:
             body = f"{rating_line} {body}"
 
-    ref_block = "\n".join(["", "【参考文献】", *[c.format_line() for c in citations]])
+    ref_lines = [c.format_line() for c in citations]
+    ref_block = "\n".join(["", "【参考文献】", *ref_lines])
     answer = f"根据检索到的研报资料：{body}{ref_block}"
 
     return AnswerGenerateResult(
         query=query,
         answer=answer,
         citations=citations,
-        evidence_hits=hits[: len(citations)],
+        evidence_hits=used_hits,
         top_rerank_score=evidence.top_rerank_score,
     )

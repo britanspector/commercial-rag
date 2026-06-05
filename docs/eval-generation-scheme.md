@@ -2,7 +2,9 @@
 
 
 
-在 **150 题**评测集（`data/eval/eval_questions.jsonl`）上批量跑 **RAG Pipeline 全链路**（与 `/chat` 一致），输出自动化指标与逐题 CSV，形成阶段一闭环。
+在 **150 题**评测集（`data/eval/eval_questions.jsonl`）上批量跑 **RAG Pipeline 全链路**（与 `/chat` 一致），输出自动化指标与逐题 CSV。也可 `POST /eval` 异步触发（见 [api.md](api.md)）。
+
+**答案生成**：检索 + Rerank + evidence_check 通过后，由本地 **Ollama**（默认 `qwen3:8b`）根据 Top-3 chunk 组织中文答案（`strategy=pipeline_llm`）。需先 `ollama serve`；单题生成约 10–30s，全量 150 题耗时会显著长于抽取式。
 
 
 
@@ -20,11 +22,13 @@
 
 | **Citation Accuracy** | 自定义 | 非拒答时：有引用、有页码/文档、引用 chunk 相关、must 词命中、doc/stock 对齐、正文含引用标记 |
 
-| **Refusal Accuracy** | 自定义 | `refused` 是否等于 `should_refuse`（`should_refuse = not retrieval_hit`） |
+| **Refusal Accuracy**（主口径） | 自定义 | `refusal_accuracy` = `refusal_correct_evidence`，与 evidence_check 一致 |
 
-| **refusal_accuracy_evidence** | 自定义 | `refused` 是否等于 `not evidence_check.passed`（与 evidence_check 规则对齐，便于分析 comparative 等拒答） |
+| **refusal_accuracy_retrieval** | 自定义 | `refused` 是否等于 `not retrieval_hit`（检索 gold 对齐，辅助分析） |
 
 | **answer_factually_supported** | 规则 | `must_contain_any` / `gold_answer` 匹配（与 rerank 评测一致） |
+
+evidence_check 拒答规则含：`low_rerank_score`、`weak_evidence_intent`（证据与问题意图不匹配）等，见 `src/pipeline/evidence_check.py`。
 
 
 
@@ -54,7 +58,10 @@ python src/eval_generation.py --dry-run
 
 # 阶段一：全量 Pipeline + 规则指标（推荐先 save-detail，便于后续 RAGAS）
 
-# 评测前请停止 uvicorn，避免 milvus.db 被占用
+# 评测前：ollama serve；停止 uvicorn，避免 milvus.db 被占用
+
+ollama pull qwen3:8b
+ollama serve
 
 $env:PYTHONUNBUFFERED="1"
 

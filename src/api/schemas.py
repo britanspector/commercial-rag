@@ -128,6 +128,35 @@ class UploadStageResponse(BaseModel):
     detail: str = ""
 
 
+class JobStatusResponse(BaseModel):
+    job_id: str
+    job_type: str
+    status: str
+    progress: str = ""
+    created_at: str | None = None
+    started_at: str | None = None
+    finished_at: str | None = None
+    duration_ms: int | None = None
+    result: dict = Field(default_factory=dict)
+    error: str = ""
+
+
+class EvalJobRequest(BaseModel):
+    eval_type: Literal["generation", "retrieval", "ragas"] = Field(
+        default="generation",
+        description="generation=150题Pipeline；retrieval=检索评测；ragas=补跑RAGAS",
+    )
+    limit: int | None = Field(default=None, ge=1, le=500)
+    skip_ragas: bool = Field(default=True, description="generation 时是否跳过内嵌 RAGAS")
+    save_detail: bool = Field(default=True)
+    resume: bool = Field(default=False)
+    compare_routes: bool = Field(default=False, description="retrieval 时三路对比")
+    route: Literal["vector", "bm25", "hybrid"] = "hybrid"
+    top_k: int = Field(default=10, ge=1, le=50)
+    legacy_retriever: bool = Field(default=False)
+    pipeline_stage: Literal["recall", "rerank"] = "rerank"
+
+
 class UploadResponse(BaseModel):
     doc_id: str
     filename: str
@@ -144,3 +173,5 @@ class UploadResponse(BaseModel):
     bm25_total_chunks: int
     replaced_existing: bool
     stages: list[UploadStageResponse]
+    job_id: str = ""
+    async_mode: bool = False

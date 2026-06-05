@@ -30,7 +30,16 @@ from api.deps import close_pipeline, get_pipeline, pipeline_status, reload_pipel
 from db.config import is_audit_enabled
 from db.engine import db_status
 from db.tracker import get_tracker
-from api.schemas import ChatResponse, HealthResponse, RAGRequest, SearchResponse, UploadResponse
+from api.jobs import create_job, get_job, job_to_dict, run_job_async
+from api.schemas import (
+    ChatResponse,
+    EvalJobRequest,
+    HealthResponse,
+    JobStatusResponse,
+    RAGRequest,
+    SearchResponse,
+    UploadResponse,
+)
 from api.serializers import chat_result_to_response, ingest_result_to_response, search_result_to_response
 from rag_constants import (
     DEFAULT_RERANK_REFUSAL_THRESHOLD,
@@ -164,6 +173,47 @@ async def chat(body: RAGRequest, request: Request) -> ChatResponse:
         return chat_result_to_response(result)
 
 
+@app.get("/jobs/{job_id}", response_model=JobStatusResponse)
+async def get_job_status(job_id: str) -> JobStatusResponse:
+    """查询后台任务状态（/upload?background=1 或 POST /eval）。"""
+    job = get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail=f"任务不存在：{job_id}")
+    return JobStatusResponse(**job_to_dict(job))
+
+
+@app.post("/eval", response_model=JobStatusResponse)
+async def start_eval(body: EvalJobRequest) -> JobStatusResponse:
+    """
+    异步启动批量评测（等价 CLI：eval_generation / eval_retrieval / eval_ragas）。
+    立即返回 job_id，通过 GET /jobs/{job_id} 查询进度与输出路径。
+    """
+    from eval_runner import run_generation_eval_job, run_ragas_eval_job, run_retrieval_eval_job
+
+    job = create_job(f"eval_{body.eval_type}")
+
+    def _worker() -> dict:
+        if body.eval_type == "generation":
+            return run_generation_eval_job(
+                limit=body.limit,
+                skip_ragas=body.skip_ragas,
+                save_detail=body.save_detail,
+                resume=body.resume,
+            )
+        if body.eval_type == "retrieval":
+            return run_retrieval_eval_job(
+                compare_routes=body.compare_routes,
+                route=body.route,
+                top_k=body.top_k,
+                legacy_retriever=body.legacy_retriever,
+                pipeline_stage=body.pipeline_stage,
+            )
+        return run_ragas_eval_job(resume=body.resume, limit=body.limit)
+
+    run_job_async(job.id, _worker)
+    return JobStatusResponse(**job_to_dict(job))
+
+
 @app.post("/upload", response_model=UploadResponse)
 async def upload_pdf(
     request: Request,
@@ -171,12 +221,12 @@ async def upload_pdf(
     industry: str = Form(default="", description="行业子目录，如 semi-conductor；默认 uploads"),
     industry_label: str = Form(default="", description="行业中文标签，如 半导体"),
     replace_existing: bool = Form(default=True, description="同 doc_id 是否覆盖旧数据"),
+    background: bool = Form(default=False, description="true 时异步入库，返回 job_id"),
 ) -> UploadResponse:
     """
     上传 PDF 并自动完成：MinerU 解析 → 分块 → 向量化 → Milvus + BM25 入库。
 
-    首次调用可能耗时较长（MinerU 解析 + Embedding）。入库后会重置 Pipeline，
-    后续 /search 与 /chat 可直接检索新文档。
+    大文件建议 background=true，通过 GET /jobs/{job_id} 查询进度。
     """
     if not file.filename:
         raise HTTPException(status_code=400, detail="文件名不能为空")
@@ -190,6 +240,45 @@ async def upload_pdf(
         raise HTTPException(status_code=400, detail="文件过大（上限 100MB）")
 
     from pipeline.ingest import ingest_pdf_bytes
+
+    if background:
+        job = create_job("upload")
+        filename = file.filename
+        app_ref = request.app
+
+        def _upload_worker() -> dict:
+            result = ingest_pdf_bytes(
+                content,
+                filename,
+                industry=industry,
+                industry_label=industry_label,
+                replace_existing=replace_existing,
+            )
+            reload_pipeline(app_ref)
+            payload = ingest_result_to_response(result)
+            return {
+                "doc_id": payload.doc_id,
+                "chunk_count": payload.chunk_count,
+                "milvus_rows_inserted": payload.milvus_rows_inserted,
+            }
+
+        run_job_async(job.id, _upload_worker)
+        return UploadResponse(
+            doc_id="",
+            filename=filename,
+            industry=industry,
+            industry_label=industry_label,
+            source_pdf_path="",
+            chunk_count=0,
+            retrievable_chunk_count=0,
+            milvus_rows_inserted=0,
+            milvus_total_rows=0,
+            bm25_total_chunks=0,
+            replaced_existing=replace_existing,
+            stages=[],
+            job_id=job.id,
+            async_mode=True,
+        )
 
     tracker = get_tracker()
     with tracker.request_context("upload") as request_id:

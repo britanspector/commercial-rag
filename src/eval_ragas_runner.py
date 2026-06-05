@@ -210,7 +210,11 @@ def prepare_ragas_sample(row: dict, cfg: RagasRuntimeConfig) -> dict[str, Any] |
         return None
 
     trimmed_ctx = [str(c)[: cfg.max_context_chars] for c in contexts[: cfg.max_contexts]]
-    answer = str(row.get("answer", ""))[: cfg.max_answer_chars]
+    # 优先用仅正文（不含【参考文献】元数据）的 answer_body 来做 RAGAS
+    raw_answer = row.get("answer_body", None)
+    if raw_answer is None:
+        raw_answer = row.get("answer", "")
+    answer = str(raw_answer)[: cfg.max_answer_chars]
     return {
         "question_id": row.get("question_id", ""),
         "user_input": str(row.get("query", "")),

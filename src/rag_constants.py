@@ -18,6 +18,7 @@ REFUSAL_REASON_INSUFFICIENT_PASSAGE = "insufficient_passage"
 REFUSAL_REASON_MISSING_SOURCE_PAGE = "missing_source_page"
 REFUSAL_REASON_STOCK_MISMATCH = "stock_mismatch"
 REFUSAL_REASON_COMPARATIVE_INSUFFICIENT = "comparative_insufficient"
+REFUSAL_REASON_WEAK_EVIDENCE_INTENT = "weak_evidence_intent"
 
 REFUSAL_REASON_LABELS: dict[str, str] = {
     REFUSAL_REASON_NO_HITS: "未检索到相关研报片段",
@@ -26,6 +27,7 @@ REFUSAL_REASON_LABELS: dict[str, str] = {
     REFUSAL_REASON_MISSING_SOURCE_PAGE: "证据缺少可溯源的文档或页码",
     REFUSAL_REASON_STOCK_MISMATCH: "证据与指定股票代码不匹配",
     REFUSAL_REASON_COMPARATIVE_INSUFFICIENT: "对比问题缺少多主体证据",
+    REFUSAL_REASON_WEAK_EVIDENCE_INTENT: "检索片段与问题意图不匹配",
 }
 
 
@@ -51,4 +53,8 @@ def format_refusal_message(reason_code: str, **kwargs: float | str) -> str:
     if reason_code == REFUSAL_REASON_STOCK_MISMATCH:
         code = kwargs.get("stock_code", "")
         return f"我不确定：检索证据未覆盖指定股票（{code}），无法可靠回答。"
+    if reason_code == REFUSAL_REASON_WEAK_EVIDENCE_INTENT:
+        detail = kwargs.get("intent_detail", "")
+        suffix = f"（{detail}）" if detail else ""
+        return f"我不确定：{label}{suffix}，无法基于当前检索结果可靠回答。"
     return f"我不确定：{label}，无法基于当前检索结果可靠回答。"

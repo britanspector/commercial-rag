@@ -42,10 +42,24 @@ def _ensure_runtime_deps() -> None:
 
 _ensure_runtime_deps()
 
+import os
+
+from generation_config import describe_generation_config, resolve_generation_config
+from pipeline.llm_client import check_ollama_reachable, ensure_ollama_model
 from rag_constants import DEFAULT_RERANK_REFUSAL_THRESHOLD, DEFAULT_RECALL_TOP_K, DEFAULT_RERANK_TOP_K
 from rag_pipeline import RAGPipeline
 from rag_types import RAGPipelineResult
 from retrieval import RecallRoute
+
+
+def _ensure_generation_ollama() -> None:
+    cfg = resolve_generation_config()
+    print(f"[生成] {describe_generation_config(cfg)}")
+    if not check_ollama_reachable(cfg.ollama_base_url):
+        raise SystemExit(
+            f"无法连接 Ollama：{cfg.ollama_base_url}。请先执行：ollama serve && ollama pull {cfg.llm_model}"
+        )
+    ensure_ollama_model(cfg)
 
 
 def print_answer(result: RAGPipelineResult) -> None:
@@ -95,7 +109,17 @@ def main() -> None:
         default=RecallRoute.HYBRID.value,
         help="召回路线（默认 hybrid，与离线评测一致）",
     )
+    parser.add_argument(
+        "--gen-model",
+        type=str,
+        default=None,
+        help="答案生成 Ollama 模型，如 qwen3:8b（默认读 GEN_LLM_MODEL）",
+    )
     args = parser.parse_args()
+
+    if args.gen_model:
+        os.environ["GEN_LLM_MODEL"] = args.gen_model
+    _ensure_generation_ollama()
 
     pipeline = RAGPipeline(
         recall_top_k=args.recall_top_k,

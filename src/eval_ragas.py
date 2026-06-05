@@ -91,7 +91,7 @@ def save_ragas_reports(rows: list[dict], detail_out: Path) -> None:
         "answer_relevancy_ragas",
         "ragas_scored_n",
         "refusal_accuracy",
-        "refusal_accuracy_evidence",
+        "refusal_accuracy_retrieval",
         "citation_accuracy",
     ):
         value = metrics.get(key)

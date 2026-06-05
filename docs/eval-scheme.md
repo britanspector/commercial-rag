@@ -73,6 +73,13 @@ python src/eval_retrieval.py --route vector
 python src/eval_retrieval.py --compare-routes --top-k 10
 ```
 
+**与生产对齐（默认）**：`hybrid` 路线使用 `RAGPipeline.run_search`（含 query_rewrite + rerank）。裸检索对照加 `--legacy-retriever`。
+
+```bash
+python src/eval_retrieval.py --route hybrid --pipeline-stage rerank   # 默认
+python src/eval_retrieval.py --route hybrid --legacy-retriever        # 旧版对照
+```
+
 离线环境可设置：`HF_HUB_OFFLINE=1`
 
 ## 输出文件
@@ -88,6 +95,7 @@ python src/eval_retrieval.py --compare-routes --top-k 10
 ## 指标含义
 
 - **Recall@3 / @5 / @10**：Top-K 内是否出现至少 1 个「相关」chunk
+- **Context Precision@5 / @10**：Top-K 中相关 chunk 占比（相关数 / K）
 - **MRR**：第一个相关 chunk 的排名倒数
 - **命中率**：Recall@10 等价（K=10 时）
 

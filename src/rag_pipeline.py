@@ -232,9 +232,18 @@ class RAGPipeline:
         query: str,
         evidence: EvidenceCheckResult,
         rerank_hits: list[dict],
+        *,
+        query_type: str = "factual",
+        compare_entities: list[str] | None = None,
     ) -> AnswerGenerateResult:
         """步骤 5：带引用答案生成（须 evidence.passed）。"""
-        return generate_answer(query, evidence, rerank_hits=rerank_hits)
+        return generate_answer(
+            query,
+            evidence,
+            rerank_hits=rerank_hits,
+            query_type=query_type,
+            compare_entities=compare_entities,
+        )
 
     # --- 兼容 / 组合接口 ---
 
