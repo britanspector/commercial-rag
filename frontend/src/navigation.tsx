@@ -68,6 +68,7 @@ export const NAV_ITEMS: NavItem[] = [
       '问题输入与可选股票代码 / 题型',
       '答案与引用列表展示',
       'Rerank 命中详情',
+      '响应 cache 字段：本次命中/延迟',
     ],
   },
   {
@@ -82,6 +83,7 @@ export const NAV_ITEMS: NavItem[] = [
       'Query Rewrite 信息',
       'Recall / Rerank 分阶段命中列表',
       '召回路线与 Top-K 参数调节',
+      '响应 cache 字段：本次命中/延迟',
     ],
   },
   {
@@ -103,11 +105,14 @@ export const NAV_ITEMS: NavItem[] = [
     path: '/cache',
     label: '缓存监控',
     icon: <ApiOutlined />,
-    group: 'future',
-    description: '展示 Embedding、Rerank、LLM 等缓存状态（后续接入）。',
-    apiEndpoints: [],
-    plannedFeatures: ['缓存命中率', '容量与清理操作'],
-    comingSoon: true,
+    group: 'core',
+    description: '展示语义缓存累计命中率、延迟与后端状态，对接 GET /cache/stats。',
+    apiEndpoints: ['GET /cache/stats', 'GET /health'],
+    plannedFeatures: [
+      '累计 L1/L2 命中率与延迟统计',
+      '向量检索 / LLM 调用节省量',
+      'L1/L2 后端状态',
+    ],
   },
   {
     key: '/trace',

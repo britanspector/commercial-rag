@@ -96,6 +96,116 @@ class RAGQuery:
 
 
 @dataclass
+class CacheInfo:
+    """缓存命中元数据（随 Pipeline 结果返回）。"""
+
+    hit: bool = False
+    source: str = "pipeline"  # l1_exact | l2_semantic | pipeline | none
+    similarity: float | None = None
+    reason: str = ""
+    safety_ok: bool = True
+    safety_reason: str = ""
+    latency_ms: float = 0.0
+    lookup_ms: float = 0.0
+    pipeline_ms: float = 0.0
+    vector_retrieval: bool = False
+    llm_called: bool = False
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "hit": self.hit,
+            "source": self.source,
+            "similarity": self.similarity,
+            "reason": self.reason,
+            "safety_ok": self.safety_ok,
+            "safety_reason": self.safety_reason,
+            "latency_ms": round(self.latency_ms, 2),
+            "lookup_ms": round(self.lookup_ms, 2),
+            "pipeline_ms": round(self.pipeline_ms, 2),
+            "vector_retrieval": self.vector_retrieval,
+            "llm_called": self.llm_called,
+        }
+
+    @classmethod
+    def from_lookup(cls, lookup: object, *, telemetry: object | None = None) -> CacheInfo:
+        from cache.telemetry import CacheRequestTelemetry
+        from cache.types import CacheLookupResult
+
+        if isinstance(telemetry, CacheRequestTelemetry):
+            return cls(
+                hit=telemetry.hit,
+                source=telemetry.source,
+                similarity=telemetry.similarity,
+                reason=telemetry.reason,
+                safety_ok=telemetry.safety_ok,
+                safety_reason=telemetry.safety_reason,
+                latency_ms=telemetry.latency_ms,
+                lookup_ms=telemetry.lookup_ms,
+                pipeline_ms=telemetry.pipeline_ms,
+                vector_retrieval=telemetry.vector_retrieval,
+                llm_called=telemetry.llm_called,
+            )
+
+        if not isinstance(lookup, CacheLookupResult):
+            raise TypeError("from_lookup 需要 CacheLookupResult 或 telemetry")
+        if not lookup.hit:
+            return cls(
+                hit=False,
+                source="pipeline",
+                reason=lookup.reject_reason or "not_found",
+                safety_ok=not bool(lookup.reject_reason),
+                safety_reason=lookup.reject_reason or "",
+            )
+        layer = lookup.layer.value if lookup.layer else "pipeline"
+        return cls(
+            hit=True,
+            source=layer,
+            similarity=lookup.similarity,
+            reason="served",
+            vector_retrieval=False,
+            llm_called=False,
+        )
+
+    @classmethod
+    def from_telemetry(cls, telemetry: object) -> CacheInfo:
+        from cache.telemetry import CacheRequestTelemetry
+
+        if not isinstance(telemetry, CacheRequestTelemetry):
+            raise TypeError("from_telemetry 需要 CacheRequestTelemetry")
+        return cls(
+            hit=telemetry.hit,
+            source=telemetry.source,
+            similarity=telemetry.similarity,
+            reason=telemetry.reason,
+            safety_ok=telemetry.safety_ok,
+            safety_reason=telemetry.safety_reason,
+            latency_ms=telemetry.latency_ms,
+            lookup_ms=telemetry.lookup_ms,
+            pipeline_ms=telemetry.pipeline_ms,
+            vector_retrieval=telemetry.vector_retrieval,
+            llm_called=telemetry.llm_called,
+        )
+
+    @classmethod
+    def bypass(cls, *, reason: str = "cache_bypass", telemetry: object | None = None) -> CacheInfo:
+        if telemetry is not None:
+            return cls.from_telemetry(telemetry)
+        return cls(hit=False, source="pipeline", reason=reason, vector_retrieval=True, llm_called=True)
+
+    @classmethod
+    def pipeline_miss(cls, *, reason: str = "not_found", telemetry: object | None = None) -> CacheInfo:
+        if telemetry is not None:
+            return cls.from_telemetry(telemetry)
+        return cls(
+            hit=False,
+            source="pipeline",
+            reason=reason,
+            vector_retrieval=True,
+            llm_called=True,
+        )
+
+
+@dataclass
 class RetrievedChunk:
     """单条检索/重排片段的结构化表示。"""
 
@@ -147,6 +257,15 @@ class RetrievedChunk:
 
 
 @dataclass
+class EntitySubQuery:
+    """对比题单主体检索子查询（含独立 embedding）。"""
+
+    entity: str
+    query: str
+    query_vector: list[float] | None = None
+
+
+@dataclass
 class QueryRewriteResult:
     """query_rewrite 步骤输出。"""
 
@@ -158,12 +277,22 @@ class QueryRewriteResult:
     compare_entities: list[str] = field(default_factory=list)
     hybrid_vector_weight: float = 0.35
     query_vector: list[float] | None = None
+    entity_sub_queries: list[EntitySubQuery] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         payload = asdict(self)
         if self.query_vector is not None:
             payload["query_vector_dim"] = len(self.query_vector)
             payload["query_vector"] = None
+        if self.entity_sub_queries:
+            payload["entity_sub_queries"] = [
+                {
+                    "entity": sub.entity,
+                    "query": sub.query,
+                    "query_vector_dim": len(sub.query_vector) if sub.query_vector else None,
+                }
+                for sub in self.entity_sub_queries
+            ]
         return payload
 
 
@@ -279,6 +408,7 @@ class RAGPipelineResult:
     rerank_result: RerankStepResult | None = None
     evidence_check: EvidenceCheckResult | None = None
     answer_generate: AnswerGenerateResult | None = None
+    cache: CacheInfo | None = None
 
     @classmethod
     def from_stages(
@@ -359,6 +489,8 @@ class RAGPipelineResult:
                 "top_rerank_score": self.answer_generate.top_rerank_score,
                 "citation_count": len(self.answer_generate.citations),
             }
+        if self.cache is not None:
+            payload["cache"] = self.cache.to_dict()
         return payload
 
 
@@ -373,6 +505,7 @@ class RAGSearchResult:
     recall_hits: list[RetrievedChunk] = field(default_factory=list)
     rerank_hits: list[RetrievedChunk] = field(default_factory=list)
     top_rerank_score: float = 0.0
+    cache: CacheInfo | None = None
 
     @classmethod
     def from_steps(
@@ -398,7 +531,7 @@ class RAGSearchResult:
         )
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload: dict[str, Any] = {
             "query": self.query,
             "top_rerank_score": self.top_rerank_score,
             "query_rewrite": self.query_rewrite.to_dict(),
@@ -415,3 +548,6 @@ class RAGSearchResult:
                 "hits": [chunk.to_dict() for chunk in self.rerank_hits],
             },
         }
+        if self.cache is not None:
+            payload["cache"] = self.cache.to_dict()
+        return payload

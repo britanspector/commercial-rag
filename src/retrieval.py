@@ -20,6 +20,7 @@ from query_enhance import (
     extract_compare_entities,
     hybrid_vector_weight,
 )
+from rag_types import EntitySubQuery
 
 DEFAULT_OUTPUT_FIELDS = [
     "chunk_id",
@@ -284,6 +285,7 @@ class HybridRetriever:
         *,
         stock_code: str = "",
         query_type: str = "factual",
+        entity_sub_queries: list[EntitySubQuery] | None = None,
     ) -> list[dict]:
         if route == RecallRoute.VECTOR:
             hits = _hits_from_vector(
@@ -300,16 +302,35 @@ class HybridRetriever:
             return _apply_stock_boost(hits, [stock_code] if stock_code else [])
 
         if query_type == "comparative":
+            subs = entity_sub_queries or []
+            if len(subs) >= 2:
+                pool = max(top_k, self.hybrid_pool_size)
+                hit_lists: list[list[dict]] = []
+                for sub in subs[:3]:
+                    sub_vector = sub.query_vector if sub.query_vector is not None else query_vector
+                    hit_lists.append(
+                        self._retrieve_hybrid_once(
+                            sub.query,
+                            sub_vector,
+                            pool,
+                            stock_code="",
+                            query_type="factual",
+                        )
+                    )
+                fused = rrf_fuse(hit_lists, top_k)
+                _enrich_hits_from_bm25_metadata(fused, self.bm25_index)
+                fused = _apply_content_type_adjustments(fused)
+                return _apply_stock_boost(fused, [stock_code] if stock_code else [])
+
             entities = extract_compare_entities(query)
             if len(entities) >= 2:
                 pool = max(top_k, self.hybrid_pool_size)
-                hit_lists: list[list[dict]] = []
+                hit_lists = []
                 for entity in entities[:3]:
                     sub_query = f"{entity} {query}"
-                    sub_vector = query_vector
                     hit_lists.append(
                         self._retrieve_hybrid_once(
-                            sub_query, sub_vector, pool, stock_code="", query_type="factual"
+                            sub_query, query_vector, pool, stock_code="", query_type="factual"
                         )
                     )
                 fused = rrf_fuse(hit_lists, top_k)

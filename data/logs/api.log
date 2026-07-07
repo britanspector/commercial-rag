@@ -1,0 +1,198 @@
+INFO:     Started server process [12933]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+INFO:     127.0.0.1:39488 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39490 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49880 - "GET /health HTTP/1.1" 200 OK
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782963826.326371   12933 chttp2_transport.cc:1335] ipv4:127.0.0.1:32847: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {grpc_status:14, http2_error:11}
+E0000 00:00:1782963826.326500   12933 chttp2_transport.cc:1364] ipv4:127.0.0.1:32847: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+INFO:     127.0.0.1:36538 - "GET /health HTTP/1.1" 200 OK
+I0000 00:00:1782963906.439525   13027 chttp2_transport.cc:1335] ipv4:127.0.0.1:32847: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {grpc_status:14, http2_error:11}
+E0000 00:00:1782963906.439651   13027 chttp2_transport.cc:1364] ipv4:127.0.0.1:32847: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+INFO:     127.0.0.1:47028 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47036 - "GET /health HTTP/1.1" 200 OK
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 464.23it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 135.78it/s]
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.547 seconds.
+Prefix dict has been built successfully.
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 625.85it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.83it/s]
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+INFO:     127.0.0.1:59488 - "POST /chat HTTP/1.1" 200 OK
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 395.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.14it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 71.97it/s]
+INFO:     127.0.0.1:54256 - "POST /chat HTTP/1.1" 200 OK
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 514.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.44it/s]
+INFO:     127.0.0.1:51284 - "POST /chat HTTP/1.1" 200 OK
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 477.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 66.61it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 68.66it/s]
+INFO:     127.0.0.1:51290 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53170 - "GET /cache/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53186 - "GET /cache/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51732 - "GET /cache/stats HTTP/1.1" 200 OK
+I0000 00:00:1782964153.140987   13545 chttp2_transport.cc:1335] ipv4:127.0.0.1:38037: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11, grpc_status:14}
+E0000 00:00:1782964153.141145   13545 chttp2_transport.cc:1364] ipv4:127.0.0.1:38037: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+I0000 00:00:1782964165.687106   12933 chttp2_transport.cc:1335] ipv4:127.0.0.1:32847: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {grpc_status:14, http2_error:11}
+E0000 00:00:1782964165.687243   12933 chttp2_transport.cc:1364] ipv4:127.0.0.1:32847: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 20000ms
+INFO:     127.0.0.1:37284 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Started server process [14278]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+INFO:     127.0.0.1:37332 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37346 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36810 - "GET /health HTTP/1.1" 200 OK
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1782964259.981640   14368 chttp2_transport.cc:1335] ipv4:127.0.0.1:36815: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11, grpc_status:14}
+E0000 00:00:1782964259.981770   14368 chttp2_transport.cc:1364] ipv4:127.0.0.1:36815: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+INFO:     127.0.0.1:60116 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60116 - "GET /openapi.json HTTP/1.1" 200 OK
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 554.66it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 137.37it/s]
+2026-07-02 12:04:40,928 [ERROR][_log_rpc_error]: RPC error: [search], <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>, <elapsed:3.2ms>
+Traceback:
+Traceback (most recent call last):
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 518, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 565, in handler
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 456, in handler
+    raise e from e
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 419, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1298, in search
+    return self._execute_search(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1190, in _execute_search
+    check_status(response.status)
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/utils.py", line 77, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+ (decorators.py:472)
+Milvus L2 lookup failed (degraded to miss/no-op): <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.554 seconds.
+Prefix dict has been built successfully.
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 503.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 109.30it/s]
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+INFO:     127.0.0.1:55888 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33830 - "POST /chat HTTP/1.1" 200 OK
+2026-07-02 12:04:56,716 [ERROR][_log_rpc_error]: RPC error: [search], <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>, <elapsed:2.0ms>
+Traceback:
+Traceback (most recent call last):
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 518, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 565, in handler
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 456, in handler
+    raise e from e
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 419, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1298, in search
+    return self._execute_search(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1190, in _execute_search
+    check_status(response.status)
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/utils.py", line 77, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+ (decorators.py:472)
+Milvus L2 lookup failed (degraded to miss/no-op): <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 508.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.07it/s]
+INFO:     127.0.0.1:33832 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52062 - "POST /chat HTTP/1.1" 200 OK
+I0000 00:00:1782965197.906324   14368 chttp2_transport.cc:1335] ipv4:127.0.0.1:36815: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11, grpc_status:14}
+E0000 00:00:1782965197.906431   14368 chttp2_transport.cc:1364] ipv4:127.0.0.1:36815: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 20000ms
+2026-07-02 12:06:46,938 [ERROR][_log_rpc_error]: RPC error: [search], <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>, <elapsed:2.0ms>
+Traceback:
+Traceback (most recent call last):
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 518, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 565, in handler
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 456, in handler
+    raise e from e
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/decorators.py", line 419, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1298, in search
+    return self._execute_search(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/grpc_handler.py", line 1190, in _execute_search
+    check_status(response.status)
+  File "/root/miniconda3/lib/python3.12/site-packages/pymilvus/client/utils.py", line 77, in check_status
+    raise MilvusException(status.code, status.reason, status.error_code)
+pymilvus.exceptions.MilvusException: <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+ (decorators.py:472)
+Milvus L2 lookup failed (degraded to miss/no-op): <MilvusException: (code=101, message=Collection 'rag_semantic_cache' is in state 'released'; call load() before search/get/query)>
+I0000 00:00:1782965206.945774   14368 chttp2_transport.cc:1335] ipv4:127.0.0.1:45079: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11, grpc_status:14}
+E0000 00:00:1782965206.945865   14368 chttp2_transport.cc:1364] ipv4:127.0.0.1:45079: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 435.62it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.22it/s]
+INFO:     127.0.0.1:54736 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39502 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44684 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44688 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51502 - "POST /chat HTTP/1.1" 200 OK

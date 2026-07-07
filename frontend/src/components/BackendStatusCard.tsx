@@ -70,6 +70,25 @@ export function BackendStatusCard() {
           <Descriptions.Item label="审计库">
             {health.audit.enabled ? '已启用' : '未启用'}
           </Descriptions.Item>
+          {health.cache && Object.keys(health.cache).length > 0 && (
+            <>
+              <Descriptions.Item label="语义缓存">
+                <Tag color={health.cache.active ? 'success' : 'default'}>
+                  {health.cache.active ? '已启用' : '未启用'}
+                </Tag>
+              </Descriptions.Item>
+              {typeof health.cache.total_hit_rate === 'number' && (
+                <Descriptions.Item label="累计命中率">
+                  {(Number(health.cache.total_hit_rate) * 100).toFixed(1)}%
+                </Descriptions.Item>
+              )}
+              {typeof health.cache.avg_latency_ms === 'number' && (
+                <Descriptions.Item label="平均延迟">
+                  {Number(health.cache.avg_latency_ms).toFixed(1)} ms
+                </Descriptions.Item>
+              )}
+            </>
+          )}
         </Descriptions>
       )}
     </Card>

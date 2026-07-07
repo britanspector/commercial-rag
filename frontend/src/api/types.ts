@@ -80,12 +80,55 @@ export interface RerankStageResponse {
   hits: RetrievedChunkResponse[]
 }
 
+export interface CacheInfoResponse {
+  hit: boolean
+  source: string
+  similarity?: number | null
+  reason?: string
+  safety_ok?: boolean
+  safety_reason?: string
+  latency_ms: number
+  lookup_ms?: number
+  pipeline_ms?: number
+  vector_retrieval?: boolean
+  llm_called?: boolean
+}
+
+export interface CacheStatsResponse {
+  active: boolean
+  lookups: number
+  hits_l1: number
+  hits_l2: number
+  misses: number
+  lookup_hit_rate: number
+  requests: number
+  request_hits_l1: number
+  request_hits_l2: number
+  request_misses: number
+  l1_hit_rate: number
+  l2_hit_rate: number
+  total_hit_rate: number
+  avg_latency_ms: number
+  avg_hit_latency_ms: number
+  avg_miss_latency_ms: number
+  avg_latency_saved_ms: number
+  vector_retrievals_saved: number
+  llm_calls_saved: number
+  llm_call_reduction_rate: number
+  safety_rejects: number
+  stores: number
+  exact_entries: number
+  semantic_entries: number
+  backends: Record<string, unknown>
+}
+
 export interface SearchResponse {
   query: string
   top_rerank_score: number
   query_rewrite: QueryRewriteResponse
   recall: RecallStageResponse
   rerank: RerankStageResponse
+  cache?: CacheInfoResponse
 }
 
 export interface ChatResponse {
@@ -98,6 +141,7 @@ export interface ChatResponse {
   citations: CitationResponse[]
   rerank_hits: RetrievedChunkResponse[]
   evidence_check: EvidenceCheckResponse
+  cache?: CacheInfoResponse
 }
 
 export interface HealthResponse {
@@ -105,6 +149,7 @@ export interface HealthResponse {
   pipeline_ready: boolean
   models_loaded: boolean
   audit: Record<string, string | number | boolean>
+  cache?: Record<string, string | number | boolean>
   defaults: Record<string, string | number>
 }
 

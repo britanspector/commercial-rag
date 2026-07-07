@@ -1,6 +1,7 @@
 import { Card, Space, Steps, Tag, Typography } from 'antd'
 
 import type { SearchResponse } from '../../api/types'
+import { CacheInfoPanel } from '../../components/CacheInfoPanel'
 import { ChunkHitsTable } from './ChunkHitsTable'
 import { QueryRewritePanel } from './QueryRewritePanel'
 
@@ -24,6 +25,8 @@ export function SearchResultPanel({ result }: SearchResultPanelProps) {
           <Tag color="blue">{result.top_rerank_score.toFixed(3)}</Tag>
         </Space>
       </Card>
+
+      {result.cache && <CacheInfoPanel cache={result.cache} />}
 
       <Steps
         current={2}

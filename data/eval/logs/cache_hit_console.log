@@ -1,0 +1,1151 @@
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+cache_hit_eval start run_id=20260610_092656 pairs=125 modes=l1_only,l1_l2
+主 Milvus 探针失败（可能被其他进程占用），继续尝试 Pipeline
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+=== mode=l1_only warmup (125 pairs) ===
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 499.80it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 133.73it/s]
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.568 seconds.
+Prefix dict has been built successfully.
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 513.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.21it/s]
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+phase=warmup mode=l1_only pair=regression_01 variant=synonym_metric hit=False source=pipeline sim=None refused=False query='澜起科技2024年的EPS是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 451.86it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.35it/s]
+phase=warmup mode=l1_only pair=regression_02 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技2026年EPS是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.13it/s]
+phase=warmup mode=l1_only pair=pair_0003 variant=word_order hit=False source=pipeline sim=None refused=False query='澜起科技2027年市盈率PE预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 542.27it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.11it/s]
+phase=warmup mode=l1_only pair=pair_0004 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技的投资评级是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.19it/s]
+phase=warmup mode=l1_only pair=pair_0005 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技可比公司估值表中2026E平均PE是多少？'
+phase=warmup mode=l1_only pair=pair_0006 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='澜起科技可比公司估值表中2026E平均PE是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.74it/s]
+phase=warmup mode=l1_only pair=pair_0007 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='京仪装备半导体专用温控设备2026E营收预测'
+phase=warmup mode=l1_only pair=pair_0008 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='京仪装备半导体专用温控设备2026E营收预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 515.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.82it/s]
+phase=warmup mode=l1_only pair=pair_0009 variant=punctuation hit=False source=pipeline sim=None refused=False query='国民技术的投资逻辑和光模块MCU业务'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 943.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 115.34it/s]
+phase=warmup mode=l1_only pair=pair_0010 variant=punctuation hit=False source=pipeline sim=None refused=False query='中芯国际研报的核心观点是什么？'
+phase=warmup mode=l1_only pair=pair_0011 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中芯国际研报的核心观点是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 521.66it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.56it/s]
+phase=warmup mode=l1_only pair=pair_0012 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中国核电可比公司估值比较'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 349.23it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.33it/s]
+phase=warmup mode=l1_only pair=pair_0013 variant=word_order hit=False source=pipeline sim=None refused=False query='焦点科技2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.96it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.79it/s]
+phase=warmup mode=l1_only pair=pair_0014 variant=punctuation hit=False source=pipeline sim=None refused=False query='若羽臣的品牌孵化业务进展'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 521.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.57it/s]
+phase=warmup mode=l1_only pair=pair_0015 variant=punctuation hit=False source=pipeline sim=None refused=False query='赛维时代2025年营收同比增速是多少？'
+phase=warmup mode=l1_only pair=pair_0016 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2025年营收同比增速是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 438.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.74it/s]
+phase=warmup mode=l1_only pair=pair_0017 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力2026E EPS预测'
+phase=warmup mode=l1_only pair=pair_0018 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='长江电力2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 393.47it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.40it/s]
+phase=warmup mode=l1_only pair=pair_0019 variant=word_order hit=False source=pipeline sim=None refused=False query='福能股份2025年净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 494.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 119.42it/s]
+phase=warmup mode=l1_only pair=pair_0020 variant=word_order hit=False source=pipeline sim=None refused=False query='协鑫能科2026E营业收入预测'
+phase=warmup mode=l1_only pair=pair_0021 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='协鑫能科2026E营业收入预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 430.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.54it/s]
+phase=warmup mode=l1_only pair=pair_0022 variant=punctuation hit=False source=pipeline sim=None refused=False query='青木科技电商代运营业务竞争优势'
+phase=warmup mode=l1_only pair=pair_0023 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='青木科技电商代运营业务竞争优势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 308.16it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.96it/s]
+phase=warmup mode=l1_only pair=pair_0024 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='芯朋微2026年营收是多少？'
+phase=warmup mode=l1_only pair=pair_0025 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='芯朋微2026年营收是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.75it/s]
+phase=warmup mode=l1_only pair=pair_0026 variant=word_order hit=False source=pipeline sim=None refused=False query='华凯易佰2025年归母净利润及同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 484.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.03it/s]
+phase=warmup mode=l1_only pair=pair_0027 variant=punctuation hit=False source=pipeline sim=None refused=False query='嘉泽新能绿醇项目总投资额是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 435.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.74it/s]
+phase=warmup mode=l1_only pair=pair_0028 variant=punctuation hit=False source=pipeline sim=None refused=False query='通宝能源首次覆盖的投资评级结论'
+phase=warmup mode=l1_only pair=pair_0029 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='通宝能源首次覆盖的投资评级结论'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 482.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.20it/s]
+phase=warmup mode=l1_only pair=pair_0030 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='焦点科技2026Q1中国制造网收费会员数量'
+phase=warmup mode=l1_only pair=pair_0031 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2026Q1中国制造网收费会员数量'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 406.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.91it/s]
+phase=warmup mode=l1_only pair=pair_0032 variant=word_order hit=False source=pipeline sim=None refused=False query='协鑫能科2025年底并网运营总装机容量'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 473.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.53it/s]
+phase=warmup mode=l1_only pair=pair_0033 variant=word_order hit=False source=pipeline sim=None refused=False query='青木科技2026E归母净利润预测'
+phase=warmup mode=l1_only pair=pair_0034 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技2026E归母净利润预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 472.16it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.54it/s]
+phase=warmup mode=l1_only pair=pair_0035 variant=punctuation hit=False source=pipeline sim=None refused=False query='三峡能源2025年归母净利润是多少？'
+phase=warmup mode=l1_only pair=pair_0036 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='三峡能源2025年归母净利润是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 503.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.99it/s]
+phase=warmup mode=l1_only pair=pair_0037 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力股息率与分红情况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 458.46it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.53it/s]
+phase=warmup mode=l1_only pair=pair_0038 variant=word_order hit=False source=pipeline sim=None refused=False query='若羽臣2026Q1归母净利润同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 361.05it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.75it/s]
+phase=warmup mode=l1_only pair=pair_0039 variant=word_order hit=False source=pipeline sim=None refused=False query='华峰测控2025年营业收入是多少？'
+phase=warmup mode=l1_only pair=pair_0040 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年营业收入是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 421.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.26it/s]
+phase=warmup mode=l1_only pair=pair_0041 variant=punctuation hit=False source=pipeline sim=None refused=False query='华峰测控2025年归母净利润及同比增速'
+phase=warmup mode=l1_only pair=pair_0042 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年归母净利润及同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 504.94it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.78it/s]
+phase=warmup mode=l1_only pair=pair_0043 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华峰测控2025年毛利率水平'
+phase=warmup mode=l1_only pair=pair_0044 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年毛利率水平'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 425.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.99it/s]
+phase=warmup mode=l1_only pair=pair_0045 variant=word_order hit=False source=pipeline sim=None refused=False query='芯朋微2026E EPS预测是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 510.05it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.24it/s]
+phase=warmup mode=l1_only pair=pair_0046 variant=word_order hit=False source=pipeline sim=None refused=False query='国民技术2026E PE估值水平'
+phase=warmup mode=l1_only pair=pair_0047 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术2026E PE估值水平'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 403.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.18it/s]
+phase=warmup mode=l1_only pair=pair_0048 variant=punctuation hit=False source=pipeline sim=None refused=False query='中芯国际2025年资本开支情况'
+phase=warmup mode=l1_only pair=pair_0049 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中芯国际2025年资本开支情况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.39it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.83it/s]
+phase=warmup mode=l1_only pair=pair_0050 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='嘉泽新能2026E营业收入预测'
+phase=warmup mode=l1_only pair=pair_0051 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='嘉泽新能2026E营业收入预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 475.88it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.90it/s]
+phase=warmup mode=l1_only pair=pair_0052 variant=word_order hit=False source=pipeline sim=None refused=False query='通宝能源2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 440.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 110.66it/s]
+phase=warmup mode=l1_only pair=pair_0053 variant=word_order hit=False source=pipeline sim=None refused=False query='焦点科技2025年归母净利润'
+phase=warmup mode=l1_only pair=pair_0054 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 542.59it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.79it/s]
+phase=warmup mode=l1_only pair=pair_0055 variant=punctuation hit=False source=pipeline sim=None refused=False query='赛维时代2026E PE预测'
+phase=warmup mode=l1_only pair=pair_0056 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2026E PE预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 494.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.83it/s]
+phase=warmup mode=l1_only pair=pair_0057 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代投资评级是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 475.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.21it/s]
+phase=warmup mode=l1_only pair=pair_0058 variant=word_order hit=False source=pipeline sim=None refused=False query='澜起科技2025年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 412.58it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.54it/s]
+phase=warmup mode=l1_only pair=pair_0059 variant=word_order hit=False source=pipeline sim=None refused=False query='恒烁股份2026E EPS预测'
+phase=warmup mode=l1_only pair=pair_0060 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='恒烁股份2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 517.71it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.26it/s]
+phase=warmup mode=l1_only pair=pair_0061 variant=punctuation hit=False source=pipeline sim=None refused=False query='若羽臣2025年归母净利润'
+phase=warmup mode=l1_only pair=pair_0062 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='若羽臣2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 386.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.40it/s]
+phase=warmup mode=l1_only pair=pair_0063 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='半导体行业DDR5内存接口芯片发展趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.21it/s]
+phase=warmup mode=l1_only pair=pair_0064 variant=punctuation hit=False source=pipeline sim=None refused=False query='新能源发电企业装机容量增长概况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 450.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.24it/s]
+phase=warmup mode=l1_only pair=pair_0065 variant=punctuation hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 330.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.72it/s]
+phase=warmup mode=l1_only pair=pair_0066 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 433.88it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.14it/s]
+phase=warmup mode=l1_only pair=pair_0067 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 492.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.87it/s]
+phase=warmup mode=l1_only pair=pair_0068 variant=polite_tell hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 455.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.12it/s]
+phase=warmup mode=l1_only pair=pair_0069 variant=punctuation hit=False source=pipeline sim=None refused=False query='半导体专用温控设备市场需求驱动'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 431.71it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.33it/s]
+phase=warmup mode=l1_only pair=pair_0070 variant=punctuation hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 496.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.01it/s]
+phase=warmup mode=l1_only pair=pair_0071 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 401.15it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 135.20it/s]
+phase=warmup mode=l1_only pair=pair_0072 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='B2B外贸SaaS与会员制平台发展趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.35it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 113.45it/s]
+phase=warmup mode=l1_only pair=pair_0073 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025年上半年归母净利润是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 501.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.64it/s]
+phase=warmup mode=l1_only pair=pair_0074 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025-2027年EPS盈利预测'
+phase=warmup mode=l1_only pair=pair_0075 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025-2027年EPS盈利预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 480.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 119.56it/s]
+phase=warmup mode=l1_only pair=pair_0076 variant=punctuation hit=False source=pipeline sim=None refused=False query='美的集团2025年新能源与工业技术业务收入增速'
+phase=warmup mode=l1_only pair=pair_0077 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年新能源与工业技术业务收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.45it/s]
+phase=warmup mode=l1_only pair=pair_0078 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='美的集团2025年全年营业收入'
+phase=warmup mode=l1_only pair=pair_0079 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年全年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 520.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.77it/s]
+phase=warmup mode=l1_only pair=pair_0080 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025年三季报归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 341.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.22it/s]
+phase=warmup mode=l1_only pair=pair_0081 variant=punctuation hit=False source=pipeline sim=None refused=False query='美的集团智能建筑科技业务收入规模'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 415.32it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.70it/s]
+phase=warmup mode=l1_only pair=pair_0082 variant=punctuation hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年营业收入'
+phase=warmup mode=l1_only pair=pair_0083 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年上半年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 463.16it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.02it/s]
+phase=warmup mode=l1_only pair=pair_0084 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年归母净利润'
+phase=warmup mode=l1_only pair=pair_0085 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年上半年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 491.32it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 106.50it/s]
+phase=warmup mode=l1_only pair=pair_0086 variant=word_order hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年空调外销收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 490.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 106.80it/s]
+phase=warmup mode=l1_only pair=pair_0087 variant=word_order hit=False source=pipeline sim=None refused=False query='格力电器2025年三季报归母净利润'
+phase=warmup mode=l1_only pair=pair_0088 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年三季报归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 480.84it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.42it/s]
+phase=warmup mode=l1_only pair=pair_0089 variant=punctuation hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年营业收入'
+phase=warmup mode=l1_only pair=pair_0090 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025年上半年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 488.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.44it/s]
+phase=warmup mode=l1_only pair=pair_0091 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年归母净利润'
+phase=warmup mode=l1_only pair=pair_0092 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025年上半年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.43it/s]
+phase=warmup mode=l1_only pair=pair_0093 variant=word_order hit=False source=pipeline sim=None refused=False query='海尔智家2025年欧洲市场收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 472.23it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.60it/s]
+phase=warmup mode=l1_only pair=pair_0094 variant=word_order hit=False source=pipeline sim=None refused=False query='海尔智家2025-2027年归母净利润预测'
+phase=warmup mode=l1_only pair=pair_0095 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025-2027年归母净利润预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 469.27it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.23it/s]
+phase=warmup mode=l1_only pair=pair_0096 variant=punctuation hit=False source=pipeline sim=None refused=False query='海信家电2025年全年营业收入'
+phase=warmup mode=l1_only pair=pair_0097 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='海信家电2025年全年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.27it/s]
+phase=warmup mode=l1_only pair=pair_0098 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海信家电2025年归母净利润'
+phase=warmup mode=l1_only pair=pair_0099 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='海信家电2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 482.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 117.99it/s]
+phase=warmup mode=l1_only pair=pair_0100 variant=word_order hit=False source=pipeline sim=None refused=False query='TCL智家2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 479.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.73it/s]
+phase=warmup mode=l1_only pair=pair_0101 variant=word_order hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 488.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.56it/s]
+phase=warmup mode=l1_only pair=pair_0102 variant=punctuation hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 506.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.63it/s]
+phase=warmup mode=l1_only pair=pair_0103 variant=punctuation hit=False source=pipeline sim=None refused=False query='长虹美菱2025年营业收入'
+phase=warmup mode=l1_only pair=pair_0104 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='长虹美菱2025年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 475.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.84it/s]
+phase=warmup mode=l1_only pair=pair_0105 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长虹美菱2025年归母净利润及同比'
+phase=warmup mode=l1_only pair=pair_0106 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='长虹美菱2025年归母净利润及同比'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 399.26it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.81it/s]
+phase=warmup mode=l1_only pair=pair_0107 variant=word_order hit=False source=pipeline sim=None refused=False query='中国广核2025年归母净利润'
+phase=warmup mode=l1_only pair=pair_0108 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 472.85it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.33it/s]
+phase=warmup mode=l1_only pair=pair_0109 variant=punctuation hit=False source=pipeline sim=None refused=False query='中国广核2026E EPS预测'
+phase=warmup mode=l1_only pair=pair_0110 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中国广核2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.29it/s]
+phase=warmup mode=l1_only pair=pair_0111 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华能国际2025年营业收入与归母净利润'
+phase=warmup mode=l1_only pair=pair_0112 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='华能国际2025年营业收入与归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 433.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.47it/s]
+phase=warmup mode=l1_only pair=pair_0113 variant=word_order hit=False source=pipeline sim=None refused=False query='华鼎股份2025年上半年营业收入'
+phase=warmup mode=l1_only pair=pair_0114 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 536.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 112.18it/s]
+phase=warmup mode=l1_only pair=pair_0115 variant=punctuation hit=False source=pipeline sim=None refused=False query='华鼎股份2025年上半年归母净利润'
+phase=warmup mode=l1_only pair=pair_0116 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 556.47it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.31it/s]
+phase=warmup mode=l1_only pair=pair_0117 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='吉宏股份2025年上半年归母净利润及增速'
+phase=warmup mode=l1_only pair=pair_0118 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='吉宏股份2025年上半年归母净利润及增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.38it/s]
+phase=warmup mode=l1_only pair=pair_0119 variant=punctuation hit=False source=pipeline sim=None refused=False query='互联网电商板块AI营销与数字化趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 401.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.51it/s]
+phase=warmup mode=l1_only pair=pair_0120 variant=punctuation hit=False source=pipeline sim=None refused=False query='拓荆科技2025年营业收入'
+phase=warmup mode=l1_only pair=pair_0121 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='拓荆科技2025年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.72it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 113.00it/s]
+phase=warmup mode=l1_only pair=pair_0122 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='拓荆科技薄膜沉积设备业务进展'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.26it/s]
+phase=warmup mode=l1_only pair=pair_0123 variant=word_order hit=False source=pipeline sim=None refused=False query='半导体设备行业2025年扩产景气与资本开支'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 401.82it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.61it/s]
+phase=warmup mode=l1_only pair=pair_0124 variant=word_order hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 535.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.31it/s]
+phase=warmup mode=l1_only pair=pair_0125 variant=punctuation hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览'
+=== mode=l1_only measure (125 pairs) ===
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 533.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.32it/s]
+phase=measure mode=l1_only pair=regression_01 variant=synonym_metric hit=False source=pipeline sim=None refused=False query='请告诉我2024年澜起科技的每股收益？'
+phase=measure mode=l1_only pair=regression_02 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='请问澜起科技2026年EPS是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 597.15it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 106.39it/s]
+phase=measure mode=l1_only pair=pair_0003 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年澜起科技市盈率PE预测'
+phase=measure mode=l1_only pair=pair_0004 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='澜起科技的投资评级是？'
+phase=measure mode=l1_only pair=pair_0005 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='澜起科技可比公司估值表中2026E平均PE是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 518.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 110.36it/s]
+phase=measure mode=l1_only pair=pair_0006 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='澜起科技可比公司估值表中2026E平均PE是多少（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 448.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.44it/s]
+phase=measure mode=l1_only pair=pair_0007 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='京仪装备半导体专用温控设备2026E营收预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 490.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 118.12it/s]
+phase=measure mode=l1_only pair=pair_0008 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年京仪装备半导体专用温控设的备E营收预测？'
+phase=measure mode=l1_only pair=pair_0009 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术的投资逻辑和光模块MCU业务是？'
+phase=measure mode=l1_only pair=pair_0010 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中芯国际研报的核心观点是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 516.59it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 110.51it/s]
+phase=measure mode=l1_only pair=pair_0011 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中芯国际研报的核心观点是什么（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 564.15it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.87it/s]
+phase=measure mode=l1_only pair=pair_0012 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中国核电可比公司估值比较（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 450.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.23it/s]
+phase=measure mode=l1_only pair=pair_0013 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年焦点科技E EPS预测'
+phase=measure mode=l1_only pair=pair_0014 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='若羽臣的品牌孵化业务进展是？'
+phase=measure mode=l1_only pair=pair_0015 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2025年营收同比增速是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 446.61it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.23it/s]
+phase=measure mode=l1_only pair=pair_0016 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代2025年营收同比增速是多少（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 550.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.99it/s]
+phase=measure mode=l1_only pair=pair_0017 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力2026E EPS预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 533.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.22it/s]
+phase=measure mode=l1_only pair=pair_0018 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年长江电力的E每股收益预测？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 444.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.09it/s]
+phase=measure mode=l1_only pair=pair_0019 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年福能股份净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 592.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.95it/s]
+phase=measure mode=l1_only pair=pair_0020 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年协鑫能科E营收预测'
+phase=measure mode=l1_only pair=pair_0021 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='协鑫能科2026E营业收入预测是？'
+phase=measure mode=l1_only pair=pair_0022 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技电商代运营业务竞争优势是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 557.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.61it/s]
+phase=measure mode=l1_only pair=pair_0023 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='青木科技电商代运营业务竞争优势（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 536.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.27it/s]
+phase=measure mode=l1_only pair=pair_0024 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='芯朋微2026年营收是多少（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 647.56it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 109.04it/s]
+phase=measure mode=l1_only pair=pair_0025 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年芯朋微的营收？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 400.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.49it/s]
+phase=measure mode=l1_only pair=pair_0026 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华凯易佰净利润及同比增速'
+phase=measure mode=l1_only pair=pair_0027 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='嘉泽新能绿醇项目总投资额是？'
+phase=measure mode=l1_only pair=pair_0028 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='通宝能源首次覆盖的投资评级结论是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 568.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 112.26it/s]
+phase=measure mode=l1_only pair=pair_0029 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='通宝能源首次覆盖的投资评级结论（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 514.09it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.52it/s]
+phase=measure mode=l1_only pair=pair_0030 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='焦点科技2026Q1中国制造网收费会员数量（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 586.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.22it/s]
+phase=measure mode=l1_only pair=pair_0031 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年焦点科技的Q1中国制造网收费会员数量？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.85it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.63it/s]
+phase=measure mode=l1_only pair=pair_0032 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年协鑫能科底并网运营总装机容量'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.45it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.75it/s]
+phase=measure mode=l1_only pair=pair_0033 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年青木科技E净利润预测'
+phase=measure mode=l1_only pair=pair_0034 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技2026E归母净利润预测是？'
+phase=measure mode=l1_only pair=pair_0035 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='三峡能源2025年归母净利润是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 523.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.35it/s]
+phase=measure mode=l1_only pair=pair_0036 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='三峡能源2025年归母净利润是多少（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 549.39it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.24it/s]
+phase=measure mode=l1_only pair=pair_0037 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力股息率与分红情况（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.88it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.59it/s]
+phase=measure mode=l1_only pair=pair_0038 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年若羽臣Q1净利润同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 504.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 113.81it/s]
+phase=measure mode=l1_only pair=pair_0039 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华峰测控营收'
+phase=measure mode=l1_only pair=pair_0040 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年营业收入是？'
+phase=measure mode=l1_only pair=pair_0041 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年归母净利润及同比增速是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 541.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.72it/s]
+phase=measure mode=l1_only pair=pair_0042 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华峰测控2025年归母净利润及同比增速（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 506.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 112.51it/s]
+phase=measure mode=l1_only pair=pair_0043 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华峰测控2025年毛利率水平（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 501.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.70it/s]
+phase=measure mode=l1_only pair=pair_0044 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年华峰测控的毛利率水平？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 322.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.62it/s]
+phase=measure mode=l1_only pair=pair_0045 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年芯朋微E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 478.48it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.24it/s]
+phase=measure mode=l1_only pair=pair_0046 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年国民技术E PE估值水平'
+phase=measure mode=l1_only pair=pair_0047 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术2026E PE估值水平是？'
+phase=measure mode=l1_only pair=pair_0048 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中芯国际2025年资本开支情况是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 409.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.77it/s]
+phase=measure mode=l1_only pair=pair_0049 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中芯国际2025年资本开支情况（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 345.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.09it/s]
+phase=measure mode=l1_only pair=pair_0050 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='嘉泽新能2026E营业收入预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 288.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.87it/s]
+phase=measure mode=l1_only pair=pair_0051 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年嘉泽新能的E营业收入预测？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 352.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.40it/s]
+phase=measure mode=l1_only pair=pair_0052 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年通宝能源E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 313.17it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.70it/s]
+phase=measure mode=l1_only pair=pair_0053 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年焦点科技净利润'
+phase=measure mode=l1_only pair=pair_0054 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2025年归母净利润是？'
+phase=measure mode=l1_only pair=pair_0055 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2026E PE预测是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 417.91it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.56it/s]
+phase=measure mode=l1_only pair=pair_0056 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代2026E PE预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.11it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.37it/s]
+phase=measure mode=l1_only pair=pair_0057 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代投资评级是什么（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 476.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.10it/s]
+phase=measure mode=l1_only pair=pair_0058 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年澜起科技营收'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 372.60it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.91it/s]
+phase=measure mode=l1_only pair=pair_0059 variant=word_order hit=False source=pipeline sim=None refused=False query='2026年恒烁股份E EPS预测'
+phase=measure mode=l1_only pair=pair_0060 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='恒烁股份2026E EPS预测是？'
+phase=measure mode=l1_only pair=pair_0061 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='若羽臣2025年归母净利润是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 347.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.42it/s]
+phase=measure mode=l1_only pair=pair_0062 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='若羽臣2025年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 283.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.31it/s]
+phase=measure mode=l1_only pair=pair_0063 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='半导体行业DDR5内存接口芯片发展趋势（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 356.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.41it/s]
+phase=measure mode=l1_only pair=pair_0064 variant=punctuation hit=False source=pipeline sim=None refused=False query='新能源发电企业装机容量增长概况是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 283.66it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.06it/s]
+phase=measure mode=l1_only pair=pair_0065 variant=punctuation hit=False source=pipeline sim=None refused=True query='水电龙头分红与股息率政策总结是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 503.74it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 88.04it/s]
+phase=measure mode=l1_only pair=pair_0066 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 485.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.27it/s]
+phase=measure mode=l1_only pair=pair_0067 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 549.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.09it/s]
+phase=measure mode=l1_only pair=pair_0068 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年跨境电商行业的业绩与景气回顾？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 342.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 111.51it/s]
+phase=measure mode=l1_only pair=pair_0069 variant=punctuation hit=False source=pipeline sim=None refused=False query='半导体专用温控设备市场需求驱动是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 411.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 105.04it/s]
+phase=measure mode=l1_only pair=pair_0070 variant=punctuation hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 503.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 102.95it/s]
+phase=measure mode=l1_only pair=pair_0071 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.48it/s]
+phase=measure mode=l1_only pair=pair_0072 variant=filler_suffix hit=False source=pipeline sim=None refused=True query='B2B外贸SaaS与会员制平台发展趋势（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 439.96it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 104.41it/s]
+phase=measure mode=l1_only pair=pair_0073 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年美的集团上半年净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 482.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.94it/s]
+phase=measure mode=l1_only pair=pair_0074 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年美的集团2025-EPS盈利预测'
+phase=measure mode=l1_only pair=pair_0075 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025-2027年EPS盈利预测是？'
+phase=measure mode=l1_only pair=pair_0076 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年新能源与工业技术业务收入增速是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 440.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.95it/s]
+phase=measure mode=l1_only pair=pair_0077 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='美的集团2025年新能源与工业技术业务收入增速（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 479.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.15it/s]
+phase=measure mode=l1_only pair=pair_0078 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='美的集团2025年全年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 486.98it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 89.85it/s]
+phase=measure mode=l1_only pair=pair_0079 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年美的集团的全年营业收入？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 448.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.90it/s]
+phase=measure mode=l1_only pair=pair_0080 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年美的集团三季报净利润'
+phase=measure mode=l1_only pair=pair_0081 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团智能建筑科技业务收入规模是？'
+phase=measure mode=l1_only pair=pair_0082 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年上半年营业收入是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 388.91it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.69it/s]
+phase=measure mode=l1_only pair=pair_0083 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.80it/s]
+phase=measure mode=l1_only pair=pair_0084 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 459.56it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.23it/s]
+phase=measure mode=l1_only pair=pair_0085 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年格力电器的上半年归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 516.45it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.99it/s]
+phase=measure mode=l1_only pair=pair_0086 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年格力电器上半年空调外销收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 473.96it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.21it/s]
+phase=measure mode=l1_only pair=pair_0087 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年格力电器三季报净利润'
+phase=measure mode=l1_only pair=pair_0088 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年三季报归母净利润是？'
+phase=measure mode=l1_only pair=pair_0089 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025年上半年营业收入是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 467.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.80it/s]
+phase=measure mode=l1_only pair=pair_0090 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 482.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.20it/s]
+phase=measure mode=l1_only pair=pair_0091 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 527.12it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.73it/s]
+phase=measure mode=l1_only pair=pair_0092 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年海尔智家的上半年归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 468.55it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.31it/s]
+phase=measure mode=l1_only pair=pair_0093 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年海尔智家欧洲市场收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 542.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.91it/s]
+phase=measure mode=l1_only pair=pair_0094 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年海尔智家2025-净利润预测'
+phase=measure mode=l1_only pair=pair_0095 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025-2027年归母净利润预测是？'
+phase=measure mode=l1_only pair=pair_0096 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海信家电2025年全年营业收入是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 381.17it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.48it/s]
+phase=measure mode=l1_only pair=pair_0097 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海信家电2025年全年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 484.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.54it/s]
+phase=measure mode=l1_only pair=pair_0098 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海信家电2025年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 523.23it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.84it/s]
+phase=measure mode=l1_only pair=pair_0099 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年海信家电的归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 454.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.50it/s]
+phase=measure mode=l1_only pair=pair_0100 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年智家TCL净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 363.86it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.47it/s]
+phase=measure mode=l1_only pair=pair_0101 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年是否启动分红回报股东TCL智家'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 466.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.15it/s]
+phase=measure mode=l1_only pair=pair_0102 variant=punctuation hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东是？'
+phase=measure mode=l1_only pair=pair_0103 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='长虹美菱2025年营业收入是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 476.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.55it/s]
+phase=measure mode=l1_only pair=pair_0104 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长虹美菱2025年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 103.51it/s]
+phase=measure mode=l1_only pair=pair_0105 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长虹美菱2025年归母净利润及同比（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.08it/s]
+phase=measure mode=l1_only pair=pair_0106 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年长虹美菱的归母净利润及同比？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 98.58it/s]
+phase=measure mode=l1_only pair=pair_0107 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年中国广核净利润'
+phase=measure mode=l1_only pair=pair_0108 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2025年归母净利润是？'
+phase=measure mode=l1_only pair=pair_0109 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2026E EPS预测是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.72it/s]
+phase=measure mode=l1_only pair=pair_0110 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中国广核2026E EPS预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 427.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.53it/s]
+phase=measure mode=l1_only pair=pair_0111 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华能国际2025年营业收入与归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 483.94it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 100.60it/s]
+phase=measure mode=l1_only pair=pair_0112 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年华能国际的营业收入与归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 476.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 99.42it/s]
+phase=measure mode=l1_only pair=pair_0113 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华鼎股份上半年营收'
+phase=measure mode=l1_only pair=pair_0114 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年营业收入是？'
+phase=measure mode=l1_only pair=pair_0115 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年归母净利润是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 532.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.14it/s]
+phase=measure mode=l1_only pair=pair_0116 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华鼎股份2025年上半年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 525.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 111.10it/s]
+phase=measure mode=l1_only pair=pair_0117 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='吉宏股份2025年上半年归母净利润及增速（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 518.44it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.92it/s]
+phase=measure mode=l1_only pair=pair_0118 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年吉宏股份的上半年归母净利润及增速？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 541.01it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.16it/s]
+phase=measure mode=l1_only pair=pair_0119 variant=punctuation hit=False source=pipeline sim=None refused=True query='互联网电商板块AI营销与数字化趋势是？'
+phase=measure mode=l1_only pair=pair_0120 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='拓荆科技2025年营业收入是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 463.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.20it/s]
+phase=measure mode=l1_only pair=pair_0121 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='拓荆科技2025年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 471.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 96.36it/s]
+phase=measure mode=l1_only pair=pair_0122 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='拓荆科技薄膜沉积设备业务进展（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 454.27it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.36it/s]
+phase=measure mode=l1_only pair=pair_0123 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年半导体设备行业扩产景气与资本开支'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 469.58it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 97.20it/s]
+phase=measure mode=l1_only pair=pair_0124 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年业绩概览研报库四行业(半导体/电力/电商/白色家电)'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 500.32it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.87it/s]
+phase=measure mode=l1_only pair=pair_0125 variant=punctuation hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览是？'
+=== mode=l1_l2 warmup (125 pairs) ===
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 2351.07it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 145.55it/s]
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 352.70it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.27it/s]
+phase=warmup mode=l1_l2 pair=regression_01 variant=synonym_metric hit=False source=pipeline sim=None refused=False query='澜起科技2024年的EPS是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 477.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.80it/s]
+phase=warmup mode=l1_l2 pair=regression_02 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技2026年EPS是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.91it/s]
+phase=warmup mode=l1_l2 pair=pair_0003 variant=word_order hit=False source=pipeline sim=None refused=False query='澜起科技2027年市盈率PE预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 404.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.26it/s]
+phase=warmup mode=l1_l2 pair=pair_0004 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技的投资评级是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 443.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 94.67it/s]
+phase=warmup mode=l1_l2 pair=pair_0005 variant=punctuation hit=False source=pipeline sim=None refused=False query='澜起科技可比公司估值表中2026E平均PE是多少？'
+phase=warmup mode=l1_l2 pair=pair_0006 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='澜起科技可比公司估值表中2026E平均PE是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 92.71it/s]
+phase=warmup mode=l1_l2 pair=pair_0007 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='京仪装备半导体专用温控设备2026E营收预测'
+phase=warmup mode=l1_l2 pair=pair_0008 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='京仪装备半导体专用温控设备2026E营收预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.59it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.94it/s]
+phase=warmup mode=l1_l2 pair=pair_0009 variant=punctuation hit=False source=pipeline sim=None refused=False query='国民技术的投资逻辑和光模块MCU业务'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 522.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.05it/s]
+phase=warmup mode=l1_l2 pair=pair_0010 variant=punctuation hit=False source=pipeline sim=None refused=False query='中芯国际研报的核心观点是什么？'
+phase=warmup mode=l1_l2 pair=pair_0011 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中芯国际研报的核心观点是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.50it/s]
+phase=warmup mode=l1_l2 pair=pair_0012 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中国核电可比公司估值比较'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 432.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.99it/s]
+phase=warmup mode=l1_l2 pair=pair_0013 variant=word_order hit=False source=pipeline sim=None refused=False query='焦点科技2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 504.93it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.60it/s]
+phase=warmup mode=l1_l2 pair=pair_0014 variant=punctuation hit=False source=pipeline sim=None refused=False query='若羽臣的品牌孵化业务进展'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.13it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.73it/s]
+phase=warmup mode=l1_l2 pair=pair_0015 variant=punctuation hit=False source=pipeline sim=None refused=False query='赛维时代2025年营收同比增速是多少？'
+phase=warmup mode=l1_l2 pair=pair_0016 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2025年营收同比增速是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 408.60it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.67it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.58it/s]
+phase=warmup mode=l1_l2 pair=pair_0017 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力2026E EPS预测'
+phase=warmup mode=l1_l2 pair=pair_0018 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='长江电力2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 112.38it/s]
+phase=warmup mode=l1_l2 pair=pair_0019 variant=word_order hit=False source=pipeline sim=None refused=False query='福能股份2025年净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 416.85it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 90.04it/s]
+phase=warmup mode=l1_l2 pair=pair_0020 variant=word_order hit=False source=pipeline sim=None refused=False query='协鑫能科2026E营业收入预测'
+phase=warmup mode=l1_l2 pair=pair_0021 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='协鑫能科2026E营业收入预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 410.45it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.59it/s]
+phase=warmup mode=l1_l2 pair=pair_0022 variant=punctuation hit=False source=pipeline sim=None refused=False query='青木科技电商代运营业务竞争优势'
+phase=warmup mode=l1_l2 pair=pair_0023 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='青木科技电商代运营业务竞争优势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 329.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.83it/s]
+phase=warmup mode=l1_l2 pair=pair_0024 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='芯朋微2026年营收是多少？'
+phase=warmup mode=l1_l2 pair=pair_0025 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='芯朋微2026年营收是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 410.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.87it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.77it/s]
+phase=warmup mode=l1_l2 pair=pair_0026 variant=word_order hit=False source=pipeline sim=None refused=False query='华凯易佰2025年归母净利润及同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 490.05it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 88.27it/s]
+phase=warmup mode=l1_l2 pair=pair_0027 variant=punctuation hit=False source=pipeline sim=None refused=False query='嘉泽新能绿醇项目总投资额是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 428.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.95it/s]
+phase=warmup mode=l1_l2 pair=pair_0028 variant=punctuation hit=False source=pipeline sim=None refused=False query='通宝能源首次覆盖的投资评级结论'
+phase=warmup mode=l1_l2 pair=pair_0029 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='通宝能源首次覆盖的投资评级结论'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 432.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.18it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.09it/s]
+phase=warmup mode=l1_l2 pair=pair_0030 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='焦点科技2026Q1中国制造网收费会员数量'
+phase=warmup mode=l1_l2 pair=pair_0031 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2026Q1中国制造网收费会员数量'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 450.89it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.66it/s]
+phase=warmup mode=l1_l2 pair=pair_0032 variant=word_order hit=False source=pipeline sim=None refused=False query='协鑫能科2025年底并网运营总装机容量'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 411.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.52it/s]
+phase=warmup mode=l1_l2 pair=pair_0033 variant=word_order hit=False source=pipeline sim=None refused=False query='青木科技2026E归母净利润预测'
+phase=warmup mode=l1_l2 pair=pair_0034 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技2026E归母净利润预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 381.88it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.01it/s]
+phase=warmup mode=l1_l2 pair=pair_0035 variant=punctuation hit=False source=pipeline sim=None refused=False query='三峡能源2025年归母净利润是多少？'
+phase=warmup mode=l1_l2 pair=pair_0036 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='三峡能源2025年归母净利润是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 377.03it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.05it/s]
+phase=warmup mode=l1_l2 pair=pair_0037 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长江电力股息率与分红情况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 329.16it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.89it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.80it/s]
+phase=warmup mode=l1_l2 pair=pair_0038 variant=word_order hit=False source=pipeline sim=None refused=False query='若羽臣2026Q1归母净利润同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.80it/s]
+phase=warmup mode=l1_l2 pair=pair_0039 variant=word_order hit=False source=pipeline sim=None refused=False query='华峰测控2025年营业收入是多少？'
+phase=warmup mode=l1_l2 pair=pair_0040 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年营业收入是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 383.99it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.62it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.46it/s]
+phase=warmup mode=l1_l2 pair=pair_0041 variant=punctuation hit=False source=pipeline sim=None refused=False query='华峰测控2025年归母净利润及同比增速'
+phase=warmup mode=l1_l2 pair=pair_0042 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年归母净利润及同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 412.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.59it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.48it/s]
+phase=warmup mode=l1_l2 pair=pair_0043 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华峰测控2025年毛利率水平'
+phase=warmup mode=l1_l2 pair=pair_0044 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年毛利率水平'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 379.31it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.23it/s]
+phase=warmup mode=l1_l2 pair=pair_0045 variant=word_order hit=False source=pipeline sim=None refused=False query='芯朋微2026E EPS预测是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.15it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.87it/s]
+phase=warmup mode=l1_l2 pair=pair_0046 variant=word_order hit=False source=pipeline sim=None refused=False query='国民技术2026E PE估值水平'
+phase=warmup mode=l1_l2 pair=pair_0047 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术2026E PE估值水平'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 418.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.49it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.41it/s]
+phase=warmup mode=l1_l2 pair=pair_0048 variant=punctuation hit=False source=pipeline sim=None refused=False query='中芯国际2025年资本开支情况'
+phase=warmup mode=l1_l2 pair=pair_0049 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中芯国际2025年资本开支情况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 317.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.66it/s]
+phase=warmup mode=l1_l2 pair=pair_0050 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='嘉泽新能2026E营业收入预测'
+phase=warmup mode=l1_l2 pair=pair_0051 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='嘉泽新能2026E营业收入预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 389.74it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.77it/s]
+phase=warmup mode=l1_l2 pair=pair_0052 variant=word_order hit=False source=pipeline sim=None refused=False query='通宝能源2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 467.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.40it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.31it/s]
+phase=warmup mode=l1_l2 pair=pair_0053 variant=word_order hit=False source=pipeline sim=None refused=False query='焦点科技2025年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0054 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 483.93it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.94it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.76it/s]
+phase=warmup mode=l1_l2 pair=pair_0055 variant=punctuation hit=False source=pipeline sim=None refused=False query='赛维时代2026E PE预测'
+phase=warmup mode=l1_l2 pair=pair_0056 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2026E PE预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 496.03it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.42it/s]
+phase=warmup mode=l1_l2 pair=pair_0057 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代投资评级是什么？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 438.92it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.69it/s]
+phase=warmup mode=l1_l2 pair=pair_0058 variant=word_order hit=False source=pipeline sim=None refused=False query='澜起科技2025年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 447.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.48it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.38it/s]
+phase=warmup mode=l1_l2 pair=pair_0059 variant=word_order hit=False source=pipeline sim=None refused=False query='恒烁股份2026E EPS预测'
+phase=warmup mode=l1_l2 pair=pair_0060 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='恒烁股份2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 452.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.60it/s]
+phase=warmup mode=l1_l2 pair=pair_0061 variant=punctuation hit=False source=pipeline sim=None refused=False query='若羽臣2025年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0062 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='若羽臣2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 420.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.80it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.69it/s]
+phase=warmup mode=l1_l2 pair=pair_0063 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='半导体行业DDR5内存接口芯片发展趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 421.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.72it/s]
+phase=warmup mode=l1_l2 pair=pair_0064 variant=punctuation hit=False source=pipeline sim=None refused=False query='新能源发电企业装机容量增长概况'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.56it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.47it/s]
+phase=warmup mode=l1_l2 pair=pair_0065 variant=punctuation hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 374.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.89it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.80it/s]
+phase=warmup mode=l1_l2 pair=pair_0066 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 462.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.06it/s]
+phase=warmup mode=l1_l2 pair=pair_0067 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 382.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.18it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.09it/s]
+phase=warmup mode=l1_l2 pair=pair_0068 variant=polite_tell hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 446.09it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.61it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.52it/s]
+phase=warmup mode=l1_l2 pair=pair_0069 variant=punctuation hit=False source=pipeline sim=None refused=False query='半导体专用温控设备市场需求驱动'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 425.84it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.60it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.48it/s]
+phase=warmup mode=l1_l2 pair=pair_0070 variant=punctuation hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.34it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 93.76it/s]
+phase=warmup mode=l1_l2 pair=pair_0071 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 443.81it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.94it/s]
+phase=warmup mode=l1_l2 pair=pair_0072 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='B2B外贸SaaS与会员制平台发展趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 466.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.87it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.78it/s]
+phase=warmup mode=l1_l2 pair=pair_0073 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025年上半年归母净利润是多少？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 488.85it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 66.38it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 69.80it/s]
+phase=warmup mode=l1_l2 pair=pair_0074 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025-2027年EPS盈利预测'
+phase=warmup mode=l1_l2 pair=pair_0075 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025-2027年EPS盈利预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 433.64it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.09it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.01it/s]
+phase=warmup mode=l1_l2 pair=pair_0076 variant=punctuation hit=False source=pipeline sim=None refused=False query='美的集团2025年新能源与工业技术业务收入增速'
+phase=warmup mode=l1_l2 pair=pair_0077 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年新能源与工业技术业务收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 353.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.44it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.36it/s]
+phase=warmup mode=l1_l2 pair=pair_0078 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='美的集团2025年全年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0079 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年全年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 403.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.99it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.90it/s]
+phase=warmup mode=l1_l2 pair=pair_0080 variant=word_order hit=False source=pipeline sim=None refused=False query='美的集团2025年三季报归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 328.28it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.03it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.94it/s]
+phase=warmup mode=l1_l2 pair=pair_0081 variant=punctuation hit=False source=pipeline sim=None refused=False query='美的集团智能建筑科技业务收入规模'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.88it/s]
+phase=warmup mode=l1_l2 pair=pair_0082 variant=punctuation hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0083 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0084 variant=filler_suffix hit=True source=l2_semantic sim=0.9336576461791992 refused=False query='格力电器2025年上半年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0085 variant=polite_tell hit=True source=l2_semantic sim=0.9336576461791992 refused=False query='格力电器2025年上半年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0086 variant=word_order hit=True source=l2_semantic sim=0.8916996121406555 refused=False query='格力电器2025年上半年空调外销收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 428.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.52it/s]
+phase=warmup mode=l1_l2 pair=pair_0087 variant=word_order hit=False source=pipeline sim=None refused=False query='格力电器2025年三季报归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0088 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年三季报归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 426.12it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.98it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.90it/s]
+phase=warmup mode=l1_l2 pair=pair_0089 variant=punctuation hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0090 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0091 variant=filler_suffix hit=True source=l2_semantic sim=0.9378896355628967 refused=False query='海尔智家2025年上半年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0092 variant=polite_tell hit=True source=l2_semantic sim=0.9378896355628967 refused=False query='海尔智家2025年上半年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 497.44it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.93it/s]
+phase=warmup mode=l1_l2 pair=pair_0093 variant=word_order hit=False source=pipeline sim=None refused=False query='海尔智家2025年欧洲市场收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 497.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.88it/s]
+phase=warmup mode=l1_l2 pair=pair_0094 variant=word_order hit=False source=pipeline sim=None refused=False query='海尔智家2025-2027年归母净利润预测'
+phase=warmup mode=l1_l2 pair=pair_0095 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025-2027年归母净利润预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 402.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.78it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.69it/s]
+phase=warmup mode=l1_l2 pair=pair_0096 variant=punctuation hit=False source=pipeline sim=None refused=False query='海信家电2025年全年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0097 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='海信家电2025年全年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0098 variant=filler_suffix hit=True source=l2_semantic sim=0.9302110075950623 refused=False query='海信家电2025年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0099 variant=polite_tell hit=True source=l2_semantic sim=0.9302110075950623 refused=False query='海信家电2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.65it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.56it/s]
+phase=warmup mode=l1_l2 pair=pair_0100 variant=word_order hit=False source=pipeline sim=None refused=False query='TCL智家2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 448.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.24it/s]
+phase=warmup mode=l1_l2 pair=pair_0101 variant=word_order hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 420.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.27it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.18it/s]
+phase=warmup mode=l1_l2 pair=pair_0102 variant=punctuation hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 437.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.19it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.08it/s]
+phase=warmup mode=l1_l2 pair=pair_0103 variant=punctuation hit=False source=pipeline sim=None refused=False query='长虹美菱2025年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0104 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='长虹美菱2025年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0105 variant=filler_suffix hit=True source=l2_semantic sim=0.9151120781898499 refused=False query='长虹美菱2025年归母净利润及同比'
+phase=warmup mode=l1_l2 pair=pair_0106 variant=polite_tell hit=True source=l2_semantic sim=0.9151120781898499 refused=False query='长虹美菱2025年归母净利润及同比'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 397.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.15it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.02it/s]
+phase=warmup mode=l1_l2 pair=pair_0107 variant=word_order hit=False source=pipeline sim=None refused=False query='中国广核2025年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0108 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2025年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 404.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.02it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.94it/s]
+phase=warmup mode=l1_l2 pair=pair_0109 variant=punctuation hit=False source=pipeline sim=None refused=False query='中国广核2026E EPS预测'
+phase=warmup mode=l1_l2 pair=pair_0110 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='中国广核2026E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 408.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.46it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.38it/s]
+phase=warmup mode=l1_l2 pair=pair_0111 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华能国际2025年营业收入与归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0112 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='华能国际2025年营业收入与归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 418.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.79it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.70it/s]
+phase=warmup mode=l1_l2 pair=pair_0113 variant=word_order hit=False source=pipeline sim=None refused=False query='华鼎股份2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0114 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0115 variant=punctuation hit=True source=l2_semantic sim=0.9362988471984863 refused=False query='华鼎股份2025年上半年归母净利润'
+phase=warmup mode=l1_l2 pair=pair_0116 variant=filler_suffix hit=True source=l2_semantic sim=0.9362988471984863 refused=False query='华鼎股份2025年上半年归母净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 480.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.42it/s]
+phase=warmup mode=l1_l2 pair=pair_0117 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='吉宏股份2025年上半年归母净利润及增速'
+phase=warmup mode=l1_l2 pair=pair_0118 variant=polite_tell hit=True source=l1_exact sim=1.0 refused=False query='吉宏股份2025年上半年归母净利润及增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 457.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.92it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.83it/s]
+phase=warmup mode=l1_l2 pair=pair_0119 variant=punctuation hit=False source=pipeline sim=None refused=False query='互联网电商板块AI营销与数字化趋势'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 393.97it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.47it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.37it/s]
+phase=warmup mode=l1_l2 pair=pair_0120 variant=punctuation hit=False source=pipeline sim=None refused=False query='拓荆科技2025年营业收入'
+phase=warmup mode=l1_l2 pair=pair_0121 variant=filler_suffix hit=True source=l1_exact sim=1.0 refused=False query='拓荆科技2025年营业收入'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 333.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.66it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.57it/s]
+phase=warmup mode=l1_l2 pair=pair_0122 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='拓荆科技薄膜沉积设备业务进展'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 425.94it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.16it/s]
+phase=warmup mode=l1_l2 pair=pair_0123 variant=word_order hit=False source=pipeline sim=None refused=False query='半导体设备行业2025年扩产景气与资本开支'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.42it/s]
+phase=warmup mode=l1_l2 pair=pair_0124 variant=word_order hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 390.69it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.20it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.11it/s]
+phase=warmup mode=l1_l2 pair=pair_0125 variant=punctuation hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览'
+=== mode=l1_l2 measure (125 pairs) ===
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 407.64it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.02it/s]
+phase=measure mode=l1_l2 pair=regression_01 variant=synonym_metric hit=False source=pipeline sim=None refused=False query='请告诉我2024年澜起科技的每股收益？'
+phase=measure mode=l1_l2 pair=regression_02 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='请问澜起科技2026年EPS是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 629.06it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 115.21it/s]
+phase=measure mode=l1_l2 pair=pair_0003 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年澜起科技市盈率PE预测'
+phase=measure mode=l1_l2 pair=pair_0004 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='澜起科技的投资评级是？'
+phase=measure mode=l1_l2 pair=pair_0005 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='澜起科技可比公司估值表中2026E平均PE是？'
+phase=measure mode=l1_l2 pair=pair_0006 variant=filler_suffix hit=True source=l2_semantic sim=0.9688825607299805 refused=False query='澜起科技可比公司估值表中2026E平均PE是多少（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0007 variant=filler_suffix hit=True source=l2_semantic sim=0.8967385292053223 refused=False query='京仪装备半导体专用温控设备2026E营收预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 378.67it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.56it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.47it/s]
+phase=measure mode=l1_l2 pair=pair_0008 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年京仪装备半导体专用温控设的备E营收预测？'
+phase=measure mode=l1_l2 pair=pair_0009 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术的投资逻辑和光模块MCU业务是？'
+phase=measure mode=l1_l2 pair=pair_0010 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中芯国际研报的核心观点是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 443.64it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.51it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.42it/s]
+phase=measure mode=l1_l2 pair=pair_0011 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='中芯国际研报的核心观点是什么（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0012 variant=filler_suffix hit=True source=l2_semantic sim=0.9176516532897949 refused=False query='中国核电可比公司估值比较（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0013 variant=word_order hit=True source=l2_semantic sim=0.9433387517929077 refused=False query='2026年焦点科技E EPS预测'
+phase=measure mode=l1_l2 pair=pair_0014 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='若羽臣的品牌孵化业务进展是？'
+phase=measure mode=l1_l2 pair=pair_0015 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2025年营收同比增速是？'
+phase=measure mode=l1_l2 pair=pair_0016 variant=filler_suffix hit=True source=l2_semantic sim=0.9480952620506287 refused=False query='赛维时代2025年营收同比增速是多少（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0017 variant=filler_suffix hit=True source=l2_semantic sim=0.911334753036499 refused=False query='长江电力2026E EPS预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 438.42it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 86.55it/s]
+phase=measure mode=l1_l2 pair=pair_0018 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年长江电力的E每股收益预测？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 408.88it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.11it/s]
+phase=measure mode=l1_l2 pair=pair_0019 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年福能股份净利润'
+phase=measure mode=l1_l2 pair=pair_0020 variant=word_order hit=True source=l2_semantic sim=0.9444191455841064 refused=False query='2026年协鑫能科E营收预测'
+phase=measure mode=l1_l2 pair=pair_0021 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='协鑫能科2026E营业收入预测是？'
+phase=measure mode=l1_l2 pair=pair_0022 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技电商代运营业务竞争优势是？'
+phase=measure mode=l1_l2 pair=pair_0023 variant=filler_suffix hit=True source=l2_semantic sim=0.902439296245575 refused=False query='青木科技电商代运营业务竞争优势（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0024 variant=filler_suffix hit=True source=l2_semantic sim=0.9581857323646545 refused=False query='芯朋微2026年营收是多少（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 386.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.42it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.31it/s]
+phase=measure mode=l1_l2 pair=pair_0025 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年芯朋微的营收？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.50it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.03it/s]
+phase=measure mode=l1_l2 pair=pair_0026 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华凯易佰净利润及同比增速'
+phase=measure mode=l1_l2 pair=pair_0027 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='嘉泽新能绿醇项目总投资额是？'
+phase=measure mode=l1_l2 pair=pair_0028 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='通宝能源首次覆盖的投资评级结论是？'
+phase=measure mode=l1_l2 pair=pair_0029 variant=filler_suffix hit=True source=l2_semantic sim=0.8936736583709717 refused=False query='通宝能源首次覆盖的投资评级结论（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0030 variant=filler_suffix hit=True source=l2_semantic sim=0.8846113085746765 refused=False query='焦点科技2026Q1中国制造网收费会员数量（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.08it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.35it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.27it/s]
+phase=measure mode=l1_l2 pair=pair_0031 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年焦点科技的Q1中国制造网收费会员数量？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 380.35it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.58it/s]
+phase=measure mode=l1_l2 pair=pair_0032 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年协鑫能科底并网运营总装机容量'
+phase=measure mode=l1_l2 pair=pair_0033 variant=word_order hit=True source=l2_semantic sim=0.9374024868011475 refused=False query='2026年青木科技E净利润预测'
+phase=measure mode=l1_l2 pair=pair_0034 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='青木科技2026E归母净利润预测是？'
+phase=measure mode=l1_l2 pair=pair_0035 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='三峡能源2025年归母净利润是？'
+phase=measure mode=l1_l2 pair=pair_0036 variant=filler_suffix hit=True source=l2_semantic sim=0.9499755501747131 refused=False query='三峡能源2025年归母净利润是多少（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0037 variant=filler_suffix hit=True source=l2_semantic sim=0.9127691984176636 refused=False query='长江电力股息率与分红情况（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0038 variant=word_order hit=True source=l2_semantic sim=0.9604326486587524 refused=False query='2026年若羽臣Q1净利润同比增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.17it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.22it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.14it/s]
+phase=measure mode=l1_l2 pair=pair_0039 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华峰测控营收'
+phase=measure mode=l1_l2 pair=pair_0040 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0041 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华峰测控2025年归母净利润及同比增速是？'
+phase=measure mode=l1_l2 pair=pair_0042 variant=filler_suffix hit=True source=l2_semantic sim=0.9216775894165039 refused=False query='华峰测控2025年归母净利润及同比增速（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0043 variant=filler_suffix hit=True source=l2_semantic sim=0.924109935760498 refused=False query='华峰测控2025年毛利率水平（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 462.51it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.72it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.63it/s]
+phase=measure mode=l1_l2 pair=pair_0044 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年华峰测控的毛利率水平？'
+phase=measure mode=l1_l2 pair=pair_0045 variant=word_order hit=True source=l2_semantic sim=0.9050793647766113 refused=False query='2026年芯朋微E EPS预测'
+phase=measure mode=l1_l2 pair=pair_0046 variant=word_order hit=True source=l2_semantic sim=0.9325879812240601 refused=False query='2026年国民技术E PE估值水平'
+phase=measure mode=l1_l2 pair=pair_0047 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='国民技术2026E PE估值水平是？'
+phase=measure mode=l1_l2 pair=pair_0048 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中芯国际2025年资本开支情况是？'
+phase=measure mode=l1_l2 pair=pair_0049 variant=filler_suffix hit=True source=l2_semantic sim=0.917493999004364 refused=False query='中芯国际2025年资本开支情况（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0050 variant=filler_suffix hit=True source=l2_semantic sim=0.923520565032959 refused=False query='嘉泽新能2026E营业收入预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 297.72it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.25it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.16it/s]
+phase=measure mode=l1_l2 pair=pair_0051 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2026年嘉泽新能的E营业收入预测？'
+phase=measure mode=l1_l2 pair=pair_0052 variant=word_order hit=True source=l2_semantic sim=0.9579873085021973 refused=False query='2026年通宝能源E EPS预测'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 461.52it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.35it/s]
+phase=measure mode=l1_l2 pair=pair_0053 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年焦点科技净利润'
+phase=measure mode=l1_l2 pair=pair_0054 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='焦点科技2025年归母净利润是？'
+phase=measure mode=l1_l2 pair=pair_0055 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='赛维时代2026E PE预测是？'
+phase=measure mode=l1_l2 pair=pair_0056 variant=filler_suffix hit=True source=l2_semantic sim=0.907471776008606 refused=False query='赛维时代2026E PE预测（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 502.56it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.55it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.45it/s]
+phase=measure mode=l1_l2 pair=pair_0057 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='赛维时代投资评级是什么（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 405.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.94it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.85it/s]
+phase=measure mode=l1_l2 pair=pair_0058 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年澜起科技营收'
+phase=measure mode=l1_l2 pair=pair_0059 variant=word_order hit=True source=l2_semantic sim=0.9675723910331726 refused=False query='2026年恒烁股份E EPS预测'
+phase=measure mode=l1_l2 pair=pair_0060 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='恒烁股份2026E EPS预测是？'
+phase=measure mode=l1_l2 pair=pair_0061 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='若羽臣2025年归母净利润是？'
+phase=measure mode=l1_l2 pair=pair_0062 variant=filler_suffix hit=True source=l2_semantic sim=0.9176073670387268 refused=False query='若羽臣2025年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 381.60it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.07it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.98it/s]
+phase=measure mode=l1_l2 pair=pair_0063 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='半导体行业DDR5内存接口芯片发展趋势（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 397.72it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.87it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.78it/s]
+phase=measure mode=l1_l2 pair=pair_0064 variant=punctuation hit=False source=pipeline sim=None refused=False query='新能源发电企业装机容量增长概况是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 421.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 69.97it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.23it/s]
+phase=measure mode=l1_l2 pair=pair_0065 variant=punctuation hit=False source=pipeline sim=None refused=True query='水电龙头分红与股息率政策总结是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.04it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.96it/s]
+phase=measure mode=l1_l2 pair=pair_0066 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='水电龙头分红与股息率政策总结（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 514.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.78it/s]
+phase=measure mode=l1_l2 pair=pair_0067 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='跨境电商行业2025年业绩与景气回顾（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 501.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.73it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.64it/s]
+phase=measure mode=l1_l2 pair=pair_0068 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年跨境电商行业的业绩与景气回顾？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 452.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.16it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.05it/s]
+phase=measure mode=l1_l2 pair=pair_0069 variant=punctuation hit=False source=pipeline sim=None refused=False query='半导体专用温控设备市场需求驱动是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.79it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.70it/s]
+phase=measure mode=l1_l2 pair=pair_0070 variant=punctuation hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 458.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.58it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.50it/s]
+phase=measure mode=l1_l2 pair=pair_0071 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='电源管理芯片行业下游应用与增长（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 462.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.73it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.64it/s]
+phase=measure mode=l1_l2 pair=pair_0072 variant=filler_suffix hit=False source=pipeline sim=None refused=True query='B2B外贸SaaS与会员制平台发展趋势（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.74it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.91it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.82it/s]
+phase=measure mode=l1_l2 pair=pair_0073 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年美的集团上半年净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 458.48it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.03it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.95it/s]
+phase=measure mode=l1_l2 pair=pair_0074 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年美的集团2025-EPS盈利预测'
+phase=measure mode=l1_l2 pair=pair_0075 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025-2027年EPS盈利预测是？'
+phase=measure mode=l1_l2 pair=pair_0076 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团2025年新能源与工业技术业务收入增速是？'
+phase=measure mode=l1_l2 pair=pair_0077 variant=filler_suffix hit=True source=l2_semantic sim=0.8834031224250793 refused=False query='美的集团2025年新能源与工业技术业务收入增速（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0078 variant=filler_suffix hit=True source=l2_semantic sim=0.896041750907898 refused=False query='美的集团2025年全年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 363.99it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 69.15it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 73.71it/s]
+phase=measure mode=l1_l2 pair=pair_0079 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年美的集团的全年营业收入？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 422.40it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.32it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.23it/s]
+phase=measure mode=l1_l2 pair=pair_0080 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年美的集团三季报净利润'
+phase=measure mode=l1_l2 pair=pair_0081 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='美的集团智能建筑科技业务收入规模是？'
+phase=measure mode=l1_l2 pair=pair_0082 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年上半年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0083 variant=filler_suffix hit=True source=l2_semantic sim=0.9050737619400024 refused=False query='格力电器2025年上半年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 441.66it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.35it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.26it/s]
+phase=measure mode=l1_l2 pair=pair_0084 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='格力电器2025年上半年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 435.03it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.23it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.15it/s]
+phase=measure mode=l1_l2 pair=pair_0085 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年格力电器的上半年归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.00it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.06it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.98it/s]
+phase=measure mode=l1_l2 pair=pair_0086 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年格力电器上半年空调外销收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 446.64it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.75it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.66it/s]
+phase=measure mode=l1_l2 pair=pair_0087 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年格力电器三季报净利润'
+phase=measure mode=l1_l2 pair=pair_0088 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='格力电器2025年三季报归母净利润是？'
+phase=measure mode=l1_l2 pair=pair_0089 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025年上半年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0090 variant=filler_suffix hit=True source=l2_semantic sim=0.9088801145553589 refused=False query='海尔智家2025年上半年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 461.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.24it/s]
+phase=measure mode=l1_l2 pair=pair_0091 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海尔智家2025年上半年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.01it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.29it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.21it/s]
+phase=measure mode=l1_l2 pair=pair_0092 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年海尔智家的上半年归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.23it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.88it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.79it/s]
+phase=measure mode=l1_l2 pair=pair_0093 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年海尔智家欧洲市场收入增速'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 494.12it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.07it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.98it/s]
+phase=measure mode=l1_l2 pair=pair_0094 variant=word_order hit=False source=pipeline sim=None refused=False query='2027年海尔智家2025-净利润预测'
+phase=measure mode=l1_l2 pair=pair_0095 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海尔智家2025-2027年归母净利润预测是？'
+phase=measure mode=l1_l2 pair=pair_0096 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='海信家电2025年全年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0097 variant=filler_suffix hit=True source=l2_semantic sim=0.8992827534675598 refused=False query='海信家电2025年全年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 439.58it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.09it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.01it/s]
+phase=measure mode=l1_l2 pair=pair_0098 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='海信家电2025年归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.98it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.55it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.46it/s]
+phase=measure mode=l1_l2 pair=pair_0099 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年海信家电的归母净利润？'
+phase=measure mode=l1_l2 pair=pair_0100 variant=word_order hit=True source=l2_semantic sim=0.9765111207962036 refused=False query='2025年智家TCL净利润'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 432.25it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.11it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.02it/s]
+phase=measure mode=l1_l2 pair=pair_0101 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年是否启动分红回报股东TCL智家'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 444.48it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.68it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.59it/s]
+phase=measure mode=l1_l2 pair=pair_0102 variant=punctuation hit=False source=pipeline sim=None refused=False query='TCL智家2025年是否启动分红回报股东是？'
+phase=measure mode=l1_l2 pair=pair_0103 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='长虹美菱2025年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0104 variant=filler_suffix hit=True source=l2_semantic sim=0.9109042882919312 refused=False query='长虹美菱2025年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 450.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.59it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.51it/s]
+phase=measure mode=l1_l2 pair=pair_0105 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='长虹美菱2025年归母净利润及同比（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 477.14it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.32it/s]
+phase=measure mode=l1_l2 pair=pair_0106 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年长虹美菱的归母净利润及同比？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.01it/s]
+phase=measure mode=l1_l2 pair=pair_0107 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年中国广核净利润'
+phase=measure mode=l1_l2 pair=pair_0108 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2025年归母净利润是？'
+phase=measure mode=l1_l2 pair=pair_0109 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='中国广核2026E EPS预测是？'
+phase=measure mode=l1_l2 pair=pair_0110 variant=filler_suffix hit=True source=l2_semantic sim=0.9092147946357727 refused=False query='中国广核2026E EPS预测（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0111 variant=filler_suffix hit=True source=l2_semantic sim=0.9322084784507751 refused=False query='华能国际2025年营业收入与归母净利润（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 396.63it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.67it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 76.56it/s]
+phase=measure mode=l1_l2 pair=pair_0112 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年华能国际的营业收入与归母净利润？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 537.55it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 101.12it/s]
+phase=measure mode=l1_l2 pair=pair_0113 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年华鼎股份上半年营收'
+phase=measure mode=l1_l2 pair=pair_0114 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='华鼎股份2025年上半年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0115 variant=punctuation hit=True source=l2_semantic sim=0.8966028690338135 refused=False query='华鼎股份2025年上半年归母净利润是？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 379.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.74it/s]
+phase=measure mode=l1_l2 pair=pair_0116 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='华鼎股份2025年上半年归母净利润（帮忙查一下）？'
+phase=measure mode=l1_l2 pair=pair_0117 variant=filler_suffix hit=True source=l2_semantic sim=0.9182457327842712 refused=False query='吉宏股份2025年上半年归母净利润及增速（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 471.84it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.26it/s]
+phase=measure mode=l1_l2 pair=pair_0118 variant=polite_tell hit=False source=pipeline sim=None refused=False query='请告诉我2025年吉宏股份的上半年归母净利润及增速？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.38it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.44it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.36it/s]
+phase=measure mode=l1_l2 pair=pair_0119 variant=punctuation hit=False source=pipeline sim=None refused=True query='互联网电商板块AI营销与数字化趋势是？'
+phase=measure mode=l1_l2 pair=pair_0120 variant=punctuation hit=True source=l1_exact sim=1.0 refused=False query='拓荆科技2025年营业收入是？'
+phase=measure mode=l1_l2 pair=pair_0121 variant=filler_suffix hit=True source=l2_semantic sim=0.9065420627593994 refused=False query='拓荆科技2025年营业收入（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 401.47it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.86it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.77it/s]
+phase=measure mode=l1_l2 pair=pair_0122 variant=filler_suffix hit=False source=pipeline sim=None refused=False query='拓荆科技薄膜沉积设备业务进展（帮忙查一下）？'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 370.96it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.23it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.15it/s]
+phase=measure mode=l1_l2 pair=pair_0123 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年半导体设备行业扩产景气与资本开支'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 367.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.17it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.07it/s]
+phase=measure mode=l1_l2 pair=pair_0124 variant=word_order hit=False source=pipeline sim=None refused=False query='2025年业绩概览研报库四行业(半导体/电力/电商/白色家电)'
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 431.76it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.81it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.72it/s]
+phase=measure mode=l1_l2 pair=pair_0125 variant=punctuation hit=False source=pipeline sim=None refused=False query='研报库四行业（半导体/电力/电商/白色家电）2025年业绩概览是？'
+cache_hit_eval done run_id=20260610_092656 measure=250 hits=106 rate=42.4% csv=/root/commercial-rag/data/eval/cache_hit_results_20260610_092656.csv report=/root/commercial-rag/data/eval/cache_hit_report_20260610_092656.md

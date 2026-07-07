@@ -1,0 +1,362 @@
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at schema.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at common.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at milvus.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at rg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at feder.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+/root/miniconda3/lib/python3.12/site-packages/google/protobuf/runtime_version.py:98: UserWarning: Protobuf gencode version 5.27.2 is exactly one major version older than the runtime version 6.31.1 at msg.proto. Please update the gencode to avoid compatibility violations in the next runtime release.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+/root/miniconda3/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+[ok] L1 memory exact hit
+[ok] L1 different stock_code miss
+[ok] L1 index fingerprint mismatch reject
+[ok] L1 stock_code cross-company reject
+[ok] L2 metadata report_year reject
+[ok] safety validate_entry
+| # | 完成标准 | 结果 | 说明 |
+|---|---------|------|------|
+| 0 | 存储层安全自测（L1/L2/metadata/stock 隔离） | 通过 | 全部通过 |
+评测题数量：150
+query_type 分布：{'factual': 100, 'comparative': 26, 'summary': 23, 'trap': 1}
+chunks.jsonl chunk 数：10331
+gold_chunk_id 校验：全部存在
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+
+=== 模式 cache_off: 关闭缓存（cold run） ===
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 505.34it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 142.83it/s]
+  FlagEmbedding Reranker 加载完成。
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 0.542 seconds.
+Prefix dict has been built successfully.
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 618.24it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 108.47it/s]
+[生成] gen_llm=qwen3:8b @ http://localhost:11434, num_predict=2048, num_ctx=8192, think=off, contexts<=3x1200chars, timeout=180s
+  [1/15] q01 cold MISS src=pipeline lat=5413ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 388.17it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.54it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.42it/s]
+  [2/15] q02 cold MISS src=pipeline lat=1035ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 471.78it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 83.87it/s]
+  [3/15] q03 cold MISS src=pipeline lat=831ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.44it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.31it/s]
+  [4/15] q04 cold MISS src=pipeline lat=1187ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 429.05it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.68it/s]
+  [5/15] q05 cold MISS src=pipeline lat=1124ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 384.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.10it/s]
+  [6/15] q06 cold MISS src=pipeline lat=973ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 372.45it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.96it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.84it/s]
+  [7/15] q07 cold MISS src=pipeline lat=1007ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.99it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.11it/s]
+  [8/15] q08 cold MISS src=pipeline lat=1028ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 413.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.37it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.10it/s]
+  [9/15] q09 cold MISS src=pipeline lat=1583ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 454.98it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.67it/s]
+  [10/15] q10 cold MISS src=pipeline lat=899ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 461.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.06it/s]
+  [11/15] q11 cold MISS src=pipeline lat=1561ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 320.26it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.39it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.28it/s]
+  [12/15] q12 cold MISS src=pipeline lat=1051ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 388.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.92it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.81it/s]
+  [13/15] q13 cold MISS src=pipeline lat=952ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 456.00it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 95.53it/s]
+  [14/15] q14 cold MISS src=pipeline lat=1047ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 506.59it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.21it/s]
+  [15/15] q15 cold MISS src=pipeline lat=958ms vec=True llm=True
+
+=== 模式 l1_only: warmup（填充缓存） ===
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 1526.31it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 163.04it/s]
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize:  50%|█████     | 4/8 [00:00<00:00, 39.64it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 41.66it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  12%|█▎        | 1/8 [00:00<00:01,  4.65it/s]Compute Scores:  25%|██▌       | 2/8 [00:00<00:02,  2.01it/s]Compute Scores:  38%|███▊      | 3/8 [00:01<00:02,  2.48it/s]Compute Scores:  50%|█████     | 4/8 [00:01<00:01,  3.44it/s]Compute Scores:  62%|██████▎   | 5/8 [00:01<00:00,  3.93it/s]Compute Scores:  88%|████████▊ | 7/8 [00:01<00:00,  6.56it/s]Compute Scores: 100%|██████████| 8/8 [00:01<00:00,  4.73it/s]
+  [1/15] q01 warmup MISS src=pipeline lat=14918ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize:  50%|█████     | 4/8 [00:00<00:00, 22.62it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 40.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  25%|██▌       | 2/8 [00:00<00:00, 18.80it/s]Compute Scores:  50%|█████     | 4/8 [00:00<00:00,  7.70it/s]Compute Scores:  75%|███████▌  | 6/8 [00:00<00:00,  8.50it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 10.32it/s]
+  [2/15] q02 warmup MISS src=pipeline lat=7785ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 430.21it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  50%|█████     | 4/8 [00:00<00:00, 22.73it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 22.65it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 20.53it/s]
+  [3/15] q03 warmup MISS src=pipeline lat=3702ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 453.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.77it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.63it/s]
+  [4/15] q04 warmup MISS src=pipeline lat=1350ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 378.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  62%|██████▎   | 5/8 [00:00<00:00, 46.97it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 49.16it/s]
+  [5/15] q05 warmup MISS src=pipeline lat=1173ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 250.80it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  38%|███▊      | 3/8 [00:00<00:00, 15.85it/s]Compute Scores:  62%|██████▎   | 5/8 [00:00<00:00,  9.85it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 12.16it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 11.61it/s]
+  [6/15] q06 warmup MISS src=pipeline lat=4203ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 442.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 66.23it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 69.06it/s]
+  [7/15] q07 warmup MISS src=pipeline lat=951ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 608.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 126.25it/s]
+  [8/15] q08 warmup MISS src=pipeline lat=1106ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize:  88%|████████▊ | 7/8 [00:00<00:00, 69.90it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 77.95it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  25%|██▌       | 2/8 [00:00<00:00, 19.43it/s]Compute Scores:  62%|██████▎   | 5/8 [00:00<00:00, 23.45it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 25.54it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 24.59it/s]
+  [9/15] q09 warmup MISS src=pipeline lat=4192ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 365.11it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.91it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.82it/s]
+  [10/15] q10 warmup MISS src=pipeline lat=889ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 416.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.58it/s]
+  [11/15] q11 warmup MISS src=pipeline lat=1564ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 360.10it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 82.25it/s]
+  [12/15] q12 warmup MISS src=pipeline lat=1080ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 429.87it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.42it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.33it/s]
+  [13/15] q13 warmup MISS src=pipeline lat=999ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 393.86it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.08it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.99it/s]
+  [14/15] q14 warmup MISS src=pipeline lat=1010ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 505.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.04it/s]
+  [15/15] q15 warmup MISS src=pipeline lat=1029ms vec=True llm=True
+
+=== 模式 l1_only: measure L1（完全相同问题） ===
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 429.90it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.99it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.89it/s]
+  [1/15] q01 measure_l1 MISS src=pipeline lat=1009ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 465.57it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.45it/s]
+  [2/15] q02 measure_l1 MISS src=pipeline lat=990ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 463.71it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.58it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.48it/s]
+  [3/15] q03 measure_l1 MISS src=pipeline lat=915ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 436.60it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.77it/s]
+  [4/15] q04 measure_l1 MISS src=pipeline lat=1154ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 330.39it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.41it/s]
+  [5/15] q05 measure_l1 MISS src=pipeline lat=1095ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 441.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 91.78it/s]
+  [6/15] q06 measure_l1 MISS src=pipeline lat=955ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 375.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.36it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.27it/s]
+  [7/15] q07 measure_l1 MISS src=pipeline lat=986ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 507.19it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.64it/s]
+  [8/15] q08 measure_l1 MISS src=pipeline lat=1009ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 394.83it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.88it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.74it/s]
+  [9/15] q09 measure_l1 MISS src=pipeline lat=1522ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 399.55it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.89it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.79it/s]
+  [10/15] q10 measure_l1 MISS src=pipeline lat=917ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 499.45it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.26it/s]
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1780889876.098457    6979 chttp2_transport.cc:1335] ipv4:127.0.0.1:41515: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11, grpc_status:14}
+E0000 00:00:1780889876.098539    6979 chttp2_transport.cc:1364] ipv4:127.0.0.1:41515: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+  [11/15] q11 measure_l1 MISS src=pipeline lat=1542ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 371.33it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.47it/s]
+  [12/15] q12 measure_l1 MISS src=pipeline lat=1041ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 427.12it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.08it/s]
+  [13/15] q13 measure_l1 MISS src=pipeline lat=906ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 410.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.49it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.36it/s]
+  [14/15] q14 measure_l1 MISS src=pipeline lat=1053ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 502.68it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.90it/s]
+  [15/15] q15 measure_l1 MISS src=pipeline lat=1104ms vec=True llm=True
+
+=== 模式 l1_l2: warmup（填充缓存） ===
+正在加载 Reranker：BAAI/bge-reranker-v2-m3
+  设备：cuda，本地路径：/root/autodl-tmp/hf_cache/hub/models--BAAI--bge-reranker-v2-m3/snapshots/953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e
+pre tokenize:   0%|          | 0/1 [00:00<?, ?it/s]You're using a XLMRobertaTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+pre tokenize: 100%|██████████| 1/1 [00:00<00:00, 1784.05it/s]
+Compute Scores:   0%|          | 0/1 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 1/1 [00:00<00:00, 162.41it/s]
+  FlagEmbedding Reranker 加载完成。
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 343.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 69.29it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 60.77it/s]
+  [1/15] q01 warmup MISS src=pipeline lat=3647ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 444.09it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 69.54it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 71.58it/s]
+  [2/15] q02 warmup MISS src=pipeline lat=998ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 469.22it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 68.69it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 73.42it/s]
+  [3/15] q03 warmup MISS src=pipeline lat=946ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 418.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.29it/s]
+  [4/15] q04 warmup MISS src=pipeline lat=1140ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 428.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.13it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.01it/s]
+  [5/15] q05 warmup MISS src=pipeline lat=973ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 476.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 115.02it/s]
+  [6/15] q06 warmup MISS src=pipeline lat=844ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 489.30it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 107.81it/s]
+  [7/15] q07 warmup MISS src=pipeline lat=840ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 512.26it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.11it/s]
+  [8/15] q08 warmup MISS src=pipeline lat=1062ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 458.00it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 88.36it/s]
+  [9/15] q09 warmup MISS src=pipeline lat=1427ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.41it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.06it/s]
+  [10/15] q10 warmup MISS src=pipeline lat=923ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.72it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.46it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.33it/s]
+  [11/15] q11 warmup MISS src=pipeline lat=1599ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 357.48it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.04it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.94it/s]
+  [12/15] q12 warmup MISS src=pipeline lat=1032ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 376.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.70it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.57it/s]
+  [13/15] q13 warmup MISS src=pipeline lat=971ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 301.59it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.27it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.17it/s]
+  [14/15] q14 warmup MISS src=pipeline lat=1113ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 451.62it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 85.32it/s]
+  [15/15] q15 warmup MISS src=pipeline lat=1024ms vec=True llm=True
+
+=== 模式 l1_l2: measure L1（完全相同问题） ===
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.55it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.77it/s]
+  [1/15] q01 measure_l1 MISS src=pipeline lat=1017ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 465.54it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.19it/s]
+  [2/15] q02 measure_l1 MISS src=pipeline lat=1017ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 485.73it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.27it/s]
+  [3/15] q03 measure_l1 MISS src=pipeline lat=854ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 465.49it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.05it/s]
+  [4/15] q04 measure_l1 MISS src=pipeline lat=1163ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 421.37it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 68.29it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 70.71it/s]
+  [5/15] q05 measure_l1 MISS src=pipeline lat=1078ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 408.47it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 67.78it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 72.27it/s]
+  [6/15] q06 measure_l1 MISS src=pipeline lat=935ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 390.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 67.24it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 71.16it/s]
+  [7/15] q07 measure_l1 MISS src=pipeline lat=1006ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 542.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.77it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 74.63it/s]
+  [8/15] q08 measure_l1 MISS src=pipeline lat=1002ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 445.26it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.31it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 79.21it/s]
+  [9/15] q09 measure_l1 MISS src=pipeline lat=1519ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 464.74it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.97it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.88it/s]
+  [10/15] q10 measure_l1 MISS src=pipeline lat=875ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 540.13it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.08it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.99it/s]
+  [11/15] q11 measure_l1 MISS src=pipeline lat=1570ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 461.53it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 63.98it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 68.29it/s]
+  [12/15] q12 measure_l1 MISS src=pipeline lat=1031ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 446.04it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 63.86it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 68.22it/s]
+  [13/15] q13 measure_l1 MISS src=pipeline lat=1015ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 384.65it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores:  88%|████████▊ | 7/8 [00:00<00:00, 63.93it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 68.10it/s]
+  [14/15] q14 measure_l1 MISS src=pipeline lat=1111ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 487.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.15it/s]
+  [15/15] q15 measure_l1 MISS src=pipeline lat=1024ms vec=True llm=True
+
+=== 模式 l1_l2: measure L2（语义改写问法） ===
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 454.18it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.76it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.67it/s]
+  [1/15] q01 measure_l2 MISS src=pipeline lat=988ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 483.20it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.72it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.61it/s]
+  [2/15] q02 measure_l2 MISS src=pipeline lat=1336ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 643.29it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.15it/s]
+  [3/15] q03 measure_l2 MISS src=pipeline lat=833ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 491.89it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 88.71it/s]
+  [4/15] q04 measure_l2 MISS src=pipeline lat=960ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.95it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 84.31it/s]
+  [5/15] q05 measure_l2 MISS src=pipeline lat=1090ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 444.32it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.44it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.35it/s]
+  [6/15] q06 measure_l2 MISS src=pipeline lat=1012ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 433.36it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.96it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.87it/s]
+  [7/15] q07 measure_l2 MISS src=pipeline lat=927ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 520.71it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.27it/s]
+  [8/15] q08 measure_l2 MISS src=pipeline lat=1030ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 411.79it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.57it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 75.44it/s]
+  [9/15] q09 measure_l2 MISS src=pipeline lat=1423ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 439.02it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 115.37it/s]
+  [10/15] q10 measure_l2 MISS src=pipeline lat=891ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 571.66it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 80.99it/s]
+  [11/15] q11 measure_l2 MISS src=pipeline lat=1588ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 495.75it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 81.95it/s]
+  [12/15] q12 measure_l2 MISS src=pipeline lat=1026ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 474.07it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 87.51it/s]
+  [13/15] q13 measure_l2 MISS src=pipeline lat=904ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 397.77it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.52it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 78.43it/s]
+  [14/15] q14 measure_l2 MISS src=pipeline lat=1015ms vec=True llm=True
+pre tokenize:   0%|          | 0/8 [00:00<?, ?it/s]pre tokenize: 100%|██████████| 8/8 [00:00<00:00, 494.43it/s]
+Compute Scores:   0%|          | 0/8 [00:00<?, ?it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.72it/s]Compute Scores: 100%|██████████| 8/8 [00:00<00:00, 77.64it/s]
+  [15/15] q15 measure_l2 MISS src=pipeline lat=1068ms vec=True llm=True
+Traceback (most recent call last):
+  File "/root/commercial-rag/src/eval_cache.py", line 549, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/root/commercial-rag/src/eval_cache.py", line 532, in main
+    comparison_df = build_comparison_table(all_rows)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/commercial-rag/src/eval_cache.py", line 337, in build_comparison_table
+    _add(f"{mode}/cold", cold)
+  File "/root/commercial-rag/src/eval_cache.py", line 328, in _add
+    metrics = aggregate_cache_eval_rows(subset)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/commercial-rag/src/eval_cache_common.py", line 175, in aggregate_cache_eval_rows
+    retrieval_metrics = aggregate_metrics(retrieval_rows) if retrieval_rows else {}
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/commercial-rag/src/eval_retrieval.py", line 266, in aggregate_metrics
+    "recall_at_3": sum(row["recall_at_3"] for row in results) / n,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/commercial-rag/src/eval_retrieval.py", line 266, in <genexpr>
+    "recall_at_3": sum(row["recall_at_3"] for row in results) / n,
+                       ~~~^^^^^^^^^^^^^^^
+KeyError: 'recall_at_3'

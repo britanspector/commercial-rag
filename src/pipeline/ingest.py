@@ -353,4 +353,17 @@ def ingest_pdf_source(
         result.stages.append(IngestStage(name="bm25", status="failed", detail=str(error)))
         raise
 
+    try:
+        from cache.invalidate_hooks import on_corpus_updated
+
+        on_corpus_updated(doc_id=source.doc_id)
+    except Exception as error:
+        import logging
+
+        logging.getLogger(__name__).warning(
+            "cache invalidation after ingest skipped doc_id=%s: %s",
+            source.doc_id,
+            error,
+        )
+
     return result

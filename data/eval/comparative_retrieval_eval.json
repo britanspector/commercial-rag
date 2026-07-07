@@ -1,0 +1,503 @@
+{
+  "summary": {
+    "total": 26,
+    "multi_company_top5": 23,
+    "comparative_insufficient": 3,
+    "refusal_rate": 0.2692,
+    "comparative_insufficient_rate": 0.1154,
+    "reason_breakdown": {
+      "comparative_insufficient": 3,
+      "(pass)": 19,
+      "insufficient_passage": 3,
+      "weak_evidence_intent": 1
+    },
+    "elapsed_s": 12.4
+  },
+  "rows": [
+    {
+      "id": "q23",
+      "query": "半导体行业DDR5内存接口芯片相关公司",
+      "distinct_companies": 1,
+      "top5_companies": [
+        "澜起科技",
+        "澜起科技",
+        "澜起科技",
+        "澜起科技",
+        "澜起科技"
+      ],
+      "refused": true,
+      "refusal_reason": "comparative_insufficient",
+      "compare_entities": [],
+      "entity_sub_queries_n": 0
+    },
+    {
+      "id": "q24",
+      "query": "核电板块电价下降对业绩的影响",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "中国核电",
+        "中国核电",
+        "中国广核",
+        "中国核电",
+        "中国核电"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [],
+      "entity_sub_queries_n": 0
+    },
+    {
+      "id": "q61",
+      "query": "澜起科技和芯朋微哪家2026E市盈率PE更高？",
+      "distinct_companies": 3,
+      "top5_companies": [
+        "焦点科技",
+        "焦点科技",
+        "南芯科技",
+        "立昂微",
+        "焦点科技"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "澜起科技",
+        "芯朋微"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q62",
+      "query": "华凯易佰和赛维时代2025年营收同比增速哪个更高？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "华凯易佰",
+        "华凯易佰",
+        "赛维时代",
+        "赛维时代",
+        "赛维时代"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "华凯易佰",
+        "赛维时代"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q63",
+      "query": "中国核电和三峡能源2025年发电量谁更高？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "中国核电",
+        "中国核电",
+        "三峡能源",
+        "三峡能源",
+        "中国核电"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "中国核电",
+        "三峡能源"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q64",
+      "query": "京仪装备和华峰测控2025年毛利率哪个更高？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "",
+        "中科飞测",
+        "华峰测控",
+        "华峰测控",
+        "华峰测控"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "京仪装备",
+        "华峰测控"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q65",
+      "query": "焦点科技和青木科技谁2026E归母净利润预测更高？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "焦点科技",
+        "焦点科技",
+        "青木科技",
+        "青木科技",
+        "青木科技"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "焦点科技",
+        "青木科技"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q66",
+      "query": "通宝能源和福能股份投资评级对比",
+      "distinct_companies": 4,
+      "top5_companies": [
+        "通宝能源",
+        "福能股份",
+        "福能股份",
+        "A",
+        "皖能电力"
+      ],
+      "refused": true,
+      "refusal_reason": "insufficient_passage",
+      "compare_entities": [
+        "通宝能源",
+        "福能股份投资评级"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q67",
+      "query": "嘉泽新能和协鑫能科绿电/新能源业务布局差异",
+      "distinct_companies": 3,
+      "top5_companies": [
+        "19元嘉泽新能",
+        "19元嘉泽新能",
+        "协鑫能科",
+        "协鑫能科",
+        "嘉泽新能"
+      ],
+      "refused": true,
+      "refusal_reason": "weak_evidence_intent",
+      "compare_entities": [
+        "嘉泽新能",
+        "协鑫能科绿电/新能源业务"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q68",
+      "query": "国民技术和恒烁股份NOR Flash业务景气对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "国民技术",
+        "国民技术",
+        "恒烁股份",
+        "恒烁股份",
+        "恒烁股份"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "国民技术",
+        "恒烁股份NOR Flash业务景气"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q69",
+      "query": "中芯国际和京仪装备研报对半导体设备景气判断",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "中芯国际",
+        "中芯国际",
+        "京仪装备",
+        "京仪装备",
+        "京仪装备"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "中芯国际",
+        "京仪装备研报对半导体设备景气判断"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q70",
+      "query": "长江电力和三峡能源股息分红政策哪个更积极？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "长江电力",
+        "长江电力",
+        "三峡能源",
+        "三峡能源",
+        "长江电力"
+      ],
+      "refused": true,
+      "refusal_reason": "insufficient_passage",
+      "compare_entities": [
+        "长江电力",
+        "三峡能源股息分红政策"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q71",
+      "query": "澜起科技DDR5与芯朋微电源管理芯片赛道差异",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "澜起科技",
+        "澜起科技",
+        "芯朋微",
+        "芯朋微",
+        "澜起科技"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "澜起科技DDR5",
+        "芯朋微电源管理芯片赛道"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q72",
+      "query": "华峰测控和华凯易佰2025年净利润增速对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "华峰测控",
+        "华电国际",
+        "",
+        "",
+        ""
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "华峰测控",
+        "华凯易佰"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q73",
+      "query": "若羽臣和焦点科技跨境电商业务对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "若羽臣",
+        "若羽臣",
+        "焦点科技",
+        "焦点科技",
+        "焦点科技"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "若羽臣",
+        "焦点科技跨境电商业务"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q74",
+      "query": "中国核电两份研报对2026E EPS预测是否一致",
+      "distinct_companies": 1,
+      "top5_companies": [
+        "中国核电",
+        "中国核电",
+        "中国核电",
+        "中国核电",
+        "中国核电"
+      ],
+      "refused": true,
+      "refusal_reason": "comparative_insufficient",
+      "compare_entities": [],
+      "entity_sub_queries_n": 0
+    },
+    {
+      "id": "q75",
+      "query": "京仪装备温控设备与半导体专用设备营收结构对比",
+      "distinct_companies": 1,
+      "top5_companies": [
+        "京仪装备",
+        "京仪装备",
+        "京仪装备",
+        "京仪装备",
+        "京仪装备"
+      ],
+      "refused": true,
+      "refusal_reason": "comparative_insufficient",
+      "compare_entities": [
+        "京仪装备温控设备",
+        "半导体专用设备营收结构"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q119",
+      "query": "美的集团和格力电器2025年上半年归母净利润谁更高？",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "美的集团",
+        "美的集团",
+        "格力电器",
+        "格力电器",
+        "美的集团"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "美的集团",
+        "格力电器"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q120",
+      "query": "海尔智家和美的集团2025年上半年营收增速对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "海尔智家",
+        "海尔智家",
+        "美的集团",
+        "美的集团",
+        "海尔智家"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "海尔智家",
+        "美的集团"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q121",
+      "query": "海信家电和TCL智家2025年归母净利润规模对比",
+      "distinct_companies": 4,
+      "top5_companies": [
+        "海信家电",
+        "海信家电",
+        "TCL智家",
+        "智家",
+        "海尔智家"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "海信家电",
+        "TCL智家"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q122",
+      "query": "美的集团与海尔智家海外收入增速哪个更快？",
+      "distinct_companies": 3,
+      "top5_companies": [
+        "美的集团",
+        "美的集团",
+        "海尔智家",
+        "海尔智家",
+        "60元海尔智家"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "美的集团",
+        "海尔智家海外收入"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q123",
+      "query": "格力电器和长虹美菱2025年盈利能力变化对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "格力电器",
+        "格力电器",
+        "长虹美菱",
+        "长虹美菱",
+        "长虹美菱"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "格力电器",
+        "长虹美菱"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q132",
+      "query": "中国广核和华能国际2025年归母净利润规模对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "中国广核",
+        "中国广核",
+        "华能国际",
+        "中国广核",
+        "中国广核"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "中国广核",
+        "华能国际"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q139",
+      "query": "华鼎股份和吉宏股份2025年上半年归母净利润对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "",
+        "华电国际",
+        "吉宏股份",
+        "",
+        ""
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "华鼎股份",
+        "吉宏股份"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q140",
+      "query": "若羽臣和吉宏股份跨境电商增长驱动因素对比",
+      "distinct_companies": 2,
+      "top5_companies": [
+        "若羽臣",
+        "若羽臣",
+        "吉宏股份",
+        "吉宏股份",
+        "吉宏股份"
+      ],
+      "refused": false,
+      "refusal_reason": "",
+      "compare_entities": [
+        "若羽臣",
+        "吉宏股份跨境电商增长驱动因素"
+      ],
+      "entity_sub_queries_n": 2
+    },
+    {
+      "id": "q148",
+      "query": "拓荆科技和中微公司半导体设备业务定位差异",
+      "distinct_companies": 3,
+      "top5_companies": [
+        "拓荆科技",
+        "拓荆科技",
+        "京仪装备",
+        "京仪装备",
+        "华海清科"
+      ],
+      "refused": true,
+      "refusal_reason": "insufficient_passage",
+      "compare_entities": [
+        "拓荆科技",
+        "中微公司半导体设备业务定位"
+      ],
+      "entity_sub_queries_n": 2
+    }
+  ]
+}

@@ -342,6 +342,7 @@ def run_pipeline_retrieval_eval(
                     query_type=question.query_type,
                 ),
                 config=config,
+                use_cache=False,
             )
             if stage == "recall":
                 hits = _chunks_to_hits(search.recall_hits[:top_k])

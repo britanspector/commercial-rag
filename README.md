@@ -6,6 +6,7 @@
 **评测集**：150 题（factual 100 / comparative 26 / summary 23），`data/eval/eval_questions.jsonl`。
 
 > **最新评测结果**：[docs/eval-results.md](docs/eval-results.md)  
+> **语义缓存评测**：[docs/eval-cache-results.md](docs/eval-cache-results.md) · [docs/semantic-cache-scheme.md](docs/semantic-cache-scheme.md)  
 > 项目历程与实验对照：[docs/midterm-summary.md](docs/midterm-summary.md)  
 > AutoDL / Cursor Agent：[docs/CURSOR_AGENT_CONTEXT.md](docs/CURSOR_AGENT_CONTEXT.md)  
 > 服务器迁移与 RAGAS 交接：[docs/SERVER_MIGRATION_HANDOFF.md](docs/SERVER_MIGRATION_HANDOFF.md)

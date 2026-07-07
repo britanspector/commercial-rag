@@ -36,9 +36,12 @@ src/
 
 - `VITE_API_BASE_URL`：API 根路径，默认 `/api`（开发代理）
 
-## 构建
+## 功能页面
 
-```bash
-npm run build
-npm run preview
-```
+| 路径 | 说明 |
+|------|------|
+| `/search`、`/chat` | 结果区展示响应体 `cache` 字段（命中/来源/延迟） |
+| `/cache` | 累计统计，对接 `GET /cache/stats` |
+
+生产启用语义缓存时，后端需设置 `RAG_SEMANTIC_CACHE_ENABLED=1` 等环境变量，见项目根 `.env.example` 与 [semantic-cache-scheme.md](../docs/semantic-cache-scheme.md)。
+

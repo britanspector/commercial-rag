@@ -27,6 +27,9 @@ python-multipart>=0.0.9
 # 审计持久化（SQLite 默认；PostgreSQL 需另装 psycopg[binary]）
 sqlalchemy>=2.0.0
 
+# L1 精确缓存（Redis，可选）
+redis>=5.0.0
+
 # 生成质量评测 RAGAS（本地 Ollama + bge）
 # LangChain 须同一 0.2.x 线：community 0.2.19 + openai 0.2.x + core 0.2.43
 # 勿与 langchain-openai 1.x / langchain-community 0.4.x 混装（会 ImportError）

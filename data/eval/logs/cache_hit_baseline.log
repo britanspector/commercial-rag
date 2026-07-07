@@ -1,0 +1,22 @@
+# 缓存命中 baseline 复现（改进前）
+# 日期: 2026-06-10
+# 场景: POST /chat，不填 stock_code，L2 默认 null
+
+## 回归用例 1
+original:  澜起科技2024年的EPS是多少？
+paraphrase: 请告诉我2024年澜起科技的每股收益？
+
+normalize_query(original):  澜起科技2024年的EPS是多少？
+normalize_query(paraphrase): 请告诉我2024年澜起科技的每股收益？
+L1 storage_key 相同: False
+L2 后端默认: null（未启用）
+结论: L1 miss → 重跑 Pipeline → 无 stock_code 时检索漂移到焦点科技 EPS
+
+## 回归用例 2
+original:  澜起科技2026年EPS是多少？
+paraphrase: 请问澜起科技2026年EPS是？
+
+normalize_query(original):  澜起科技2026年EPS是多少？
+normalize_query(paraphrase): 请问澜起科技2026年EPS是？
+L1 storage_key 相同: False
+结论: 「请问」前缀 + 「是多少」vs「是」导致 L1 miss；L2 未启用时必然重跑 Pipeline

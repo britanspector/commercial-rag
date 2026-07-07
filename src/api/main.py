@@ -33,6 +33,7 @@ from db.engine import db_status
 from db.tracker import get_tracker
 from api.jobs import create_job, get_job, job_to_dict, run_job_async
 from api.schemas import (
+    CacheStatsResponse,
     ChatResponse,
     EvalJobRequest,
     HealthResponse,
@@ -109,17 +110,66 @@ app.add_middleware(
 async def health(request: Request) -> HealthResponse:
     status = pipeline_status(request.app)
     audit = {"enabled": is_audit_enabled(), **db_status()} if is_audit_enabled() else {"enabled": False}
+    cache_summary = _cache_stats_summary()
     return HealthResponse(
         status="ok",
         pipeline_ready=status["pipeline_initialized"],
         models_loaded=status["models_loaded"],
         audit=audit,
+        cache=cache_summary,
         defaults={
             "recall_route": "hybrid",
             "recall_top_k": DEFAULT_RECALL_TOP_K,
             "rerank_top_k": DEFAULT_RERANK_TOP_K,
             "refusal_threshold": DEFAULT_RERANK_REFUSAL_THRESHOLD,
         },
+    )
+
+
+def _cache_stats_summary() -> dict:
+    from cache import get_cache_manager
+
+    manager = get_cache_manager()
+    snap = manager.stats_snapshot()
+    summary = snap.to_summary_dict()
+    summary["active"] = manager.active
+    return summary
+
+
+@app.get("/cache/stats", response_model=CacheStatsResponse)
+async def cache_stats() -> CacheStatsResponse:
+    """语义缓存累计统计与后端状态。"""
+    from cache import get_cache_manager
+
+    manager = get_cache_manager()
+    snap = manager.stats_snapshot()
+    describe = manager.describe()
+    return CacheStatsResponse(
+        active=manager.active,
+        lookups=snap.lookups,
+        hits_l1=snap.hits_l1,
+        hits_l2=snap.hits_l2,
+        misses=snap.misses,
+        lookup_hit_rate=round(snap.hit_rate, 4),
+        requests=snap.requests,
+        request_hits_l1=snap.request_hits_l1,
+        request_hits_l2=snap.request_hits_l2,
+        request_misses=snap.request_misses,
+        l1_hit_rate=round(snap.l1_hit_rate, 4),
+        l2_hit_rate=round(snap.l2_hit_rate, 4),
+        total_hit_rate=round(snap.total_hit_rate, 4),
+        avg_latency_ms=round(snap.avg_latency_ms, 2),
+        avg_hit_latency_ms=round(snap.avg_hit_latency_ms, 2),
+        avg_miss_latency_ms=round(snap.avg_miss_latency_ms, 2),
+        avg_latency_saved_ms=round(snap.avg_latency_saved_ms, 2),
+        vector_retrievals_saved=snap.vector_retrievals_saved,
+        llm_calls_saved=snap.llm_calls_saved,
+        llm_call_reduction_rate=round(snap.llm_call_reduction_rate, 4),
+        safety_rejects=snap.safety_rejects,
+        stores=snap.stores,
+        exact_entries=snap.exact_entries,
+        semantic_entries=snap.semantic_entries,
+        backends=describe.get("backends", {}),
     )
 
 

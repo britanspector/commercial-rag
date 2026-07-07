@@ -31,6 +31,7 @@ def hybrid_retrieve(
         top_k,
         stock_code=rewrite.stock_code,
         query_type=rewrite.query_type,
+        entity_sub_queries=rewrite.entity_sub_queries or None,
     )
     return HybridRetrieveResult(
         hits=hits,

@@ -66,12 +66,57 @@ class RerankStageResponse(BaseModel):
     hits: list[RetrievedChunkResponse]
 
 
+class CacheInfoResponse(BaseModel):
+    hit: bool = False
+    source: str = Field(default="pipeline", description="l1_exact | l2_semantic | pipeline | none")
+    similarity: float | None = None
+    reason: str = Field(default="", description="命中 served / 未命中原因")
+    safety_ok: bool = True
+    safety_reason: str = ""
+    latency_ms: float = 0.0
+    lookup_ms: float = 0.0
+    pipeline_ms: float = 0.0
+    vector_retrieval: bool = False
+    llm_called: bool = False
+
+
+class CacheStatsResponse(BaseModel):
+    """进程内累计缓存统计（供监控 / 前端展示）。"""
+
+    active: bool = False
+    lookups: int = 0
+    hits_l1: int = 0
+    hits_l2: int = 0
+    misses: int = 0
+    lookup_hit_rate: float = 0.0
+    requests: int = 0
+    request_hits_l1: int = 0
+    request_hits_l2: int = 0
+    request_misses: int = 0
+    l1_hit_rate: float = 0.0
+    l2_hit_rate: float = 0.0
+    total_hit_rate: float = 0.0
+    avg_latency_ms: float = 0.0
+    avg_hit_latency_ms: float = 0.0
+    avg_miss_latency_ms: float = 0.0
+    avg_latency_saved_ms: float = 0.0
+    vector_retrievals_saved: int = 0
+    llm_calls_saved: int = 0
+    llm_call_reduction_rate: float = 0.0
+    safety_rejects: int = 0
+    stores: int = 0
+    exact_entries: int = 0
+    semantic_entries: int = 0
+    backends: dict = Field(default_factory=dict)
+
+
 class SearchResponse(BaseModel):
     query: str
     top_rerank_score: float
     query_rewrite: QueryRewriteResponse
     recall: RecallStageResponse
     rerank: RerankStageResponse
+    cache: CacheInfoResponse = Field(default_factory=CacheInfoResponse)
 
 
 class CitationResponse(BaseModel):
@@ -109,6 +154,7 @@ class ChatResponse(BaseModel):
     citations: list[CitationResponse]
     rerank_hits: list[RetrievedChunkResponse]
     evidence_check: EvidenceCheckResponse
+    cache: CacheInfoResponse = Field(default_factory=CacheInfoResponse)
 
 
 class HealthResponse(BaseModel):
@@ -118,6 +164,10 @@ class HealthResponse(BaseModel):
     audit: dict[str, float | int | str | bool] = Field(
         default_factory=dict,
         description="审计库状态（enabled、backend、url_masked）",
+    )
+    cache: dict[str, float | int | str | bool] = Field(
+        default_factory=dict,
+        description="语义缓存累计统计摘要",
     )
     defaults: dict[str, float | int | str]
 

@@ -9,6 +9,7 @@ import {
 } from 'antd'
 
 import type { ChatResponse } from '../../api/types'
+import { CacheInfoPanel } from '../../components/CacheInfoPanel'
 import { CitationList } from './CitationList'
 import { RerankHitsTable } from './RerankHitsTable'
 
@@ -78,6 +79,8 @@ export function ChatResultPanel({ result }: ChatResultPanelProps) {
           </Paragraph>
         )}
       </Card>
+
+      {result.cache && <CacheInfoPanel cache={result.cache} />}
 
       <div>
         <Title level={5}>引用来源</Title>

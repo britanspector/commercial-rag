@@ -174,7 +174,7 @@ def run_generation_eval(
                 query_type=question.query_type,
             )
             t0 = time.perf_counter()
-            result = pipeline.run(rag_query, config=config)
+            result = pipeline.run(rag_query, config=config, use_cache=False)
             elapsed_ms = int((time.perf_counter() - t0) * 1000)
 
             row = row_from_pipeline(question, result)

@@ -24,11 +24,13 @@ from embed_chunks import EMBED_DIM, OUTPUT_MILVUS_DB, load_embedder, resolve_dev
 from pipeline.answer_generate import generate_answer
 from pipeline.compose import compose_from_reranked_hits, compose_pipeline_result
 from pipeline.evidence_check import check_evidence
+from pipeline.comparative_rerank import rerank_comparative
 from pipeline.hybrid_retrieve import hybrid_retrieve
 from pipeline.query_rewrite import rewrite_query
 from pipeline.rerank import rerank
 from rag_types import (
     AnswerGenerateResult,
+    CacheInfo,
     EvidenceCheckResult,
     HybridRetrieveResult,
     QueryRewriteResult,
@@ -61,6 +63,7 @@ __all__ = [
     "RAGQuery",
     "RAGPipelineResult",
     "RAGSearchResult",
+    "CacheInfo",
     "RAGAnswer",
     "QueryRewriteResult",
     "HybridRetrieveResult",
@@ -208,6 +211,29 @@ class RAGPipeline:
         assert self._reranker is not None
         return rerank(query, hits, self._reranker, top_k=self.config.rerank_top_k)
 
+    def rerank_step_for_rewrite(
+        self,
+        rewrite: QueryRewriteResult,
+        hits: list[dict],
+    ) -> RerankStepResult:
+        """对比题走分主体 Rerank + 配额合并；其余题型与 rerank_step 相同。"""
+        self._ensure_loaded()
+        assert self._reranker is not None
+        if (
+            rewrite.query_type == "comparative"
+            and len(rewrite.compare_entities) >= 2
+            and rewrite.entity_sub_queries
+        ):
+            return rerank_comparative(
+                rewrite.query,
+                hits,
+                self._reranker,
+                compare_entities=rewrite.compare_entities,
+                entity_sub_queries=rewrite.entity_sub_queries,
+                top_k=self.config.rerank_top_k,
+            )
+        return rerank(rewrite.query, hits, self._reranker, top_k=self.config.rerank_top_k)
+
     def evidence_check(
         self,
         rerank_result: RerankStepResult,
@@ -313,22 +339,55 @@ class RAGPipeline:
             return self.config
         return overrides
 
+    def _run_search_core(
+        self,
+        rag_query: RAGQuery,
+        *,
+        rewrite: QueryRewriteResult | None = None,
+    ) -> RAGSearchResult:
+        if rewrite is None:
+            rewrite = self.query_rewrite(rag_query)
+        retrieved = self.hybrid_retrieve(rewrite)
+        reranked = self.rerank_step_for_rewrite(rewrite, retrieved.hits)
+        return RAGSearchResult.from_steps(rewrite, retrieved, reranked)
+
+    def _run_chat_core(
+        self,
+        rag_query: RAGQuery,
+        cfg: RAGPipelineConfig,
+        *,
+        rewrite: QueryRewriteResult | None = None,
+    ) -> RAGPipelineResult:
+        if rewrite is None:
+            rewrite = self.query_rewrite(rag_query)
+        retrieved = self.hybrid_retrieve(rewrite)
+        reranked = self.rerank_step_for_rewrite(rewrite, retrieved.hits)
+        return compose_pipeline_result(
+            rewrite.query,
+            retrieved.hits,
+            reranked,
+            refusal_threshold=cfg.refusal_threshold,
+            query_rewrite=rewrite,
+            retrieve_result=retrieved,
+        )
+
     def run_search(
         self,
         query: RAGQuery | str,
         *,
         config: RAGPipelineConfig | None = None,
+        use_cache: bool = True,
     ) -> RAGSearchResult:
         """执行检索链路：query_rewrite → hybrid_retrieve → rerank（不含生成）。"""
+        from cache.pipeline_bridge import run_search_with_cache
+
         cfg = self._effective_config(config)
+        rag_query = self._normalize_query(query)
         with self._config_lock:
             saved = self.config
             self.config = cfg
             try:
-                rewrite = self.query_rewrite(query)
-                retrieved = self.hybrid_retrieve(rewrite)
-                reranked = self.rerank_step(rewrite.query, retrieved.hits)
-                return RAGSearchResult.from_steps(rewrite, retrieved, reranked)
+                return run_search_with_cache(self, rag_query, cfg, use_cache=use_cache)
             finally:
                 self.config = saved
 
@@ -337,24 +396,18 @@ class RAGPipeline:
         query: RAGQuery | str,
         *,
         config: RAGPipelineConfig | None = None,
+        use_cache: bool = True,
     ) -> RAGPipelineResult:
         """执行完整主链路：五步顺序编排。"""
+        from cache.pipeline_bridge import run_chat_with_cache
+
         cfg = self._effective_config(config)
+        rag_query = self._normalize_query(query)
         with self._config_lock:
             saved = self.config
             self.config = cfg
             try:
-                rewrite = self.query_rewrite(query)
-                retrieved = self.hybrid_retrieve(rewrite)
-                reranked = self.rerank_step(rewrite.query, retrieved.hits)
-                return compose_pipeline_result(
-                    rewrite.query,
-                    retrieved.hits,
-                    reranked,
-                    refusal_threshold=cfg.refusal_threshold,
-                    query_rewrite=rewrite,
-                    retrieve_result=retrieved,
-                )
+                return run_chat_with_cache(self, rag_query, cfg, use_cache=use_cache)
             finally:
                 self.config = saved
 
@@ -362,7 +415,7 @@ class RAGPipeline:
         """兼容旧接口。"""
         rewrite = self.query_rewrite(query)
         retrieved = self.hybrid_retrieve(rewrite)
-        return self.rerank_step(rewrite.query, retrieved.hits).hits
+        return self.rerank_step_for_rewrite(rewrite, retrieved.hits).hits
 
     def answer(self, query: str) -> RAGPipelineResult:
         """兼容旧接口。"""

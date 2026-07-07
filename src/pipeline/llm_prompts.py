@@ -4,6 +4,9 @@ LLM 答案生成 Prompt：按 query_type 组织检索上下文与用户指令。
 
 from __future__ import annotations
 
+import hashlib
+import os
+
 from generation_config import GenerationConfig, resolve_generation_config
 from rag_types import Citation
 from reranker import hit_passage_text
@@ -18,6 +21,10 @@ _SYSTEM_PROMPT = """你是中文金融研报问答助手。请仅依据用户提
 5. 用简洁中文回答，避免大段复制表格行。
 6. 不要做单位换算或推导（如 百万元→亿元）除非资料中明确给出或同时给出换算依据并引用。
 7. 若资料未覆盖问题所问要点，必须友好说明「未找到」并简要概括检索到的相关内容类型（章节/主题），不要只写「未找到」三个字。"""
+
+PROMPT_VERSION = os.environ.get("GEN_PROMPT_VERSION", "").strip() or hashlib.sha256(
+    _SYSTEM_PROMPT.encode("utf-8")
+).hexdigest()[:12]
 
 _TYPE_HINTS = {
     "factual": (

@@ -9,8 +9,13 @@ from __future__ import annotations
 from typing import Any
 
 from eval_retrieval import encode_query
-from query_enhance import enhance_bm25_query, extract_compare_entities, hybrid_vector_weight
-from rag_types import RAGQuery, QueryRewriteResult
+from query_enhance import (
+    build_comparative_sub_queries,
+    enhance_bm25_query,
+    extract_compare_entities,
+    hybrid_vector_weight,
+)
+from rag_types import EntitySubQuery, RAGQuery, QueryRewriteResult
 from retrieval import DEFAULT_HYBRID_VECTOR_WEIGHT
 
 
@@ -36,6 +41,14 @@ def rewrite_query(
     )
     query_vector = encode_query(embedder, query) if embedder is not None else None
 
+    entity_sub_queries: list[EntitySubQuery] = []
+    if rag_query.query_type == "comparative" and len(compare_entities) >= 2:
+        for entity, sub_q in build_comparative_sub_queries(query, compare_entities):
+            sub_vector = encode_query(embedder, sub_q) if embedder is not None else None
+            entity_sub_queries.append(
+                EntitySubQuery(entity=entity, query=sub_q, query_vector=sub_vector)
+            )
+
     return QueryRewriteResult(
         original_query=query,
         query=query,
@@ -45,4 +58,5 @@ def rewrite_query(
         compare_entities=compare_entities,
         hybrid_vector_weight=vector_weight,
         query_vector=query_vector,
+        entity_sub_queries=entity_sub_queries,
     )

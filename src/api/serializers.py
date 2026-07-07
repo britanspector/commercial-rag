@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict
 
 from api.schemas import (
+    CacheInfoResponse,
     ChatResponse,
     CitationResponse,
     EvidenceCheckResponse,
@@ -17,6 +18,24 @@ from api.schemas import (
     UploadStageResponse,
 )
 from rag_types import Citation, QueryRewriteResult, RAGPipelineResult, RAGSearchResult, RetrievedChunk
+
+
+def _cache_to_response(cache) -> CacheInfoResponse:
+    if cache is None:
+        return CacheInfoResponse()
+    return CacheInfoResponse(
+        hit=cache.hit,
+        source=cache.source,
+        similarity=cache.similarity,
+        reason=cache.reason,
+        safety_ok=cache.safety_ok,
+        safety_reason=cache.safety_reason,
+        latency_ms=cache.latency_ms,
+        lookup_ms=cache.lookup_ms,
+        pipeline_ms=cache.pipeline_ms,
+        vector_retrieval=cache.vector_retrieval,
+        llm_called=cache.llm_called,
+    )
 
 
 def ingest_result_to_response(result) -> UploadResponse:
@@ -83,6 +102,7 @@ def search_result_to_response(result: RAGSearchResult) -> SearchResponse:
             top_rerank_score=data["rerank"]["top_rerank_score"],
             hits=[RetrievedChunkResponse(**hit) for hit in data["rerank"]["hits"]],
         ),
+        cache=_cache_to_response(result.cache),
     )
 
 
@@ -115,4 +135,5 @@ def chat_result_to_response(result: RAGPipelineResult) -> ChatResponse:
             citation_count=evidence.citation_count if evidence else len(result.citations),
             checks=evidence.checks if evidence else [],
         ),
+        cache=_cache_to_response(result.cache),
     )
