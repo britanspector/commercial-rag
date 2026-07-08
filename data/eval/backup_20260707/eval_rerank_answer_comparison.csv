@@ -1,0 +1,3 @@
+﻿strategy,question_count,answer_fact_accuracy,refusal_appropriate_rate,refusal_rate
+hybrid_direct_top5,150,0.84,0.82,0.02
+hybrid_top20_rerank_top5,150,0.88,0.8266666666666667,0.006666666666666667

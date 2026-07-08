@@ -1,59 +1,20 @@
-# Rerank 与 RAG 生成
+# Rerank 与生成说明（历史入口）
 
-## 模型
+本文件已拆分整合到两篇主文档中：
 
-- **初召回**：混合（Milvus 向量 + BM25，默认各 0.5）
-- **Reranker**：`BAAI/bge-reranker-v2-m3`（FlagEmbedding）
-- **对比**：混合直接 Top-5 vs 混合 Top-20 → Rerank → Top-5
+- [rag-pipeline.md](rag-pipeline.md)：在线检索、Rerank、证据校验和回答生成
+- [evaluation.md](evaluation.md)：Rerank 评测、生成评测和结果文件
 
-## 安装
-
-```bash
-# 若需 GPU 加速，先按本机显卡驱动/CUDA 选择对应 PyTorch 版本（下例仅示例）
-# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
-pip install -r requirements.txt
-python src/embed_chunks.py
-python src/build_bm25_index.py
-```
-
-## Rerank 评测
+当前相关入口仍然是：
 
 ```bash
 python src/eval_rerank.py
-python src/eval_rerank.py --skip-answer
-```
-
-输出：
-
-| 文件 | 说明 |
-|------|------|
-| `data/eval/eval_rerank_comparison.csv` | Recall@5 / Top-1 / MRR 对比 |
-| `data/eval/eval_rerank_answer_comparison.csv` | 答案事实准确率、拒答合理率 |
-
-## 引用溯源与拒答
-
-`src/rag_answer.py` / `src/rag_pipeline.py`：
-
-- 回答正文标注 `[1]`、`[2]`…，末尾输出 **【参考文献】**（公司、章节、页码、chunk_id、rerank 分）
-- 当 **Top-1 rerank 分数 < 阈值**（默认 `0.35`，normalize=True）时返回：
-
-  > 我不确定，当前检索到的证据不足以可靠回答该问题。
-
-CLI 体验：
-
-```bash
 python src/rag_chat.py "京仪装备2026E毛利率预测是多少？"
 ```
 
-## 参数
+原文中的这些内容现在分别在新文档维护：
 
-| 参数 | 默认 | 说明 |
-|------|------|------|
-| `RECALL_POOL` | 20 | 向量初召回数 |
-| `FINAL_TOP_K` | 5 | Rerank 后保留数 |
-| `DEFAULT_RERANK_REFUSAL_THRESHOLD` | 0.35 | 拒答阈值 |
-
-```bash
-python src/eval_rerank.py --refusal-threshold 0.4
-python src/rag_chat.py --refusal-threshold 0.4 "问题"
-```
+- Rerank 在主链路中的位置
+- 引用生成和拒答逻辑
+- Rerank 评测命令与结果文件
+- 关键参数和默认阈值

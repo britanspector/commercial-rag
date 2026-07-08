@@ -1,0 +1,2 @@
+﻿question_count,recall_at_3,recall_at_5,recall_at_10,context_precision_at_5,context_precision_at_10,mrr,hit_rate,route,top_k
+150.0,0.64,0.7,0.76,0.39466666666666667,0.33466666666666667,0.5751534391534392,0.76,hybrid_pipeline,10

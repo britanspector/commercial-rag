@@ -1,2 +1,0 @@
-﻿embed_model,embed_dim,device,chunk_count,total_chunk_count,milvus_row_count,milvus_db_path,normalize_embeddings
-BAAI/bge-large-zh-v1.5,1024,cuda,991,1352,991,data/vector/milvus.db,True

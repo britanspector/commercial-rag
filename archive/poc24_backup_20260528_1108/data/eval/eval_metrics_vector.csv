@@ -1,2 +1,0 @@
-﻿question_count,recall_at_3,recall_at_5,recall_at_10,mrr,hit_rate,route,top_k
-90.0,0.7,0.7333333333333333,0.7666666666666667,0.623994708994709,0.7666666666666667,vector,10
