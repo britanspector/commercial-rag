@@ -1,0 +1,7 @@
+﻿variant,variant_label,question_count,recall_at_3,recall_at_5,recall_at_10,mrr,hit_rate,multi_company_top5_rate,comparative_insufficient_rate,avg_distinct_companies_top5,top_k,hybrid_vector_weight,hybrid_pool_size
+vector,纯向量,100,0.65,0.67,0.7,0.6467,0.7,0.22,0.78,1.23,10,0.35,200
+bm25,纯BM25,100,0.67,0.78,0.9,0.5855,0.9,0.67,0.33,2.17,10,0.35,200
+hybrid_plain,原问题直接Hybrid,100,0.79,0.85,0.87,0.6975,0.87,0.47,0.53,1.7,10,0.35,200
+hybrid_rrf_fallback,旧式RRF（共享原query向量）,100,0.74,0.74,0.77,0.6696,0.77,0.33,0.67,1.43,10,0.35,200
+hybrid_subq_shared,清洗子查询+共享原query向量,100,0.71,0.74,0.76,0.676,0.76,0.36,0.64,1.56,10,0.35,200
+hybrid_subq_indep,清洗子查询+独立向量+RRF,100,0.7,0.72,0.73,0.6329,0.73,0.62,0.38,2.07,10,0.35,200

@@ -1,0 +1,8 @@
+﻿variant,question_count,hybrid_vector_weight,recall_at_3,recall_at_5,recall_at_10,mrr,hit_rate,multi_company_top5_rate,comparative_insufficient_rate,numeric_like_recall_at_10,logic_like_recall_at_10
+hybrid_rrf_fallback,100,0.2,0.73,0.74,0.77,0.6604,0.77,0.35,0.65,0.76,0.7347
+hybrid_rrf_fallback,100,0.3,0.74,0.74,0.77,0.6696,0.77,0.36,0.64,0.76,0.7551
+hybrid_rrf_fallback,100,0.35,0.74,0.74,0.77,0.6696,0.77,0.33,0.67,0.76,0.7551
+hybrid_rrf_fallback,100,0.4,0.74,0.74,0.77,0.6696,0.77,0.3,0.7,0.76,0.7551
+hybrid_rrf_fallback,100,0.45,0.73,0.73,0.76,0.6596,0.76,0.28,0.72,0.76,0.7551
+hybrid_rrf_fallback,100,0.5,0.73,0.73,0.76,0.6579,0.76,0.27,0.73,0.76,0.7551
+hybrid_rrf_fallback,100,0.6,0.71,0.72,0.75,0.6521,0.75,0.25,0.75,0.72,0.7551
